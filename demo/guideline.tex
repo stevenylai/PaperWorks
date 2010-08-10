@@ -37,7 +37,7 @@ New applications should be put into the appropriate directories accordingly. and
 
 \subsection{A Quick Introduction to Subversion}
 \label{sec:svn}
-This section provides a very quick guide for how to use Subversion. First, you need to download and install Subversion. Since it's a freeware, you can do that by simply searching the Internet and then follow the instructions. Once you have downloaded it, first, you need to configure it by setting up the environment variable SVN\_EDITOR. You can just set it to any favorite editor. For example, on Cygwin, I simply put 'export SVN\_EDITOR=vim' in the bash profile. After Subversion is all set, suppose you are working on a web application called 'myApp' under 'C:/Program Files/Internet'. Below shows a list of very common operations you might need.
+This section provides a very quick guide for how to use Subversion. First, you need to download and install Subversion. Since it's a freeware, you can do that by simply searching the Internet and then follow the instructions. Once you have downloaded it,  you need to configure it by setting up the environment variable SVN\_EDITOR. You can just set it to any favorite editor. For example, on Cygwin, I simply put 'export SVN\_EDITOR=vim' in the bash profile. After Subversion is all set, suppose you are working on a web application called 'myApp' under 'C:/Program Files/Internet', we illustrate the very common operations you might need.
 
 Once you have the first working version of myApp. If it needs compilation, you first need to clean the source codes tree before importing it into svn:
 \begin{itemize}
@@ -74,7 +74,7 @@ You went to write a paper while one of your colleagues was working on the same p
 You have finalized your development and want to tag the current version as milestone 1:
 \begin{itemize}
 \item cd 'C:/Program Files/Internet/myApp'
-\item svn copy \url{http://158.132.20.138:25002/svn/wsn/trunk/Internet/wsn/myApp} \url{http://158.132.20.138:25002/svn/wsn/branches/m1/Internet/wsn/myApp}
+\item svn copy \url{http://158.132.20.138:25002/svn/wsn/trunk/Internet/wsn/myApp} \url{http://158.132.20.138:25002/svn/wsn/tags/m1/Internet/wsn/myApp}
 \end{itemize}
 
 Finally, You want to deploy your demo on the server:
