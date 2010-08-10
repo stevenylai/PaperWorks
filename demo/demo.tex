@@ -1,0 +1,123 @@
+\section{Demo Procedures}
+\label{sec:procedure}
+Current Working Demos:
+\begin{enumerate}
+\item Collision Avoidance \label{demo:collision}
+\item Object Tracking \label{demo:tracking}
+\item Traffic Light Control \label{demo:trafficLight}
+\item Structural Health Monitoring \label{demo:shm}
+\item PSWare \label{demo:psware}
+\end{enumerate}
+
+\begin{center}
+	\begin{tabular}{ | p{2cm} | p{10cm} | }
+		\hline
+		\multicolumn{2}{|c|}{\textbf{Demo \ref{demo:collision}: Collision Avoidance}} \\ \hline
+		\textbf{Overview} &  This demo is to show our distributed event processing algorithm that can detect the location, speed, direction of a model car using sensor nodes on the testbed. Model cars that are trying to enter an intersection can use the event information to coordinate to avoid collisions. \\ \hline
+		\textbf{Test procedures} &
+		\begin{enumerate}
+		\item Make sure that the remaining energy of the batteries of each model car is enough for at least 30 minutes running. The battery voltage should be larger than or equal to 1.3V.
+		\item Make sure the mote is reliably attached to each model car (there are no distance between the two sockets of the mote and the model car) and the cable between the mote and the model car is not broken.
+		\item Turn on the power switch of a model car (switch is in the bottom of the model car).
+		\item Put the power-on model car onto the road near the door of QT405 (This road is better for a stable start).
+		\end{enumerate} \\ \hline
+		\textbf{Solution to possible problems} &
+		\begin{enumerate}
+		\item When a car runs out of control, the reasons maybe: (1) out of battery; (2) magnetic sensor broken due to bad road; (3) the mote antenna hitting the bridge, which causes mote disconnected to the car. Changing batteries or fixing the sensor and road, or fixing the connection will solve the problem
+		\item When two cars get rear hitting, the reason is that the infrared sensor is not working due to lighting from the ceiling. Try to turn off some lamps will solve the problem.
+		\item When the battery is newly charged, the car with number 30 may stop some times: Try running it at least 30 minutes before demo after changing batteries.
+		\item Two cars running at different directions collide in a T intersection. The reasons may include the follows: (1) One or two cars run out of battery; (2) two packets from the two cars are lost (very rare, low probability event); (3) mote antenna hitting the bridge, which causes mote disconnected to the car. Changing batteries or fixing the connections will solve the problem.
+		\end{enumerate}  \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{center}
+	\begin{tabular}{ | p{2cm} | p{10cm} | }
+		\hline
+		\multicolumn{2}{|c|}{\textbf{Demo \ref{demo:tracking}: Object Tracking}} \\ \hline
+		\textbf{Overview} &  The current version demo is to show our distributed algorithm of location event detection on the testbed. \\ \hline
+		\textbf{Test procedures} &
+		\begin{enumerate}
+		\item Connect the MIB510 base station to the server computer via a RS232 cable. Turn on the base station (plug the A/C adapter to a power socket and connect the adapter to the socket of the base station board).
+		\item The program of the base station mote should be TOSBase. If no program, run cywin, cd /opt/tinyos-1.x/apps/TOSBase, make reinstall.0 mib510, /dev/ttyS0
+		\item Double click "demo" icon (the icon image is a "red car").
+		\end{enumerate} \\ \hline
+		\textbf{Solution to possible problems} &
+		\begin{enumerate}
+		\item There is no car running on the GUI. The reasons may include the follows: (1) Base station power is not on (power light is not on); (2) RS232 cable is broken or RS232 cable disconnected; (3) Base station mote is disconnected; (4) No car running or sending messages. The method of pinpoint the reason is to check whether the green light is blinking, when a car runs into an intersection. If it is blinking, then the reason is (2). Try to replace the cable or fix the cable connection then.  If no green light blinking, and the power light is on, then the reason is (3) or (4). Try to fix the connection on the base station mote or fix the connection between the car and the car mote. 
+		\item Wrong path problem. The class path may be wrong if someone change the link or the target folder. The method of fixing this is to correct the following path: (1) the short cut should link to "\url{C:/tinyos/cygwin/bin/demo.bat}" (2) the target path should be "\url{C:/tinyos/cygwin/opt/tinyos-1.x/contrib/iTranSNet/tools/java/itransnet\_base/tracking/Server/Display}" If these are changed, the path will be wrong and the program cannot be started.
+		\end{enumerate}  \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{center}
+	\begin{tabular}{ | p{2cm} | p{10cm} | }
+		\hline
+		\multicolumn{2}{|c|}{\textbf{Demo \ref{demo:trafficLight}: Traffic Light Control}} \\ \hline
+		\textbf{Overview} &  The adaptive traffic light control demo is able to schedule the timings and periods of the traffic lights at each intersection adaptively according to dynamically changing traffic environment. \\ \hline
+		\textbf{Test procedures} &
+		\begin{enumerate}
+		\item Install the traffic lights scheduling code into a Mica-Z mote with ID 1, and then remain the Mica-Z mote in the board. 
+		\item	Install the code into a Mica-Z mote with ID 33 (here, 33 represents the intersection's ID), which can control the four lights at the intersection, and then insert the Mica-Z mote into the corresponding board under the platform.
+		\end{enumerate} \\ \hline
+		\textbf{Solution to possible problems} &
+		\begin{enumerate}
+		\item Q: If the vehicles cannot receive the message from the roadside unit, how can we do?
+		A: Probably, you can change a vehicle to check the performance again.
+		\item Q: If the vehicle does not stop at the intersection, even it received the message from the roadside unit and was informed the current traffic light for its lane is red. How can we do?
+		A: Probably, you can change a vehicle to check the performance again. Maybe the code in the vehicle is not permitted. Or, you can go to check whether the code installed in the roadside unit is correct.
+		\item Q: The roadside unit cannot work correctly when in the platform, how can we do?
+		A: Probably, you can insert the roadside unit into the board which connected with PC. If it can work correctly now, maybe the problem is that the roadside unit did not insert tightly.  If it still can not work correctly, you can go to check whether the code installed in the roadside unit is correct.
+		\end{enumerate}  \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{center}
+	\begin{tabular}{ | p{2cm} | p{10cm} | }
+		\hline
+		\multicolumn{2}{|c|}{\textbf{Demo \ref{demo:shm}: Structural Health Monitoring}} \\ \hline
+		\textbf{Overview} &  This demo is to show the effectiveness of using WSN for structural health monitoring.  Four sensor nodes are attached to the test building and collect vibration data to the server. (sampling frequency = 200Hz ).
+A event detection algorithm is implemented in the server and keeps detecting if there is a 'car hit' event on the structure. 
+In case when a car model hits the building, two shakers are triggered to excite the building. After this hit is detected, a SHM algorithm is immediately carried out to the test if there is any damage caused by the car hit. The damage was 'generated' by removing one column of the structure. \\ \hline
+		\textbf{Test procedures} &
+		\begin{enumerate}
+		\item Turn on the four sensors on the structure.
+		\item Attach the gateway using the USB cable connected to the desktop computer
+		\item Open Labview on the desktop and click on the 'WSN-for-SHM' application.
+		\item Click start on the labview program, you should be able to see the vibration signals from the GUI.
+		\end{enumerate} \\ \hline
+		\textbf{Solution to possible problems} &
+		\begin{enumerate}
+		\item Q: What if error occurs in the labview?
+		A: Please check the serial port number of the gateway and see if the serial port setup is correct in the labview GUI.
+		\end{enumerate}  \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\begin{center}
+	\begin{tabular}{ | p{2cm} | p{10cm} | }
+		\hline
+		\multicolumn{2}{|c|}{\textbf{Demo \ref{demo:psware}: PSWare}} \\ \hline
+		\textbf{Overview} &  This demo shows the effectiveness of our pub/sub middleware - PSWare \\ \hline
+		\textbf{Test procedures} &
+		\begin{enumerate}
+		\item Gateway node is running TOSBase
+		\item The node for event detection is turned on
+		\item SerialForwarder is running on the gateway computer
+		\item On the gateway computer, start the PSWare Java program, by typing command 'psware'
+		\item Open PSWare web page: \url{http://158.132.20.138:25002/wsn/psware/}
+		\item On the web page, click the tab 'iTranSNet', then click the subscribe button
+		\end{enumerate} \\ \hline
+		\textbf{Solution to possible problems} &
+		\begin{enumerate}
+		\item Q: Not all the red boxes are shown. A: On the PSWare web page, select all the road sections, then click the subscribe button again.
+		\item Q: The web page is updating very slowly. A: On the PSWare web page, open 'Home' tab when idle and switch to 'iTranSNet' tab only during the demo.
+		\end{enumerate}  \\
+		\hline
+	\end{tabular}
+\end{center}
+

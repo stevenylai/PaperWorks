@@ -1,0 +1,83 @@
+\section{Development Guidelines}
+\subsection{Server Environment}
+\label{sec:environment}
+In addition to the existing tools and software listed in Section \ref{sec:overview}, other programming tools may be found at the local directory: `C:/Program Files/Programming' and Internet-related tools may be found at 'C:/Program Files/Internet'
+The corresponding entries for the installed tools in the start menu are: 'All Programs/Programming' and 'All Programs/Internet' respectively. Please try to make use of the existing tools before installing the new ones and try to follow the same installation directory settings for the new ones. If you upgrade the software packages that uses extra modules (such as Cygwin, Java and Python), make sure you install these modules as well.
+
+There are a few softwares, however, that need extra care when you want to upgrade them. \textbf{Java} update of the .bash\_profile file (svn: \url{http://158.132.20.138:25002/svn/wsn/trunk/home/Administrator/.bash_profile}) in the cygwin to use the new Java. \textbf{Python}: current PSWare demo is based on a Python web frame work called Django so if you upgrade Python, you need to also check the compatibility between the new Python version and the existing Django version. When it's all done, you also need to configure the existing PSWare web interface (svn: \url{http://158.132.20.138:25002/svn/wsn/trunk/Internet/wsn/psware/}) to point to your newly installed Python/Django.
+
+\subsection{Development Hints}
+\label{sec:hints}
+If your project is based on tinyos 1.x (like most of the existing WSN demos), please make sure your application can run correctly when base station is running the TOSBase program (/opt/tinyos-1.x/apps/TOSBase/). This way, other application can easily coexist on the same server by sharing the same TOSBase program and connect using the serial forwarder.
+
+If your project requires database access or running external commands (such as executing a cygwin command from a PHP script). Please try to use a configuration file for all the configurations instead of hard coding the connection strings, the commands and the paths within the source codes. If it is too difficult, then at least put all the configuration stuff in one file only so that it would not be too difficult to modify them when you are porting your project to the server.
+
+\subsection{Source Code Organization}
+\label{sec:source}
+The current source codes are maintained with help of subversion. For WSN related projects, the root svn directory is \url{http://158.132.20.138:25002/svn/wsn/} The root directory contains three subdirectories:
+\begin{itemize}
+\item trunk: the mainstream and the latest version from the development
+\item tags: the tagged versions such as milestone 1, milestone 2, etc.
+\item branches: the branch versions. For example, if you want to add some new features on an existing working version, you may create a branch for that case.
+\end{itemize}
+
+Within each directory above, there are subdirectories (if necessary) as follows:
+\begin{itemize}
+\item Internet: the web applications. It corresponds to the 'C:/Program Files/Internet' directory on Windows
+\item iTranSNet: the tinyos-1.x applications. It corresponds to the /opt/tinyos-1.x/contrib/iTranSNet in Cygwin
+\item home: the local Cygwin settings. It corresponds to the /home directory in Cygwin
+\end{itemize}
+
+New applications should be put into the appropriate directories accordingly. and for the existing demos, their source codes are located as follows:
+
+\textbf{PSWare}: PSWare has three parts. The NesC program, the Java program and the Python web interface. The NesC main program is located at iTranSNet/apps/PSWare, in addition, it also uses two libraries located at iTranSNet/tos/lib/ArrayList and iTranSNet/tos/lib/VM. The Java program is located at iTranSNet/tools/java/pubsub. The Python web interface is located at Internet/wsn/psware.
+
+\textbf{Collision Avoidance}: This demo only has the NesC part, which is located at iTranSNet/apps/Vehicle. It also uses a library for reliable communication and it is located at iTranSNet/tos/lib/CC2420Radio
+
+\subsection{A Quick Introduction to Subversion}
+\label{sec:svn}
+This section provides a very quick guide for how to use Subversion. First, you need to download and install Subversion. Since it's a freeware, you can do that by simply searching the Internet and then follow the instructions. Once you have downloaded it, first, you need to configure it by setting up the environment variable SVN\_EDITOR. You can just set it to any favorite editor. For example, on Cygwin, I simply put 'export SVN\_EDITOR=vim' in the bash profile. After Subversion is all set, suppose you are working on a web application called 'myApp' under 'C:/Program Files/Internet'. Below shows a list of very common operations you might need.
+
+Once you have the first working version of myApp. If it needs compilation, you first need to clean the source codes tree before importing it into svn:
+\begin{itemize}
+\item cd 'C:/Program Files/Internet/myApp'
+\item make clean
+\end{itemize}
+
+Then you can first import it into svn by using the following commands (note that you should put your app under Internet/wsn/):
+\begin{itemize}
+\item cd 'C:/Program Files/Internet'
+\item svn import myApp \url{http://158.132.20.138:25002/svn/wsn/trunk/Internet/wsn/myApp}
+\end{itemize}
+
+Once it is imported into svn, you need to checkout an initial copy by using the following commands:
+\begin{itemize}
+\item cd 'C:/Program Files/Internet'
+\item rm -R myApp
+\item svn checkout \url{http://158.132.20.138:25002/svn/wsn/trunk/Internet/wsn/myApp}
+\end{itemize}
+Note that it's better to first delete your entire local copy. The purpose of for the initial check out is to let svn set up necessary .svn folders in your project so that all your subsequent changes will be monitored.
+
+Then you did some modification. To send the latest copy to the sever, use the following commands:
+\begin{itemize}
+\item cd 'C:/Program Files/Internet/myApp'
+\item svn commit
+\end{itemize}
+
+You went to write a paper while one of your colleagues was working on the same project. After finishing the paper, to get the latest update from your colleague, use the following commands:
+\begin{itemize}
+\item cd 'C:/Program Files/Internet/myApp'
+\item svn update
+\end{itemize}
+
+You have finalized your development and want to tag the current version as milestone 1:
+\begin{itemize}
+\item cd 'C:/Program Files/Internet/myApp'
+\item svn copy \url{http://158.132.20.138:25002/svn/wsn/trunk/Internet/wsn/myApp} \url{http://158.132.20.138:25002/svn/wsn/branches/Internet/wsn/myApp-m1}
+\end{itemize}
+
+Finally, You want to deploy your demo on the server:
+\begin{itemize}
+\item cd 'C:/Program Files/Internet/wsn'
+\item svn checkout \url{http://158.132.20.138:25002/svn/wsn/trunk/Internet/wsn/myApp}
+\end{itemize}
