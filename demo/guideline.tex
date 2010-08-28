@@ -39,6 +39,8 @@ New applications should be put into the appropriate directories accordingly. and
 
 \textbf{Collision Avoidance}: This demo only has the NesC part, which is located at iTranSNet/apps/Vehicle. It also uses a library for reliable communication and it is located at iTranSNet/tos/lib/CC2420Radio
 
+\textbf{Packet Acknowledger}: Both traffic lights and vehicles use packet acknowledgment to reduce the packet loss. There is a dedicated program to acknowledge the packets for both. It is located at iTranSNet/apps/ACKer.
+
 \subsection{A Quick Introduction to Subversion}
 \label{sec:svn}
 This section provides a very quick guide for how to use Subversion. First, you need to download and install Subversion. Since it's a freeware, you can do that by simply searching the Internet and then follow the instructions. Once you have downloaded it,  you need to configure it by setting up the environment variable SVN\_EDITOR. You can just set it to any favorite editor. For example, on Cygwin, I simply put 'export SVN\_EDITOR=vim' in the bash profile. After Subversion is all set, suppose you are working on a web application called 'myApp' under 'C:/Program Files/Internet', we illustrate the very common operations you might need.
@@ -49,7 +51,7 @@ Once you have the first working version of myApp. If it needs compilation, you f
 \item make clean
 \end{itemize}
 
-Then you can first import it into svn by using the following commands (note that you should put your project under Internet/wsn/ to follow the conventions):
+Then you can first import it into svn by using the following commands (note that you should put your project under Internet/wsn/ to follow the conventions). If the repository requires authentication to commit, then you need to pass the option '--username XXXX' at the end of the command (replace XXXX with the real username).
 \begin{itemize}
 \item cd 'C:/Program Files/Internet'
 \item svn import myApp \url{http://158.132.20.138:25002/svn/wsn/trunk/Internet/wsn/myApp}

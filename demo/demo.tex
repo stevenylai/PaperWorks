@@ -40,13 +40,14 @@ All the demos need the model cars. To install the TinyOS program on the model ca
 		\textbf{Overview} &  The current version demo is to show our distributed algorithm of location event detection on the testbed. \\ \hline
 		\textbf{Test procedures} &
 		\begin{enumerate}
-		\item Connect the MIB510 base station to the server computer via a RS232 cable. Turn on the base station (plug the A/C adapter to a power socket and connect the adapter to the socket of the base station board).
-		\item The program of the base station mote should be TOSBase. If no program, run cywin, cd /opt/tinyos-1.x/apps/TOSBase, make reinstall.0 mib510, /dev/ttyS0
-		\item Double click "demo" icon (the icon image is a "red car").
+		\item Make sure the server PC is up and is running Serial Forwarder. To start Serial Forwarder, simply open a new Cygwin window and enter command 'sf'.
+		\item The program of the base station attached to Server PC should be TOSBase. If no program, run Cygwin, cd /opt/tinyos-1.x/apps/TOSBase, make reinstall.0 mib510, /dev/ttyS0
+		\item Double click "demo" icon (the icon image is a "red car") on the demo computer.
 		\end{enumerate} \\ \hline
 		\textbf{Solution to possible problems} &
 		\begin{enumerate}
-		\item There is no car running on the GUI. The reasons may include the follows: (1) Base station power is not on (power light is not on); (2) RS232 cable is broken or RS232 cable disconnected; (3) Base station mote is disconnected; (4) No car running or sending messages. The method of pinpoint the reason is to check whether the green light is blinking, when a car runs into an intersection. If it is blinking, then the reason is (2). Try to replace the cable or fix the cable connection then.  If no green light blinking, and the power light is on, then the reason is (3) or (4). Try to fix the connection on the base station mote or fix the connection between the car and the car mote. 
+		\item The Java application can't start correctly. It is probably the server computer doesn't have Serial Forwarder running.
+		\item Cars are running on the platform but none is showing on the GUI. The reasons may include the follows: (1) Base station problem: power is not on or not connected to the PC. (2) Car problem: the mote on the car is not correctly connected to the controlling circuit. The method of pinpoint the reason is to check whether the green light on the car's mote is blinking, when a car runs into an intersection. If it is blinking, then the problem is probably on base station. If no green light blinking, then the reason is probably on the car.
 		\item Wrong path problem. The class path may be wrong if someone change the link or the target folder. The method of fixing this is to correct the following path: (1) the short cut should link to "\url{C:/tinyos/cygwin/bin/demo.bat}" (2) the target path should be "\url{C:/tinyos/cygwin/opt/tinyos-1.x/contrib/iTranSNet/tools/java/itransnet\_base/tracking/Server/Display}" If these are changed, the path will be wrong and the program cannot be started.
 		\end{enumerate}  \\
 		\hline
@@ -60,17 +61,14 @@ All the demos need the model cars. To install the TinyOS program on the model ca
 		\textbf{Overview} &  The adaptive traffic light control demo is able to schedule the timings and periods of the traffic lights at each intersection adaptively according to dynamically changing traffic environment. \\ \hline
 		\textbf{Test procedures} &
 		\begin{enumerate}
-		\item Install the traffic lights scheduling code into a Mica-Z mote with ID 1, and then remain the Mica-Z mote in the board. 
-		\item	Install the code into a Mica-Z mote with ID 33 (here, 33 represents the intersection's ID), which can control the four lights at the intersection, and then insert the Mica-Z mote into the corresponding board under the platform.
+		\item	Install the Traffic Light program on the Micaz motes that control the traffic lights.
+ 		\item The ID of the program should be the intersection ID plus 32. (i.e. if the intersection has an ID of 1, then the mote's ID should be 33)
+ 		\item The motes should be plugged into the circuits that control the traffic lights. Turn on the power for traffic lights.
 		\end{enumerate} \\ \hline
 		\textbf{Solution to possible problems} &
 		\begin{enumerate}
-		\item Q: If the vehicles cannot receive the message from the roadside unit, how can we do?
-		A: Probably, you can change a vehicle to check the performance again.
-		\item Q: If the vehicle does not stop at the intersection, even it received the message from the roadside unit and was informed the current traffic light for its lane is red. How can we do?
-		A: Probably, you can change a vehicle to check the performance again. Maybe the code in the vehicle is not permitted. Or, you can go to check whether the code installed in the roadside unit is correct.
-		\item Q: The roadside unit cannot work correctly when in the platform, how can we do?
-		A: Probably, you can insert the roadside unit into the board which connected with PC. If it can work correctly now, maybe the problem is that the roadside unit did not insert tightly.  If it still can not work correctly, you can go to check whether the code installed in the roadside unit is correct.
+		\item By default, if there is no car, the traffic lights should change every 6 seconds between red and green lights. If not, try unplug the motes and plug them back.
+		\item The vehicle does not stop at the intersection. In practice, there should be very small probability of packet loss under the acknowledge system. Check if the mote on the vehicle is correctly connected.
 		\end{enumerate}  \\
 		\hline
 	\end{tabular}
@@ -92,8 +90,7 @@ In case when a car model hits the building, two shakers are triggered to excite 
 		\end{enumerate} \\ \hline
 		\textbf{Solution to possible problems} &
 		\begin{enumerate}
-		\item Q: What if error occurs in the labview?
-		A: Please check the serial port number of the gateway and see if the serial port setup is correct in the labview GUI.
+		\item Error occurs in the labview. Check the serial port number of the gateway and see if the serial port setup is correct in the labview GUI.
 		\end{enumerate}  \\
 		\hline
 	\end{tabular}
@@ -106,17 +103,19 @@ In case when a car model hits the building, two shakers are triggered to excite 
 		\textbf{Overview} &  This demo shows the effectiveness of our pub/sub middleware - PSWare \\ \hline
 		\textbf{Test procedures} &
 		\begin{enumerate}
-		\item Gateway node is running TOSBase
+		\item Gateway node attached to the server computer is running TOSBase
 		\item The node for event detection is turned on
 		\item SerialForwarder is running on the gateway computer
 		\item On the gateway computer, start the PSWare Java program, by typing command 'psware'
 		\item Open PSWare web page: \url{http://158.132.20.138:25002/wsn/psware/}
-		\item On the web page, click the tab 'iTranSNet', then click the subscribe button
+		\item On the web page, click the tab 'iTranSNet', then select all the roads by clicking on them. Click the subscribe button
+		\item On the web page, click the tab 'Home'. Since the 'iTranSNet' tab will query the database in a very high frequency, it is better to switch the 'Home' when idle.
 		\end{enumerate} \\ \hline
 		\textbf{Solution to possible problems} &
 		\begin{enumerate}
-		\item Q: Not all the red boxes are shown. A: On the PSWare web page, select all the road sections, then click the subscribe button again.
-		\item Q: The web page is updating very slowly. A: On the PSWare web page, open 'Home' tab when idle and switch to 'iTranSNet' tab only during the demo.
+		\item Cars are running on the platform but there is no red box on the web page. Check if the PSware application is correctly receiving messages. If it receives messages, there'll be texts popping up in the Cygwin window. If no text is shown, check the cars or the gateway. 
+		\item Not all the red boxes are shown. On the 'iTranSNet' web tab page, select all the road sections, then click the subscribe button again.
+		\item The web page is updating very slowly. On the PSWare web page, open 'Home' tab when idle and switch to 'iTranSNet' tab only during the demo.
 		\end{enumerate}  \\
 		\hline
 	\end{tabular}
