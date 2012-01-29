@@ -1,0 +1,62 @@
+\section{Complete List of the Instructions for EDF}
+\label{appendix:isa}
+In this section, we show the complete list of instructions currently used by our Event Detection Framework (EDF). We also briefly describe the function and the usage of each instruction.
+
+\subsection{Basic Instructions}
+The basic instruction deals with the most fundamental operations. Since the instruction uses a stack-based architecture in order to reduce the code size, most of the instructions that fall into this category deal with the operations related stacks.
+\begin{itemize}
+\item \emph{OPpush}: this instruction is used to push an operand to the top of the stack.
+\item \emph{OPpop}: this instruction is used to pop and discard an operand from the top of the stack.
+\item \emph{OPcopy}: duplicates the top operand of the stack
+\item \emph{OPhalt}: once this instruction is reached, the VM will stop execution.
+\end{itemize}
+
+\subsection{Operators}
+Basic mathematical operators:
+\begin{itemize}
+\item \emph{OPadd}: pops two operands off the top of the stack, add them together and push the result back to the top of the stack.
+\item \emph{OPmult}: pops two operands off the top of the stack, multiply them together and push the result back to the top of the stack.
+\item \emph{OPsub}: pops two operands off the top of the stack, subtract the first popped number by the second one and push the result back to the top of the stack.
+\item \emph{OPdiv}: pops two operands off the top of the stack, divide the first popped number by the second one and push the result back to the top of the stack.
+\item \emph{OPmod}: pops two operands off the top of the stack, divide the first popped number by the second one and push the remainder back to the top of the stack.
+\item \emph{OPinv}: pops one operand (n) off the top of the stack, calculate its inverse (-n) and push the result back.
+\end{itemize}
+
+Logical operators:
+\begin{itemize}
+\item \emph{OPand}: pops two operands off the top of the stack, calculate the logical and of them and push the result back to the top of the stack.
+\item \emph{OPor}: pops two operands off the top of the stack, calculate the logical or of them and push the result back to the top of the stack.
+\item \emph{OPxor}: pops two operands off the top of the stack, calculate the exclusive or of them and push the result back to the top of the stack.
+\item \emph{OPnot}: pops one operand off the top of the stack, calculate the logical not of it and push the result back to the top of the stack.
+\end{itemize}
+
+Relational operators:
+\begin{itemize}
+\item \emph{OPeq}: pops two operands off the top of the stack, if the two operands are equal, push 1 to stack. Otherwise, push 0 to stack.
+\item \emph{OPneq}: pops two operands off the top of the stack, if the two operands are equal, push 0 to stack. Otherwise, push 1 to stack.
+\item \emph{OPgt}: pops two operands off the top of the stack, if the first operand is greater than the second one, push 0 to stack. Otherwise, push 1 to stack.
+\item \emph{OPgte}: pops two operands off the top of the stack, if the first operand is greater than or equal to the second one, push 0 to stack. Otherwise, push 1 to stack.
+\item \emph{OPlt}: pops two operands off the top of the stack, if the first operand is less than the second one, push 0 to stack. Otherwise, push 1 to stack.
+\item \emph{OPlte}: pops two operands off the top of the stack, if the first operand is less than or equal to the second one, push 0 to stack. Otherwise, push 1 to stack.
+\end{itemize}
+
+Bitwise operators:
+\begin{itemize}
+\item \emph{OPshiftl}: pops two operands off the top of the stack, left shift the first popped number by the second one and push the result back to the top of the stack.
+\item \emph{OPshiftr}: pops two operands off the top of the stack, right shift the first popped number by the second one and push the result back to the top of the stack.
+\item \emph{OPland}: pops two operands off the top of the stack, calculate the bitwise and of them and push the result back to the top of the stack.
+\item \emph{OPlor}: pops two operands off the top of the stack, calculate the bitwise or of them and push the result back to the top of the stack.
+\item \emph{OPxor}: pops two operands off the top of the stack, calculate the bitwise exclusive or of them and push the result back to the top of the stack.
+\item \emph{OPlnot}: pops one operand off the top of the stack, calculate its complement and push the result back to the top of the stack.
+\end{itemize}
+
+\subsection{Event-related Instructions}
+\begin{itemize}
+\item \emph{OPref}: whenever an event \(e\) is being evaluated, this instruction is invoked to obtain an instance of such event.
+\item \emph{OPoffset}: this instruction is involved right after the 'ref' instruction, in order to access individual attributes of the event instance.
+\item \emph{OPset}: if the attributes of an event need to be changed, this instruction will be used.
+\item \emph{OPget}: the 'get' instruction does the opposite of 'set' instruction. It will simply retrieve content of a specific attribute in an event.
+\item \emph{OPcreate}: is used to create a new instance of an event.
+\item \emph{OPeval}: is used to determine if an event happens or not.
+\item \emph{OPgc}: used by the event matcher for garbage collection.
+\end{itemize}

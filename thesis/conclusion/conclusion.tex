@@ -1,0 +1,21 @@
+\chapter{Conclusion and Future Directions}
+\label{chapter:conclusion}
+\section{Conclusion}
+In this work, we presented PSWare, a pub/sub middleware for WSN supporting composite events. We first described our research motivation for PSWare. Because of the common requirements in WSN-based applications for event detection, a middleware can significantly save the application developers' programming effort. To develop efficient PSWare, several research and engineering issues must be addressed. These issues include middleware abstraction, event definition, distributed composite event detection and system design.
+
+We reviewed a lot of existing works that are related to the issues in our middleware. These existing works span several areas such as WSN-based middleware, macroprogramming in WSN, event based systems and data aggregation for WSN. For each of the area, we categorized the existing works and compared their differences. We summarized the existing works and find out the room for improvement in PSWare.
+
+PSWare was designed with all the above issues in mind. It uses a flexible architecture where different types of composite event detection algorithms can be easily integrated into it. Each layer represents the solution for a particular issue that we have found out.
+
+Apart from the engineering issues, we did an extensive study on the research issues. The first is to study is the problem of general composite event detection for WSN. We proposed a novel distributed composite event detection algorithm, TED, for WSN. We proved that the composite event detection problem is NP-complete. Therefore, TED consists of a set of heuristic algorithms to forward the events and select fusion points. We have derived some important theorems regarding to the performance of TED.
+
+The second research issue is clustering in our middleware. The issue was raised from one of the PSWare enabled application - SHM. We formulated the problem and proved it to be NP-complete. We proposed both centralized and distributed solutions to the clustering problem.
+
+We have implemented our algorithms and PSWare in the real hardware sensor platform. We described our implementation approach. In addition, we built up some real WSN-based applications using PSWare. We evaluated the performance of PSWare through analysis, simulation and experiments. We compared the performance of PSWare with opportunistic data aggregation where events are aggregated without considering their event relations. By making use of the event fusion points, TED can detect composite events in an energy efficient fashion. Many WSN-based applications can be easily developed with high efficiency.
+
+\section{Future Directions}
+Though PSWare has achieved good performance in event detection, there is still room for improvement. First, in PSWare, we have addressed the event definition and detection problems. However, subscription dissemination problem may also be an interesting issue. We think it is possible that further energy saving could be achieved if we jointly consider subscription dissemination and event detection. The system may select the event detectors according to the event subscriptions. Individual sensor nodes may order the subscriptions for better event fusion results. They may even partially evaluate the subscriptions to help selecting fusion points.
+
+Another direction in the research issue is to consider the network dynamics. Currently, our fusion points selection algorithms and clustering algorithms are relatively static. Re-selection may be performed once the energy efficiency drops to certain threshold. This can be improved if the sensor nodes can perform re-selection or partial re-selection according to more criteria. Such problems may also be interesting optimization problems and are worth study.
+
+Apart from research issues, there are other directions that may be further worked on. For example, we can deploy PSWare in a larger scaled application scenario. Our current experiments in the real environments are still quite small. We can, for instance, deploy the senor nodes on a real bridge for SHM applications or deploy the sensor nodes in the real transportation networks with the traffic lights to make our results more convincing.

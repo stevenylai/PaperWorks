@@ -1,0 +1,42 @@
+%\documentclass{article}
+\documentclass[10pt, conference, compsocconf]{IEEEtran}
+
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{url}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{verbatim}
+\graphicspath{{../figures/psware/}{../simulation/psware/}{./figures/}{./simulation/}}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+%\newcommand{\figurecurrentwidth}{\includegraphics[width=\textwidth]}
+%\newcommand{\figurehalfwidth}{\includegraphics[width=.5\textwidth]}
+\newcommand{\figurecurrentwidth}{\includegraphics[width=.49\textwidth]}
+\newcommand{\figurehalfwidth}{\includegraphics[width=.24\textwidth]}
+\lstset{float, numbers=left, frame=lines, belowcaptionskip=3mm, xleftmargin=7mm, framexleftmargin=7mm, escapeinside={(*}{*)}, tabsize=3, breaklines=true}
+\newtheorem{theorem}{Theorem}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}} 
+\pdfminorversion=9
+
+\begin{document}
+
+\input{./title}
+\input{./abstract}
+\input{./introduction}
+\input{./relatedworks}
+\input{./systemmodel}
+\input{./cedu}
+\input{./ceduanalysis}
+\input{./ceduevaluation}
+\input{./conclusion}
+
+\section*{Acknowledgment}
+This work is supported by Hong Kong RGC under CERG grant PolyU5102/08E and Hong Kong Polytechnic University under ICRG grant B-13E.
+
+\bibliographystyle{IEEEtran}
+\bibliography{../references/wsn-general,../references/wsn-aggregation,../references/wsn-middleware,../references/wsn-pubsub,../references/edl,../references/pubsub,../references/algorithms,../references/event-detection,../references/pervasive}
+\end{document}

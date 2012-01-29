@@ -1,0 +1,76 @@
+\chapter{Composite Event Detection}
+\label{chapter:ted}
+\section{The Composite Event Detection Problem}
+\label{sec:system_model}
+Before we design and implement distributed composite event detection algorithms for our middleware, in this section, we first define the problem for composite event detection and describe a centralized solution for it.
+
+\subsection{System Model}
+We consider the network as a graph \(G=(N, A)\) where each node represents a sensor node and each edge represents a communication link. For each \(a_n\in A\), it has a weight \(W_n\) associated with it.
+
+The subscriber provides a finite set of event types \(E=\{e_1,e_2,\cdots\}\). For each \(e_n\in E\), the subscriber defines a set of attributes \(e_n\rightarrow attr_n\) which reflect certain real world phenomenon. 
+
+The subscriber also provides a finite set of event relations \(R=\{r_1,r_2, \cdots\}\) where each \(r_n\in R\) represents the mapping of one or more sub-event types \(e_1, e_2\cdots \in E\) to a composite event type \(e_3\in E\), denoted as \(r_n(e_1, e_2, \cdots)=e_3\). One of the event type \(e_s\in E\) is subscribed by the subscriber. %Event types and their relations can be represented as a directed acyclic graph (DAG) as shown in Figure \ref{fig:eventdag}, where each node represents an event and each edge represents a relation between a sub-event and a composite event.
+
+\begin{comment}
+\begin{figure}
+\centering
+\figurecurrentwidth{eventdag}
+\caption{Event DAG}
+\label{fig:eventdag}
+\end{figure}
+\end{comment}
+
+We have a set of primitive event types \(E_{primitive}\subseteq E\) event types such that \(\not{\exists} r_n\in R\) such that \(r_n(e_1, e_2, \cdots)=e_n\) where \(e_n\in E_{primitive}\) and \(e_1, e_2, \cdots \in E\). For each primitive event of type \(e'_n\in E_{primitive}\), it will be detected by a node \(n_i\in N\). We use the message cost as the event detection cost for each event type \(e_n\in E\), denoted as \(cost(e_n)\).
+
+\subsection{Problem Formulation}
+Given:
+\begin{itemize}
+	\item A network \(G=(N, A)\)
+	\item A set of event types \(E\) with relation \(R\)
+	\item A cost function \(cost(e_n)\) for \(e_n\in E\)
+\end{itemize}
+
+Find:
+\begin{itemize}
+	\item For each event type \(e_n\in E\), when an event instance of this type is happens, find a subset of nodes \(V_n^r\subseteq V\) which are involved in detecting the event.
+\end{itemize}
+
+Objective:
+\begin{itemize}
+	\item Minimize the total energy consumption:
+	\begin{displaymath}
+	\sum_{i=i}^{n}cost(e_i)
+	\end{displaymath}
+\end{itemize}
+
+\begin{theorem}
+\label{thm:tableConstruction}
+The composite event detection problem is NP-complete.
+\end{theorem}
+
+\begin{proof}
+We show our proof by reducing the steiner tree problem to our composite event detection problem. Let \(N_s\subset N\) be the event source (nodes that detect the primitive events). Since the cost is defined as message cost, if we minimize the total path length from the event sources to the fusion points (nodes which are responsible for detecting composite events), then we can also minimize the message cost.
+
+We construct a graph \(G'=(N', A')\) from \(G\) with the steps as follows:
+\begin{enumerate}
+\item \(N'=N_s\bigcup N_f\)
+\item For each pair of nodes \(n'_i, n'_j\in N'\), we add an edge \(a'_k\in A'\) incident on both if there is a path from \(n'_i\) to \(n'_j\) in \(G\).
+\item The weight of the newly added edge is \(a'_k\) is the weight of the shortest path from \(n'_i\) to \(n'_j\) in \(G\).
+\end{enumerate}
+
+The corresponding Steiner tree problem can be defined as below.
+
+Given:
+\begin{itemize}
+\item A graph: \(G'=(N', A')\)
+\item Each edge \(e'_i\) in the graph has a weight of \(W'_i\)
+\item A set of sources: \(N_s\subset N\)
+\end{itemize}
+
+Find:
+\begin{itemize}
+\item A minimum Steiner tree that spans \(N_s\)
+\end{itemize}
+
+If we have a solution for the Steiner tree problem in \(G'\), then we simply need to recover the shortest paths in \(G\) and it will also be the optimal solution for our composite event detection problem. On the other hand, an optimal solution for our composite event detection problem is also an optimal solution for the Steiner tree problem if we replace the paths between every pair of nodes \(n'_i, n'_j\in N'\)  with the edges in \(A'\).
+\end{proof}

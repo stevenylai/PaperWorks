@@ -1,0 +1,212 @@
+\section{Fully distributed TED}
+\label{sec:cedu}
+In this section, we introduce TED, a distributed type-based composite event detection algorithm for WSN. The essential idea of TED is that after each sub-event is detected, the nodes will at first forward the detected events randomly to some nearby fusion points in the hope that at least some of them will be able to detect events at lower cost. When the composite events are detected, the fusion points will first check to see if the source nodes have already selected any fusion point. If not, it will flood some feedback in the network so that the source node will get it and other nodes can also use such feedbacks as 'hints' when they need to forward the events. By collecting different feedbacks from different fusion points, the sensor nodes will choose the best one according to the cost. If the sub-events occur again, the nodes will be able to forward the detected events based on the feedback so that the cost could likely be reduced.
+
+\subsection{Algorithm Input}
+In TED, the set of event fusion points \(N_f\subseteq N\) are preselected. We will discuss how to select the fusion points in an optimal way in the latter part of the section. Therefore, each node will play two possible roles: normal node or event fusion point. Normal nodes will need the following data structure for the algorithm:
+\begin{itemize}
+\item Event filter table \(table_f\): this table stores the filters for each event type. \(table_f\rightarrow filter_n\) denotes the filter for event type \(e_n\).
+\item Fusion point routing table (\(table_r\)): this table defines the routing to each fusion point \(n_i\in N_f\). \(table_r\rightarrow n_i\rightarrow parent\) denotes the parent node to reach fusion point \(n_i\).
+\item Event forwarding table (\(table_e\)): this table defines for each event type \(e_n\in E\), the corresponding fusion point for the it. \(table_e\rightarrow e_n\rightarrow fp\) denotes the fusion point for event type \(e_n\).
+\end{itemize}
+
+The fusion points will also have the same data structure of the normal nodes for the algorithm. In addition, they will have an additional table \(table_m\). This table temporarily stores the events collected from other nodes. For each of the entries it has the following contents: 
+\begin{itemize}
+\item \(e^i_n\): the \(i^{th}\) event of type \(e_n\)
+\item \(cost\): the detection cost for the event \(e^i_n\)
+\item \(flag\): the flag (to be described in the algorithms) for the event \(e^i_n\)
+\end{itemize}
+
+\subsection{TED for Normal Nodes}
+Since the event detection starts from primitive events, the normal nodes will run Algorithm \ref{algo:normalNode} after detecting a primitive event \(e^i_n\) of type \(e_n\).
+\begin{algorithm}
+\begin{algorithmic}
+\REQUIRE evaluate(\(e^i_n\), \(table_f\rightarrow filter_n\))==True
+	\IF {\(table_e\rightarrow e_n\rightarrow flag\neq fpUnknown\)}
+		\STATE \(toForward=table_e\rightarrow e_n\rightarrow fp\)
+		\STATE Set \(e^i_n\rightarrow flag=table_e\rightarrow e_n\rightarrow flag\)
+		\STATE Forward \(e^i_n\) to \(table_r\rightarrow fp\rightarrow parent\)
+	\ELSE
+		\IF{\(table_e\rightarrow e_n\rightarrow flag\neq fpUnknown\)}
+			\STATE Select \(k-1\) nearest fusion points \(N_k\in N_f\)
+			\STATE \(N_k=N_k\bigcup \{table_e\rightarrow e_n\rightarrow fp\}\)
+		\ELSE
+			\STATE Select \(k\) nearest fusion points \(N_k\in N_f\)
+		\ENDIF
+		\FOR {each \(n\in N_k\)}
+			\STATE forward \(e^i_n\) to \(table_r\rightarrow n\rightarrow parent\)
+		\ENDFOR
+	\ENDIF
+	
+	\IF {\(e^i_n\rightarrow flag=fpSelected\) \AND \(e^i_n\rightarrow timeout==True\)}
+		\STATE \(table_e\rightarrow e_n\rightarrow flag=fpIndicated\)
+	\ENDIF
+\REQUIRE feedback of event type \(e_n\) from \(n_i\in N_f\)
+	\STATE \(entry=table_e\rightarrow e_n\)
+	\IF {\(e_n\rightarrow source==self\) \AND (\(entry\rightarrow flag\neq fpSelected\) \OR \(entry\rightarrow flag==fpSelected\) \AND \(entry\rightarrow cost<e_n\rightarrow cost\))}
+		\STATE \(entry\rightarrow flag=fpSelected\)
+		\STATE \(entry\rightarrow fp=n_i\)
+	\ELSIF {\(entry\rightarrow cost<e_n\rightarrow cost\)}
+		\STATE \(table_e\rightarrow e_n\rightarrow flag=fpIndicated\)
+	\ENDIF
+\end{algorithmic}
+\caption{TED for normal nodes}
+\label{algo:normalNode}
+\end{algorithm}
+For each event type, it has three possible states: fpUnknown, fpIndicated and fpSelected. Initially, all the event types are fpUnknown because the sensor node does not know which fusion point is the best to forward the event. The flag will be updated upon the reception of feedbacks from the fusion points. More specifically, if the event is detected at the fusion point \(n_i\), the fusion point will flood the feedback with cost and event source included so that the nodes can update their corresponding flags. The update is based on the detection cost.
+
+Upon the detection of event \(e^i_n\), the node will first check if there is already a fusion point assigned to it. If so, the event will simply be forwarded to that fusion point. Otherwise, the node will choose \(k\) closest fusion points randomly and then forward the events to them.
+
+\subsection{TED for Event Fusion Points}
+When the fusion point receives \(e^i_n\) from a node, it will first wait a period of time until the expiry time of the event to check for other events for possible matches. If no match is found during this period, the fusion point will still use Algorithm \ref{algo:normalNode} to further forward the events to other fusion points. The pseudo code is shown in Algorithm \ref{algo:fusionPoint}.
+
+\begin{algorithm}
+\begin{algorithmic}
+\REQUIRE \(e^i_n\) from node \(n_i\in N\)
+	\FORALL {\(e_j\in E\)}
+		\IF {\(e_n\) is a subevent of \(e_j\)}
+			\STATE result = evaluate \(e_j\) with \(e^i_n\)
+			\IF {result==True}
+				\STATE detected (\(e_j\))
+				\STATE \(e_j\rightarrow cost=e_j\rightarrow cost+e^i_n\rightarrow cost\)
+				\STATE \(e_j\rightarrow source=e_j\rightarrow source\bigcup e^i_n\rightarrow source\)
+				\STATE feedback (\(e_j\))
+			\ENDIF
+		\ENDIF
+	\ENDFOR
+\REQUIRE expiry time of \(e^i_n\)
+	\STATE detected (\(e_j\))
+\end{algorithmic}
+\caption{TED for fusion points}
+\label{algo:fusionPoint}
+\end{algorithm}
+
+The function 'detected' is the place where Algorithm \ref{algo:normalNode} is invoked. Upon the detection of any composite event, the fusion point will also send the feedbacks to the network.
+
+\subsection{Determine the Re-selection Probability}
+While the previous sections outline the algorithm for TED, we still need to decide how often the nodes should switch to another fusion point in order to cope with the event dynamics and network topological changes. We use exponential distribution as the event probability distribution because of its memoryless property. More specifically, for each composite event, the distance between each of its sub-events to any point in the network follows an exponential distribution as follows:
+\begin{displaymath}
+f(x)={\lambda}_1e^{-{\lambda}_1x}
+\end{displaymath}
+
+In addition to the distance between events, the direction of events that happen in different rounds will also affect the selection probability. The angle between any pair of related events also satisfy an exponential distribution as follows:
+\begin{displaymath}
+f(\theta)={\lambda}_2e^{-{\lambda}_2\theta}
+\end{displaymath}
+
+Both \(x\) and \(\theta\) are shown in Figure \ref{fig:event-distribution1} where the events \(e_1\), \(e_2\) are detected before and \(e'_1\), \(e'_2\) are detected. For simplicity, we use distance to measure the cost for one node to reach another. Let \(d\) be the average distance between any point in the deployment region to the closest sensor node. As shown in Figure \ref{fig:fp-dist}, for a composite event that has two sub-events, originally the event is fused at \(n_1\). Then, for the next detection of \(e'_1\) and \(e'_2\), if the fusion point is still the original one, then the cost will be no less than:
+\begin{align*}
+cost_1=\sqrt{({\lambda}_1)^2+(\frac{{\lambda}_1}{2})^2+({\lambda}_1)^2cos(\frac{\pi+{\lambda}_2}{2})}
+\end{align*}
+On the other hand, if a new fusion point is selected, then the cost will be no more than:
+\begin{align*}
+cost_2=&2(\frac{{\lambda}_1}{2sin\frac{{\lambda}_2}{2}}+{\lambda}_1)sin\frac{{\lambda}_2}{2}+d\\
+=&{\lambda}_1(1+2sin\frac{{\lambda}_2}{2})+d
+\end{align*}
+
+\begin{figure}
+\centering
+\subfloat[Event distribution]{\label{fig:event-distribution1}\figurehalfwidth{event-distribution1}}
+\subfloat[Fusion point distance]{\label{fig:fp-dist}\figurehalfwidth{fp-dist}}
+\caption{Fusion points selection}
+\label{fig:centralizedCEDU}
+\end{figure}
+
+The condition to select a new fusion point will be:
+\begin{align}
+&cost_1\geq cost_2\nonumber \\
+&cost_1^2\geq cost_2^2\nonumber \\
+&({\lambda}_1)^2(\frac{5}{4}+cos(\frac{\pi+{\lambda}_2}{2})\geq\nonumber \\ &{\lambda}_1^2(1+2sin\frac{{\lambda}_2}{2})^2+d^2+2{\lambda}_1(1+2sin\frac{{\lambda}_2}{2})d
+\label{eq:fpSwitch}
+\end{align}
+
+Here \(d\) is decided by the node density and can be estimated once we know the deployment area and the number of nodes in the deployment area. Therefore, given \(f(x)\), \(f(\theta)\) and \(d\), we can use certain numeric methods such as generalized gradient search to find the values for \(\theta\) and \(x\) such that Equation \ref{eq:fpSwitch} is satisfied while minimizing the probability for switching:
+\begin{align*}
+P_{switch}&=F(x>x*)F(\theta>\theta *)\\
+&=\int_{x*}^{\infty}{\lambda}_1e^{-{\lambda}_1x}dx\int_{\theta *}^{\infty}{\lambda}_2e^{-{\lambda}_2\theta}d\theta\\
+&=e^{-{\lambda}_1x*}e^{-{\lambda}_2\theta *}
+\end{align*}
+
+Once the probability is obtained, after each event detection, there will be a probability of \(P_{switch}\) that the event will switch to another fusion point. This is done by making the fusion point broadcast a message in the network so that all nodes can delete the corresponding event type assignment to that fusion point.
+
+\subsection{Fusion Point Deployment}
+Because our distributed algorithm is based on certain nodes in the network that acts as event fusion points to detect the events, in this section, we discuss how to select such fusion points in order to efficiently detect the events. To give an answer without losing generality, we use the following deployment model:
+\begin{itemize}
+\item The entire network is divided into a set of equally sized regions.
+\item Within each region, we deploy the same number of event fusion points. 
+\end{itemize}
+
+Such deployment model is suitable if the user has no prior knowledge on where the events would happen. After calculating the optimal deployment strategy, the users can make use of it in two ways:
+\begin{itemize}
+\item Even deployment: after the sensor deployment, the users can deploy additional sensor nodes as fusion points in the network.
+\item Random deployment: before the deployment, the user can calculate how many fusion points are needed in the network and mix them with normal nodes to deploy them randomly.
+\end{itemize}
+
+We will use square for calculating the optimal deployment strategy in this paper. The optimal deployment strategies with regions of other types of shape may be also be obtained in a similar fashion. Suppose we divide the whole region of area \(A\) into squares of size \(s\times s\). Then on average, each sensor node can find a fusion point at a distance of:
+\begin{align}
+r=&\int_0^1D(t)dt\nonumber\\
+=&\int_0^1\frac{2}{3}\sqrt{c^2t^2+(b^2-a^2-c^2)t+a^2}dt\nonumber\\
+=&\frac{c}{6}[u(1+v^2)+\frac{1}{2}(1-u^2)(1-v^2)ln(\frac{u-1}{u+1})]\label{eq:avgdist1}
+\end{align}
+where,
+\begin{align}
+c=&\frac{s}{2}\nonumber\\
+u=&\frac{\sqrt{2}+1}{2}s\nonumber\\
+v=&\frac{\sqrt{2}-1}{2}s\label{eq:avgdist2}
+\end{align}
+
+In order to determine the optimal deployment strategy, we also need to know the event probabilistic distribution. We use the same exponential distribution model as above. %We start by considering the simplest case where two sub-event types \(e_1\) and \(e_2\) form a composite event type \(e_3\) (\(r_n(e_1, e_2)=e_3\)). 
+
+The cost introduced by TED mainly consists of three parts: forwarding cost, feedback cost and detection cost. Initially, upon the detection of primitive events, the nodes will randomly forward the events to \(k\) closest fusion points. 
+\begin{displaymath}
+cost_{forward}=r\times k
+\end{displaymath}
+
+Here \(k\) is determined by the event distribution such that after forwarding different sub-events to the fusion points, there may be some overlapping fusion points for different sub-events. Therefore, \(k\) is defined as follows:
+\begin{equation}
+k=(\frac{{\lambda}_1}{r}+1)^2\label{eq:forwardNum}
+\end{equation}
+
+When the events are detected at the fusion points, feedback will be sent to the event sources so that the sensor nodes can later forward the events to them and the cost will be reduced. For simplicity of analysis, we assume the fusion points will simply flood the feedback in the network. Therefore, the feedback cost is:
+\begin{displaymath}
+cost_{feedback}=|N|\times k
+\end{displaymath}
+
+The detection cost is the message cost for all sub-events to be forwarded to a fusion point so that the composite event may be detected. If we have two events \(e_1\) and \(e_2\), the minimum event detection cost will be detecting the events on the line segment that connects the two events. However, we may not find a fusion point on the line segment, so in order to find a fusion point that can minimize energy cost, we should choose a point that lies on the bisector of the line segment (the detailed proof is omitted for brevity). Similar to Equation \ref{eq:avgdist1} and \ref{eq:avgdist2}, the average detection cost will be:
+\begin{displaymath}
+cost_{detect}=2\times \int_0^{arctan\frac{2r}{{\lambda}_1}}\frac{{\lambda}_1}{2cosx}dx
+\end{displaymath}
+
+Since each node needs to know how to reach the fusion points when forwarding is needed, there is overhead for maintaining such information. Similar to many existing routing protocols for WSN, we assume the nodes will periodically send messages for link evaluation \cite{rssiroute}. Therefore, the cost for maintenance is:
+\begin{displaymath}
+cost_{maintenance}=(\frac{A}{s^2})|N|c_1
+\end{displaymath}
+
+Here, \(c_1\) is constant that represents the relation between energy consumption and the size of the packets. In addition, the sensor node should also have storage constraint because the nodes simply might not able to store all the routes to every fusion point. The storage constraint is defined as:
+\begin{displaymath}
+(\frac{A}{s^2})<c_2
+\end{displaymath}
+
+Objective is to minimize:
+\begin{displaymath}
+cost_{all}=2(\frac{T}{t}+1)cost_{forward}+cost_{maintenance}+Tcost_{detect}
+\end{displaymath}
+
+All the constants are summarized in Table \ref{tab:ceduConstants}. \(cost_{all}\) may be obtained by nonlinear programming techniques such as generalized gradient search algorithm. In addition to square deployment, other deployment method may also be used and the only difference lies in Equation \ref{eq:avgdist1}, \ref{eq:avgdist2} and \ref{eq:forwardNum}.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{ | p{1cm} | p{5cm} | }
+\hline
+\({\lambda}_1\) & Expected location between the events \\ \hline
+\({\lambda}_2\) & Expected angle of the events \\ \hline
+\(A\) & Deployment area \\ \hline
+\(s\times s\) & The size of the square sub-regions \\ \hline
+\(c_1\) & Energy cost per bit of data transmission\\ \hline
+\(c_2\) & Storage constraint\\ \hline
+\end{tabular}
+\end{center}
+\caption{Summary of the symbols in TED}
+\label{tab:ceduConstants}
+\end{table}
+

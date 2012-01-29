@@ -1,0 +1,82 @@
+\section{EDL and Its Compiler}
+Like other type-based pub/sub systems, the programming model provided by PSWare is similar to object-oriented model where the events are treated like objects. In such kind of model, developers express the application requirements in terms of the events to be detected from the WSN as shown in Figure \ref{fig:eventprogramming}.
+
+\begin{figure}
+\centering
+\figurecurrentwidth{eventprogramming}
+\caption{Event-oriented Programming Model}
+\label{fig:eventprogramming}
+\end{figure}
+
+\subsection{Event Definition Language}
+EDL uses familiar SQL-like syntax and allows the users to reuse and combine different events and create new composite events. The subscription contains one or more event definition and one subscribing statement. Formally, the BNF of the subscription is defined in Listing \ref{lst:BNFSubscription}.
+
+\begin{lstlisting}[caption=BNF (simplified) of subscription, label=lst:BNFSubscription]
+subscription -> event_declarations subscribe_statement
+event_declarations -> event_declaration | event_declarations event_declaration
+subscribe_statement -> SUBSCRIBE IDENTIFIER SEMICOLON
+\end{lstlisting}
+
+The subscribe statement simply uses the keyword 'subscribe' followed the event type name needed by the application. Each event type declaration can have up to three parts: the event body, the where clause and the on clause. The event body defines the attributes of the events. The on clause are used to specify the sub-events used by a composite event. The where clause defines the filter of the corresponding event type. Formally, the BNF of event type is defined in Listing \ref{lst:BNFEvent}
+
+\begin{lstlisting}[caption=BNF (simplified) of event type, label=lst:BNFEvent]
+event_declaration -> EVENT IDENTIFIER event_body on_clause_opt where_clause_opt
+event_body -> { field_declarations_opt }
+on_clause -> ON { subevent_declarations_opt }
+where_clause -> WHERE { conditional_expression }
+\end{lstlisting}
+
+The on clause and the where clause are both optional in case if the event is primitive or doesn't have a filter. The on clause looks similar to the field declaration except sub-events instead of fields are declared. This is done for a clear code presentation and easier type checking. The where clause simply consists of conditional expressions so that the filters may be defined by specifying the operators.
+
+A simple example of using EDL is shown in Listing \ref{lst:EDLExample}. In this example, two events, 'SimpleEvent' and 'CompEvent' are defined. 'SimpleEvent' is a primitive event which occurs when the detected temperature reading is above certain threshold. 'CompEvent' is a composite event that is based on two events of 'SimpleEvent' and their time must satisfy a certain condition in order to indicate the occurrence of 'CompEvent'.
+\begin{lstlisting}[caption=A simple EDL program, label=lst:EDLExample]
+Event SimpleEvent {
+	int temp=System.temp;
+	int id=System.id;
+	int time=System.time;
+} where {
+	temp > 30
+}
+Event CompEvent {
+} on {
+	SimpleEvent e1 and
+	SimpleEvent e2
+} where {
+	e2.time-e1.time=600
+}
+\end{lstlisting}
+
+\subsection{EDL Compiler}
+The EDL-based subscription will be processed by our EDL compiler. The output of the compiler has two parts as shown in Figure \ref{fig:edlcompiler}. The first part is the byte codes which will be executed by individual sensors to detect events. We will discuss how the sensor nodes will execute the byte codes in the next section. The second part is the event receiving module. This module is responsible for receiving and interpreting the events delivered from WSN and notify the application layer if the subscribed events are delivered.
+
+\begin{figure}
+\centering
+\figurecurrentwidth{edlcompiler}
+\caption{EDL compiler structure}
+\label{fig:edlcompiler}
+\end{figure}
+
+Internally, the compiler has the structure shown in Figure \ref{fig:compilerinternal}. The program written in EDL is firstly processed by the lexer and parser to generate a syntax tree. Then type check will be performed to add necessary attributes to the tree. Then the tree will be passed to the backend code generator to generate target codes.
+
+\begin{figure}
+\centering
+\figurecurrentwidth{compilerinternal}
+\caption{EDL compiler internal}
+\label{fig:compilerinternal}
+\end{figure}
+
+The key step of the compiler is to transform EDL programs into trees. For example, the BNF for event declaration is shown as Listing \ref{lst:eventDefinitionBNF}. The corresponding tree will look like the one in Figure \ref{fig:eventDefinitionTree}. The circles represent the exact tree nodes while the boxes are the attributes.
+
+\begin{lstlisting}[caption=BNF for event definition, label=lst:eventDefinitionBNF]
+event_declaration ::= EVENT IDENTIFIER:id event_body:b on_clause_opt:o filter_body_opt:f;
+event_body ::= LBRACE field_declarations_opt:f RBRACE
+on_clause ::= ON LBRACE field_declarations_opt:f RBRACE	;
+filter_body ::=	WHERE LBRACE conditional_expression:e RBRACE;
+\end{lstlisting}
+
+\begin{figure}
+\centering
+\figurecurrentwidth{eventDefinitionTree}
+\caption{Syntax tree for event definition}
+\label{fig:eventDefinitionTree}
+\end{figure}

@@ -1,0 +1,83 @@
+======= Review 1 =======
+
+> *** Overall: Your overall assessment of the paper.
+Weak Accept (4)
+
+> *** Familiarity: Rate your familiarity with the topic.
+Some knowledge of this area (3)
+
+> *** Reason to Accept: Give a succinct reason why you would want this paper in the conference (one or two sentences).
+
+The authors present an algorithm to detect composite events, which are triggered by a combination of events happening at different sensors in a distributed SN. The main idea is to identify fusion points, which are node that sensors will send their events to detect composite events. Authors propose a distributed algorithm to find these fusion points and which fusion points each sensors forwards events to.
+
+> *** Reason to Reject: Give a succinct reason why you think this paper is inappopriate to include in the program (one or two sentences).
+
+The experimental evaluation is not very rigourous. There are several parameters that can affect the performance such as k, type of composite events, etc.  these should be studied properly. Also, the authors only compare with a central data-collection scheme, which is very costly. How does it compare to a centralized or more smarter heuristic?
+
+> *** Detailed Comments: Please provide detailed feedback to help the TPC to assess the paper and to help the authors improve their paper.
+
+It is interesting to know which problem is the NP hardness derived from. Can the authors give some intuition on the reduction?
+
+======= Review 2 =======
+
+> *** Overall: Your overall assessment of the paper.
+Borderline (3)
+
+> *** Familiarity: Rate your familiarity with the topic.
+Familiar with this area (4)
+
+> *** Reason to Accept: Give a succinct reason why you would want this paper in the conference (one or two sentences).
+
+- Interesting  and challenging topic
+- Fairly complete paper: new algo, analysis, simulation, application
+
+> *** Reason to Reject: Give a succinct reason why you think this paper is inappopriate to include in the program (one or two sentences).
+
+- The writting is a bit sketchy
+- The management of event fusion point is not appealing in a distributed setting
+- small scale simulations
+
+> *** Detailed Comments: Please provide detailed feedback to help the TPC to assess the paper and to help the authors improve their paper.
+
+The paper addresses the problem of composite events in WSN. This is an interesting topic as many applications rely on such events to trigger other events.  The author propose a randomized algorithm, relying on a type-based detection of events so the the composite events are dynmaically captured by special nodes, event fusion point, within the network.
+
+The authors first propose a theorem stating that the problem is NP complete. the proof is omitted but at least an intuition of it should be there.
+
+My main concern is about the management of event fusion point which seems to need some off-line actions and therfore do not really maa fully distributed algorithms.
+This is consistent in a way since the notion of event fusion point is exactly the same as the notion of broker in wired networks, and those are actually smi-distributed systems only.
+
+
+Tha dynamic part is not well tackled: how to add event fusion points, etc.
+
+The paper is fairly complete as there is a (small scale) evaluation,  an analysis and even an experimentation.
+i like the topic and the idea, the paper would have requiered more polishing and a better solution for the event fusion point management.
+
+======= Review 3 =======
+
+> *** Overall: Your overall assessment of the paper.
+Weak Accept (4)
+
+> *** Familiarity: Rate your familiarity with the topic.
+Familiar with this area (4)
+
+> *** Reason to Accept: Give a succinct reason why you would want this paper in the conference (one or two sentences).
+
+Interesting topic.
+
+> *** Reason to Reject: Give a succinct reason why you think this paper is inappopriate to include in the program (one or two sentences).
+
+- Poor writing
+       - Some important technical details missing
+
+> *** Detailed Comments: Please provide detailed feedback to help the TPC to assess the paper and to help the authors improve their paper.
+
+Overall, the paper addresses an important problem. However, the solution seems ad hoc and evaluation seems poor.
+
+Authors can improve the paper in several ways.
+       1. The problem formulation in Section IV.B is confusing. Authors do not explicitly consider the effect of topology on costs of matching. Cost(e_n) seems to encapsulate the cost , but how is it computed in the first place? What if the topology changes over time?
+       2. The objective function does not consider sharing of transmitting an event for multiple composite events. For example, if two composite functions require an event e_1, then the cost of transmitting e_1 over an edge will be shared across multiple events. So, the objective function will not be a simple sum over all costs.
+       3. Please provide proof of theorem 1 (or, at least a sketch).
+       4. In related work, please discuss the similarity of the problem with in-network join algorithms. Join algorithms can also compose multiple events to generate one composite event.
+       5. What radio model is used in the evaluation? How does the topology look like?
+       6. Please consider some other baseline algorithm other than SPT. (maybe some join algorithm?)
+

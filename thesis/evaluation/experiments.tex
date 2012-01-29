@@ -1,0 +1,218 @@
+\section{Experiments}
+\label{sec:experiments}
+As described in Section \ref{sec:ceduanalysis}, the performance of TED heavily depends on the actual WSN applications because different applications may have different very different event definitions. In this section, we study some of thes WSN applications and find out how well TED performs.
+
+We have implemented TED on MicaZ based on the existing middleware layer as in \cite{lai:psware}. Similar to Section \ref{sec:ceduanalysis}, we implemented a module that does opportunistic data aggregation based on the existing routing protocol provided by TinyOS for comparison.
+
+We compare the performance using the following metrics:
+\begin{itemize}
+\item Message cost: this is obtained by setting up a counter inside the sensor node. The counter will be written into flash after the experiment so that we can retrieve it.
+\item Event detection delay: we measure the time between the subscription is disseminated and the event is notified.
+\end{itemize}
+
+\begin{figure}
+\centering
+\subfloat[The sensor node]{\label{fig:carParkSensor1}\figurehalfwidth{carParkSensor1.JPG}}
+\subfloat[The light sensor]{\label{fig:carParkSensor2}\figurehalfwidth{carParkSensor2.JPG}}
+\caption{Car park sensor platform}
+\label{fig:carParkSensor}
+\end{figure}
+
+\subsection{Application Case One: Car Park}
+Our first application case is an intelligent car park \cite{tang:carpark}. We deployed some micaz sensor nodes for the application. For simplicity, we use light sensor to detect the presence of a vehicle. For better communication, the sensor nodes are attached close to the ceiling instead of on the ground. The light sensor on each node is connected through an extended cable as shown in Figure \ref{fig:carParkSensor}. 
+
+\begin{figure}
+\centering
+\figurecurrentwidth{carParkDeployment}
+\caption{Car park sensor deployment}
+\label{fig:carParkDeployment}
+\end{figure}
+
+The deployment of the sensor nodes is shown in Figure \ref{fig:carParkDeployment}. In such a system, the management is interested in the number of park spaces and the location of them \cite{tang:carpark}. The primitive events for such a system will be the availability of individual car park spaces. Based on the primitive event, if we want to get notified when the parking spaces near the exit become available, then we just need to define composite events which locate the spaces with certain IDs. Th event definitions are shown in Listing \ref{lst:carPark}. Here, the composite event takes two primitive events for parking space \(1\) and \(2\) which are close to the exit. The experimental results are shown in Figure \ref{fig:carParkResults}. In this application, we primarily consider only the message costs because the delay isn't that important in such a system. The message cost is highest during rush hour when there are a lot of cars entering and leaving the car park. The message cost saved by TED is around 10-20\% regardless of the total messages.
+
+\begin{lstlisting}[caption=Event definition for a car park, label=lst:carPark]
+Event ParkSpaceEvent {
+	int id=System.id;
+	int time=System.time;
+	int light=System.light;
+} where {
+	light>THRESHOLD
+}
+Event CarParkEvent {
+	int id=System.id;
+} on {
+	ParkSpaceEvent e1, e2;
+} where {
+	e1.id==1 ||
+	e2.id==2 ||
+	e1.time-e2.time<10
+}
+\end{lstlisting}
+
+\begin{figure}
+\centering
+\subfloat[With three fusion points]{\label{fig:carParkResult1}\figurehalfwidth{carParkResult1}}
+\subfloat[With four fusion points]{\label{fig:carParkResult2}\figurehalfwidth{carParkResult2}}
+\caption{Car park experiment results}
+\label{fig:carParkResults}
+\end{figure}
+
+\subsection{Application Case Two: Transportation Systems}
+Apart from intelligent car park, another related application is WSN-based intelligent transportation system \cite{lai:its}. We also use the Micaz nodes to deploy such an application using our TED. Before we do the field test, we first perform some simple test on our lab testbed, iTranSNet. Figure \ref{fig:itransnet} shows our testbed setup. In such testbed, we use some model cars to run a platform so that the sensor nodes can detect them.
+
+\begin{figure}
+\centering
+\subfloat[Our iTranSNet testbed]{\label{fig:testbed-road}\figurehalfwidth{testbed-road.JPG}}
+\subfloat[The model cars for iTranSNet testbed]{\label{fig:testbed-car}\figurehalfwidth{testbed-car.JPG}}
+\caption{Lab testbed for transportation systems}
+\label{fig:itransnet}
+\end{figure}
+
+In order to test different scenarios, we defined different event types for potentially different ITS applications. Listing \ref{lst:basicCar} shows one of the most basic events for detecting a single vehicle. 
+\begin{lstlisting}[caption=Event definition for detecting a single vehicle, label=lst:basicCar]
+Event CarEvent {
+	int time=System.time;
+	int magnetic=System.magnetic;
+	int location=System.location;
+} where {
+	magnetic>THRESHOLD
+}
+\end{lstlisting}
+
+\begin{figure}
+\centering
+\subfloat[Message cost]{\label{fig:itransnet1}\figurehalfwidth{itransnet1}}
+\subfloat[Delay]{\label{fig:itransnet2}\figurehalfwidth{itransnet2}}
+\caption{Experimental results on lab testbed: iTranSNet}
+\label{fig:itransnetResults}
+\end{figure}
+
+Listing \ref{lst:overspeeding} defines an event for detecting an over speeding vehicle.
+\begin{lstlisting}[caption=Event definition for over speeding, label=lst:overspeeding]
+Event SpeedEvent {
+	int speed=(e1.location-e2.location)/(e1.time-e2.time);
+} on {
+	CarEvent e1, e2;
+} where {
+	e1.time>e2.time &&
+	speed>THRESHOLD
+}
+\end{lstlisting}
+
+Listing \ref{lst:trafficcount} defines an event for detecting a traffic jam.
+\begin{lstlisting}[caption=Event definition for traffic jam, label=lst:trafficcount]
+Event TrafficJam {
+	int count=count(e1);
+	int roadID=e1.roadID;
+} on {
+	CarEvent e1;
+} where {
+	roadID==CERTAIN_ROAD &&
+	count>THRESHOLD
+}
+\end{lstlisting}
+
+Different from the car park application, such applications are more delay sensitive. So we also measured the time delay for the event detection. We performed the testing on all the event types defined. The results are presented in Figure \ref{fig:itransnetResults}. The experimental results basically agree with the simulation results and show PSWare can save energy without too much delay.
+
+After PSWare passes lab testing, we further deployed it in the real environment. The deployment in the real environment is shown in Figure \ref{fig:itsSensor}.
+
+\begin{figure}
+\centering
+\subfloat[Road side sensor nodes]{\label{fig:itsSensor1}\figurehalfwidth{itsSensor1.JPG}}
+\subfloat[Sensor nodes on the lamp]{\label{fig:itsSensor2}\figurehalfwidth{itsSensor2.JPG}}
+\caption{Sensor nodes for transportation systems}
+\label{fig:itsSensor}
+\end{figure}
+
+The event definitions are the same as those we have used for our indoor test. The results are shown in Figure \ref{fig:itsResults}. Similar to the car park application, TED can save 10-20\% energy while the delay is only a couple of milliseconds.
+ 
+\begin{figure}
+\centering
+\subfloat[Message cost]{\label{fig:itsResult1}\figurehalfwidth{itsResult1}}
+\subfloat[Delay]{\label{fig:itsResult2}\figurehalfwidth{itsResult2}}
+\caption{Experimental results on the real roads}
+\label{fig:itsResults}
+\end{figure}
+
+\subsection{Application Case Three: Indoor Monitoring}
+Our final application is related to smart building. We consider the application scenario where the sensor nodes are deployed in a building so that the temperature can be monitored. Such an application can probably be useful for certain types of context aware pervasive applications. For example, the air conditioner can be adjusted if several adjacent rooms' temperature rises too fast. The primitive and composite event definitions are shown in Listing \ref{lst:indoorEvents}.
+
+\begin{lstlisting}[caption=Event definition for indoor monitoring, label=lst:indoorEvents]
+Event SingleTemp {
+	int id=System.id;
+	int temperature=System.temperature;
+} where {
+	temperature>THRESHOLD
+}
+Event CompositeTemp {
+} on {
+	SingleTemp e1, e2, e3;
+} where {
+	e1.id==1 &&
+	e2.id==2 &&
+	e3.id==4
+}
+\end{lstlisting}
+
+The primitive event simply tests if the temperature passes certain threshold and the composite event is the conjunction of several primitive events. We deployed the some Micaz nodes in different rooms in our building as shown in Figure \ref{fig:indoorDeployment}.
+
+\begin{figure}
+\centering
+\figurecurrentwidth{indoorDeployment}
+\caption{Deployment of the senosr nodes for indoor monitoring}
+\label{fig:indoorDeployment}
+\end{figure}
+
+The experimental results is shown in Figure \ref{fig:itsResults}. The results show that TED can save the message cost by 10-20\%.
+
+\subsection{Application Case Four: SHM}
+In our experiments, we consider the application for WSN-based Structural Health Monitoring (SHM) system. The objective of such system is to detect damages on structures such as buildings and bridges if they occur. Event detection is important in these applications because the SHM sensors will introduce high energy consumption during damage detection. It is therefore more desirable to wake them up only upon the occurrence of certain events \cite{jangshm}.
+
+Figure \ref{fig:testbed} shows our WSN-SHM testbed. In our experiment, we defined a scenario where the sensor nodes will start to collect the data when a certain vibration pattern is detected. The vibration is detected if the one sensor on the top and another one on the bottom of the model read the vibration data that satisfy certain criteria. The event definition is shown in Listing \ref{lst:shm}.
+
+\begin{figure}
+\centering
+\subfloat[With 2 fusion points]{\label{fig:indoorResult1}\figurehalfwidth{indoorResult1}}
+\subfloat[With 3 fusion points]{\label{fig:indoorResult2}\figurehalfwidth{indoorResult2}}
+\caption{Experiments for temperature monitoring}
+\label{fig:indoorResult}
+\end{figure}
+
+\begin{lstlisting}[caption=Event definition for SHM, label=lst:shm]
+Event Vibration {
+	data=System.Vibration;
+} where {
+	data>THRESHOLD1
+}
+Event CompVibration {
+} on {
+	Vibration e1 and
+	Vibration e2
+} where {
+	e1.location=='top' &&
+	e2.location=='bottom' &&
+	e1.data-e2.data>THRESHOLD2
+}
+\end{lstlisting}
+
+\begin{figure}
+\centering
+\subfloat[The testbed]{\label{fig:testbed}\figurehalfwidth{CIMG3851.JPG}}
+\subfloat[Parameters used in the experiments]{\label{fig:experimentModel}\figurehalfwidth{experimentModel}}
+\caption{PSWare experiment setup}
+\label{fig:experimentSetup}
+\end{figure}
+
+With the help of our testbed, we can manually generate events by hitting the model in our testbed. Similar to our simulation, we implemented a na\"{i}ve event detection method where the nodes simply use the existing routings provided by TinyOS \cite{nesc} and detect events opportunistically. We implement two modules for both our TED and the opportunistic filtering where only the primitive events are filtered. In order to create multi-hop communication, we adjust the nodes communication range so that they can only communicate with nearby neighbors. For TED, we use tested both the centralized and the distributed versions and for the distributed version. For TED, we have the parameters set as shown in Figure \ref{fig:experimentModel}.
+
+Figure \ref{fig:exp-all} shows all our experimental results. In addition to energy efficiency, we also studied delay. We calculate the delay for TED as the duration between the time that na\"{i}ve approach detects the event and the time that TED detects them. This is because na\"{i}ve approach sends all the detected primitive events directly to the sink and the delay is only introduced by the multi-hop routing latency while both TED have additional delay in detecting the events. The experimental results are expected because TED slightly introduces more delay when doing the fusion points selection. The results on message cost is similar to our simulations.
+
+\begin{figure}
+\centering
+\subfloat[Message cost]{\label{fig:exp-cost-probability}
+\figurehalfwidth{exp-cost}}
+\subfloat[Delay]{\label{fig:exp-delay-probability}
+\figurehalfwidth{exp-delay}}
+\caption{Experimental results for SHM}
+\label{fig:exp-all}
+\end{figure}

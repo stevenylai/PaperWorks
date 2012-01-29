@@ -1,0 +1,43 @@
+\documentclass[10pt]{article}
+
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{url}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{verbatim}
+\graphicspath{{../figures/psware/}{../simulation/psware/}}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+%\newcommand{\figurecurrentwidth}{\includegraphics[width=\textwidth]}
+%\newcommand{\figurehalfwidth}{\includegraphics[width=.5\textwidth]}
+\newcommand{\figurecurrentwidth}{\includegraphics[width=.49\textwidth]}
+\newcommand{\figurehalfwidth}{\includegraphics[width=.24\textwidth]}
+\lstset{float, numbers=left, frame=lines, belowcaptionskip=3mm, xleftmargin=7mm, framexleftmargin=7mm, escapeinside={(*}{*)}, tabsize=3, breaklines=true}
+\newtheorem{theorem}{Theorem}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}}
+
+\begin{document}
+
+EDL
+\cite{jector} \cite{gem}
+
+Pub/Sub
+\cite{siena} \cite{facespubsub} \cite{lowlevelnaming} \cite{directeddiffusion} \cite{mires} \cite{sp}
+
+Data aggregation:
+\cite{daa} \cite{akca:deterministic} \cite{clusteringsurvey} \cite{aida} \cite{dctc} \cite{pegasis} \cite{mfst} \cite{leach} \cite{tina} \cite{epas}
+
+WSN:
+\cite{nesc} \cite{aky:survey}
+
+WSN-based Middleware:
+\cite{magnetos} \cite{sina} \cite{clustermiddleware} \cite{middlewarechallenge} \cite{mate} \cite{dsware} \cite{smartmessage} \cite{milan} \cite{tinydb} \cite{pieces}
+
+\bibliographystyle{plain}
+\bibliography{../references/wsn-general,../references/wsn-aggregation,../references/wsn-middleware,../references/wsn-pubsub,../references/edl,../references/pubsub,../references/algorithms}
+
+\end{document}

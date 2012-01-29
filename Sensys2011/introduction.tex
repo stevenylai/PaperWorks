@@ -1,0 +1,25 @@
+\section{Introduction}
+\label{sec:introduction}
+Distributed composite event processing \cite{jector} in WSNs is needed in many applications such as healthcare \cite{lo:ban}, smart building \cite{lynch:shm}, and intelligent transportation system \cite{klein:its}. For instance, in an intelligent transportation system, we may define traffic jam as an event when there are too many cars waiting on a road. Such kind of event may come from many sub-events such as the number of the vehicles on a road and the speed of the vehicles. The speed of the vehicles may, in turn, come from the events of each individual vehicle. Once a traffic jam event has been detected, we may need to inform other vehicles or the traffic light controller so that the corresponding adjustment may be made to improve the efficiency of the transportation system. These event-based WSN applications require not only primitive event detection where each event is gathered from a single sensor node but also composite event detection where a number of primitive events must satisfy certain relations.
+
+Programming sensor networks is a non-trivial task since it requires programming individual sensor nodes, handling low-level issues such as synchronization and scheduling and interfacing to the hardware and the network. As a result, a lot of middleware work for WSN has been proposed. Existing approaches event-based middleware for WSN mostly include query-based approach \cite{tinydb} and publish/subscribe approach \cite{complexevent}. However, existing work may have limitation if energy constraint is considered or applications need to define certain application-specific event detection mechanisms. Because of this, we believe a more flexible middleware framework is needed.
+
+In comparison with that in active databases \cite{samos, snoop}, detecting composite events in WSN poses more challenges because of the high network dynamics and resource constraints. First, event relations may need to be taken into consideration when detecting. For example, considering a monitoring application shown in Figure \ref{fig:rooms}, the composite event consists of two sub-events to be detected in two different rooms, Room A and Room B. It occurs when the temperature in room A rises to a certain threshold and after 5 minutes, the temperature in room B also reaches that threshold. In such a scenario, events may better be detected according to their dependency and it can save more energy if the sensors in Room B are waken up after the detection of the corresponding event in room A as shown in Figure \ref{fig:room-b}. Second, different applications may require different event detection mechanisms in order to achieve high level of energy efficiency. In an ITS system, it might be better if the sensors are waken up along the vehicles. However, this may not be the case for general environmental monitoring applications. Therefore, different applications may need to implement event detection mechanisms that are specifically tailored to achieve high energy efficiency.
+
+\begin{figure}
+\centering
+\subfloat[Centralized]{\label{fig:room-a}\figurehalfwidth{room-a}}
+\subfloat[Distributed]{\label{fig:room-b}\figurehalfwidth{room-b}}
+\caption{Event detection strategies}
+\label{fig:rooms}
+\end{figure}
+
+In this paper, we propose a middleware framework called PSWare. PSWare uses pub/sub pardigm with composite event support. On the top layer, PSWare provides an event definition language (EDL) so that composite events may be easily defined. On the bottom layer, PSWare uses a flexible programming framework so that it is easy to implement different event detection mechanisms and integrate them into the middelware.
+
+The contribution of this paper can be summarized as follows:
+\begin{enumerate}
+  \item We propose PSWare, a pub/sub middleware framework that supports composite events.
+  \item Based on our PSWare, we develop middleware for different applications such as ITS
+  \item We conducted experiments on our middleware to demonstrate its effectiveness in helping developing WSN-based applications.
+\end{enumerate}
+%The rest of the paper is organized as follows: Section \ref{sec:background} gives the background of events relations and event detection based on their relations. Section \ref{sec:relatedworks} reviews related works. Section \ref{sec:relatedworks} reviews related works. Section \ref{sec:system_model} presents our system model and problem formulation. Section \ref{sec:design} describes the overall system design and how PSWare and CEDU are integrated. Section \ref{sec:cedu} describes CEDU in details. Section \ref{sec:ceduanalysis} analyzes the performance bounds of CEDU. Section \ref{sec:evaluation} shows our simulation and experimental results. Section \ref{sec:conclusion} concludes the paper.

@@ -1,0 +1,14 @@
+\section{Thesis Outline}
+\label{sec:introduction:outline}
+
+The remaining of the thesis is organized in the following way. First, we review the literature in Chapter \ref{chapter:literature}. We first identify the most relevant topics to PSWare. There are mainly four related areas: WSN middleware, WSN macro-programming, event definition and data aggregation for WSN. For each of the area, we categorize the existing works and discuss the features based on these categories. Before getting into the technical details for these works, we first try to illustrate their high-level ideas with diagrams.
+
+In Chapter \ref{chapter:design}, we describe the design of our middleware. Our design uses a top-down approach. We first overview the entire system design and list the most important design issues including compiler design, event detection algorithm and sensor placement and clustering. Then we start from the highest level of our middleware - the EDL compiler that directly interact with the user through subscriptions. After the EDL compiler, we describe the design of our runtime environment that supports our event subscription and detection. Then we describe our event detection framework which can be used to easily integrate different types of event detection algorithms.
+
+We go into our first research issue - the composite event detection problem in Chapter \ref{chapter:ted}. We formulate the problem and describe our solution in details. In addition to the main algorithm, we discuss a sub-problem, the fusion point deployment problem. We discuss our second research issue in Chapter \ref{chapter:clustering}. This issue came from the structural health monitoring (SHM) application in WSN. We formulate the problem and propose the corresponding solutions.
+
+We summarize our implementation details in Chapter \ref{chapter:implementation}. We discuss how TED can be integrated into PSWare. Then based on our middleware implementation, we develop some real world WSN applications. We describe how to implement WSN applications for intelligent transportation system.
+
+We describe our system evaluation in Chapter \ref{chapter:evaluation}. We first evaluate TED through analysis and simulation. Then we integrate TED into PSWare and perform evaluation through experiments.
+
+In Chapter \ref{chapter:conclusion}, we conclude our work and discuss the possible future directions.

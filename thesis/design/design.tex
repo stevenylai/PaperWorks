@@ -1,0 +1,33 @@
+\chapter{System Design}
+\label{chapter:design}
+
+\begin{figure}
+\centering
+\figurecurrentwidth{design-research-framework}
+\caption{Overall framework for PSWare design}
+\label{fig:design-research-framework}
+\end{figure}
+
+\section{Design Overview and Research Framework}
+This section shows the design of PSWare. PSWare uses a layered architecture where each layer provides specific APIs related to event detection.
+\subsection{Design Objectives}
+The designed system should have the following desired properties:
+\begin{itemize}
+\item \emph{Flexible}: the middleware should provide a layered architecture where changes in one layer won't affect another.
+\item \emph{Easy to use}: the API provided to the high level applications should be easy to use.
+\end{itemize}
+
+In order to address the above issues, our PSWare is designed with two layers. On the top, we provide an Event Definition Language (EDL) and it's compiler for applications. Application programmers can make use of this language to define their own applications. In addition, to facilitate distributed event detection, our middleware design can easily allow cluster-based event detection algorithms.
+
+The overall design framework is shown in Figure \ref{fig:design-research-framework}. In this figure, we show the overall framework for all the issues related to PSWare. Fundamentally, we need distributed event detection algorithm and sensor nodes placement algorithms to support everything in the middleware. These problems are interesting research topics because of the resource constraints imposed in WSN. Then on top of that, we may further design our middleware interface with the applications and build some real applications based on our middleware. These are probably engineering issues since they mainly involve application development based on well-studied topics such as compilers.
+
+\subsection{System Architecture}
+The system architecture is shown in Figure \ref{fig:psware-architecture}. On the application side, the application programmer first write their applications with EDL. Then they will compile their program into byte codes which can be executed by the individual sensor nodes. And the byte codes will be disseminated into the network. When the codes are installed on the sensor nodes, the sensor nodes will execute the codes and detect the events subscribed.
+
+\begin{figure}
+\centering
+\figurecurrentwidth{psware-architecture}
+\caption{PSWare overall architecture}
+\label{fig:psware-architecture}
+\end{figure}
+

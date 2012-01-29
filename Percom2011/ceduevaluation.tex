@@ -1,0 +1,138 @@
+\section{Experiments}
+\label{sec:experiments}
+As described in Section \ref{sec:ceduanalysis}, the performance of CEDU heavily depends on the actual WSN applications because different applications may have different very different event definitions. In this section, we study some of thes WSN applications and find out how well CEDU performs.
+
+We have implemented CEDU on MicaZ based on the existing middleware layer as in \cite{lai:psware}. Similar to Section \ref{sec:ceduanalysis}, we implemented a module that does opportunistic data aggregation based on the existing routing protocol provided by TinyOS for comparison.
+
+We compare the performance using the following metrics:
+\begin{itemize}
+\item Message cost: this is obtained by setting up a counter inside the sensor node. The counter will be written into flash after the experiment so that we can retrieve it.
+\item Event detection delay: we measure the time between the subscription is disseminated and the event is notified.
+\end{itemize}
+
+\subsection{Application Case One: Car Park}
+Our first application case is an intelligent car park \cite{tang:carpark}. We deployed some micaz sensor nodes for the application. For simplicity, we use light sensor to detect the presence of a vehicle. For better communication, the sensor nodes are attached close to the ceiling instead of on the ground. The light sensor on each node is connected through an extended cable as shown in Figure \ref{fig:carParkSensor}. 
+
+\begin{figure}
+\centering
+\subfloat[The sensor node]{\label{fig:carParkSensor1}\figurehalfwidth{carParkSensor1.JPG}}
+\subfloat[The light sensor]{\label{fig:carParkSensor2}\figurehalfwidth{carParkSensor2.JPG}}
+\caption{Car park sensor platform}
+\label{fig:carParkSensor}
+\end{figure}
+
+\begin{figure}
+\centering
+\figurecurrentwidth{carParkDeployment}
+\caption{Car park sensor deployment}
+\label{fig:carParkDeployment}
+\end{figure}
+
+The deployment of the sensor nodes is shown in Figure \ref{fig:carParkDeployment}. In such a system, the management is interested in the number of park spaces and the location of them \cite{tang:carpark}. The primitive events for such a system will be the availability of individual car park spaces. Based on the primitive event, if we want to get notified when the parking spaces near the exit become available, then we just need to define composite events which locate the spaces with certain IDs. Th event definitions are shown in Listing \ref{prog:carPark}. Here, the composite event takes two primitive events for parking space \(1\) and \(2\) which are close to the exit. The experimental results are shown in Figure \ref{fig:carParkResults}. In this application, we primarily consider only the message costs because the delay isn't that important in such a system. The message cost is highest during rush hour when there are a lot of cars entering and leaving the car park. The message cost saved by CEDU is around 10-20\% regardless of the total messages.
+
+\begin{lstlisting}[caption=Event definition for a car park, label=prog:carPark]
+Event ParkSpaceEvent {
+	int id=System.id;
+	int time=System.time;
+	int light=System.light;
+} where {
+	light>THRESHOLD
+}
+Event CarParkEvent {
+	int id=System.id;
+} on {
+	ParkSpaceEvent e1, e2;
+} where {
+	e1.id==1 ||
+	e2.id==2 ||
+	e1.time-e2.time<10
+}
+\end{lstlisting}
+
+\begin{figure}
+\centering
+\subfloat[With three fusion points]{\label{fig:carParkResult1}\figurehalfwidth{carParkResult1}}
+\subfloat[With four fusion points]{\label{fig:carParkResult2}\figurehalfwidth{carParkResult2}}
+\caption{Car park experiment results}
+\label{fig:carParkResults}
+\end{figure}
+
+\subsection{Application Case Two: Transportation Systems}
+Apart from intelligent car park, another related application is WSN-based intelligent transportation system \cite{lai:its}. We also use the Micaz nodes to deploy such an application using our CEDU. The deployment is shown in Figure \ref{fig:itsSensor}.
+
+\begin{figure}
+\centering
+\subfloat[Road side sensor nodes]{\label{fig:itsSensor1}\figurehalfwidth{itsSensor1.JPG}}
+\subfloat[Sensor nodes on the lamp]{\label{fig:itsSensor2}\figurehalfwidth{itsSensor2.JPG}}
+\caption{Sensor nodes for transportation systems}
+\label{fig:itsSensor}
+\end{figure}
+
+The event definitions are shown in Listing \ref{prog:carEvent}.
+
+\begin{lstlisting}[caption=Event definition for tracking vehicles, label=prog:carEvent]
+Event CarEvent {
+	int time=System.time;
+	int magnetic=System.magnetic;
+	int location=System.location;
+} where {
+	magnetic>THRESHOLD
+}
+Event SpeedEvent {
+	int speed=(e1.location-e2.location)/(e1.time-e2.time);
+} on {
+	CarEvent e1, e2;
+} where {
+	e1.time>e2.time &&
+	speed>THRESHOLD
+}
+\end{lstlisting}
+
+Different from the car park application, such applications are more delay sensitive. So we also measured the time delay for the event detection. The results are shown in Figure \ref{fig:itsResults}. Similar to the car park application, CEDU can save 10-20\% energy while the delay is only a couple of milliseconds.
+ 
+\begin{figure}
+\centering
+\subfloat[Message cost]{\label{fig:itsResult1}\figurehalfwidth{itsResult1}}
+\subfloat[Delay]{\label{fig:itsResult2}\figurehalfwidth{itsResult2}}
+\caption{Experiments on the roads}
+\label{fig:itsResults}
+\end{figure}
+
+\subsection{Application Case Three: Indoor Monitoring}
+Our final application is related to smart building. We consider the application scenario where the sensor nodes are deployed in a building so that the temperature can be monitored. Such an application can probably be useful for certain types of context aware pervasive applications. For example, the air conditioner can be adjusted if several adjacent rooms' temperature rises too fast. The primitive and composite event definitions are shown in Listing \ref{prog:indoorEvents}.
+
+\begin{lstlisting}[caption=Event definition for indoor monitoring, label=prog:indoorEvents]
+Event SingleTemp {
+	int id=System.id;
+	int temperature=System.temperature;
+} where {
+	temperature>THRESHOLD
+}
+Event CompositeTemp {
+} on {
+	SingleTemp e1, e2, e3;
+} where {
+	e1.id==1 &&
+	e2.id==2 &&
+	e3.id==4
+}
+\end{lstlisting}
+
+The primitive event simply tests if the temperature passes certain threshold and the composite event is the conjunction of several primitive events. We deployed the some Micaz nodes in different rooms in our building as shown in Figure \ref{fig:indoorDeployment}.
+
+\begin{figure}
+\centering
+\figurecurrentwidth{indoorDeployment}
+\caption{Deployment of the senosr nodes for indoor monitoring}
+\label{fig:indoorDeployment}
+\end{figure}
+
+The experimental results is shown in Figure \ref{fig:itsResults}. The results show that CEDU can save the message cost by 10-20\%.
+
+\begin{figure}
+\centering
+\subfloat[With 2 fusion points]{\label{fig:indoorResult1}\figurehalfwidth{indoorResult1}}
+\subfloat[With 3 fusion points]{\label{fig:indoorResult2}\figurehalfwidth{indoorResult2}}
+\caption{Experiments for temperature monitoring}
+\label{fig:indoorResult}
+\end{figure}

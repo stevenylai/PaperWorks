@@ -1,0 +1,43 @@
+\section{Background}
+\label{sec:background}
+\begin{comment}
+We first briefly overview the issues in event subscription and event detection.
+\end{comment}
+\subsection{Event Types and Subscriptions}
+Each event contains a list of attributes which are the actual data obtained from the sensors. Users can subscribe events with subscriptions which specify event types and event filters. Different event types can have relations among each other. The relations may also be expressed as special type of filters that operate on multiple event types. Listing \ref{prog:compositeExample} shows how a composite event type is defined \cite{lai:psware}. The event type 'CompTemp' requires two sub-events of type 'AvgTemp'. The two sub-events must satisfy certain temporal constraints in order to indicate the occurrence of the composite event.
+\begin{lstlisting}[caption=Example of a composite event, label=prog:compositeExample]
+Event CompTemp {
+} on {
+    AvgTemp e1 and
+    AvgTemp e2
+} where {
+    e2.time-e1.time=600
+}
+\end{lstlisting}
+\begin{comment}
+Mathematically, event types together with their relations can be represented by a directed acyclic graph, where each node represents an event and each edge represents a relation. The nodes with 0 indegree represent primitive event types which are the events that can be directly obtained from individual sensor nodes. The rest of the nodes represent composite event types. The event type which has 0 outdegree is the subscribed event type.
+\end{comment}
+Once the subscriptions are defined, it will be disseminated into the network so that sensor nodes start to detect the corresponding events. In a pub/sub system, if an event is detected to match the subscribed event type, it will be delivered to the sink to notify the subscriber.
+
+\subsection{Type-based Event Detection}
+In our approach to event detection, we make use of some special nodes called event fusion points. These nodes take the responsibility of composite event detection. The event fusion points may have some extra capabilities in terms of processing power or storage though it's not compulsory. For each event fusion point, it has an event detection framework as shown in Figure \ref{fig:eventdetectionframework2}. In such a framework, events are stored in a buffer and associated with types. Each event type has a corresponding filter so that the fusion points can decide if the event occurs or not. The event filters consist of some predicates on the event attributes.
+Event detection based on our model involves three steps:
+\begin{enumerate}
+\item Detect an event either locally or receive an event from other nodes. Then store it in the buffer. 
+\item Look up for the corresponding filter for that event.
+\item Evaluate the event against the filter.
+\item If the event is evaluated to have happened, make a decision on where to send the event.
+\end{enumerate}
+
+\begin{figure}
+\centering
+\figurecurrentwidth{eventdetectionframework2}
+\caption{Type-based event detection framework}
+\label{fig:eventdetectionframework2}
+\end{figure}
+
+The event detection framework in Figure \ref{fig:eventdetectionframework2} is essentially type-based event detection because the predicates are grouped according to the event types. In addition, compared with topic or content-based approach, type-based event detection is more suitable for WSN-based applications. Because of the resource constraints in WSNs, it is usually not efficient to send all the primitive events to the sink node for centralized event detection. Instead, events should be detected in-network if possible. Composite events in WSNs may have multiple levels and higher level events cannot be detected until its sub-events have been detected. Therefore, in-network event detection must take the event types into consideration in order to detect the events.  
+
+\begin{comment}
+Second, pure topic based event detection may not be suitable for WSNs because many WSNs require events that have different data types or topics. For example the detection of fire may require both temperature and light event topics. Without considering event types, it is very difficult to do in-network composite events detection just based on the event topics. Third, similar to topic based event detection, content based event detection without considering event types can only filter the primitive events and may not be efficient if the lower-level events occur with a much higher frequency than composite events.
+\end{comment}

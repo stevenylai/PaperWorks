@@ -1,0 +1,99 @@
+\section{The Composite Event Detection Problem}
+\label{sec:system_model}
+In this section, we first briefly introduce the background and the motivation of the composite event detection problem. Then we formalize the problem and prove it to be NP-complete.
+
+\subsection{Preliminaries}
+A composite event is an event which requires the detection of two or more sub-events in order to indicate its own occurrence. Listing \ref{prog:compositeExample} shows how a composite event type is defined \cite{lai:psware}. The event type 'CompTemp' requires two sub-events of type 'AvgTemp'. The two sub-events must satisfy certain temporal constraints in order to indicate the occurrence of the composite event.
+\begin{lstlisting}[caption=Example of a composite event, label=prog:compositeExample]
+Event CompTemp {
+} on {
+	AvgTemp e1 and
+	AvgTemp e2
+} where {
+	e2.time-e1.time=600
+}
+\end{lstlisting}
+
+Note that Listing \ref{prog:compositeExample} only gives a rough idea on how events may be defined. In some real WSN applications, some extra parameters such as the life time, the monitoring frequency should also be specified. However, a detailed discussion on event definition is beyond the scope of this paper.
+
+Because of the characteristics of the events in WSN, extra care need to be taken in order to make use of such relations and detect the events in an efficient fashion. One possible solution for energy-efficient event detection is to implement application specific event detection mechanisms. For example, to detect a vehicle, each sensor node on a road may be programmed to communicate with the next sensor on the road so that the they can collaboratively measure the speed of the vehicle. With this approach, the application programmers will have to deal with the underlying details of the WSN systems such as communication, concurrency and scheduling.
+
+An alternative approach to the event detection problem is to have a generic middleware layer for event detection so that the WSN will automatically adapt for the benefit of efficient event detection. \cite{lai:psware} is an example of such a middleware. In this paper, we design a distributed composite event detection algorithm which can be easily plugged into systems like \cite{lai:psware}.
+
+In our approach to event detection, we make use of some special nodes called event fusion points. These nodes take the responsibility of composite event detection. The event fusion points may have some extra capabilities in terms of processing power or storage though it's not a requirement.
+
+For each event fusion point, it has an event detection framework as shown in Figure \ref{fig:eventdetectionframework2}. In such a model, we have different event instance of different types which are collected from individual sensor nodes. Each event type has a corresponding filter so that the fusion points can decide if the event occurs or not. The event filters are mainly consist of some predicates on the event attributes. Once an event is detected, it might be forwarded to other detectors so that higher level composite events can be detected as well.
+
+\begin{figure}
+\centering
+\figurecurrentwidth{eventdetectionframework2}
+\caption{Event detection framework}
+\label{fig:eventdetectionframework2}
+\end{figure}
+
+\subsection{System Model}
+We consider the network as a graph \(G=(N, A)\) where node represents a sensor node and each edge represents a communication link. For each \(a_n\in A\) it has a weight \(W_n\) associated with it. \(N_f\subset N\) is the set of nodes which act as event fusion points.
+
+The subscriber provides a finite set of event types \(E=\{e_1,e_2,\cdots\}\). For each \(e_n\in E\), the subscriber defines a set of attributes \(e_n\rightarrow attr_n\) which reflect certain real world phenomenon. 
+
+We have a finite set of event relations \(R=\{r_1,r_2, \cdots\}\) where each \(r_n\in R\) defines the mapping of two sub-events \(e_1, e_2\in E\) to a composite event \(e_3\in E\), denoted as: \(e_1Re_2=e_3\).
+
+We have a set of primitive event types \(E_p\subseteq E\). For each \(e_n\in E_p\), \(\not\exists e_1, e_2\in E, r_n\in R\) such that \(e_1 r_n e_2=e_n\).
+
+We define the cost for detecting an event \(e_n\) as the message cost, denoted as \(cost(e_n)\).
+
+\subsection{Problem Formulation}
+Once we have defined our system model, our problem formulation is as follows.
+
+Given:
+\begin{itemize}
+	\item A network \(G=(N, A)\)
+	\item Event fusion points \(N_f\in N\)
+	\item A set of event types \(E\) satisfying the relation \(R\)
+	\item Event detection cost function \(cost(e_n)\) for each \(e_n\in E\)
+\end{itemize}
+
+Find:
+\begin{itemize}
+	\item For each sensor node \(n_i\in N\), construct an event forwarding table \(table_i\) where each entry is a tuple \((e_j, n_j)\) where \(e_j\in E, n_j\in N_f\)
+\end{itemize}
+
+Objective:
+\begin{itemize}
+	\item Minimize the total energy consumption:
+	\begin{displaymath}
+	\sum_{i=i}^{n}cost(e_i)
+	\end{displaymath}
+\end{itemize}
+
+\begin{theorem}
+\label{thm:tableConstruction}
+The composite event detection problem is NP-complete.
+\end{theorem}
+
+\begin{proof}
+We show our proof by reducing the steiner tree problem to our composite event detection problem. Let \(N_s\subset N\) be the event source (nodes that detect the primitive events). Since the cost is defined as message cost, if we minimize the total path length from the event sources to the fusion points, then we can also minimize the message cost.
+
+We construct a graph \(G'=(N', A')\) from \(G\) with the steps as follows:
+\begin{enumerate}
+\item \(N'=N_s\bigcup N_f\)
+\item For each pair of nodes \(n'_i, n'_j\in N'\), we add an edge \(a'_k\in A'\) incident on both if there is a path from \(n'_i\) to \(n'_j\) in \(G\).
+\item The weight of the newly added edge is \(a'_k\) is the weight of the shortest path from \(n'_i\) to \(n'_j\) in \(G\).
+\end{enumerate}
+
+The corresponding Steiner tree problem can be defined as below.
+
+Given:
+\begin{itemize}
+\item A graph: \(G'=(N', A')\)
+\item Each edge \(e'_i\) in the graph has a weight of \(W'_i\)
+\item A set of sources: \(N_s\subset N\)
+\end{itemize}
+
+Find:
+\begin{itemize}
+\item A minimum Steiner tree that spans \(N_s\)
+\end{itemize}
+
+If we have a solution for the Steiner tree problem in \(G'\), then we simply need to recover the shortest paths in \(G\) and it will also be the optimal solution for our composite event detection problem. On the other hand, an optimal solution for our composite event detection problem is also an optimal solution for the Steiner tree problem if we replace the paths between every pair of nodes \(n'_i, n'_j\in N'\)  with the edges in \(A'\).
+\end{proof}

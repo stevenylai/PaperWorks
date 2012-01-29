@@ -1,0 +1,89 @@
+\section{Implementation of PSWare for ITS}
+We use our middleware to implement a simple traffic management system demo in our testbed. The application architecture is shown in Figure \ref{fig:appdemo}. PSWare acts as the interface between WSN and application. On the application side, we have a web server where application-specific event templates are defined there. In the traffic management, we have defined events such as traffic jam and collision. Then the application users can subscribe the service by making use of the event templates. They can further refine their application requirements by providing parameters to the event templates.
+
+\begin{figure}
+\centering
+\figurecurrentwidth{demo}
+\caption{Demo application architecture}
+\label{fig:appdemo}
+\end{figure}
+
+\subsection{Pre-defined Events}
+In order for the users to use our middleware easier, we have provide some pre-defined event templates. With adjustable parameters. Listing \ref{lst:carevent} shows the most basic event - a car event in the system. All the attributes of the event can be directly obtained from the sensor nodes. The user can further add their own defined filters such as selecting only cars from certain road or selecting a car with pre-defined ID.
+
+\begin{lstlisting}[caption=Car event, label=lst:carevent]
+Event CarEvent {
+	int roadID=System.roadID;
+	int carID=System.carID;
+	int posID=System.posID;
+	int speed=System.speed;
+}
+\end{lstlisting}
+
+Based on the basic car event, we can further make use of it and define a traffic jam event as shown in Listing \ref{lst:trafficjam}. In the example, we defined a traffic jam as having more 3 cars on a single road section.
+
+\begin{lstlisting}[caption=Traffic jam event, label=lst:trafficjam]
+Event TrafficJam {
+	int roadID=System.roadID;
+	int carNo=count(c);
+} on {
+	CarEvent c;
+} where {
+	roadID=1 &&
+	carNo>3
+}
+\end{lstlisting}
+
+Another type of event is car collision event. It is defined in terms of two car events. Listing \ref{lst:carcollision} defines a collision event on a road if the two car's speed are above certain threshold and their distance are too close.
+\begin{lstlisting}[caption=Car collision event, label=lst:carcollision]
+Event Collision {
+	int roadID1=c1.roadID;
+} on {
+	CarEvent c1, c2;
+} where {
+	c1.roadID==c2.roadID &&
+	c1.speed-c2.speed>5 && 
+	c1.posID-c2.posID<2 
+}
+\end{lstlisting}
+
+\subsection{User Interface Design}
+We use a graphical user interface (GUI) to visualize the relations between events. Users can also specify their parameters on the given event templates. For example, for a traffic jam event in Figure \ref{fig:guitrafficjam}, user can further specify the condition for a traffic jam such as the number of cars waiting on a road. Similarly, for collision events \ref{fig:guicollision}, the user can specify the condition for such kind of events. Moreover, the user can also choose to monitor certain cars in the system for the collision event. This can be done by adding a parameter in the car events.
+
+\begin{figure}
+\centering
+\subfloat[Traffic jam GUI]{\label{fig:guitrafficjam}\figurehalfwidth{guitrafficjam}}
+\subfloat[Collision GUI]{\label{fig:guicollision}\figurehalfwidth{guicollision}}
+\caption{GUI Design}
+\label{fig:gui}
+\end{figure}
+
+\subsection{Customized Event Detection for ITS}
+Intelligent transportation system may cover many application areas including collision avoidance, traffic light control and vehicle tracking. All these applications require the detection of vehicles. In this paper, we consider the scenario where the sensor nodes are deployed as road side units (RSU) \cite{klein:its}. To detect vehicles in such a model, the sensors should be waken up as the vehicles are driving along the roads. The procedure for nodes' wake-up and forwarding is shown in Procedure \ref{algo:itsForward}. We use the following notations in the procedure:
+\begin{itemize}
+\item \(V=\{v_1, v_2 \cdots \}\): the sensor nodes that come next on the road. For the sensors on the road, \(\|V\|=1\) but for the sensors next to the crossroads, \(\|V\|>1\)
+\item Vehicle events \(e_i\) which are either detected locally or received from another node.
+\end{itemize}
+
+\begin{algorithm}
+\begin{algorithmic}[1]
+	\IF {detected vehicle event \(e_i\)}
+		\FORALL {\(v_n\in V\)}
+			\STATE forward \(e_i\) to \(v_n\)
+		\ENDFOR
+	\ENDIF
+	\IF {received vehicle event \(e_i\) from \(v_m\)}
+		\STATE start data collection
+		\IF {detected vehicle event \(e_j\)}
+			\STATE select \(e_i\) and \(e_j\) for composite event detection
+		\ELSE
+			\STATE wait for event to expire
+		\ENDIF
+		\STATE stop data collection
+	\ENDIF
+\end{algorithmic}
+\caption{Event forwarding for ITS}
+\label{algo:itsForward}
+\end{algorithm}
+
+Except for the sentry node, the nodes will not actively collect data until it receives messages from others. Once the event from the previous node on the road is received, it will be selected for composite event detection.

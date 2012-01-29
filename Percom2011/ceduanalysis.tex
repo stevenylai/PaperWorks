@@ -1,0 +1,100 @@
+\section{Analysis on CEDU}
+\label{sec:ceduanalysis}
+In this section, we do an in-depth analysis on the some properties of CEDU.
+\subsection{Effectiveness}
+In order to characterize the type of events that CEDU is capable of detecting, we first establish the relation between the user's event definition and the real world phenomena observed by the sensor nodes. As shown in Figure \ref{fig:eventContour}, when some real phenomenon happens, it may be modeled as contour map. The innermost region \(C_{inner}\) is the source. The outermost region \(C_{outer}\) is the area which is observable by the sensor nodes. The phenomenon starts from the source and expand until the entire observable region is reached. From the source, on each contour line, the sensor node will start to read values from its sensor. More specifically, if we divide \(C_{outer}\) into a set of rings where each ring is the area between two consecutive contour lines, then each ring will have a value which can be observed by the sensor nodes. The phenomenon is characterized by such set of values and their corresponding rings and is evaluated by the predefined temporal and spatial constraints from the users.
+
+\begin{figure}
+\centering
+\figurecurrentwidth{eventContour}
+\caption{Event model for analysis}
+\label{fig:eventContour}
+\end{figure}
+
+\begin{theorem}
+\label{thm:ceducorrectness}
+Without considering message loss or node failure, CEDU can detect phenomena given the following two conditions:
+\begin{itemize}
+\item There is at least one sensor node in each of the ring.
+\item If there are more than one phenomena that may satisfy the predefined constraints, then the duration of them do not overlap.
+\end{itemize}
+\end{theorem}
+
+\begin{proof}
+Since the phenomenon is characterized by the data on each ring where a unique value can be observed by sensor nodes, we only need to define a primitive event type for each ring. Then we can detect the event by relating these primitive event types. According to Algorithm \ref{algo:eventmatching}, suppose there is a composite event \(e_{comp}=e_1re_2\) which occurs but is not detected by any fusion point. Then \(e_1\) and \(e_2\) must have been forwarded to different fusion points where no further forwarding is done because the composite event is evaluated to be false. However, we have defined unique event for each ring and the duration of the phenomena don't overlap so this case is not possible.
+\end{proof}
+
+Theorem \ref{thm:ceducorrectness} essentially shows the type of events that may be detected by CEDU. Because of the non-overlapping requirement, events can be detected by CEDU if it has a short life span. Such events can be applied to scenarios such as vehicle tracking where the events may be 'forgotten' after the detection of a vehicle.
+
+\subsection{Efficiency}
+In order to analyze the efficiency of CEDU without losing generality, we assume the sensor nodes are randomly deployed in a circular area with radius of \(R\). We use distance to approximately measure the number of hops in order to calculate the message cost for event detection. As a reference to compare the energy cost, we use shortest path tree (SPT) algorithm where the events are collected at the sink because their definitions are not considered for the event detection.
+
+We define the event model as follows. Suppose we have two event types \(e_1\) and \(e_2\) which are the two sub-event types for a composite event \(e_3\) (i.e. \(e_1re_2=e_3, r\in R\)). The probability for \(e_1\) and \(e_2\) to occur is \(P(e_1)=p_1\) and \(P(e_2)=p_2\) respectively. The probability for \(e_3\) to occur when both \(e_1\) and \(e_2\) have occurred is \(P(e_3|e_1, e_2)=p_3\).
+
+In CEDU, each node periodically broadcasts its \(table_r\) so that others others can build up their own \(table_r\) using the algorithms described in Section \ref{sec:cedu}. Such cost is similar to many existing routing protocols in WSN such as \cite{rssiroute} where each node periodically broadcasts its route metrics to the sink for the purpose of link quality evaluation. Therefore, in CEDU, we mainly consider three parts of energy consumption:
+\begin{itemize}
+\item The overhead for initial event forwarding: \(cost_f\)
+\item The overhead for the fusion points to send feedback: \(cost_b\)
+\item The energy cost for detecting the actual composite events \(e_3\): \(cost_d\)
+\end{itemize}
+
+Let the average distance between two random nodes in the square region be \(D\) and the average distance between a node and sink be \(d\). 
+\begin{comment}
+Then:
+\begin{equation*}
+D=\frac{2+\sqrt{2}+5\times ln(1+\sqrt{}2)}{15}\times|N|
+\end{equation*}
+Let the average distance between the event source and the event fusion points be \(d\).
+\end{comment}
+
+The cost for initial event forwarding will be: \(cost_f=2\times D\). In order to avoid the extra cost for building up the overlay for each fusion point to communicate with individual sensor nodes, the fusion nodes simply flood the feedback in the network. Therefore, the cost for the fusion points to send feedback will be: \(cost_b=D\times(|N|-2)\). The cost for detecting each individual event is: \(cost_d=D\). The total expected energy cost using CEDU over a time period \(T\) is:
+\begin{align*}
+&cost_{CEDU}\\
+=&cost_f+cost_b+T(p_1cost_d+p_2cost_d+p_3p_2p_1d)\\
+=&D|N|+TD(p_1+p_2)+Tdp_1p_2p_3
+\end{align*}
+
+Here \(T\) is the \(expire_n\) used in \(table_e\). The total expected energy cost using SPT over a time period \(T\) is:
+\begin{equation*}
+cost_{SPT}=d\times T(p_1+p_2)
+\end{equation*}
+
+To see when CEDU will cost less than SPT, we have:
+\begin{align*}
+cost_{CEDU}&<cost_{SPT}\\
+D|N|+TD(p_1+p_2)+Tdp_1p_2p_3&<dT(p_1+p_2)\\
+T((p_1+p_2)(d-D)-dp_1p_2p_3))&>|N|
+\end{align*}
+
+The inequality can be viewed as a trade-off between energy saved by CEDU and the overhead. Simply speaking, CEDU can save more energy when:
+\begin{itemize}
+\item Fusion points are closer to event source
+\item The probability of primitive event is high while the probability of the composite event is lower.
+\item Each time after the \(table_e\) is constructed, it used for a relatively long period of \(T\) 
+\end{itemize}
+
+\subsection{Delay}
+In Algorithm \ref{algo:eventmatching}, if there is no local match, the fusion point will wait for some time to see if there is any other events forwarded from other nodes. In this section, we study the delay of CEDU.
+\begin{theorem}
+\label{thm:delay}
+Suppose the sensor nodes are randomly deployed in a circular area where sink is located at the center of the network, the events have a time span of \(t\), fusion points are randomly distributed with an average distance to other nodes of \(d\) and the sensor nodes forward the events at the speed of \(v\). Compared with SPT in the worst case, CEDU will introduce a delay of:
+\begin{equation*}
+delay_{CEDU}-delay_{SPT}=\frac{d}{v}+t
+\end{equation*}
+\end{theorem}
+
+\begin{proof}
+The delay of SPT will be \(delay_{SPT}=\frac{D}{v}\). To calculate the delay of the worst case in CEDU, we first need to calculate when CEDU will eventually forward the event to the sink. According to Algorithm \ref{algo:eventforwarding}, an event fusion point will forward the event if the sink is closer than any other fusion points. Suppose after \(k\) fusion points, the event will be forwarded to the sink. Then with the help of integration, we can get the following.
+\begin{align*}
+kd&\geq D\\
+k&\geq \frac{128R}{45\pi}\times\frac{2}{R}\\
+k&\geq 1.81
+\end{align*}
+
+The exact details of the integration are omitted for the sake of brevity. Therefore, we have:
+\begin{align*}
+delay_{CEDU}&=(\frac{d}{v}+t)(k-1)+\frac{D}{v}\\
+delay_{CEDU}-delay_{SPT}&=(\frac{d}{v}+t)(k-1)\\
+&=\frac{d}{v}+t
+\end{align*}
+\end{proof}

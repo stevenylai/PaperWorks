@@ -1,0 +1,332 @@
+\section{Event-based Systems}
+In order to develop a powerful pub/sub middleware, we need to provide a high-level powerful language to the application programmers. Such kind of language is primarily used to express complex events or event patterns. Unfortunately, unlike query-based middleware approach which has standard SQL language, event definition language should be more expressive in terms of the dynamics and relations among data. In this section, we take a look at the work that has already been made in this area. More specifically, we study the existing event-based systems from different aspects such as event definition, event evaluation and event operators / functions. These aspects are closely related to a successful event-based middleware.
+
+\subsection{Event Definition}
+Event definition may find its root in some very old works in distributed system since it is an important component in such systems. Some of the such works make use of tuple space to represent simple events. The idea is from Linda \cite{linda}. Linda is a parallel programming language that makes use of tuple space. Four basic operations are defined in Linda: out(), in(), read() and eval(). In \cite{linda}, the concept of actual and formal is described which are used by other later works such as \cite{lowlevelnaming} and \cite{tinylime}.
+\begin{lstlisting}[caption=Elvin's subscription language gramma, label=lst:elvin]
+subscription:
+   bool_expression
+ | var_expression
+bool_expression:
+   "(" subscription ")"
+ | "!" subscription
+ | subscription "&&" subscription
+ | subscription "||" subscription
+ | "exists(" NAME ")"
+ | type_expression equality_operator type_expression
+type_expression:
+   "string"
+ | "int32"
+ | "float"
+ | "datatype(" NAME ")"
+var_expression:
+   numeric_expression
+ | string_expression
+numeric_expression:
+   NAME numeric_operator INTEGER
+ | NAME numeric_operator FLOAT
+ | NAME numeric_operator NAME
+string_expression:
+   NAME equality_operator STRING
+ | STRING equality_operator NAME
+ | NAME equality_operator NAME
+ | NAME "matches(" STRING ")"
+equality_operator:
+   "=="
+ | "!="
+numeric_operator:
+   "=="
+ | "!="
+ | "<"
+ | ">"
+ | "<="
+ | ">="
+NAME: [a-zA-Z][a-zA-Z0-9_]*
+\end{lstlisting}
+
+However, the events defined in these works may not be suitable for all kinds of pub/sub system. As a result, some later work defined events in a way which is more comprehensive than tuple space. For example, Meghdoot \cite{meghdoot} defines event as a conjunction of pairs, where each pair consists of an attribute and a value. A subscription is a collection of predicates each of which is a triple consisting of an attribute, a value and a relational operator.
+
+A more formal specification of a subscription language is discussed in Elvin \cite{elvin}. The language is both simple and straightforward. Its grammar is specified in Listing \ref{lst:elvin}.
+
+These works may be enough in some certain simple event systems where the event matching is only done on primitive events. On the other hand, systems that requires event patterns probably need more language features. Yeast \cite{yeast} defines Event-action specifications. The users can define specifications that comprise event patterns. Each event pattern is a compound pattern of primitive event descriptors. An event descriptor matches an event either transiently or permanently. For example, users can specify an event descriptor that is to be matched whenever the load on a particular computer host exceeds some threshold value or an event descriptor that is to be matched after a specified time.
+
+The Yeast specification language has the following format: event\_pattern do action. In Yeast, events are categorized as time events, object events and compound events. Each kind of event has a set of descriptors. Time events have 'in' and 'within' which specifies the event is after of before a time. Object descriptors have the following format: obj\_class obj\_name obj\_attr relational\_test. In addition, two special relation tests 'changed' and 'unchanged' are defined. Compound event descriptors are combination of time and object events with 'then', 'and' and 'or'. An example of a Yeast script is shown in Listing \ref{lst:yeast1}.
+\begin{lstlisting}[caption=Example of a yeast script, label=lst:yeast1]
+In 10 minutes and host research load > 5.0 do [something]
+\end{lstlisting}
+
+An more complicated example of Yeast with server is shown in Listing \ref{lst:yeast2}. Basically, the user can register with the server via 'regyeast'. After registration, a handful commands are provided to the user. 'addspec' is used to add an event specification. 'lsspec' is used to list the existing event specifications. 'suspspec' and 'fgspec' are used to suspend and resume a specific event specification.
+\begin{lstlisting}[caption=Example of a yeast script with server, label=lst:yeast2]
+1% regyeast
+you have been registered with yeast
+2% addspec in 1 minute do echo 1 minute elapsed
+3% lsspec
+	1 addspec in 1 minute do echo 1 minute elapsed
+4% lsspec 1
+	1 addspec in 1 minute do echo 1 minute elapsed
+Will attempt match at Sun Jan 1 11:39:28 1995
+5% suspspec 1
+8% lsspec
+	1 - addspec in 1 minute do echo 1 minute elapsed
+7% fgspec 1
+8% lsspec
+	1 addspec in 1 minute do echo 1 minute elapsed
+9% sleep 60
+10% 1sspec
+\end{lstlisting}
+
+To demonstrate the interactive usage of yeast, on Line \ref{lst:yeast3:eventStart} - Line \ref{lst:yeast3:eventEnd} of Listing \ref{lst:yeast3}, one developer first defines an event that is used to monitor the debugging status of a source code file. Then once the file has been debugged, on Line \ref{lst:yeast3:announce}, the other developer announces the new status of the file and the corresponding developers will be notified.
+\begin{lstlisting}[caption=Example of interactive yeast, label=lst:yeast3]
+defattr file debugged boolean (* \label{lst:yeast3:eventStart} *)
+addspec file project.c debugged == true
+	do notify project.c debugged (* \label{lst:yeast3:eventEnd} *)
+announce file project.c debugged = true  (* \label{lst:yeast3:announce} *)
+\end{lstlisting}
+
+There are other works in the area of active database that uses ECA rules for event definition. In READY \cite{ready}, the event specification is defined as: "event var : event type \(|\) expression". A few event operators are defined in the paper such as '\&\&' (and), '\(||\)' (or), ';' (then), and 'butnot'.  Another form of compound matching is to specify a sequence of events which all match the same "element pattern" (a matching expression used for each element of the sequence) using: "event var[j::k] : event type \(|\) expression". The event var[j..k] indicates that the event variable will be bound to a sequence of events, with j and k being the minimum and maximum number of events in the sequence, respectively.
+
+In SAMOS \cite{samos}, rule definition is used to specify ECA-rules. The basic syntax is shown in Listing \ref{lst:samos}.
+\begin{lstlisting}[caption=Syntax used in SAMOS, label=lst:samos]
+DEFINE EVENT event_name event_clause
+DEFINE RULE rule_name
+ON event_name IF condition_clause DO action_clause
+\end{lstlisting}
+
+The categories of events are described in the paper, primitive events and composite events which are described by event algebra. For composite events, six operators are defined. The basic ones are conjunction, disjunction and sequence. Other three operators include '*' which means the event will be only signaled once, history event which means the event will be signaled every time during a specific period of time and negative event which means the event will be signaled if it hasn't been detected during a specific period.
+Event parameters are defined so that the origin of the event can be specified. For example: "(E1;E2):same object" denotes the sequence of events happening on the same object.
+
+To make it easier for the user to understand the event definition, some works use the syntax such as query which is more popular. An example of such is Query for Events \cite{eventquery}. Listing \ref{lst:eventquery1} shows an example for of Query for Events.
+\begin{lstlisting}[caption=An example of query for event, label=lst:eventquery1]
+order[
+	orderId{4711},
+	customer{"John"},
+	buy[
+		stock{"IBM"},
+		limit{3.14},
+		volume{4000}]
+]
+\end{lstlisting}
+
+A few operators such as conjunction and disjunction are defined and a formal definition of the query language is shown in Listing \ref{lst:eventquery2}.
+\begin{lstlisting}[caption=Formal language specification of query for events, label=lst:eventquery2]
+DETECT bigbuy{
+	tradeId{varI},
+	customer{varC},
+	stock{varS}}
+ON buy{{
+	tradeId{varI},
+	customer{varC},
+	stock{varS},
+	price{varP},
+	volume{varV}
+}} where { var P * var V >= 10000 }
+END
+\end{lstlisting}
+
+With the increasing popularity for functional programming, some works such as \(\lambda\)-calculus \cite{lambdacalculus} use functional approach. Functions in \(\lambda\)-calculus are anonymous and are written in the form "\(\lambda\)x.E". \(\lambda\) indicates this is a function, \(x\) is the parameter and \(E\) is the body of the function.
+
+\subsection{Event Evaluation}
+Once the event has been defined, it is also important to evaluate the event based on the event definition. In this section, we look at some of the works related to event evaluation. To make the evaluation simpler, some work may create specific data structures for evaluation. EPS \cite{eps} provides an algorithm to evaluate composite events. Some of the basic operators are provided by EPS. The events are represented as trees. The leave nodes are primitive events and intermediate nodes are composite events or subexpressions provided by the application. The proposed algorithm allows some common subexpressions to be shared by multiple composite events. A similar idea is proposed by Rebeca \cite{rebeca} that discusses a content-based routing algorithm. The algorithm is based on finding the relationships between filters and the paper discusses several propositions that can be used to find the covering and overlapping of conjunction filters.
+
+Other than creating certain data structure for evaluation, some work try to group the event filters in a hierarchical way. SIENA \cite{siena} is such an example. In SIENA, the authors don't attempt to provide a complete pattern language. Their goal is to study pattern operators that can be exploited to optimize the selection of notifications within the event notification service. In the paper, they define various covering relations between filters, notifications and advertisements.
+
+A popular approach for event evaluation in the field of active database is rule-based approach. As one of the most frequently referenced work, GEM \cite{gem} is an interpreted generalized event monitoring language. It allows abstract events to be specified in terms of combinations of lower-level events. GEM is a declarative rule-based language in which various temporal constraints can be specified for event composition. Each GEM script is constructed from some basic GEM primitives. A few of them is defined in Listing \ref{lst:GEMPrimitives}
+\begin{lstlisting}[caption=Primitives in GEM, label=lst:GEMPrimitives]
+primitive-event-expr :=
+	event-id | * | every <time-period-expr> | [at] <time-point-expr>
+guarded-composite-event-expr :=
+	composite-event-expr [when guard]
+\end{lstlisting}
+
+Then, these primitives are connected using operators:
+\begin{itemize}
+\item \(e_1\) \& \(e_2\): occurs when both \(e_1\) and \(e_2\) occur irrespective of their order
+\item \(e\) + time-period: occurs a specified period of time after the occurrence of event \(e\)
+\item \{\(e_1\) ; \(e_2\)\} ! \(e_3\): occurs when \(e_1\) occurs followed by \(e_2\) with no interleaving \(e_3\)
+\item \(e_1\) \(|\) \(e_2\): occurs when \(e_1\) or \(e_2\) occurs
+\item \(e_1\) ; \(e_2\): occurs when \(e_1\) occurs before \(e_2\)
+\end{itemize}
+
+Based on the operators, GEM scripts including event declarations, rule definitions and control commands can be defined with the syntax specified in Listing \ref{lst:GEMSyntax}
+\begin{lstlisting}[caption=GEM syntax, label=lst:GEMSyntax]
+event <event-id>
+	[(<formal-attribute-declarations>)]
+rule <rule-id> [<detection-window>]
+	{ <event-expression> ==> <action-sequence> }
+notify <event-id> [(<attribute-value-list>)]
+forward (<event-id>|<event-variable>)
+<event-id> [(<attribute-value-list>)]
+enable [<rule-id>]
+disable [<rule-id>]
+\end{lstlisting}
+
+As a practical example of using GEM, Listing \ref{lst:GEMExample} shows a GEM script that monitors gauge changes.
+\begin{lstlisting}[caption=GEM example, label=lst:GEMExample]
+event gauge_changed(double val)
+event upper_exceeded
+event lower_exceeded
+rule gauge_rule1 { x:gauge_changed
+	when x.val >= 10 ==>
+		notify upper_exceeded;
+		enable gauge_rule2; disable }
+rule gauge_rule2 { x:gauge_changed
+	when x.val <= 5 ==>
+		notify lower_exceeded;
+		enable gauge_rule1; disable }
+enable gauge_rule2
+\end{lstlisting}
+
+Finally, some works use application specific event evaluation methods. EVE \cite{eve} is an event-driven middleware for workflow execution. Workflow type specifications are mapped to B/SM. Each step in the workflow corresponds to the execution of a service. ECA rules define when and how services are executed. From the perspective of B/SM, a workflow consists of interacting, reactive components called brokers and broker behavior is defined by ECA-rules describing their reactions to events. The authors define some primitive events such as broker interaction events and time events. These primitive events can be constructed using some operators defined by the authors, such as sequence, exclusive disjunction, conjunction, repetition, negation and concurrency. 
+
+\subsection{Event Operator and Function}
+A final issue we discuss here is event operator and function. This may not be a big issues compared with event definition or event evaluation from the top-down view. However, the possible event operator and event function available in a certain event language will implicitly define the possible application domain for that language. While some of the works in the previous sections have already mentioned some event operators, in this section, we look at some works that did a more in-depth discussion on the topic.
+
+When active database (ADB) started to become a hot topic, it was soon realized that composite events are needed to specify events in such a system. SNOOP \cite{snoop} is such a system for ADB. the event operators defined in SNOOP are shown as:
+\begin{itemize}
+\item OR (\(\bigtriangledown\)): disjunction of two events \(E_1\) and \(E_2\), denoted \(E_1 \bigtriangledown E_2\), occurs when \(E_1\) occurs or \(E_2\) occurs.
+\item AND (\(\bigtriangleup\)): conjunction of two events \(E_1\) and E2, denoted \(E_1 \bigtriangleup E_2\), occurs when both \(E_1\) and \(E_2\) occur, irrespective of their order of occurrence.
+\item SEQ (;): sequence of two events \(E_1\) and E2, denoted \(E_1 ; E_2\), occurs when \(E_2\) occurs provided \(E_1\) has already occurred. This implies that the time of occurrence of \(E_1\) is guaranteed to be less than the time of occurrence of \(E_2\).
+\item Aperiodic Operators (\(A\), \(A*\)): The Aperiodic operator A allows one to express the occurrences of an aperiodic event within a closed time interval. There are two versions of this event specification. the non-cumulative aperiodic event is expressed as \(A(E_1, E_2, E_3)\), where \(E_1\), \(E_2\) and \(E_3\) are arbitrary events. The event \(A\) is signaled each time \(E_2\) occurs within the time interval started by \(E_1\) and ended by \(E_3\).
+\item Periodic Event Operators (\(P\), \(P*\)): A periodic event is a temporal event that occurs periodically. A periodic event is denoted as \(P(E_1, TI [: parameters], E3)\) where \(E_1\) and \(E_3\) are events and \(TI [: parameters]\) is a time interval specification with optional parameter list. \(P\) occurs for every \(TI\) interval, starting after \(E_1\) and ceasing after \(E_3\). Parameters specified are collected each time \(P\) occurs. If not specified, the occurrence time of \(P\) is collected by default.
+\item NOT (\(\neg\)): the NOT operator, denoted \(\neg (E2)[E_1, E_3]\), detects the non-occurrence of the event \(E_2\) in the closed interval formed by \(E_1\) and \(E_3\)
+\end{itemize}
+
+Apart from event operators, some works use event functions which is conceptually similar to operators but syntactically different. Java Event CorrelaTOR (JECTOR \cite{jector}) tries to use composite event specification approach that can express complex timing constraints among correlated event instances. Event specification in JECTOR is shown in Listing \ref{lst:jectorSyntax}
+\begin{lstlisting}[caption=JECTOR syntax, label=lst:jectorSyntax]
+attributes ( [NAME, TYPE], . . . , [NAME, TYPE] )
+which occurs
+whenever timing condition
+	TC is [satisfied I violated]
+if condition
+	C is true
+then
+	ASSIGN VALUES TO CE¡¦s ATTRIBUTES;
+\end{lstlisting}
+
+An example of a composite event using JECTOR is shown in Listing \ref{lst:jectorExample}
+\begin{lstlisting}[caption=JECTOR example, label=lst:jectorExample]
+define composite event LinkADownAlert with
+			attributes (["Occurrence Time" : time] ,
+			["Link Down Time" : time]) which occurs
+whenever timing condition
+	@(LinkADown, i) + 2 minutes <= @r(LinkAUp, @(LinkADown, i), I)
+	and @(LinkADown, i) + 2 minutes <= @r(LinkADownAlert,
+	@(LinkADown, i), I) and @(LinkADown, i) - 3 minutes >=
+	@r (LinkADownAlert , @ (LinkADown, i) , 0)
+	is satisfied
+if condition true is true
+then {
+	"Link Down Time" := @(LinkADown, i) ;
+}
+\end{lstlisting}
+
+A few works \cite{cea} summarizes the existng event operators. They compared a lot of existing works on composite event description and proposed some unified event operators. The work first summarized the existing event operators as in Table \ref{tab:eventOperator1} and \ref{tab:eventOperator2}.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{ | c | c | c | c | c |}
+\hline
+& \multicolumn{4}{|c|}{Operators} \\ \hline
+& Conjunction & Disjunction & Sequence & Concurrent \\ \hline
+ECCO & \(A + B\) & \(A | B\) & \(A; B\) & \(A || B\) \\ \hline
+Opera & \(A || B\) & \(A | B\) & \(A; B\) & - \\ \hline
+CEA & \(A \& B\) & \(A | B\) & \(A; B\) & - \\ \hline
+Schwiderski & \(A , B\) & \(A | B\) & \(A; B\) & \(A || B\) \\ \hline
+A-mediAS & \(A \& B\) & \(A || B\) & \(A; B\) & - \\ \hline
+Ready & \(A \&\& B\) & \(A || B\) & \(A; B\) & - \\ \hline
+Eve & \(CON(A, B)\) & \(DEX(A, B)\) & \(SEQ(A, B)\) & \(CCR(A, B)\) \\ \hline
+GEM & \(A \& B\) & \(A || B\) & \(A; B\) & - \\ \hline
+Snoop & \(A , B\) & \(A \lor B\) & \(A; B\) & - \\ \hline
+Rebeca & \(A \land B\) & \(A \lor B\) & - & - \\ \hline
+SAMOS & \(A , B\) & \(A | B\) & \(A; B\) & - \\ \hline
+\end{tabular}
+\end{center}
+\caption{Summary of existing event operators}
+\label{tab:eventOperator1}
+\end{table}
+
+\begin{table}
+\begin{center}
+\begin{tabular}{ | c | c | c | c |}
+\hline
+& \multicolumn{3}{|c|}{Operators} \\ \hline
+& Negation & Iteration & Selection \\ \hline
+ECCO & \(\neg A\) & \(A*\) & \(A^N\) \\ \hline
+Opera & \(\neg A\) & \(A*\) & -  \\ \hline
+CEA & \(\neg A\) & - & - \\ \hline
+Schwiderski & NOT \(A\) & \(A*\) & - \\ \hline
+A-mediAS & \(\neg A\) & - & \(A^{[i]}\) \\ \hline
+Ready & not \(A\) & - & - \\ \hline
+Eve & \(NEG(A, B)\) & \(REP(A, n)\) & - \\ \hline
+GEM & \(!A\) & - & - \\ \hline
+Snoop & - & \(A*\) & - \\ \hline
+Rebeca & \(\neg A\) & \(A*\) & - \\ \hline
+SAMOS & NOT \(A\) & TIMES(\(n,A\)) & \(A*/last(A)\) \\ \hline
+\end{tabular}
+\end{center}
+\caption{Summary of existing event operators (cont.)}
+\label{tab:eventOperator2}
+\end{table}
+
+Based on the summary for the existing operators, a set of unified operators are proposed as follows:
+\begin{itemize}
+\item Conjunction \(A + B\): Event A and B occur in any order. \((A + B)T\) with a temporal
+parameter \(T\) indicating the maximal length of the interval between the occurrences of A and
+B. Note that \((A + B)\infty\) or \((A + B)\) refers without restrictions.
+\item Disjunction \(A | B\): Event \(A\) or \(B\) occurs.
+\item Concatenation \(A B\): Event \(A\) occurs before event \(B\) where timestamp constraints are \(A\)
+meets \(B\), \(A\) overlaps \(B\), \(A\) finishes \(B\), \(A\) includes \(B\), and \(A\) starts \(B\).
+\item Sequence \(A ; B\): Event \(A\) occurs before \(B\) where time stamp constraints are \(A\) before \(B\),
+and \(A\) meets \(B\). \((A;B)0\) is a special case belonging to \(A\) meets \(B\).
+
+\begin{itemize}
+\item E.g. \((A;NULL;B)\): denotes there is no occurrence of any event between event \(A\) and \(B\).
+\item E.g. \((A; B)T\): means that an interval \(T\) between event \(A\) and \(B\).
+\item E.g. \((A;B0)\): denotes that there is event \(A\) and event \(B\) occur contiguously.
+\end{itemize}
+
+\item Concurrency \(A||B\): Event \(A\) and \(B\) occur in parallel.
+\item Iteration \(A*\): Any number of event \(A\) occurrences.
+\item Negation \(\neg AT\): No event \(A\) occurs for an interval \(T\).
+
+\begin{itemize}
+\item E.g. \((A \neg B)\): denotes no \(B\) occurs during A's occurrence.
+\item E.g. \((A \neg B)T\): denotes no \(B\) occurs after starting A's occurrence within an interval \(T\).
+\item E.g. \((A; B) \neg C\): denotes that event \(A\) is followed by \(B\) and there is no \(C\) in the duration
+of \((A; B)\).
+\end{itemize}
+
+\item Selection \(AN\): The selection \(AN\) defines the occurrence defined by \(N\).
+\begin{itemize}
+\item E.g. \(AAVGT\): denotes taking the average during an interval \(T\).
+\item E.g. \(ALASTT\): denotes taking the most recent instance during an interval \(T\).
+\end{itemize}
+
+\item Spatial Restriction \(AS\): Event \(A\) occurs if it is a spatial restriction defined in \(S\), that can
+be defined as a specific location or a group identifier etc.
+
+\begin{itemize}
+\item E.g. \(ACB03FD\): The area code CB03FD identifies the zone around Computer Laboratory
+in Cambridge. Event \(A\) is valid only when spatial condition is satisfied.
+\end{itemize}
+
+\item Temporal Restriction \(AT\): Event \(A\) occurs within \(T\).
+
+\begin{itemize}
+\item E.g. \((A;B)T\) or \((A;BT )\): \(B\) occurs within an interval \(T\) after \(A\).
+\item E.g. \(BT\): \(B\) is valid for an interval \(T\).
+\end{itemize}
+
+\end{itemize}
+They also discuss the issues about how to detect events based on FSA.
+
+\subsection{Summary}
+Most existing works on distributed pub/sub systems such as \cite{siena, meghdoot, elvin} only provide primitive events filtering. Each event is usually regarded as a set of attribute-value pairs. Each attribute usually has an identifier and a data type.
+
+In the field of active database (ADB), there are also quite a few works on event description languages \cite{jector, snoop, ready, samos, rebeca}. ADB extends the traditional database by incorporate the ECA rules. ECA means 'on Event; under Condition; take Action'. ECA is used in ADB for describing complex user preferences. An example of ECA is that customer may define their requirements as 'When the stock price of IBM has dropped to 50, buy in 100 shares". The most difficult part of ECA is the event description so quite a few works in ADB propose different solutions to this problem. Event description languages based on ADB usually focus on expressing complex temporal relationships between events. A lot of temporal operators have been defined and they may be borrowed when designing our own event description language. However, these languages normally don't provide any mechanisms for describing spatial relationships between events since spatial relationships don't make much sense in a database system. Therefore, we probably need to use a more general approach for our event description language.
+
+In terms of implementation and evaluation, some of the works in ADB is probably not of our interest since they belong to another field. For example, one of the works in ADB implemented the language based on the log file of the database. This is probably not applicable in WSN. For other works some of them did a real compiler implementation and briefly discuss the implementation issues.
+
+Some works such as \cite{gem, cea} try to provide a general model for event description. \cite{yeast} is also an interesting piece of work in the sense that it proposes an interactive specification language for event description.
+
+In summary, events may be divided into primitive events and composite events. Each primitive event is composed of a set of attribute-value pairs. Each composite event is consisted of a set of primitive events which are combined with a set of operators. \cite{snoop, cea} have detailed descriptions of these operators. Almost all existing works on event description language try to invent its own syntax and notion.

@@ -1,0 +1,172 @@
+\section{Macroprogramming for WSN}
+Apart from middleware approach, there are other work that design and implement different programming abstractions for WSN. Such works are different from middleware works because apart from programming abstractions, middleware works usually need to deal with other issues such as resource management, QoS and routing. As a result, most of the WSN middlewares are standalone programs by themselves with a lot of underlying mechanisms implemented such as tree or clustering. At the meantime, they also provide a thin high level programming abstraction (usually in terms of scripts) to the middleware users.
+
+\subsection{Overview}
+The works that we are going to discuss in this section focus primarily only on the programming abstraction. The programs written with such abstractions may be compiled into native binaries. Many of these works use the term 'macroprogramming' for such type of abstraction. More specifically, macroprogramming technique usually introduces a new and completely different view on how to program sensor networks. It provides a very high-level abstraction to the application programmers and let them to program the network as a whole. Some of the works on WSN middleware introduced in the Section \ref{subsec:wsn-middleware} can be regarded as macroprgramming even not explicitly mentioned. In addition to the works described in the previous section, we review some of the other works related to macroprogramming in WSN.
+
+\begin{figure}
+\centering
+\figurecurrentwidth{wsn-macroprogramming-category}
+\caption{Categories of macroprogramming for WSN}
+\label{fig:wsn-macroprogramming-category}
+\end{figure}
+
+As shown in Figure \ref{fig:wsn-macroprogramming-category}, the existing works on macroprogramming may be first categorized as imperative and declarative. For imperative programming abstraction, the programmer will still have to specify the individual steps for performing the tasks. Under this category, we further have thread-based approach and state centric approach. For declarative programming abstraction, we further divide them into three sub-categories: data centric, service and region / neighborhood based.
+
+\subsection{Abstraction for Imperative Programming}
+Due to resource constraints, implementing thread may not be so straightforward on sensor nodes since a lot of overhead may incur during context switching. TinyThread \cite{tinythread} is a work that provides a library for threading. It proposes a multi-threading library for TinyOS, a popular OS used by sensor nodes. Basically, each thread has its own stack to store its local state. The programming abstractions include Blocking I/O and some synchronization primitives.
+
+On the other side, state-based approach borrows the idea from finite state machine. RuleCaster \cite{rulecaster} is probably the first to describe such kind abstraction. It consists of a high level state-based language, RCAL, a compiler that compile RCAL to codes executed by sensor nodes, and a middleware. An example of RCAL is shown in Listing \ref{lst:rulecaster}
+
+\begin{lstlisting}[caption=A sample program written in RuleCaster, label=lst:rulecaster]
+/* Ruleblock 1*/
+SPACE(kitchen),TIME(1s){
+	STATE stoveOnHazard :- stoveOn(), notMonitored().
+	notMonitored() :- pressure(X), X<50.
+}
+/* Ruleblock 2*/
+SPACE(door),STATE(kitchen:stoveOnHazard){
+	STATE hazard :- leaving(). }
+/* Ruleblock 3*/
+SPACE(door),STATE(door:hazard) {
+	ACTION alarm(10). }
+\end{lstlisting}
+
+PIECES \cite{pieces} took one step further by formally defining the state-centric programming model. It also uses the object tracking application as an example to show that the state-centric programming model is effective. Then, the idea of collaboration groups is proposed. Basically, a group contributes to a state update. Each group has a number of entities called agents. In PIECES, programmers think in terms of dividing the global state into a set of pieces with one principal (a computational entity) maintaining each piece. Principals can communicate with each other by defining collaboration groups over principals. PIECES has been implemented only in Java and Matlab as simulations.
+
+\subsection{Service and Data Centric Abstraction}
+While imperative programming abstractions can probably give the programmers enough expressiveness to define their application requirements, they still requires the programmers to write the detailed procedures. An alternative way is to provide declarative languages to the programmers. Different from imperative approach, in a declarative approach, the programmers don't have to specify the individual steps in their applications. Instead, they just need to declare what the application should do. A good example of a declarative language is SQL. To use SQL, the programmer does not have to understand the underlying details about how the data are indexed and searched. They just need to specify what kind of data they want.
+
+There are mainly three types of programming abstraction to be discussed in this section. The first one is data centric approach. Apart from the query-based middleware introduced in the previous section, ATaG \cite{atag} is also a representative work in this category. Abstract task graph (ATaG) is a data-driven macroprogramming language. The language is composed of abstract task and abstract data item. Abstract channels are used to connect a task to a data item. In the paper, ATaG is expressed only in graphs and the authors briefly talk about the compilation process.
+
+Service-based approach has also been studied by several works. This is partially because service is a hot research topic in WSN and there is a need for such a macroprogramming approach to support these research works. SNACK (Sensor Network Application Construction Kit) \cite{snack} consists of a configuration language, component and service library and a compiler. SNACK system leverages nesC \cite{nesc} - its base components are written in nesC, and its compiler generates a nesC configuration and several nesC modules. A sample program written in SNACK is shown in Listing \ref{lst:snack}.
+
+\begin{lstlisting}[caption=A sample program written in SNACK, label=lst:snack]
+service Service {
+	src :: MsgSrc;
+	src [send:MsgRcv] -> filter :: MsgFilter -> [send] Network;
+	in [send:MsgRcv] -> filter;
+}
+\end{lstlisting}
+
+SNACK's syntax is briefly summarized as follows:
+\begin{itemize}
+\item \emph{n :: T} declares an instance named n of a component type T
+\item \emph{n[i:\(\tau\)]} refers to an output interface on component n with name i and interface type \(\tau\)
+\item \emph{[i: \(\tau\)]n} refers to an input interface
+\end{itemize}
+The basic idea behind SNACK is dividing the programmers into three types. System programmers use nesC to develop reusable components. Service programmers combine those components into services that implement high-level semantics such as routing tree, periodic sensing, etc. Application programmers select a handful of services to run on a given network. A SNACK service, like a nesC configuration, is a collection of component declarations and connections that behaves like a component.
+
+The actual definition of service, however, is different among different research works. As an effort to unify such a definition for services in WSN, SONG \cite{song} formally describes the architecture and programming model of a semantic-service-oriented sensor information system platform. The authors think that by using ontology and semantic services, one may encapsulate sophisticated domain knowledge into computational components or services. Listing \ref{lst:song} shows such a service description.
+
+\begin{lstlisting}[caption=Service description in SONG, label=lst:song]
+service(breakService(Region),
+	needs(sensor(breakSensor,Region)),
+	creates(Pulse(X),detected(X,T,Region))
+)
+\end{lstlisting}
+
+For example, a SpeedEstimation service may take a sequence of pulses and produce the speed of the object. The implementation details of SONG haven't been discussed in the paper. 
+
+\subsection{Neighborhood and Region Based Abstraction}
+The final category under declarative abstraction is neighborhood / region - based approach. Since the power of individual sensor nodes is extremely limited, it is very common for the senor nodes to cooperate with their neighbors. Therefore, neighborhood-based approach can be useful for WSN applications. Some of the work provide a thin layer of library on top of TinyOS so that the programmers can use make use of the neighborhood-based features in their familiar environment.  Hood \cite{hood} is such an example. Developed by the same group that developed TinyOS, Hood proposes a neighborhood programming abstraction for sensor network. Sensors in the same neighborhood can share data among themselves. Hood provides a specification language that allows code to be generated in NesC programs.
+
+An issue with neighborhood-based approach is naming where the distributed sensor nodes may have resources of the same name. Kairos \cite{kairos} addresses this issue by defining three simple programming abstractions. First, nodes are logically named using integer identifiers. Second, one-hop neighbors of a node can be obtained by calling get\_neighbors(). Third, data at the remote node may be accessed by syntax like 'variable@node'. The code will be translated and linked to Kairos runtime and will be distributed by using code distribution software such as Deluge \cite{deluge}.
+
+\begin{lstlisting}[caption=A sample program written in Kairos, label=lst:kairos]
+void buildtree(node root)
+	node parent, self;
+	unsigned short dist_from_root;
+	node_list neighboring_nodes, full_node_set;
+	unsigned int sleep_interval=1000;
+//Initialization
+	full_node_set=get_available_nodes();
+	for (node temp=get_first(full_node_set); temp!=NULL; temp=get_next(full_node_set))
+		self=get_local_node_id();
+		if (temp==root)
+			dist_from_root=0; parent=self;
+		else dist_from_root=INF;
+		neighboring_nodes=create_node_list(get_neighbors(temp));
+	full_node_set=get_available_nodes();
+	for (node iter1=get_first(full_node_set); iter1!=NULL; iter1=get_next(full_node_set))
+		for(;;) //Event Loop
+		sleep(sleep_interval);
+		for (node iter2=get_first(neighboring_nodes); iter2!=NULL; iter2=get_next(neighboring_nodes))
+			if (dist_from_root@iter2+1<dist_from_root)
+				dist_from_root=dist_from_root@iter2+1;
+				parent=iter2;
+\end{lstlisting}
+
+A sample program written in Kairos is demonstrated in Listing \ref{lst:kairos}. In this short piece of codes, a shorted path tree is constructed by making use of the neighborhood abstractions provided by Kairos.
+ 
+A similar concept to neighborhood-based approach is region-based approach. Since many WSN applications require location information, region-based approach can be particularly important in these application areas. Abstract Region \cite{abstractregion} provides a set of programming primitives for sensor networks. It is implemented in nesC as a library module. Listing \ref{lst:abstractregion} shows its APIs.
+
+\begin{lstlisting}[caption=API provided by abstract region, label=lst:abstractregion]
+/* Discover region */
+result_t Region.formRegion(<region specific args>,
+int timeout);
+/* Wait for region discovery */
+result_t Region.sync(int timeout);
+/* Set local shared variable */
+result_t SharedVar.put(sv_key_t key, sv_value_t val);
+/* Get shared variable from give node */
+result_t SharedVar.get(sv_key_t key, addr_t node,
+sv_value_t *val, int timeout);
+/* Wait for shared variable gets */
+result_t SharedVar.sync(int timeout);
+/* Reduce ・value・ to ・result・ with given op */
+/* ・yield・ returns pct of nodes responding */
+result_t Reduce.reduceToOne(op_t operator,
+sv_key_t value, sv_key_t result,
+float *yield, int timeout);
+/* Reduce and set result in all nodes */
+result_t Reduce.reduceToAll(op_t operator,
+sv_key_t value, sv_key_t result,
+float *yield, int timeout);
+/* Wait for reductions to complete */
+result_t Reduce.sync(int timeout);
+\end{lstlisting}
+
+A few applications such as object tracking and contour finding have been developed based on the API. A more formal definition of region is provided by Regiment \cite{regiment}. On the highest level, a functional language called 'Regiment' is provided to the application programmer. A sample program written in Regiment is illustrated in Listing \ref{lst:regiment}.
+
+\begin{lstlisting}[caption=A sample program written in Regiment, label=lst:regiment]
+let aboveThresh (p,x) = p > threshold
+	read node =
+		(read sensor PROXIMITY node,
+		get location node)
+in centroid (afilter aboveThresh
+	(amap read world))
+\end{lstlisting}
+
+A compiler will then compile the 'Regiment' program into a program that can be executed by a VM running on top of each sensor node. In their paper, the authors define several basic components, stream, space and event in Regiment. The notion of these components is based on Fran \cite{fran}. Based on these components, the authors propose another set of concepts such as area, region and anchor. A number of operators are defined for those components. In another paper, the same authors talk about their design of the Token Machine Language (TML) \cite{tml}. Basically TML is a virtual machine that can run on each individual sensor node. The basic components of TML are token store and handlers. Token store contains a number of tokens which can be regarded as events. The tokens can be sent and received through wireless channels. Handlers are software routines that execute when certain types of tokens are received. Some variables may be shared by multiple token handlers. An example of a handler which handles token 'Red' is defined in Listing \ref{lst:regiment2}.
+
+\begin{lstlisting}[caption=A token handler for Regiment, label=lst:regiment2]
+shared int s;
+token Red (int a, int b) {
+	stored int x;
+	if ( present(Green) )
+		x = 39;
+	else {
+		x += a + b;
+		timed schedule Red(500, s, a);
+	}
+}
+\end{lstlisting}
+
+Up to now, the authors seem to focus on their design of macroprogramming architecture. A lot of detailed issues haven't been addressed especially how to build a compiler that compiles Regiment to TML.
+
+\subsection{Summary}
+Works macroprogramming language can be briefly categorized according to how they are used and deployed. Since the programming language, NesC \cite{nesc} provided by TinyOS is already a powerful component-oriented language, some reusable modules with the NesC constructs to provide high-level abstractions. Some works such as \cite{abstractregion, tinythread} use such kind of approach and they provide some kind of libraries to the application programmer to ease the development of applications. Some works such as \cite{kairos, snack, hood} use a different approach. They provide a new language for the application programmer. Programs written in such kind of language will be compiled to NesC programs. Other works such as the works described in Section \ref{subsec:wsn-middleware}, \cite{regiment, rulecaster} move one step further. Instead of compiling the programs into NesC programs, they construct a runtime environment on the sensor nodes and compile the programs into intermediate programs that can be executed on such kind of runtime environment. Based on such observation, we define three different kinds of macroprogramming approaches:
+\begin{enumerate}
+\item	Macroprogramming with library support: the approach that provides library calls.
+\item Macroprogramming with native code generation: the approach that compile the programs into NesC programs.
+\item	Macroprogramming with runtime support: the approach that generates and distributes the codes into the network with runtime support.
+\end{enumerate}
+The first approach provides the lowest level of abstraction. With the help of code distribution tools such as Deluge \cite{deluge}, XNP \cite{xnp} and Trickle \cite{trickle}, the second approach can achieve dynamic code distribution. For programs that require frequent updates, his approach may not be as efficient as the third approach because each time, the entire binary image of the program need to be disseminated into the network. The third approach is the most flexible approach but it normally requires development of a middleware layer to implement such kind of runtime environment so it is the most challenging approach.
+
+Fortunately, the challenges of the third approach may somehow be released because there are already some works in the area of WSN middleware that can be leveraged to provide such kind of runtime environments.Mat\'{e} and Agilla are two examples because both of them have been implemented in Berkeley motes and provide a handful of instructions to use.
+
+Existing works on macroprogramming in WSN may also be divided according to the programming primitives provided. Some works such as \cite{kairos, hood, abstractregion}  provide neighbor-based primitives. Some works such as \cite{snack, song} provide service-oriented abstractions. Some works such as \cite{pieces, rulecaster} provide state-base primitives.
+
+Most of the works introduced in this section hasn't been implemented in the real hardware so there isn't much description of the performance evaluation. Others use similar approaches as those described in WSN middleware such as by creating applications and testbeds.
+

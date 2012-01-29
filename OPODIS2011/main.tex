@@ -1,0 +1,40 @@
+\documentclass{./Templates/llncs/llncs}
+\usepackage{./Templates/llncs/llncsdoc}
+
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{url}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{verbatim}
+%Percom: for other experimental results
+\graphicspath{{../figures/psware/}{../figures/shm/}{../simulation/psware/}{./figures/}{./simulation/}{../Percom2011/simulation/}{../Percom2011/figures/}{../DCOSS2011/figures/}{../DCOSS2011/simulation/}}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+%\newcommand{\figurecurrentwidth}{\includegraphics[width=\textwidth]}
+%\newcommand{\figurehalfwidth}{\includegraphics[width=.5\textwidth]}
+\newcommand{\figurecurrentwidth}{\includegraphics[width=\textwidth]}
+\newcommand{\figurehalfwidth}{\includegraphics[width=.5\textwidth]}
+\lstset{float, numbers=left, frame=lines, belowcaptionskip=3mm, xleftmargin=7mm, framexleftmargin=7mm, escapeinside={(*}{*)}, tabsize=3, breaklines=true}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}} 
+\pdfminorversion=9
+
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+\begin{document}
+
+\input{./title}
+\input{./abstract}
+\input{./introduction}
+\input{./relatedworks}
+\input{./design}
+\input{./ceduevaluation}
+\input{./conclusion}
+
+\bibliographystyle{./Templates/llncs/splncs03}
+\bibliography{../references/wsn-general,../references/wsn-aggregation,../references/wsn-middleware,../references/wsn-pubsub,../references/edl,../references/pubsub,../references/algorithms,../references/event-detection,../references/pervasive,../references/shm}
+
+\end{document}

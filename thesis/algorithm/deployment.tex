@@ -1,0 +1,175 @@
+\section{Fusion Point Deployment Problem}
+Because our distributed algorithm is based on certain nodes in the network that acts as event fusion points to detect the events, in this section, we discuss how to select such fusion points in order to optimally detect the events.
+\subsection{Even Deployment}
+We first look at a deployment where fusion points are evenly deployed. We use the following deployment model:
+\begin{itemize}
+\item The entire network is divided into a set of equally sized regions.
+\item Within each region, we deploy the same number of event fusion points. 
+\end{itemize}
+
+Such deployment model is suitable if the user has no prior knowledge on where the events would happen. After calculating the optimal deployment strategy, the users can make use of it in two ways:
+\begin{itemize}
+\item After the sensor deployment, the users can deploy additional sensor nodes as fusion points in the network.
+\item Before the deployment, the user can calculate how many fusion points are needed in the network and mix them with normal nodes to deploy them randomly.
+\end{itemize}
+We will use square for calculating the optimal deployment strategy in this paper. The optimal deployment strategies with regions of other types of shape may be also be obtained in a similar fashion. Suppose we divide the whole region of area \(A\) into squares of size \(s\times s\). Then on average, each sensor node can find a fusion point at a distance of:
+\begin{align}
+r=&\int_0^1D(t)dt\nonumber\\
+=&\int_0^1\frac{2}{3}\sqrt{c^2t^2+(b^2-a^2-c^2)t+a^2}dt\nonumber\\
+=&\frac{c}{6}[u(1+v^2)+\frac{1}{2}(1-u^2)(1-v^2)ln(\frac{u-1}{u+1})]\label{eq:avgdist1}
+\end{align}
+where,
+\begin{align}
+c=&\frac{s}{2}\nonumber\\
+u=&\frac{\sqrt{2}+1}{2}s\nonumber\\
+v=&\frac{\sqrt{2}-1}{2}s\label{eq:avgdist2}
+\end{align}
+
+In order to determine the optimal deployment strategy, we also need to know the event probabilistic distribution. We use the same exponential distribution model as introduced in Section \ref{sec:centralized}. %We start by considering the simplest case where two sub-event types \(e_1\) and \(e_2\) form a composite event type \(e_3\) (\(r_n(e_1, e_2)=e_3\)). 
+
+The cost introduced by TED mainly consists of three parts: forwarding cost, feedback cost and detection cost. Initially, upon the detection of primitive events, the nodes will randomly forward the events to \(k\) closest fusion points. 
+\begin{displaymath}
+cost_{forward}=r\times k
+\end{displaymath}
+
+Here \(k\) is determined by the event distribution such that after forwarding different sub-events to the fusion points, there will be some overlapping fusion points for different sub-events. Therefore, \(k\) is defined as follows:
+\begin{equation}
+k=(\frac{{\lambda}_1}{r}+1)^2\label{eq:forwardNum}
+\end{equation}
+
+When the events are detected at the fusion points, feedback will be sent to the event sources so that the sensor nodes can later forward the events to them and the cost will be reduced. For simplicity of analysis, we assume the fusion points will simply flood the feedback in the network. Therefore, the feedback cost is:
+\begin{displaymath}
+cost_{feedback}=|N|\times k
+\end{displaymath}
+
+The detection cost is the message cost for all sub-events to be forwarded to a fusion point so that the composite event may be detected. As shown in Figure \ref{fig:cedu-detectionCost}, if if we have two events \(e_1\) and \(e_2\), the minimum event detection cost will be detecting the events on the line segment that connects the two events. However, we may not find a fusion point on the line segment, so in order to find a fusion point that can minimize energy cost, we should choose a point that lies on the center of the line segment (the detailed proof is omitted for brevity). Similar to Equation \ref{eq:avgdist1} and \ref{eq:avgdist2}, the average detection cost will be:
+\begin{displaymath}
+cost_{detect}=2\times \int_0^{arctan\frac{2r}{{\lambda}_1}}\frac{{\lambda}_1}{2cosx}dx
+\end{displaymath}
+
+\begin{figure}
+\centering
+\figurecurrentwidth{cedu-detectionCost}
+\caption{Event detection cost}
+\label{fig:cedu-detectionCost}
+\end{figure}
+
+Since each node needs to know how to reach the fusion points when forwarding is needed, there is overhead for maintaining such information. Similar to many existing routing protocols for WSN, we assume the nodes will periodically send messages for link evaluation \cite{rssiroute}. Therefore, the cost for maintenance is:
+\begin{displaymath}
+cost_{maintenance}=(\frac{A}{s^2})|N|c_1
+\end{displaymath}
+
+Here, \(c_1\) is constant that represents the relation between energy consumption and the size of the packets. In addition, the sensor node should also have storage constraint because the nodes simply might not able to store all the routes to every fusion point. The storage constraint is defined as:
+\begin{displaymath}
+(\frac{A}{s^2})<c_2
+\end{displaymath}
+
+Objective is to minimize:
+\begin{displaymath}
+cost_{all}=2(\frac{T}{t}+1)cost_{forward}+cost_{maintenance}+Tcost_{detect}
+\end{displaymath}
+
+All the constants are summarized in Table \ref{tab:ceduConstants}. \(cost_{all}\) may be obtained by nonlinear programming techniques such as generalized gradient search algorithm. In addition to square deployment, other deployment method may also be used and the only difference lies in Equation \ref{eq:avgdist1}, \ref{eq:avgdist2} and \ref{eq:forwardNum}.
+
+\begin{table}
+\begin{center}
+\begin{tabular}{ | p{1cm} | p{5cm} | }
+\hline
+\({\lambda}_1\) & Expected location between the events \\ \hline
+\({\lambda}_2\) & Expected angle of the events \\ \hline
+\(A\) & Deployment area \\ \hline
+\(s\times s\) & The size of the square sub-regions \\ \hline
+\(c_1\) & Energy cost per bit of data transmission\\ \hline
+\(c_2\) & Storage constraint\\ \hline
+\end{tabular}
+\end{center}
+\caption{Summary of the symbols in TED}
+\label{tab:ceduConstants}
+\end{table}
+
+\subsection{Hierarchical Deployment}
+Apart from even deployment, the fusion points may also be deployed in a hierarchical fashion. Formally, we assume a square network deployment where the fusion points are distributed in a hierarchical way in the network. We assume that the sink node is at the center of the network. And more fusion points can be added by dividing the network evenly into the square sub-regions of same size. For example, a network with only sink node is shown in Figure \ref{fig:fplvl1}. If we add 4 fusion points, the fusion points will be evenly distributed in the network as in Figure \ref{fig:fplvl2}.
+
+We can achieve flexibility with this distribution model since we can add more fusion nodes into the network if we want to decrease the cost for detecting composite events.
+
+\begin{figure}
+\centering
+\subfloat[Level 1 fusion point]{\label{fig:fplvl1}\figurehalfwidth{fplvl1}}
+\subfloat[Level 2 fusion points]{\label{fig:fplvl2}\figurehalfwidth{fplvl2}}
+\caption{Fusion point distribution model in TED}
+\label{fig:fplvl1-2}
+\end{figure}
+
+for fusion level at \(i\)th level, the whole network is divided into \(2^{i-1}\) subregions \(region_i\). For example, if the fusion level is at \(1\) as shown in Figure \ref{fig:fplvl1}, the region covers the entire network. In Figure \ref{fig:fplvl2}, the network is divided into \(4\) subregions at fusion level \(2\).
+
+In our analytical model, We assume dynamic events where for each event type \(e_n\), it may occur anywhere in the network. In order to include such kind of properties in the model, we define for each \(e_n \in E\), it will be monitored by \(t\) rounds. The interval between the rounds are \(T_n\). During this \(t\times T_n\) time, the set of detected events of type \(e_n\) is defined as \(E_n=\{e_n^1, e_n^2, \cdots e_n^t\}\).
+
+We measure the event detection cost in terms of message cost. For simplicity, we measure the message cost by the distance (which will in term be reflected as the number of hops) a node can reach another. We uses shortest path tree (SPT) data aggregation protocol \cite{impactaggregation} as reference to see under what conditions TED can outperform data aggregation protocols which do consider event relations.
+
+When the fusion points are hierarchically distributed in the network, the composite event detection cost will be bounded by the level of fusion points distributed in the network. Consider Figure \ref{fig:fpdistribution} as an example, if we have a sensor network in a rectangular region where it can be further be divided into two smaller square region. Assume for each square region, the diameter length is \(d\) Then in Figure \ref{fig:evendistribution}, if we evenly distribute a fusion point in each square region, the max distance for any sensor node in the whole network to reach it's closest fusion point is \(\frac{d}{2}\). If the fusion points aren't evenly distributed as shown in Figure \ref{fig:unevendistribution}, then for some nodes in the network, it might have a distance larger than \(\frac{d}{2}\) to reach the fusion point.
+
+\begin{figure}
+\centering
+\subfloat[Even distribution]{\label{fig:evendistribution}\figurehalfwidth{evendistribution}}
+\subfloat[Uneven distribution]{\label{fig:unevendistribution}\figurehalfwidth{unevendistribution}}
+\caption{Fusion point distribution}
+\label{fig:fpdistribution}
+\end{figure}
+
+\begin{theorem}
+\label{thm:evenfp}
+Let the network diameter be \(d\), and the fusion point level be \(l\), the distance between two sub-events \(e_1\) and \(e_2\) is \(r\). After \(e_1\) and \(e_2\) have already been detected, the upper bound of the energy cost for detecting the composite event \(e_3\) based on \(e_1\) and \(e_2\) is:
+\[
+cost(e_3)=\frac{d}{2^{l-1}}+r
+\]
+\end{theorem}
+
+\begin{proof}
+As shown in Figure \ref{fig:evendistribution}, the upper bound for one single event to reach a fusion point is:
+\begin{displaymath}
+\frac{d}{2^{l}}
+\end{displaymath}
+Then, the upper bound on the cost for the the two fusion points to reach each other is:
+\begin{displaymath}
+\frac{d}{2^{l-1}}+r
+\end{displaymath}
+\end{proof}
+
+Theorem \ref{thm:evenfp} indicates that if we have no prior knowledge about the events to happen in the network, then fusion points with even distribution can still allow us to have an upper bound on the composite event detection cost.
+
+\begin{theorem}
+\label{thm:fpdistance}
+If a node is a level \(l\) fusion point, then its distance from sink \(r \in D_l\)
+\[
+D_l=\{a_1, a_2, \cdots a_{2^{l-2}}|a_i=\frac{d}{2^{l-1}} \times (2i-1),i<2^{l-2}\}
+\]
+\end{theorem}
+\begin{proof}
+When \(l=1\), only sink node is the fusion point. Hence \(D_1=\{0\}\). Similarly, when \(l=2\), \(D_2=\{\frac{d}{2}\}\). We denote each \(a_i \in D_k\) as \(a_i^k\). Based on our fusion point distribution scheme, at fusion level \(k+1\), we simply divide the sub-regions at fusion level \(k\) into four. Therefore, for each \(a_i^k \in D_k\), we can find two elements \(a_{2i-1}^{k+1}, a_{2i}^{k+1} \in D_{k+1}\) such that:
+\begin{align*}
+&\left\{
+\begin{array}{l}
+a_{2i-1}^{k+1}=a_i^k-\frac{d}{2^k}\\
+a_{2i}^{k+1}=a_i^k+\frac{d}{2^k}
+\end{array}
+\right.\\
+\Rightarrow
+&\left\{
+\begin{array}{l}
+a_{2i-1}^{k+1}=\frac{d}{2^{k-1}} \times (2i-1)-\frac{d}{2^k}\\
+a_{2i}^{k+1}=\frac{d}{2^{k-1}} \times (2i-1)+\frac{d}{2^k}
+\end{array}
+\right.\\
+\Rightarrow
+&\left\{
+\begin{array}{l}
+a_{2i-1}^{k+1}=\frac{d}{2^{k}} \times (2(2i-1)+1)\\
+a_{2i}^{k+1}=\frac{d}{2^{k}} \times (2(2i)+1)
+\end{array}
+\right.
+\end{align*}
+
+Hence, Theorem \ref{thm:fpdistance} holds for any natural number.
+\end{proof}
+
+Theorem \ref{thm:fpdistance} may be used as one of the conditions for selecting fusion points.

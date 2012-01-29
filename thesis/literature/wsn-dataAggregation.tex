@@ -1,0 +1,128 @@
+\section{Data Aggregation in WSN}
+Data gathering technique is important to the design and implementation of PSWare because event detection is also a special type of data gathering. In order to reduce the traffic, data aggregation is widely used to process some data in-network. The data aggregation problem in WSN is well-studied. There are a lot of existing works trying to solve this problem from different perspectives.
+
+The existing works on data aggregation may be categorized according to the network layer they operate on. In particular, since there are many works which use data aggregation on network layer, we further divide the data aggregation approach on network layer into tree-based and cluster-based approaches for a clearer presentation.
+
+\subsection{MAC Layer Data Aggregation}
+In MAC layer approach, data are aggregated without prior knowledge of application or network. The benefit of this approach is that the approach can be quite generic since it is independent of other layers. In its simplest form, the approach just opportunistically merge multiple packets into one to save some overhead. A good example of this is AIDA \cite{aida}. AIDA is an application independent aggregation protocol which lies between MAC layer and network layer. The basic idea is to combine multiple network packets into a single MAC layer packet to transmit in order to save the MAC layer control messages such as RTS and CTS. Aggregation occurs based on the feedback of the traffic information. Actually, such kind of energy saving is very limited since combining multiple small packets into a big packet will introduce extra cost if the transmission fails and retransmission is necessary.
+
+A similar work in MAC layer approach is Data-Aware Anycast (DDA) \cite{daa}. The work introduces two aggregation protocols at different layers. DDA is the MAC layer aggregation approach. An 'aggregation ID' which is a timestamp is included in the RTS message. The node which can aggregate the packet replies with CTS. Randomized Waiting (RW) is another approach at the application layer. It allows the sensor nodes which are closer to sink to wait for a longer period of time in order to aggregate packets.
+
+\begin{figure}
+\centering
+\figurecurrentwidth{ToD}
+\caption{Basic idea of ToD}
+\label{fig:ToD}
+\end{figure}
+
+However, because the MAC layer approach does not consider information from other layers, there is a limit on which the data can be aggregated. In view of this, ToD \cite{tod} took one step further. ToD is based on DAA. The authors further propose an idea which combines structure-free and structured aggregation techniques. The basic idea is illustrated in Figure \ref{fig:ToD}. It divides the network into cells. Within each cell, structure-free aggregation is used. Inter-cell aggregation is done by a structure called ToD (Tree on DAG). ToD is basically a combination of two trees. The following figure shows an example of ToD in one-dimension. In case the event occurs across multiple cells, the two trees ensure that the data can be aggregated at either one of them.
+
+\subsection{Cluster-based Data Aggregation}
+Clustering is a popular topic in many WSN-based applications. It may be considered as a network layer technique that groups sensor nodes to perform certain tasks. Clustering is a natural step to data aggregation in the sense that clusters can allow sensor nodes to send their data to the cluster head for distributed processing. Clustering for data aggregation has been studied for a relatively long period of time. Leach \cite{leach} is probably one of the earliest work. It is an application-specific power-efficient routing protocol and is suitable for remote monitoring applications. The protocol is divided into rounds. In each round, the cluster heads are altered. However, the protocol is based on the assumption that all sensor nodes could adjust their power in order to communicate with the sink.
+
+PEGASIS \cite{pegasis} was introduced as an improvement of Leach. Similarly, it is still based on the assumption that each sensor node has power control and the ability to transmit data to any other node in the network. The basic idea of PEGASIS is that further energy saving can be achieved if data is aggregated towards the sink. The problem can be essentially formulated as a traveling sales person problem. A communication chain is formed for only once first. Each sensor node must have the global knowledge of the network. A TDMA scheme is used to allocate time slot for each sensor node to transmit data.
+
+\begin{figure}
+\centering
+\figurecurrentwidth{iHeed}
+\caption{Clustering in iHeed}
+\label{fig:iHeed}
+\end{figure}
+
+As sensor nodes have become smaller, it has come clear that for many WSN-based applications, it may not be easy or cost-effective to adjust sensor nodes' transmission power once deployed. Therefore, more practical implementation was needed. iHeed \cite{iheed} is a real implementation of a cluster protocol. The protocol is integrated into the existing multi-hop routing protocol of TinyOS. The protocol periodically uses a probabilistic approach to elect cluster heads with high residual energy. By using such an approach, the clusters heads in iHEED are well distributed as shown in Figure \ref{fig:iHeed}.
+
+Apart from real implmentation, some works address QoS requirements when clustering \cite{qdap}. Depending on the time delay, three cases may occur:
+\begin{itemize}
+	\item If the delay constraint can be satisfied, the sensor node defers the report for a fixed time interval with certain probability. When delay occurs, the sensor node will receive and aggregate any additional reports.
+	\item If the delay constraint can be satisfied only if the report is not deferred, the sensor node simply tries to forward this report to the next hop.
+	\item If the delay constraint cannot be satisfied in any case, the sensor node will discard the report, to avoid further wasting of any additional resources.
+\end{itemize}
+
+A formal study of the distributed clustering problem is presented in EPAS \cite{epas}. It focuses on how to select aggregators evenly in the network in a distributed fashion to achieve best energy saving. The authors start their algorithm from one-level aggregation first. Then, the work is further extended to Hierarchical EPAS (hEPAS) to provide a multiple-level aggregation solution.
+
+Because of the vast amount of works done in cluster-based data aggregation, some work summarizes the existing techniques \cite{clusteringsurvey}. In terms of how to elect cluster heads, there are four metrics: node ID, larger degrees, higher weights and node redundancy. The authors suggest that metrics based on node ID or degree may not be energy efficient because certain nodes in the network may exhaust their energy faster than others. In terms of execution of the clustering algorithms, it can be either iterative or probabilistic. In iterative clustering algorithms, a node waits for a specific event to occur to decide its role. Iterative algorithms usually result in slow convergence speed. In probabilistic clustering algorithms, nodes independently decide their roles. There are still a lot of open issues such as connectivity, MAC, rotating CH, node duty cycle, optimal cluster size and node synchronization.
+
+\subsection{Tree-based Data Aggregation}
+Tree-based data aggregation is another aggregation technique in the network layer. Different from clustering, the degrees of the nodes in a tree are usually more evenly distributed than those in clusters. Many problems in this area can be formulated as classic graph theory problems or optimization problems. Some of the early work in this area took an intuitive approach \cite{impactaggregation}. They introduce and analyze a few data-centric aggregation schemes. These schemes include 'center at nearest source (CNS)', in which all sources send data to the nearest source to the sink, 'shortest paths tree (SPT)', in which the data are sent along the shortest paths and aggregated on the common edges, 'greedy incremental tree (GIT)', in which sources to the sink are added to the tree one by one based on their distances to the sink.
+
+\begin{figure}
+\centering
+\figurecurrentwidth{lpt}
+\caption{Optimized tree construction based on residual energy}
+\label{fig:lpt}
+\end{figure}
+
+Some similar ideas were discussed in \cite{pattem:impact} where the authors first divide the existing aggregation works into two general categories. Routing-driven compression (RDC) routes the data with the shortest path and opportunistically perform aggregation. Compression-driven routing (CDR) tries to optimize the routing tree to compress more data. The methodology based on joint-entropy. The author uses such a mathematic framework to evaluate these routing schemes under different parameters. Based on their results, the authors then propose a sub-optimal scheme which forms several clusters in the network. The sensors within each cluster uses shortest path to send data to the cluster head. The cluster head then aggregate data and send to sink without any further aggregation. \cite{asc} is similar to \cite{pattem:impact}. The authors take one step further and make a different and more reasonable assumption that the sensors be randomly deployed in the area.
+
+Optimization techniques are widely used in tree-based approach. Many works in this area formulate the problem into mathematical programming problem. For example, \cite{xue:lp} considers the residual energy and the transmission cost between individual nodes. Then the problem is formulated as a linear programming problem (LP) and is extended to multiple sink nodes. Figure \ref{fig:lpt} illustrates the tree construction process.
+
+Similarly, \cite{lpt} also considers residual energy but formulate the problem into another graph theory problem. It lets the nodes with higher energy to be the aggregation parents. The paper argues that residual energy must be considered in order to maximize network lifetime. An example is shown in the paper as the following figure. The shortest path from C to A is through B but since B has little energy left, this link will end prematurely if C connects to B. A better approach is to let C connect to D which has higher residual energy. Two approaches are proposed, one centralized approach and the other distributed approach. In the centralized approach, all sensor nodes are first sorted according to their energy levels. The problem is then naturally transformed to a graph theory problem in order to find optimal tree based on the existing energy level and topology. The distributed approach is similar to Reverse-Path Forwarding (RPF). There are two steps in this approach.
+
+Apart from residual energy, other parameters may also be considered in formulating the problem. MFST \cite{mfst} uses Steiner tree to model the problem. The work considers both transmission cost and fusion cost which is equivalent to processing cost. The work was later extended to cope with network dynamics.
+
+The tree construction problem can be more complicated if mobility is taken into consideration. DCTC \cite{dctc} is a work that studies the tree construction problem for mobile WSN applications such as target tracking. The algorithm is used to collect local data of the sensor nodes to a mobile sink. The protocol sets up a convoy tree with the root close to the mobile sink. There are two schemes proposed in the protocol, conservative and prediction-based. Conservative scheme add the sensor nodes to the convoy tree based on their distances to the mobile sink while prediction-based scheme adds sensor nodes to the convoy tree based on a prediction algorithm. The tree will be reconfigured when the mobile sink moves further away from the original root.
+
+\subsection{Application-specific Data Aggregation}
+If the application level knowledge is taken into consideration, further energy efficiency may be achieved. However, each data aggregation technique introduced in this section can only be applied to a specific type of WSN applications. 
+
+The first type of data aggregation technique we are going to introduce is related to our previous sections since it is related to query-based middleware for WSN. TaG \cite{tag} is a work which was later extended to TinyDB. The work tries to add aggregation service of WSN to the core service. The aggregation is expressed in SQL and is disseminated from the sink. Each sensor node chooses its sender of the query as the aggregation parent. During aggregation, parents will wait for the children's messages before sending their own.
+
+Based on the similar concept, TiNA \cite{tina} is another work based on Cougar \cite{cougar}. It makes two contributions. First, GaNC is a routing protocol that builds the routing tree according to the 'group by' clause of the SQL in order to save energy. It is compared with the 'First-Heard-From (FHF)' method. During parent-selecting, the node will also look at the (static) attributes used in the 'group-by' clause to select a parent with the same group. TiNA introduces a new type of SQL clause for WSN: TOLERANCE x\%. When a new sensor's reading is within the difference of x\%, it will not be transmitted. TiNA can be built on top of any existing SQL-based aggregation techniques. The language extenstion demonstrated in Listing \ref{lst:tina}. The standard SQL part is from Line \ref{lst:tina:SQLStart} to \ref{lst:tina:SQLEnd} and the tolerance introduce by TiNA is at Line \ref{lst:tina:tina}.
+
+\begin{lstlisting}[caption=An example of TiNA, label=lst:tina]
+SELECT {attributes, aggegates} (*\label{lst:tina:SQLStart}*)
+FROM sensors
+WHERE conditions-A
+GROUP BY {attributes}
+HAVING conditions-B (*\label{lst:tina:SQLEnd}*)
+EPOCH DURATION i | EVERY e
+TOLERANCE tct (*\label{lst:tina:tina}*)
+\end{lstlisting}
+
+Another application specific work is VigilNet \cite{vigilnet}. It was later extended to the EnviroTrack middleware \cite{envirotrack} which was briefly introduced in the previous section. VigilNet had an in-depth discussion on how to implement a real data aggregation system for the tracking applications. There are four layers of aggregation in the proposed system. Level 1 mainly concerns how to sample and aggregate raw data. Level 2 concerns how to aggregate data from different sensors on a single node. Level 3 concerns how to aggregate data within groups. Basically, potential group leaders are selected based on max coverage. Level 4 is just the backend aggregation where all the data has been transmitted to the sink.
+
+\begin{figure}
+\centering
+\figurecurrentwidth{qdigest}
+\caption{An example of q-digest}
+\label{fig:qdigest}
+\end{figure}
+
+Instead of using application knowledge to help the underlying network layer to aggregate data, some works directly use statistical methods to directly reduce the data volume. Such works aim at finding the optimal trade-off between data accuracy and energy efficiency. For example, in paper \cite{jiang:statistical}, the authors propose the algorithms which can use any multi-path routing protocols for aggregation in order to increase reliability. It tries to capture the distribution of all the data and aggregate the parameters only. The work is based on Expectation-Maximization (EM) algorithm, which is standard for finding maximum likelihood estimates of parameters in probabilistic models.
+
+Q-digest \cite{qdigest} is a data structure which can be used to estimate some more complex aggregation functions such as median, histogram and so on. Basically, the data structure is a binary tree structure with every node represents the number of values for a specific range. The leaf nodes represent the actual values. The intermediate nodes are those which will be actually stored. The number associated with each node represents the number of values within the range of that node. An example of Q-digest in shown in Figure \ref{fig:qdigest}.
+
+\begin{figure}
+\centering
+\figurecurrentwidth{deterministic}
+\caption{Example of deterministic weighted sample}
+\label{fig:deterministic}
+\end{figure}
+
+A quite similar idea is presented in \cite{akca:deterministic} where tree-like structure is used to find the most representative data through deterministic weighted samples. The idea, however, is different from q-digest. The algorithm tries to evenly distribute the sample data among all nodes in the sensor network instead of having highly concentrated sample data at the nodes near sink. As shown in the figure below, by assigning different weights to the sensor nodes, the final aggregation result will contain most representative data which is evenly sampled from all the nodes. Figure \ref{fig:deterministic} shows an example where all nodes have the same weight.
+
+The last work we will introduce here is sparse data aggregation \cite{doubleruling}. As the name suggested, the data aggregation techniques described is primarily for applications where the data are sparsely distributed among the network and the whole WSN is surrounded by high-speed network access. It is quite recent and addresses the problem of how to aggregate data from a set of source nodes which are sparsely distributed in the network. However, the work makes a very strong assumption that all the sensor nodes on the boundary can access an external high-speed network. This assumption is almost equivalent to assume that all the nodes on the boundary of the network are sink nodes. Figure \ref{fig:doubleruling} shows such a model described. The shaded nodes are the nodes with data to send. Some nodes are not in the tree but are involved during the tree construction phase. All the trees are rooted from the boundary of the network.
+
+\begin{figure}
+\centering
+\figurecurrentwidth{doubleruling}
+\caption{Network model of sparse data aggregation}
+\label{fig:doubleruling}
+\end{figure}
+
+\subsection{Summary of Existing Works}
+Some of the earlier works such as \cite{leach, pegasis} make assumptions which are not suitable to current WSN. For example, both of the works make the assumption that any sensor node could adjust its power and communicate directly with the sink when needed. This may not be the case for the current mainstream of the research in WSN.
+
+Some of the works are interesting but may not be so related to our event detection algorithms. For example, \cite{dctc} gives very detailed mathematical model for the aggregation problem where the aggregator is mobile. Such kind of model has not been applied to our work yet.
+
+There are a few works which may be quite related to our problem and can be leveraged when we design our own algorithms.
+\begin{itemize}
+	\item MAC-layer aggregation: \cite{aida, daa} focus on simple data aggregation on the MAC-layer. These protocols are usually application independent. However, since the application knowledge is not present at such a low layer, these protocols can usually just save limited amount of energy. Energy saving of these protocols is usually done by simply combining multiple MAC packets into one so that control overhead such as RTS and CTS can be reduced.
+	\item Energy-based clustering: different from MAC-layer approach, works such as \cite{lpt, xue:lp, iheed, epas, mfst} take application knowledge into consideration. The main objective of these clustering algorithms is to save energy.
+	\item QoS-aware clustering: different from energy-based approach, \cite{qdap} is an aggregation algorithm with QoS as its primary objective.
+	\item Database solutions: these approaches are more application-specific. \cite{tag, tina} belong to this category. These works support common aggregate operators in database systems such as average, minimum and maximum.
+	\item Mathematic-based solutions: based on database solutions, mathematic-based solutions move one step further. In addition to database aggregate operators, these works also support more sophisticated aggregates such as median and histogram. Examples are \cite{qdigest, akca:deterministic, jiang:statistical}.
+	\item \cite{doubleruling} may be the most relevant work to our problem. The work considers how to aggregate events occurred sparsely in different part of the network. Unfortunately, this work is based on a very strong assumption that all nodes on the boundary of the network be the sink nodes. Therefore, it is still unsuitable to model the event detection problem in our work.
+\end{itemize}
+
+In summary, none of the existing work can really solve our event detection problem efficiently. However, some of the works can still be leveraged and their results may be utilized in our work. Although data aggregation is a well-studied topic in WSN, we believe the performance of data aggregation can still be improved if we use a holistic approach. As shown in the later sections, by integrating application-level knowledge into the aggregation algorithm, aggregation performance can be improved in most cases. We will discuss our solution in the next section.

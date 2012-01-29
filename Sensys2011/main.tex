@@ -1,0 +1,70 @@
+\documentclass[10pt]{sigplan-proc-varsize-sensys11}
+
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{url}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{verbatim}
+
+\usepackage{booktabs}
+\usepackage{colortbl}
+\usepackage{tabularx}
+\usepackage{color}
+\usepackage{xspace}
+\usepackage{hyperref}    % Creates hyperlinks from ref/cite 
+\hypersetup{pdfstartview=FitH}
+
+\graphicspath{{../figures/psware/}{../figures/shm/}{../simulation/psware/}{./figures/}{./simulation/}{../Percom2011/simulation/}{../Percom2011/figures/}}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+%\newcommand{\figurecurrentwidth}{\includegraphics[width=\textwidth]}
+%\newcommand{\figurehalfwidth}{\includegraphics[width=.5\textwidth]}
+\newcommand{\figurecurrentwidth}{\includegraphics[width=.49\textwidth]}
+\newcommand{\figurehalfwidth}{\includegraphics[width=.24\textwidth]}
+\lstset{float, numbers=left, frame=lines, belowcaptionskip=3mm, xleftmargin=7mm, framexleftmargin=7mm, escapeinside={(*}{*)}, tabsize=3, breaklines=true}
+\newtheorem{theorem}{Theorem}
+
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}} 
+
+\setlength\paperheight {11in}
+\setlength\paperwidth {8.5in}
+
+% No space between bibliography items:
+\let\oldthebibliography=\thebibliography
+  \let\endoldthebibliography=\endthebibliography
+  \renewenvironment{thebibliography}[1]{%
+    \begin{oldthebibliography}{#1}%
+      \setlength{\parskip}{0ex}%
+      \setlength{\itemsep}{0ex}%
+  }%
+  {%
+    \end{oldthebibliography}%
+  }
+\setlength{\parindent}{5mm}
+\floatname{algorithm}{Procedure}
+\begin{document}
+
+\input{./title}
+\input{./abstract}
+
+%\category{C.2.1}{Computer-Communication Networks}{Network Architecture and Design}[Wireless communication]
+%\keywords{Collection, CTP, Sensor Network, Routing}
+
+\input{./introduction}
+\input{./background}
+\input{./relatedworks}
+\input{./design}
+\input{./application}
+\input{./ceduevaluation}
+\input{./conclusion}
+
+{\footnotesize
+\bibliographystyle{abbrv}
+\bibliography{../references/wsn-general,../references/wsn-aggregation,../references/wsn-middleware,../references/wsn-pubsub,../references/edl,../references/pubsub,../references/algorithms,../references/event-detection,../references/pervasive,../references/shm}
+}
+\end{document}

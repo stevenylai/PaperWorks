@@ -1,0 +1,146 @@
+\begin{figure}
+\centering
+\subfloat[Possible fusion points]{\label{fig:fplvl3}\figurehalfwidth {fplvl3}}
+\subfloat[Communication range]{\label{fig:communicationrange}\figurehalfwidth{communicationrange}}
+\caption{Simulation environment}
+\label{fig:simsetup}
+\end{figure}
+
+We have conducted both simulation and experiments on PSWare to evaluate its performance. The simulation is used mainly to validate our analytical results on TED while the experiments are done according to some real WSN-based applications in order to demonstrate the effectiveness and efficiency of PSWare.
+
+\section{Simulation}
+\label{sec:simulation}
+We use simulation to validate our analytical results. Our simulation is based on TOSSIM \cite{tossim}. We have \(127\times 127\) sensor nodes placed on a square space. We use both even distribution and random distribution of the fusion points. Similar to our analysis, we divide the whole area into small squares and deploy equal number of fusion points for each square. Each sensor node is able to communicate with its nearby neighbors. To simulate the event detection, we first randomly generate event sources in the network. Then based on these event sources, we further generate more sub-events that have relations and let the sensor node detect the composite events. We study the performance of TED under different parameters such as event distribution, event probability, and deployment approach. In the figures, TED-R represents distributed TED with random fusion point deployment and TED-E represents distributed TED with even fusion point deployment.
+
+\begin{figure}
+\centering
+\figurecurrentwidth{size-distance30}
+\caption{Average event distance: 30}
+\label{fig:sim-size-distance30}
+\end{figure}
+
+Similar to our analysis, we use SPT as a reference to compare with TED so as to see how much cost we can save if we detect the events using their relations. For simplicity, we assume in SPT approach, the events can always be aggregated at the shared paths. We study the performance of TED under different parameters such as fusion point deployment, event distance, event size and event probability.
+
+\subsection{Impact of Event Distance}
+The first parameter we study is the distance between events. More precisely, we study the average event distance where it is defined as the average of all the distance between any two events in the network. Figure \ref{fig:sim-size-distance30} shows the result when average event distance equals to 30. As we can see, SPT costs the most energy. Among the different versions of TED, TED-C costs slightly higher energy while TED-E costs the lowest amount of energy.
+
+\begin{figure}
+\centering
+\figurecurrentwidth{size-distance40}
+\caption{Average event distance: 40}
+\label{fig:sim-size-distance40}
+\end{figure}
+
+The next set of simulation results are shown in Figure \ref{fig:sim-size-distance40}. In this figure, we can see as the event distance becomes greater, the average energy cost has also increased accordingly. This is inevitable because the nodes will have relay the events for more number of hops in order to detect the composite events. Note that our X-axis represents event size. We will get into more details about the impact of event size in the next section.
+
+\begin{figure}
+\centering
+\figurecurrentwidth{size-distance50}
+\caption{Average event distance: 50}
+\label{fig:sim-size-distance50}
+\end{figure}
+
+The last set of results for event distance is shown in Figure \ref{fig:sim-size-distance50}. In this figure, the event distance is set to be 50. Note that this is already half of the network dimension. Such scenario should cover a lot of WSN applications where the events need to be transmitted for a long distance to be further processed. As we can see from the figure, when the event distance becomes larger, the results have also become more stable. This is because as the distance becomes larger, relay cost has become the dominant cost for the event detection.
+
+In summary, as we can see from all the figures, TED can save some energy in comparison with SPT. However, among all the simulation parameters as we will see in the following sections, event distance does not seem to be a critical factor where TED can save a lot of energy.
+
+\subsection{Impact of Event Size}
+\begin{figure}
+\centering
+\figurecurrentwidth{distance-size5}
+\caption{Average event size: 5 nodes}
+\label{fig:sim-distance-size5}
+\end{figure}
+
+The next factor we are going to study is event size. This factor is interesting to our simulation because different event size may have different effect on the number of nodes that are needed to detect more than one events. It can, therefore, affect the choice of event fusion points since sometimes it may be better to choose the nodes that can detect multiple events as the fusion points.
+
+The first set of results are displayed in Figure \ref{fig:sim-distance-size5}. Here we define the average event size to be the average number of nodes that will be involved to detect a specific primitive event. Furthermore, the nodes must be connected by themselves. If, for example, an event spans nodes that are not connected by themselves, then we can split such events into multiple sub-events where all the nodes involved in detecting each sub-event are connected by themselves.
+
+\begin{figure}
+\centering
+\figurecurrentwidth{distance-size10}
+\caption{Average event size: 10 nodes}
+\label{fig:sim-distance-size10}
+\end{figure}
+
+The next set of results are shown in Figure \ref{fig:sim-distance-size10}. Since based on our previous results, event distance is not a major factor for TED to save energy, we use it as the X-axis in our simulation for reference. Since the event size has increased from 5 to 10 nodes, we also need to decide which nodes out of all the event detection nodes will be used as the decision maker for the event. In order to have a reasonably easy function to calculate the cost without losing generality, we choose the node at the geographical center of the primitive event to be the detector node.
+
+As we can see, SPT still incurs the highest cost. Among all the TED variations, the centralized version has relatively higher cost while the distributed TED with even fusion point deployment has the lowest cost. This is because the centralized version will introduce control overhead and the even fusion point deployment strategy guarantees that each event can find a fusion point within certain number of hops.
+
+\begin{figure}
+\centering
+\figurecurrentwidth{distance-size15}
+\caption{Average event size: 15 nodes}
+\label{fig:sim-distance-size15}
+\end{figure}
+
+Our last set of results are shown in Figure \ref{fig:sim-distance-size15}. In this set of results, we set the average event size to be 15 nodes. Note that this is already a quite large event size since on average, it spans 15 nodes. It may be suitable for many applications where the aggregate functions such as average or sum need to be evaluated. The results are similar to the previous ones in the sense that SPT has the highest energy cost while TED-E has the lowest. However, this set of results are more stable and consistent than the previous set. This is because as the event size becomes larger, it is easier to cover more number of nodes and therefore having more overlapped ones. TED may make use of such overlapped nodes to select fusion points. Therefore, TED will have a wider choice as the event size becomes larger and the results will become more stable.
+
+In summary, according to all the results shown in this section, we can draw conclusion that event size is not a major factor that will decide the amount of energy that TED could save. While TED does perform better than SPT in respect of event size and event distance, we still need to study more factor to see if it can perform even better.
+
+\subsection{Impact of Event Probability}
+
+\begin{figure}
+\centering
+\figurecurrentwidth{prob-size5-dist10}
+\caption{Event size: 5, distance: 10}
+\label{fig:sim-prob-size5-dist10}
+\end{figure}
+
+Since we have studied two parameters in our previous sections, we will study the last factor in accordance to the previous factors we have studied and see how it can affect the performance of TED. Figure \ref{fig:sim-prob-size5-dist10} shows our first set of results. Our first set of results look promising since all variations of TED saves significant amount of energy than SPT.
+
+\begin{figure}
+\centering
+\figurecurrentwidth{prob-size5-dist20}
+\caption{Event size: 5, distance: 20}
+\label{fig:sim-prob-size5-dist20}
+\end{figure}
+
+Our second set of results are shown in Figure \ref{fig:sim-prob-size5-dist20}. Since we have already concluded in our previous section that event size is not a major factor that will affect the performance of TED, in this set of results, we fix the event size while increasing the event distance for each set. Then within each set, we use the event probability as the X-axis to have a more direct view of the relation between event probability and energy cost.
+
+As shown in the figure, SPT still has the highest energy cost. For TED, the energy cost is particular low while the event probability is less than 50\%. This is because with TED, we can effectively filter the primitive events if they are not going to lead to higher level of composite events.
+
+\begin{figure}
+\centering
+\figurecurrentwidth{prob-size5-dist30}
+\caption{Event size: 5, distance: 30}
+\label{fig:sim-prob-size5-dist30}
+\end{figure}
+
+Our third set of results are shown in Figure \ref{fig:sim-prob-size5-dist30}. This set of results are consistent with the previous two sets. For SPT, the energy cost does not change much with the event probability. For all versions of TED, the event detection cost is below 40 when the event probability is 20\%. This is because with such a low probability, many of the primitive events have been filtered before they get a chance to be fused for higher level composite event detection.
+
+Among the three variations of TED, we can see TED-C has slightly higher cost than the other two. This is because of the overhead introduced in the centralized approach where the event fusion points need to be selected by the sink node. For the distributed variations, TED-R and TED-E have similar performance. TED-E has slightly lower energy cost because of its even distribution. Each sensor nodes may find a fusion point in a bounded distance.
+
+\begin{figure}
+\centering
+\figurecurrentwidth{prob-dist20-size5}
+\caption{Event distance: 20, size: 5}
+\label{fig:sim-prob-dist20-size5}
+\end{figure}
+
+In our previous results. We studied the impact event probability by fixing event size while increasing the event distance. The fixed event size was set to be 5 which is small enough to be considered as atomic event size. As we have also studied the impact of event size in our previous sections, for the sake of completeness, we also perform another three set of simulations to study the event probability while fixing the event distance.
+
+Since our network size is 127 by 127, we choose the fixed average event distance to be 20. This is around \(\frac{1}{6}\) of the network dimension which is probably representative enough for many WSN-based application. Our fourth set of results are presented in \ref{fig:sim-prob-dist20-size5}. In the figure, we can also see TED can save significant amount of energy in comparison with SPT.
+
+\begin{figure}
+\centering
+\figurecurrentwidth{prob-dist20-size10}
+\caption{Event distance: 20, size: 10}
+\label{fig:sim-prob-dist20-size10}
+\end{figure}
+
+Our fifth set of results is shown in Figure \ref{fig:sim-prob-dist20-size10}. On the X-axis, the event probability spans from 20\% to 60\%. Note that for composite events, this is a conditional probability when all the sub-events happen. For instance, if a composite event \(e_3\) comes from two sub-events \(e_1\) and \(e_2\). Then we have the following:
+\begin{align*}
+P(e_3) = P(e_1) \times P(e_2) \times P(e_3|e_1, e_2)
+\end{align*}
+
+\begin{figure}
+\centering
+\figurecurrentwidth{prob-dist20-size15}
+\caption{Event distance: 20, size: 15}
+\label{fig:sim-prob-dist20-size15}
+\end{figure}
+
+Our final set of results is shown in Figure \ref{fig:sim-prob-dist20-size15}. Similar to our previous sets of results, TED can save around 50\% - 60\% of energy cost compared with SPT.
+
+In summary, we can find our simulation results agree with our analytical results. The energy cost of TED is linearly proportional to the event probability while the energy cost of SPT has little difference in regard to probability changes. This characteristic will make TED especially effective for applications where the primitive events happen very frequently while the composite events happen rarely.

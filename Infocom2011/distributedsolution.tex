@@ -1,0 +1,73 @@
+\section{A Distributed Solution}
+Based on our centralized solution, we propose a distributed solution. Before the actual clustering begins, the network will first perform some initialization work as follows. The purpose of the initialization phase is to let each node obtain its necessary neighbor information for the following phase of the algorithm.
+\begin{enumerate}
+\item The sensor nodes exchange messages to each other in order to find their one-hop neighbors. They will also discover the cost required to cluster with each of its neighbors
+\item A control node will flood a \(req_{ch}\) message (to be explained shortly) in the whole network so that the clustering will begin. The sink node can usually be used as the control node in the network.
+\end{enumerate}
+
+After the initialization phase, our clustering algorithm begins the cluster selection. The basic idea behind cluster selection is similar to centralized solution \(p\). In order to reduce the cost, there should be as few overlapping nodes as possible. In order to make sure the clusters will cover the whole network, all nodes will be given a chance to select more clusters. The nodes with smaller cost will be given higher priority to select clusters so that the total cost will likely be reduced.
+
+\subsection{Preliminaries}
+In order to let the nodes choose the cluster with lower cost while still maintaining the connectivity, we let the nodes do the clustering based on time slots. The time slots are assigned by the cluster heads. In each time slot, a node can exchange several messages with its one-hop neighbors.
+
+The following messages will be used during the clustering:
+\begin{itemize}
+\item \(req_{cm}\): the message requesting for being a cluster member of others. 
+\item \(req_{ch}\): the message requesting for being a cluster head of others. 
+\item \(acpt_{cm}\): the message for accepting the node as a cluster member.
+\item \(acpt_{ch}\): the message for accepting the node as a cluster head.
+\item \(adv_{i}\): the message for advertising the node's cluster information that the node belongs to the cluster with node \(i\) as cluster head.
+\end{itemize}
+
+\subsection{Cluster Selection}
+For each node, it only has three roles during clustering: unclustered, cluster member and cluster head. Based on these three roles, we illustrate our algorithm in Algorithm \ref{algo:selectionreceiver}. 
+
+\begin{algorithm}
+\begin{algorithmic}
+\REQUIRE one-hop neighbors' information and a received message
+\IF {self is not clustered}
+	\IF {received \(req_{ch}\)}
+		\STATE Self becomes cluster member, and send back \(acpt_{ch}\), if there are any unclustered members, attach the minimum cost in the \(acpt_{ch}\) message.
+	\ELSIF {received \(req_{cm}\)}
+		\STATE Self becomes cluster head and send back \(acpt_{cm}\).
+	\ENDIF
+\ELSIF {self is cluster head or cluster member}
+	\IF {received \(req_{ch}\)}
+		\STATE Set self to belong to that cluster and send back \(acpt_{ch}\)
+	\ENDIF
+\ENDIF
+\end{algorithmic}
+\caption{Cluster selection (receiver part)}
+\label{algo:selectionreceiver}
+\end{algorithm}
+
+The sender part is shown in Algorithm \ref{algo:selectionsender}. The cluster head will first make its cluster has enough member and then, each cluster will allow further construction of other clusters.
+
+\begin{algorithm}
+\begin{algorithmic}
+\REQUIRE one-hop neighbors' information 
+\IF {self is cluster head and current cluster size \(p_i<p_{opt}\)}
+	\STATE Send \(req_{ch}\) to \(p_{opt}-p_i\) neighbors according to their cost (send to ones with lower cost first). Send to the unclustered neighbors first. If not enough unclustered neighbors, send the ones that belong to different clusters.
+\ENDIF
+\IF {self is cluster head}
+	\STATE Gather the cost information all nodes in the cluster (including itself); sort the cost information in ascending order; the \(n\)th node in the order will be assigned to time slot \(n\).
+\ENDIF
+\WHILE {self is assigned time slot and has unclustered neighbors}
+	\STATE sleep for the time \(n\)
+	\STATE Send \(req_{cm}\) to its unclustered neighbor with lowest cost.
+\ENDWHILE
+\end{algorithmic}
+\caption{Cluster selection (sender part)}
+\label{algo:selectionsender}
+\end{algorithm}
+
+Note that when the cluster head gathers the cost information, the cluster member will send the minimum cost of its unclustered neighbors. The purpose of time slotting here is just so that the nodes with lower cost will be able to do further clustering first. Once a node receives \(acpt_{ch}\) or \(acpt_{cm}\), it will take the role of cluster head or cluster member, respectively.
+
+\subsection{Analysis}
+Informally, it can be easily shown that the distributed algorithm is correct as the solution it produces will satisfy all the constraints:
+\begin{itemize}
+\item Since all nodes will be given a chance to send \(req_{cm}\) to unclustered neighbors, the clusters will eventually cover the whole network.
+\item After the controller node sends \(req_{ch}\), only the clustered node will send \(req_{ch}\) or \(req_{cm}\) afterwards, so all clusters will be connected.
+\item Cluster head only sends \(req_{ch}\) its one-hop neighbor, and the nodes will not switch roles so all clusters will be one-hop.
+\item For each cluster head, it will send out \(req_{ch}\) when \(p_i<p_{opt}\), so all clusters will have a minimum size of \(p_{opt}\)
+\end{itemize}

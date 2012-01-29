@@ -1,0 +1,15 @@
+\section{Introduction}
+\label{sec:introduction}
+Composite event subscription and detection \cite{jector} in WSNs is needed in many applications such as healthcare \cite{lo:ban}, smart building \cite{lynch:shm}, and intelligent transportation system \cite{klein:its}. For instance, in an intelligent transportation system, the user may want to subscribe events which represent traffic jam. The traffic jam event may be defined when there are certain number of cars waiting on a road. Such type of event may come from many sub-events such as the number of the vehicles on a road and the speed of the vehicles. Furthermore, the speed of the vehicles may come from the events of each individual vehicle. All these sub-events must satisfy certain spatial and temporal relations in order to indicate an occurrence of a composite event.
+
+Because of the common requirements for event subscription and detection, it is more desirable to have a generic middleware layer to handle composite events instead of reinventing the wheel and implementing application-specific event processing mechanisms. Moreover, even though there are a lot of programming support for programming WSN \cite{nesc}, developing WSN-based applications is still considered challenging because the programmers need to deal with low level issues such as networking, concurrency and resource management. 
+
+In this paper we introduce PSWare, a publish / subscribe (pub/sub) middleware for WSN that supports composite events. PSWare is a type-based pub/sub system where events are subscribed and detected according to their types. In type-based pub/sub systems, composite events may be easily defined by specifying their sub-event types and the relations among them.
+
+The contribution of this paper can be summarized as follows:
+\begin{enumerate}
+  \item We describe the design and implementation of PSWare, a type-based pub/sub middleware framework that supports composite events.
+  \item By leveraging the flexibility of PSWare, we implemented two composite event detection mechanisms based on PSWare. The first one is built on top of CTP and detects the events in a centralized fashion by collecting all data at the sink. The second one, TED, is a distributed type-based event detection algorithm. We show PSWare can be quite useful in evaluating the performance of different event detection algorithms.
+\end{enumerate}
+
+The rest of the paper is organized as follows. Section \ref{sec:relatedworks} summarizes related works. Section \ref{sec:design} describes the design of PSWare in details. Section \ref{sec:experiments} shows our experiments with PSWare with different event detection algorithms.

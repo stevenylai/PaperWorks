@@ -1,0 +1,20 @@
+\chapter{Literature Review}
+\label{chapter:literature}
+\section{Overview}
+There are many issues related to designing PSWare including:
+\begin{itemize}
+\item Programming abstraction: since the purpose of middleware is to help develop applications, an appropriate layer of abstraction is needed so that the application developers do not have to worry too much about the underlying details.
+\item Middleware design: the middleware is designed with such an objective in mind that different types of event detection algorithms may be easily integrated into the system. This requires a flexible and extensible architectural design.
+\item Optimized event detection: an efficient event detection algorithm is the heart of the middleware because the whole system relies on it for efficient event processing.
+\end{itemize}
+
+\begin{figure}
+\centering
+\figurecurrentwidth{literature-overall}
+\caption{Topics related to PSWare}
+\label{fig:literature-overall}
+\end{figure}
+
+In summary, the issues related to PSWare design can be illustrated in Figure \ref{fig:literature-overall}. From the engineering perspective, we need to provide a high level event definition language to the user. By doing that, we need a compiler for such event definition language. After the high level event definition has been compiled, we need a runtime environment which will act as a glue layer between the compiled codes and the actual event definition algorithm. From the research perspective, the event detection problem mainly involves two aspects - distributed event processing and sensor nodes placement. The distributed processing part emphasizes on optimization so that the events may be detected with minimum energy cost. The placement part studies how the sensor nodes may be efficiently deployed in the network to help achieving the optimization goal.
+
+In this chapter, we study the existing literatures and work on these topics.

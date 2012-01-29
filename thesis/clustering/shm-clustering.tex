@@ -1,0 +1,146 @@
+\subsection{Clustering for Modal Analysis}
+In this sub-section, we first give an overview of this cluster-based approach and then formulate the energy consumption of cluster-based modal analysis.
+
+In the cluster-based modal analysis, deployed sensor nodes are partitioned into a number of single-hop clusters and each CH performs intra-cluster modal analysis to extract local mode shapes. Since mode shapes of a cluster only contain elements corresponding to the sensor nodes in that cluster, the mode shapes in all the clusters need to be assembled to obtain the mode shapes defined on all the deployed sensor nodes. The whole process is illustrated in Figure \ref{fig:clusterflow}.
+
+\begin{figure}
+	\centering
+		\figurecurrentwidth{clusterflow}
+	\caption{Overview of cluster-based modal analysis process}
+	\label{fig:clusterflow}
+\end{figure}
+
+The modal parameters are identified using the natural excitation technique (NExT)\cite{james1993natural} in conjunction with the ERA. NexT+ERA is a widely accepted modal analysis approach and can give accurate mode shape estimate using output data-only. 
+
+In each cluster, the NExT is used first to calculate power spectral density (PSD) of the CH and cross spectral density (CSD) between the CH and each of the cluster member. PSD and CSD functions are estimated using:
+\begin{equation}
+G_{xy}(\omega)=\frac{1}{n_d\cdot n_t}\sum\limits_{i=1}^{n_d}X_i^*(\omega)\cdot Y_i(\omega) \label{eq:next}
+\end{equation}
+where \(G_{xy}(\omega)\) is the CSD between two vibration signals, \(x(t)\) and \(y(t)\), measured from CH and a cluster member, respectively. \(X(\omega)\) and \(Y(\omega)\) are the Fourier transforms of \(x(t)\) and \(y(t)\), and '*' denotes the complex conjugate. \(n_t\) is time length of each record \(x_i(t)\) or \(y_i(t)\). \(n_d\) is the number of averages mainly for denoising purpose and \(n_d\) practically ranges from 10 to 20. When calculating \(G_{xy}\), consecutive records of \(x_i(t)\)(also \(y_i(t)\)) generally overlap. When \(y(t)\) in Eq. \ref{eq:next} is replace by \(x(t)\), the power spectral density (PSD) of CH is obtained. 
+
+After obtaining CSD and PSD functions, the inverse Fourier transform is implemented and the cross-correlation functions (CCFs) and auto-correlation function (ACF) are obtained.  The ERA uses these functions to build a state space system whereby mode shapes of the structure are identified.
+
+Traditionally, CH collects the raw data from all its cluster members, calculates CSDs and its PSD, and then uses the ERA to identify mode shapes.  However, the model-based data aggregation method proposed by \cite{nagayama2008structural} can be used here to decrease the energy consumption. In this approach, instead of collecting measurements data from cluster members, CH broadcasts its time record of length \(n_t\). On receiving the record, each cluster member calculates its CSD and stores it locally.  This procedure will be repeated \(n_d\) times, until the CSD is according to Eq. \ref{eq:next}. Each cluster member then transmits the first half of the corresponding CCF to the CH.
+\begin{comment}
+\begin{figure}
+	\centering
+		\figurecurrentwidth{clusteraggregation}
+	\caption{Model-based data aggregation (Assume 50 \% Overlap)}
+	\label{fig:clusteraggregation}
+\end{figure}
+\end{comment}
+
+Based on the discussion above, we can estimate the energy consumption of intra-cluster modal analysis. To obtain the mode shapes of a cluster \(S_i\), the total energy consumption in \(S_i\), denoted as \(cost(S_i)\), can be mainly decomposed into the following three parts: 
+\begin{subequations}
+\begin{equation}
+cost(S_i)=Er_s(S_i)+Er_c(S_i)+Er_a(S_i)
+\end{equation}
+
+where \(Er_s(S_i)\), \(Er_c(S_i)\)  and \(Er_a(S_i)\) are the energy consumed in data sampling, intra-cluster wireless communication and computation associated with modal analysis, respectively. 
+
+Assume a cluster \(S_i\) contains a total of \(n_i\) sensor nodes, then sampling cost \(Er_s(S_i)\) is:
+\begin{equation}
+Er_s(S_i)=n_i\cdot N\cdot e_S
+\end{equation}
+
+where \(N\) is the total amount of time history record sampled in each sensor. Assuming 50 \% overlapping,  \(N=(n_d/2+1/2)n_t\). \(e_S\) is the energy for sampling one data. We assume that \(n_d\) , \(n_t\), \(N\) and \(e_S\) are fixed.
+
+The intra-cluster wireless communication cost \(Er_c(S_i)\) is:
+\begin{align}
+Er_c(S_i)=&N\cdot e_T+(n_i-1)N\cdot e_R\nonumber \\
++&(n_i-1)\frac{n_t}{2}(e_T+e_R) \label{eq:energytotal}
+\end{align}
+where \(e_T\) and \(e_R\) are the energy cost for transmitting and receiving one data, respectively. The first two terms at the right side of Eq. \ref{eq:energytotal} are the energy consumed when CH broadcasts its time history data and when all the cluster members receive the broadcasts, respectively. The last term is the energy consumption when the \((n_i-1)\) cluster members transmit back their correlation functions to the CH.
+
+The computation cost \(Er_a(S_i)\) can be formulated as:
+\begin{equation}
+Er_a(S_i)=n_i\cdot e_{NExT}+e_{ERA}(n_i)
+\end{equation}
+\end{subequations}
+
+where \(e_{NExT}\) is the energy consumed when each node implements the NExT (including calculating the CSD/PSD and CCF/ACF) and \(e_{ERA}\) is the energy used in CH when it carries out the ERA for mode shape identification. \(e_{NExT}\) is fixed given  \(n_t\) and \(n_d\). \(e_{ERA}\) is dependent on \(n_i\) and number of mode shape vectors \(p\) to be identified.  Given \(p\), \(e_{ERA}(n_i)\) is not a linear function of \(n_i\) since the ERA involves complex matrix computations including SVD and matrix inversion. This point is demonstrated in Figure \ref{fig:ERAcomplexity}, where the computation time of our SHM mote to implement the ERA for different cluster sizes is illustrated. The fitting function is also illustrated in the figure. It can be seen that with the increase of \(n_i\), the time consumed, which is the indicator of energy consumption, is quadratically increased.
+\begin{figure}
+	\centering
+		\figurecurrentwidth{ERAcomplexity}
+	\caption{The complexity of the ERA}
+	\label{fig:ERAcomplexity}
+\end{figure}
+
+From the equations above, we have \(cost(S_i)=cost(n_i)\), indicating that the energy consumption of a cluster is only associated with the number of sensor nodes in this cluster. It is of interest to see that if possible, whether to generate small-sized clusters or large-sized clusters is more energy efficient.  To find the answer, we assume \(M\) sensor nodes can be partitioned into equal-sized clusters of size \(n\), then the number of clusters \(c = M/n\). The optimal cluster size, denoted as \(n_{opt}\), can be obtained by looking for the \(n\) that minimizes the average energy consumption per node defined as: 
+
+\begin{align}
+\label{eq:nooverlap}
+Epn(n) = \frac{c\cdot cost(n)}{M} = N(e_S+\beta) + e_{NExT}\\ \nonumber 
++ \frac{N(e_T-\beta)}{n} + \frac{e_{ERA}(n)}{n} 
+\end{align}
+where \(\beta =e_R+\frac{n_t}{2N}(e_T+e_R)\).
+
+The \(3^{rd}\) term in the right side of the Eq. \ref{eq:nooverlap} indicates that in terms of wireless communication, partitioning sensor network into large-sized clusters is preferred when \(e_T \geq \beta\) while generating small-sized clusters is better if otherwise. The \(4^{th}\) term tells us that small cluster size \(n\) is more energy efficient in terms of computation considering that \(e_{ERA}(n)\) is a quadratic function of \(n\). As a result, there does not exist a rule of thumb for clustering and we have different optimal cluster sizes for different conditions. As an example, some parameters obtained by some real tests of our SHM Mote are listed in Table \ref{tab:Table2}. Based on Table \ref{tab:Table2}, Figure \ref{fig:MagicNumber2}a shows various optimal cluster sizes, illustrated as red dots in the figure, when the transmission power \(e_T\) is set to be from \(e_T = e_R\) to \(e_T = 5 e_R\). It can be seen that when \(e_T=e_R\), the smaller the cluster size, the better. (Note that the ERA requires that the number of sensor nodes in each cluster should be at least larger than \(p\)). With the increase of \(e_T\), the optimal cluster size is increased but does not go unbounded considering the energy consumption of the ERA for large-sized clusters.
+
+\begin{figure}
+	\centering
+		\figurecurrentwidth{EnergyPerNode}
+	\caption{The optimal cluster sizes in different conditions.}
+	\label{fig:MagicNumber2}
+\end{figure}
+
+
+\begin{table}
+	\centering
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+\(N\)&\(p\)&\(n_t\)&\(n_d\)&\(e_S\)&\(e_R\)&\(e_{NExT}\)&\(e_{ERA}\)\\
+& & & &(mAh)&(mAh)&(mAh)&(mAh)\\
+\hline
+     &     &       &       &       &   & &\(0.0417(0.4n_i^3\)\\
+10752&3&1024&20&1.1e-4&5e-4&0.5&\(+1.2n_i\)\\
+&&&&&&&-3.6)\\
+\hline
+\end{tabular}
+	\caption{Parameters used in Figure \ref{fig:MagicNumber2}}
+	\label{tab:Table2}
+\end{table}
+
+Clustering using minimum dominating set \cite{wan2004distributed} or maximum independent set 
+\cite{banerjee2001clustering} cannot be directly applied to solve our clustering problem since they mainly aim to find as small number of clusters as possible. Also, in the discussion so far, we assume that no overlapping nodes exist in the clusters. However, we will show in the following section that a necessary condition for cluster-based modal analysis is that all the generated clusters must be connected through the overlapping nodes. This requirement further increases the difficulty of the clustering problem.
+
+\subsection{Mode Shape Assembling}
+After the mode shapes in all clusters have been identified, they need to be stitched together to obtain mode shapes defined on all of deployed sensor nodes. 
+
+However, since mode shape vectors identified in a cluster only represent the relative vibration amplitudes at cluster sensor nodes, mode shapes of different clusters may not be able to be assembled together. This can be demonstrated in Figure \ref{fig:NonOverlapClusterBeam}, where the deployed 12 sensor nodes in Figure \ref{fig:modes} are partitioned into three clusters to identify the \(3^{rd}\) mode shape.  Although the mode shape of each cluster is correctly identified, we still cannot obtain the mode shapes for the whole structure. The key to solve this problem is overlapping.  We must ensure that each cluster has at least one node which also belongs to another cluster and all the clusters are connected through the overlapping nodes (a more formal definition will be given in the next section).  For example, in Figure \ref{fig:OverlapClusterBeam}, mode shapes identified in each of the three clusters can be assembled together with the help of the overlapping nodes \(5\) and \(9\). This requirement of overlapping must be satisfied when formulating the problem of optimal clustering.
+
+\begin{figure}
+\centering
+\subfloat[]{\label{fig:NonOverlapClusterBeam}
+%\figurecurrentwidth{originalbeam}}
+\figurehalfwidth{NonOverlapClusterBeam}}
+%\qquad
+\subfloat[]{\label{fig:OverlapClusterBeam}
+%\figurecurrentwidth{mode1}}
+\figurehalfwidth{OverlapClusterBeam}}
+\caption{Mode shape assembling}
+\label{fig:TwoTypesClustering}
+\end{figure}
+
+It is obvious that overlapping will affect the overall energy consumption and consequently, the optimal cluster size \(n_{opt}\) will be different from that when no overlapping is considered.  By defining the number of overlapping nodes as \(n_o = \sum\limits_{i=1}^c\left|S_i\right| - M\), and still assume these \(M\) sensor nodes are partitioned into equal-sized clusters of size \(n\), then the energy consumption per node becomes
+
+\begin{align}
+\label{eq:MagicNumberOverlapping}
+Epn'(n) = \frac{(M+n_o)/n \cdot cost(n)- n_o \cdot N \cdot e_S}{M}\\ \nonumber
+=\frac{cost(n)}{n}  + \frac{n_o}{M} \cdot \kappa
+\end{align}
+
+where \(\kappa = N \cdot \beta + e_{NExT}+ \frac{N(e_T-\beta)}{n} + \frac{e_{ERA}(n)}{n}\).  Considering the fact that unnecessary overlapping will cause extra energy consumption and the number of overlapping nodes should be kept as small as possible, we require that \(n_o \geq \frac{M+n_o}{n} -1\). Therefore,
+
+\begin{equation}
+\label{eq:MagicNumberOverlapping2}
+Epn'(n) \geq \frac{cost(n)}{n}+ \frac{1-n/M}{n-1}\kappa
+\end{equation}
+
+The right side of Eq. \ref{eq:MagicNumberOverlapping2} essentially provides a lower bound of energy consumption that clustering can achieve when the overlapping constraint is considered. The optimal cluster size \(n_{opt}\) can be calculated by minimizing \(n\) in Eq. \ref{eq:MagicNumberOverlapping2}.  For example, the \(n_{opt}\) for the parameters listed in Table \ref{tab:Table2} are illustrated in Figure \ref{fig:MagicNumber2}b. 
+
+By comparing Figure\ref{fig:MagicNumber2}a with Figure\ref{fig:MagicNumber2}b, it also can be easily seen that optimal cluster size is larger when overlapping constraint is considered. Clustering which generates small-sized clusters may not be energy efficient since a large number of overlapping nodes can cause extra energy consumption in terms of communication and computation. 
+
+Also should be noted is that the optimal cluster size \(n_{opt}\), either obtained by Eq. \ref{eq:nooverlap} or by Eq. \ref{eq:MagicNumberOverlapping2}, is not affected by actual network topology. In a dense network, it is more possible to achieve the obtained optimal cluster size and therefore, the total energy will be lower than a sparse network.
+
+Here, we do not consider the inter-cluster communication simply because delivering obtained mode shapes requires significantly less energy than other processes.

@@ -1,0 +1,43 @@
+\subsection{Distributed Algorithm}
+Based on our first centralized algorithm, we propose a distributed solution. In this solution, each node only needs its one-hop neighbors information and communicates only with its one-hop neighbors. The clustering will start at a single controller node which usually is the sink node of the network.
+
+Similar to Algorithm \ref{algo:greedy1}, each newly created cluster will be connected to at least one of the existing clusters. In the distributed algorithm, each node will maintain two lists of neighbors: unclustered and clustered. The lists will be sorted according to each neighbor's own number of unclustered neighbors. The nodes with fewer unclustered neighbors will do clustering or join other clusters first. This is done by assigning each node's execution of the algorithm to a specific time slot.
+
+Each node has only three roles during clustering: unclustered, CM (cluster member) and CH. We illustrate the pseudo code based on the three roles in Algorithm \ref{algo:selectionsender}.
+
+\begin{algorithm}
+\begin{algorithmic}[1]
+\REQUIRE \(n_{opt}\), \(p\), unclustered neighbors \(un\), clustered neighbors \(cn\) (\(un\) and \(cn\) are both sorted in increasing order according to the number of unclustered neighbors)
+\IF {self is unclustered}
+	\STATE Self becomes CH
+\ENDIF
+\IF {self is CH}
+	\STATE Select one node from \(cn\) as its member
+	\IF {\(size(un)\geq n_{opt}\)}
+		\STATE Construct the cluster as size of \(n_{opt}\) by selecting first \(n_{opt}\) nodes from \(un\) as CM
+	\ELSIF{\(n_{opt}>size(un)\geq p\)}
+		\STATE Construct a cluster by selecting all nodes in \(un\) as CM
+	\ELSE
+		\STATE First construct a cluster by selecting all nodes in \(un\) as CM then select more nodes from \(cn\) as CM until \(cluster\_ size=p\)
+	\ENDIF
+\ELSIF {self is CM}
+	\STATE Broadcast a message to all neighbors saying the status is currently CM.
+\ENDIF
+\STATE \(an=merge(un, cn)\)
+\FORALL {\(n\in an\) that haven't been assigned a time slot}
+	\STATE Assign time slot \(t[i]\) to \(n\) where \(i\) is the index of \(n\) in \(an\)
+\ENDFOR
+\end{algorithmic}
+\caption{Distributed algorithm for clustering}
+\label{algo:selectionsender}
+\end{algorithm}
+
+Each node will not execute the algorithm until the start of its own time slot. The input \(p\) is the minimum cluster size constraint and \(n_{opt}\) is the calculated optimal cluster size. Once a CH decides to choose certain node as CM, it will send a message \(req_{ch}\) and the corresponding CM will send \(acpt_{ch}\) to acknowledge the selection. After the execution of the algorithm on a node, an unclustered node will become CH. At the end of the algorithm, each node will merge all its neighbors into one sorted list and assign time slots. The duration of the time slot is large enough so that a CH can perform the selection. \(t[i]\) is the \(i^{th}\) time slot from the end of the current time slot. It can be easily seen that the generated clusters from the distributed algorithm can satisfy all the constraints.
+
+Informally, it can be easily shown that the distributed algorithm is correct as the solution it produces will satisfy all the constraints:
+\begin{itemize}
+\item Since all nodes will be given a time slot to do run the algorithm, the clusters will eventually cover the whole network.
+\item The clustering starts at the controller node and all the later CHs will first select a CM from its \(cn\). Therefore, all the clusters will be connected.
+\item CH only selects CM within its one-hop neighbors, and the CHs will not remove its role as CH so all clusters will be one-hop.
+\item For each CH, it will ensure the cluster size is at least \(p\) by selecting additional CM until the cluster size reaches either \(p\) or \(n_{opt}\).
+\end{itemize}

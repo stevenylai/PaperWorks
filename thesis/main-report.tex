@@ -1,0 +1,120 @@
+\documentclass[12pt, a4paper, twoside]{report}
+
+\hbadness=10000
+\hfuzz=50pt
+
+\input{thesis-report-setting}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{verbatim}
+\usepackage{float}
+\usepackage[plainpages=false, pdfpagelabels]{hyperref}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\graphicspath{{./simulation/}{./figures/}{../figures/psware/}{../figures/shm/}{../simulation/psware/}{../Percom2011/simulation/}{../Percom2011/figures/}{../DCOSS2011/simulation/}{../DCOSS2011/figures/}}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\figurecurrentwidth}{\includegraphics[width=.8\textwidth]}
+\newcommand{\figurehalfwidth}{\includegraphics[width=.49\textwidth]}
+%\newcommand{\figurecurrentwidth}{\includegraphics[width=.49\textwidth]}
+%\newcommand{\figurehalfwidth}{\includegraphics[width=.24\textwidth]}
+
+\lstset{
+	basicstyle=\footnotesize\ttfamily,
+	keywordstyle=\color{red},
+	frame=lines,
+	float,
+	numbers=left,
+	belowcaptionskip=6mm,
+	xleftmargin=7mm,
+	framexleftmargin=7mm,
+	escapeinside={(*}{*)},
+	tabsize=2,
+	breaklines=true}
+	
+\newtheorem{theorem}{Theorem}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}} 
+\pdfminorversion=9
+
+\begin{document}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt} % remove lines as well
+\renewcommand{\footrulewidth}{0pt}
+\pagenumbering{alph}
+\include{./frontmatter/title-report}
+\cleardoublepage
+\input{./frontmatter/originality}
+\cleardoublepage
+
+\fancyhf{}
+\fancyfoot[C]{\thepage}
+\pagenumbering{roman}
+\include{./frontmatter/dedication} \cleardoublepage
+\include{./frontmatter/abstract} \cleardoublepage
+\include{./frontmatter/publist} \cleardoublepage
+\include{./frontmatter/acknowledgement} \cleardoublepage
+
+\tableofcontents \cleardoublepage
+\listoffigures \cleardoublepage
+\listoftables \cleardoublepage
+
+\pagenumbering{arabic}
+\fancyhf{}
+\fancyhead[RO]{\textit{\nouppercase{\leftmark}}}
+\fancyhead[LO]{\textit{\nouppercase{\chaptername \thechapter}}}
+\fancyhead[CE]{A Thesis Submitted by Steven Lai}
+\fancyfoot[C]{\thepage}
+
+\include{./introduction/introduction}
+\input{./introduction/background}
+\input{./introduction/outline}
+\cleardoublepage
+
+\include{./literature/overview}
+\input{./literature/wsn-middleware}
+\input{./literature/wsn-macroprogramming}
+\input{./literature/eventDefinition}
+\input{./literature/wsn-dataAggregation}
+\cleardoublepage
+
+\include{./design/design}
+\input{./design/edl}
+\input{./design/runtime}
+\input{./design/systeminstruction}
+\cleardoublepage
+
+\include{./algorithm/systemmodel}
+\input{./algorithm/centralized}
+\input{./algorithm/distributed}
+\input{./algorithm/deployment}
+\cleardoublepage
+
+\include{./clustering/shm-introduction}
+\input{./clustering/shm-modeshape}
+\input{./clustering/shm-clustering}
+\input{./clustering/shm-optimalclustering}
+\input{./clustering/shm-centralized}
+\input{./clustering/shm-distributed}
+\cleardoublepage
+
+\include{./implementation/application}
+\input{./implementation/its}
+\cleardoublepage
+
+\include{./evaluation/analysis}
+\input{./evaluation/simulation}
+\input{./evaluation/experiments}
+\cleardoublepage
+
+\include{./conclusion/conclusion}
+\cleardoublepage
+
+\bibliographystyle{plain}
+\renewcommand{\bibname}{References} % changes the header; default: Bibliography
+\bibliography{../references/wsn-general,../references/wsn-aggregation,../references/wsn-middleware,../references/event-detection,../references/wsn-pubsub,../references/edl,../references/pubsub,../references/algorithms,../references/shm,./frontmatter/publist}
+\end{document}

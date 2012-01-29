@@ -1,0 +1,7 @@
+\section{Motivation}
+There are mainly three types of subscriptions: topic based, content based and type based. Events can also be detected with the three approaches accordingly. Type-based event detection is more suitable for WSN-based applications because of three reasons.
+\begin{itemize}
+\item Because of the resource constraints imposed in WSN, it is usually not preferable to send all the primitive events to the sink node for centralized event detection. Instead, events should be detected in-network if possible. Composite events in WSN may have multiple levels and higher level events cannot be detected until its sub-events have been detected. Therefore, in-network event detection must take the event types into consideration in order to detect the events. 
+\item Pure topic based event detection may not be suitable for WSN because many WSN requires events that have different data types or topics. For example the detection of fire may require both temperature and light event topics. Without considering event types, it is very difficult to do in-network composite events detection just based on the event topics. 
+\item Similar to topic based event detection, content based event detection without considering event types can only filter the primitive events and may not be efficient if the lower-level events occur with a much higher frequency than composite events.
+\end{itemize}

@@ -1,0 +1,131 @@
+\section{CEDU in Action}
+\label{sec:cedu}
+The essential idea of CEDU is that after each sub-event is detected, the nodes will at first forward the detected events randomly to some nearby fusion points in the hope that at least some of them will be good ones. When the composite events are detected, the fusion points will first check the record to see if the source nodes have already selected any fusion point. If not, it will flood some feedback in the network so that the source node will get it and other nodes can also use such feedbacks as 'hints' when they need to forward the events. By collecting different feedbacks from different fusion points, the sensor nodes will choose the best one according to the cost. If the sub-events occur again, the nodes will be able to forward the detected events based on the feedback so that the cost could likely be reduced.
+
+\subsection{Data Structures}
+The \(table_r\) is a table used by each individual sensor nodes so that it will know how to reach a specific fusion point \(n_f\in N_f\). Since the sensor nodes have storage constraints, if there are too many fusion points in the network, then the sensor node will only record the closest fusion points.
+\begin{itemize}
+\item Fusion point ID (\(fid_n\)): the node ID of the fusion point:
+\item	Hop count (\(hop_n\)): the number of hops to reach the fusion point
+\item	Parent (\(parent_n\)): the next hop to that fusion point
+\end{itemize}
+\(table_e\) containing the information for each event type \(e_n\in E\) which includes the following fields:
+\begin{itemize}
+\item Event type ID (\(e_n\)): the ID which is assigned to each event type
+\item Fusion point for the event (\(fusion_n\)): the fusion point at which the event is mostly likely to be detected at the lowest cost.
+\item Cost (\(cost_n\)): the cost for the event type \(e_n\)
+\item Expiry time (\(expire_n\)): the expiry time of the entry. When the time has passed the expiry time, the entry will be discarded and the sensor node will find a new event fusion point. This is for dealing with the possible dynamicity of the events.
+\end{itemize}
+In addition to the above tables, each fusion point \(n_f\in N_f\) will use another table \(table_m\) for the purpose of sending feedback to the sensor nodes which detect the events. \(table_m\) contains the following fields:
+\begin{itemize}
+\item Event type ID (\(e_n\)): the ID of the event type
+\item Event instance ID (\(i\)): the \(i\)th event instance of event type \(e_n\) (we use \(e_n^i\) to denote such an instance of event)
+\item Source node (\(n_n^i\)): the node which forwarded \(e_n^i\) to the fusion point
+\item Event timestamp (\(t_n^i\)): the timestamp when the event \(e_n^i\) is detected
+\item Detection cost (\(cost_n^i\)): the cost for detecting event \(e_n^i\)
+\end{itemize}
+
+\subsection{Table Construction}
+Each node \(n_i\) periodically broadcasts messages \(msg_r\) which is its \(table_r\). If the node itself is a fusion point, then it will add itself in \(table_r\) and broadcast the message. The algorithm is shown in Algorithm \ref{algo:table_r}.
+
+\begin{algorithm}
+\begin{algorithmic}
+\REQUIRE \(n_i\rightarrow msg_r\)
+	\FOR {each entry \(t'\) in \(msg_r\)}
+		\IF {\NOT exists \(t'\rightarrow fid_n\) in \(table_r\)}
+			\STATE \(addTo(table_r, t')\)
+		\ENDIF
+		\FOR {each entry \(t\) in \(table_r\)}
+			\IF {\(t\rightarrow fid_n == t'\rightarrow f_n\)}
+				\IF {\(t'\rightarrow hop_n < t\rightarrow hop_n\)}
+					\STATE \(t\rightarrow hop_n = t\rightarrow hop_n+1\)
+					\STATE \(t\rightarrow parent_n = n_i\)
+				\ENDIF
+			\ENDIF
+		\ENDFOR
+	\ENDFOR
+	\IF {self is fusion point \AND \NOT exists \(self\rightarrow id\) in \(table_r\)}
+		\STATE \(addTo(table_r, (self\rightarrow id, 0, self\rightarrow id))\)
+	\ENDIF
+	\STATE \(msg_r = table_r\)
+	\STATE \(periodically\_broadcast(msg_r)\)
+\end{algorithmic}
+\caption{\(table_r\) construction}
+\label{algo:table_r}
+\end{algorithm}
+
+In addition to \(msg_r\), upon the detection of any composite event, each \(n'_i\in N_f\) will  advertise its \(table_m\) by broadcasting \(msg_m\) so that other sensor nodes can construct their \(table_e\) with Algorithm \ref{algo:table_e}.
+
+\begin{algorithm}
+\begin{algorithmic}
+\REQUIRE \(n'_i\rightarrow msg_m\)
+	\FOR {each entry \(t'\) in \(msg_m\)}
+		\IF {\NOT exists \(t'\rightarrow e_n\) in \(table_e\)}
+			\STATE \(addTo(table_e, (t'\rightarrow e_n, 1, n'_i, t'\rightarrow cost_n^i+table_r\rightarrow hop_k))\)
+		\ENDIF
+		\FOR {each entry \(t\) in \(table_e\)}
+			\IF {\(t\rightarrow e_n = t'\rightarrow e_n\)}
+				\IF {\(t'\rightarrow cost_n^i+table_r\rightarrow hop_k < t\rightarrow cost_n\)}
+					\STATE \(t\rightarrow cost_n = t'\rightarrow cost_n^i+table_r\rightarrow hop_k\)
+					\STATE \(t\rightarrow fusion_n = n'_i\)
+				\ENDIF
+			\ENDIF
+		\ENDFOR
+	\ENDFOR
+	\IF {self is fusion point}
+		\STATE \(msg_m = table_m\)
+		\STATE \(periodically\_broadcast(msg_m)\)
+	\ENDIF
+\end{algorithmic}
+\caption{\(table_e\) construction}
+\label{algo:table_e}
+\end{algorithm}
+
+The construction of \(table_m\) will take place after the actual event detection takes place. 
+
+\subsection{Event Forwarding and Matching}
+When an event instance \(e_n^i\) (of type \(e_n\)) is detected at node \(n_i\), node will use \(table_r\) and \(table_e\) to decide how to forward the detected event to the fusion points so that higher level events can be detected. The pseudo code is shown in Algorithm \ref{algo:eventforwarding}.
+
+\begin{algorithm}
+\begin{algorithmic}
+\REQUIRE detected event instance \(e_n^i\) of type \(e_n\)
+	\IF {\(table_e\rightarrow fusion_n==null\)}
+		\STATE Set: \(e_n^i\rightarrow uncertain=True\)
+		\STATE \(event\_random\_forward(e_n^i)\)
+	\ELSE
+		\STATE Set: \(e_n^i\rightarrow uncertain=False\)
+		\STATE \(event\_forward(e_n^i, table_e\rightarrow fusion_n)\)
+	\ENDIF
+\end{algorithmic}
+\caption{Event Forwarding}
+\label{algo:eventforwarding}
+\end{algorithm}
+
+In case the fusion point for event type \(e_n\) has not been decided, the node will forward the event to some of its closet fusion points (or sink if it is closer) using the \(event\_random\_forward\) function and it will also set a field called 'uncertain' in the forwarded message to indicate that the fusion point for that event has not been decided.
+
+Upon the reception of \(e_n^i\) from \(n_k\), the fusion point will first check the event definition and see if there is any composite event \(e_{comp}\) which uses \(e_n\) and another event \(e_j\) as its sub-event (\(e_{comp}=e_nre_j\)). If so, it will try to do an event matching for \(e_n\) and \(e_j\). After that, it will then decide if it should send the feedback by broadcasting the corresponding event matching information for \(e_n\). The pseudo code of event matching is shown in Algorithm \ref{algo:eventmatching}.
+
+\begin{algorithm}
+\begin{algorithmic}
+\REQUIRE \(e_n^i\) (of type \(e_n\)) detected by \(n_k\) at cost: \(cost_n^i\)
+	\FORALL {\(e_{comp}=e_nre_j\) \AND \(e_j\in table_m\) \AND \(e_{comp}\) is unprocessed}
+		\STATE \(result=match(e_{comp}, e_n, e_j)\)
+		\IF {\(result=True\)}
+			\STATE \(detected(e_{comp})\)
+			\STATE \(addTo(table_m, (e_n, e_n^i, n_k, now(), cost_n^i))\)
+			\STATE Mark \(e_{comp}\) as processed
+
+		\ENDIF
+	\ENDFOR
+	\IF {\(\exists e_{comp}=e_nre_j\) \AND \NOT \(e_j\in table_m\)}
+		\STATE \(wait()\)
+		\STATE \(detected(e_n^i)\)
+	\ELSE
+		\STATE \(discard(e_n^i)\)
+	\ENDIF
+\end{algorithmic}
+\caption{Event Matching}
+\label{algo:eventmatching}
+\end{algorithm}
+
+Note that if \(e_{comp}\) has been successfully detected, the algorithm will run function \(detected\) which, in turn, will execute Algorithm \ref{algo:eventforwarding}. If the fusion node currently cannot find a local match for the event \(e_n^i\), then it will first wait for a period of time for other possible event instances. If there is no match after the waiting time, then the fusion point will also run the function \(detected\) to forward to other fusion points. The waiting time is defined as the event time span during which the composite event may be formed. It is defined by the application layer as part of the event definition.
