@@ -1,0 +1,51 @@
+\section{Evaluation}
+\label{sec:ceduevaluation}
+In this section, we evaluate the performance of TED through analysis, simulation and experiments.
+
+\subsection{Analysis}
+\label{sec:ceduanalysis}
+In order to analyze the energy efficiency of TED without losing generality, we assume the sensor nodes are randomly deployed in a circular area with radius of \(R\). We use distance to approximately measure the number of hops in order to calculate the message cost for event detection. As a reference to compare the energy cost, we use shortest path tree (SPT) algorithm where the events are collected at the sink because their definitions are not considered for the event detection.
+
+We use a similar event model that has been introduced in Section \ref{sec:cedu} for analysis. Moreover, since the actual cost of TED will depend on event probabilities. We include such information in our model as well. Suppose we have two event types \(e_1\) and \(e_2\) which are the two sub-event types for a composite event \(e_3\) (i.e. \(e_1re_2=e_3, r\in R\)). The probability for \(e_1\) and \(e_2\) to occur is \(P(e_1)=p_1\) and \(P(e_2)=p_2\) respectively. The probability for \(e_3\) to occur when both \(e_1\) and \(e_2\) have occurred is \(P(e_3|e_1, e_2)=p_3\).
+
+In TED, each node periodically broadcasts its routes to the fusion tables so that others can know how to reach the fusion points. Such cost is similar to many existing routing protocols in WSN such as \cite{rssiroute} where each node periodically broadcasts its route metrics to the sink for the purpose of link quality evaluation. Therefore, in TED, we mainly consider three parts of energy consumption:
+\begin{itemize}
+\item The overhead for initial event forwarding: \(cost_f\)
+\item The overhead for the fusion points to send feedback: \(cost_b\)
+\item The energy cost for detecting the actual composite events: \(cost_d\)
+\end{itemize}
+
+Let the average distance between two random nodes in the square region be \(D\) and the average distance between a node and sink be \(d\). 
+\begin{comment}
+Then:
+\begin{equation*}
+D=\frac{2+\sqrt{2}+5\times ln(1+\sqrt{}2)}{15}\times|N|
+\end{equation*}
+Let the average distance between the event source and the event fusion points be \(d\).
+\end{comment}
+
+The cost for initial event forwarding will be: \(cost_f=2\times D\). In order to avoid the extra cost for building up the overlay for each fusion point to communicate with individual sensor nodes, the fusion nodes simply flood the feedback in the network. Therefore, the cost for the fusion points to send feedback will be: \(cost_b=D\times(|N|-2)\). The cost for detecting each individual event is: \(cost_d=D\). The total expected energy cost using TED over a time period \(T\) is:
+\begin{align*}
+&cost_{TED}\\
+=&cost_f+cost_b+T(p_1cost_d+p_2cost_d+p_3p_2p_1d)\\
+=&D|N|+TD(p_1+p_2)+Tdp_1p_2p_3
+\end{align*}
+
+Here \(T\) is the \(expire_n\) used in \(table_e\). The total expected energy cost using SPT over a time period \(T\) is:
+\begin{equation*}
+cost_{SPT}=d\times T(p_1+p_2)
+\end{equation*}
+
+To see when TED will cost less than SPT, we have:
+\begin{align*}
+cost_{TED}&<cost_{SPT}\\
+D|N|+TD(p_1+p_2)+Tdp_1p_2p_3&<dT(p_1+p_2)\\
+T((p_1+p_2)(d-D)-dp_1p_2p_3))&>|N|
+\end{align*}
+
+The inequality can be viewed as a trade-off between energy saved by TED and the overhead. Simply speaking, TED can save more energy when:
+\begin{itemize}
+\item Fusion points are closer to event source
+\item The probability of primitive event is high while the probability of the composite event is lower.
+\item Each time after the \(table_e\) is constructed, it used for a relatively long period of \(T\) 
+\end{itemize}

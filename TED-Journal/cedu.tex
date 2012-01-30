@@ -1,0 +1,84 @@
+\section{Fully Distributed TED}
+\label{sec:cedu}
+In this section, we propose TED, a distributed type-based composite event detection algorithm for WSN. The essential idea of TED is that after each sub-event is detected, the nodes will at first forward the detected events randomly to some nearby fusion points in the hope that at least some of them will be able to detect events at lower cost. When the composite events are detected, the fusion points will first check to see if the source nodes have already selected any fusion point. If not, it will flood some feedback in the network so that the source node will get it and other nodes can also use such feedbacks as 'hints' when they need to forward the events. By collecting different feedbacks from different fusion points, the sensor nodes will choose the best one according to the cost. If the sub-events occur again, the nodes will be able to forward the detected events based on the feedback so that the cost could likely be reduced.
+
+\subsection{Algorithm Input}
+In TED, the set of event fusion points \(N_f\subseteq N\) are preselected. We will discuss how to select the fusion points in an optimal way in the latter part of the section. Therefore, each node will play two possible roles: normal node or event fusion point. Normal nodes will need the following data structure for the algorithm:
+\begin{itemize}
+\item Event filter table \(table_f\): this table stores the filters for each event type. \(table_f\rightarrow filter_n\) denotes the filter for event type \(e_n\).
+\item Fusion point routing table (\(table_r\)): this table defines the routing to each fusion point \(n_i\in N_f\). \(table_r\rightarrow n_i\rightarrow parent\) denotes the parent node to reach fusion point \(n_i\).
+\item Event forwarding table (\(table_e\)): this table defines for each event type \(e_n\in E\), the corresponding fusion point for the it. \(table_e\rightarrow e_n\rightarrow fp\) denotes the fusion point for event type \(e_n\).
+\end{itemize}
+
+The fusion points will also have the same data structure of the normal nodes for the algorithm. In addition, they will have an additional table \(table_m\). This table temporarily stores the events collected from other nodes. For each of the entries it has the following contents: 
+\begin{itemize}
+\item \(e^i_n\): the \(i^{th}\) event of type \(e_n\)
+\item \(cost\): the detection cost for the event \(e^i_n\)
+\item \(flag\): the flag (to be described in the algorithms) for the event \(e^i_n\)
+\end{itemize}
+
+\subsection{TED for Normal Nodes}
+Since the event detection starts from primitive events, the normal nodes will run Algorithm \ref{algo:normalNode} after detecting a primitive event \(e^i_n\) of type \(e_n\).
+\begin{algorithm}
+\begin{algorithmic}
+\REQUIRE evaluate(\(e^i_n\), \(table_f\rightarrow filter_n\))==True
+	\IF {\(table_e\rightarrow e_n\rightarrow flag\neq fpUnknown\)}
+		\STATE \(toForward=table_e\rightarrow e_n\rightarrow fp\)
+		\STATE Set \(e^i_n\rightarrow flag=table_e\rightarrow e_n\rightarrow flag\)
+		\STATE Forward \(e^i_n\) to \(table_r\rightarrow fp\rightarrow parent\)
+	\ELSE
+		\IF{\(table_e\rightarrow e_n\rightarrow flag\neq fpUnknown\)}
+			\STATE Select \(k-1\) nearest fusion points \(N_k\in N_f\)
+			\STATE \(N_k=N_k\bigcup \{table_e\rightarrow e_n\rightarrow fp\}\)
+		\ELSE
+			\STATE Select \(k\) nearest fusion points \(N_k\in N_f\)
+		\ENDIF
+		\FOR {each \(n\in N_k\)}
+			\STATE forward \(e^i_n\) to \(table_r\rightarrow n\rightarrow parent\)
+		\ENDFOR
+	\ENDIF
+	
+	\IF {\(e^i_n\rightarrow flag=fpSelected\) \AND \(e^i_n\rightarrow timeout==True\)}
+		\STATE \(table_e\rightarrow e_n\rightarrow flag=fpIndicated\)
+	\ENDIF
+\REQUIRE feedback of event type \(e_n\) from \(n_i\in N_f\)
+	\STATE \(entry=table_e\rightarrow e_n\)
+	\IF {\(e_n\rightarrow source==self\) \AND (\(entry\rightarrow flag\neq fpSelected\) \OR \(entry\rightarrow flag==fpSelected\) \AND \(entry\rightarrow cost<e_n\rightarrow cost\))}
+		\STATE \(entry\rightarrow flag=fpSelected\)
+		\STATE \(entry\rightarrow fp=n_i\)
+	\ELSIF {\(entry\rightarrow cost<e_n\rightarrow cost\)}
+		\STATE \(table_e\rightarrow e_n\rightarrow flag=fpIndicated\)
+	\ENDIF
+\end{algorithmic}
+\caption{TED for normal nodes}
+\label{algo:normalNode}
+\end{algorithm}
+For each event type, it has three possible states: fpUnknown, fpIndicated and fpSelected. Initially, all the event types are fpUnknown because the sensor node does not know which fusion point is the best to forward the event. The flag will be updated upon the reception of feedbacks from the fusion points. More specifically, if the event is detected at the fusion point \(n_i\), the fusion point will flood the feedback with cost and event source included so that the nodes can update their corresponding flags. The update is based on the detection cost.
+
+Upon the detection of event \(e^i_n\), the node will first check if there is already a fusion point assigned to it. If so, the event will simply be forwarded to that fusion point. Otherwise, the node will choose \(k\) closest fusion points randomly and then forward the events to them.
+
+\subsection{TED for Event Fusion Points}
+When the fusion point receives \(e^i_n\) from a node, it will first wait a period of time until the expiry time of the event to check for other events for possible matches. If no match is found during this period, the fusion point will still use Algorithm \ref{algo:normalNode} to further forward the events to other fusion points. The pseudo code is shown in Algorithm \ref{algo:fusionPoint}.
+
+\begin{algorithm}
+\begin{algorithmic}
+\REQUIRE \(e^i_n\) from node \(n_i\in N\)
+	\FORALL {\(e_j\in E\)}
+		\IF {\(e_n\) is a subevent of \(e_j\)}
+			\STATE result = evaluate \(e_j\) with \(e^i_n\)
+			\IF {result==True}
+				\STATE detected (\(e_j\))
+				\STATE \(e_j\rightarrow cost=e_j\rightarrow cost+e^i_n\rightarrow cost\)
+				\STATE \(e_j\rightarrow source=e_j\rightarrow source\bigcup e^i_n\rightarrow source\)
+				\STATE feedback (\(e_j\))
+			\ENDIF
+		\ENDIF
+	\ENDFOR
+\REQUIRE expiry time of \(e^i_n\)
+	\STATE detected (\(e_j\))
+\end{algorithmic}
+\caption{TED for fusion points}
+\label{algo:fusionPoint}
+\end{algorithm}
+
+The function 'detected' is the place where Algorithm \ref{algo:normalNode} is invoked. Upon the detection of any composite event, the fusion point will also send the feedbacks to the network. Similar to centralized TED, distributed TED also determines the re-selection probability as discussed in Section \ref{sec:reselection}.
