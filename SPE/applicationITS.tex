@@ -1,0 +1,75 @@
+\section{Application Scenario Two: Intelligent Transportation Systems}
+\label{sec:its}
+In this section, we use Intelligent Transportation Systems (ITS) as another example application to demonstrate how PSWare can help for application development.
+
+\subsection{Requirement Analysis}
+A lot of WSN-based applications can be found in ITS including collision avoidance, traffic light control, automatic road enforcement and electronic toll. Composite event detection is very common in these applications because one of the common requirements for these applications is to detect the speed of vehicle. In this paper, we consider the scenario where the sensor nodes are deployed as road side units (RSU) \cite{klein:its}. Our actual deployment method is illustrated in Figure \ref{fig:itsSensor}.
+
+\begin{figure}
+\centering
+\subfloat[Road side sensor nodes]{\label{fig:itsSensor1}\figurehalfwidth{itsSensor1.JPG}}
+\subfloat[Sensor nodes on the lamp]{\label{fig:itsSensor2}\figurehalfwidth{itsSensor2.JPG}}
+\caption{Sensor nodes for transportation systems}
+\label{fig:itsSensor}
+\end{figure}
+
+Different from the indoor temperature and light monitoring, the ITS applications have the following characteristics:
+\begin{itemize}
+\item The magnetic sensor used in ITS application will consume much more energy so the energy consumption from sensing may not be negligible.
+\item The sensor nodes are deployed and lined up on each road and will detect each passing vehicle one by one.
+\item Instead of gathering the data and making a local decision, the vehicles may need to be tracked. 
+\end{itemize}
+To detect events in such a model, the sensors nodes must not be turned on all the time. Instead, they should be waken up only when an incoming vehicle has been detected by their preceding nodes.
+
+\subsection{Event Forwarding}
+The overall system architecture of ITS is similar to the indoor application. However, different from the indoor application, which forward the events according to the link condition and the event detection results, in ITS applications, the events are forwarded along the road. The procedure for nodes' wake-up and forwarding is shown in Procedure \ref{algo:itsForward}. We use the following notations in the procedure:
+\begin{itemize}
+\item \(V=\{v_1, v_2 \cdots \}\): the sensor nodes that come next on the road. For the sensors on the road, \(\|V\|=1\) but for the sensors next to the crossroads, \(\|V\|>1\)
+\item Vehicle events \(e_i\) which are either detected locally or received from another node.
+\end{itemize}
+
+\begin{algorithm}
+\begin{algorithmic}
+	\IF {detected vehicle event \(e_i\)}
+		\FORALL {\(v_n\in V\)}
+			\STATE forward \(e_i\) to \(v_n\)
+		\ENDFOR
+	\ENDIF
+	\IF {received vehicle event \(e_i\) from \(v_m\)}
+		\STATE start data collection
+		\IF {detected vehicle event \(e_j\)}
+			\STATE select \(e_i\) and \(e_j\) for composite event detection
+		\ELSE
+			\STATE wait for event to expire
+		\ENDIF
+		\STATE stop data collection
+	\ENDIF
+\end{algorithmic}
+\caption{Event forwarding for ITS}
+\label{algo:itsForward}
+\end{algorithm}
+
+In the actual application deployment, we use some sentry nodes at the entrances of the deployed area. These nodes have more power and will monitor the entrance for newly entered cars. Except for the sentry node, the nodes will not actively collect data until it receives messages from others. Once the event from the previous node on the road is received, it will be selected for composite event detection.
+
+\subsection{Event Subscription}
+As one of the most basic events used by many ITS applications, we show the event definitions for tracking the vehicles in Listing \ref{prog:carEvent}.
+
+\begin{lstlisting}[caption=Event definition for tracking vehicles, label=prog:carEvent]
+Event CarEvent {
+	int time=System.time;
+	int magnetic=System.magnetic;
+	int location=System.location;
+} where {
+	magnetic>THRESHOLD
+}
+Event SpeedEvent {
+	int speed=(e1.location-e2.location)/(e1.time-e2.time);
+} on {
+	CarEvent e1, e2;
+} where {
+	e1.time>e2.time &&
+	speed>THRESHOLD
+}
+\end{lstlisting}
+
+First, an event named 'CarEvent' is defined to detect the presence of the individual vehicles. Then based on this event, we can have a composite event to measure the speed of the car.

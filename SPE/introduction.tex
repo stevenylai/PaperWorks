@@ -1,0 +1,50 @@
+\section{Introduction}
+\label{sec:introduction}
+Event processing \cite{jector} in WSNs is needed in many applications such as intelligent transportation system \cite{klein:its}, structural health monitoring \cite{lynch:shm} and healthcare \cite{lo:ban}. Events may be primitive or composite. Primitive events can usually be detected by a single sensor node without cooperating with others. A simple example of a primitive event is when the temperature exceeds certain threshold. While primitive events are used in many applications, they are not always sufficient. Therefore, we may need composite events - events that can define the relations among sub-events and usually need to be detected cooperatively by multiple sensor nodes.
+
+Practically, very few applications only use primitive events. For instance, in an intelligent transportation system, we may define traffic jam as an event when there are too many cars waiting on a road. This event, however, may not be directly detected by a single sensor node. The traffic jam event may come from many sub-events such as the number of the vehicles on a road and the speed of the vehicles. The speed of the vehicles may, in turn, come from the events of each individual vehicle. Once a traffic jam event has been detected, we may need to inform other vehicles or the traffic light controller so that the corresponding adjustment may be made to improve the efficiency of the transportation system. These event-based WSN applications require not only primitive event detection where each event is gathered from a single sensor node but also composite event detection where a number of primitive events must satisfy certain relations.
+
+Detection of composite events is difficult because of the resource constraints for the WSN. Different from centralized approaches, where all the data can be gathered for examining the events, in WSN, sensor nodes usually do not have the global knowledge of all the events in the network. Instead, many events are detected locally to save communication costs. Because of the resource constraints and the network dynamics of WSN, those composite events should be detected in a distributed fashion in order to save energy. Unfortunately, programming sensor networks is a non-trivial task since it requires programming individual sensor nodes, handling low-level issues such as synchronization and scheduling and interfacing to the hardware and the network.
+
+One way to help the application development is to have an event-based middleware such that:
+\begin{itemize}
+\item It is possible to implement customized event detection and processing mechanisms
+\item High level application users may interact with the underlying event services without having to worry about the underlying event processing mechanisms.
+\end{itemize}
+
+\begin{figure}
+\centering
+\subfloat[Centralized]{\label{fig:room-a}\figurehalfwidth{room-a}}
+\subfloat[Distributed]{\label{fig:room-b}\figurehalfwidth{room-b}}
+\caption{Motivating application for indoor monitoring}
+\label{fig:rooms}
+\end{figure}
+
+We show how this can be possible through several examples. First, consider a monitoring application shown in Figure \ref{fig:rooms}. The composite event consists of two sub-events to be detected in two different rooms, Room A and Room B. It occurs when the temperature in room A rises to a certain threshold and after 5 minutes, the temperature in room B also reaches that threshold. As shown in Figure \ref{fig:room-a} A centralized approach to this solution is to gather all the temperature data to the sink and perform the event detection. However, this approach will quickly deplete the energy on the sensor nodes. As shown in Figure \ref{fig:room-b}, a more economic approach is to select a sensor node for each room as the sub-event detector. The detector will gather the temperature readings from each room locally and try to detect the sub-event first. Then, only after the sub-event has been detected, the data will be transmitted to the sink node. By doing so, we effectively avoid transmitting all the raw data to the sink.
+
+Second, we consider an ITS application scenario. In such an application, as shown in Figure \ref{fig:its}, the sensor nodes are placed along the road to detect the presence of the vehicles. These events are gathered for various purposes such as collision avoidance, traffic light control and over-speed detection. Again, detection of these events can be centralized or distributed as shown in Figure \ref{fig:its-centralized} and \ref{fig:its-distributed}. However, different from the indoor monitoring application, in ITS, it might be better if the sensor nodes detect the vehicles along the road instead of forwarding the data to the center of the road. 
+
+\begin{figure}
+\centering
+\subfloat[Centralized]{\label{fig:its-centralized}\figurehalfwidth{its-centralized}}
+\subfloat[Distributed]{\label{fig:its-distributed}\figurehalfwidth{its-distributed}}
+\caption{Motivating application for ITS}
+\label{fig:its}
+\end{figure}
+
+As we can see from these examples, we may need to implement different underlying event detection mechanisms for different applications such as indoor monitoring and ITS. However, from the application users' point of view, it may not be necessary to know all these details. Back to the indoor application, first we can see that the users' event definition need not be changed no matter for centralized or distributed event detection algorithm. The same applies to ITS application. Now, if we compare the two different applications, we can see the relations of the events may always be expressed through some operators regardless of the applications. %For instance?
+
+A lot of middleware work for WSN has been proposed. Existing approaches event-based middleware for WSN mostly include query-based approach \cite{tinydb} and publish/subscribe approach \cite{complexevent}. However, these works either cannot work well for composite event-based systems or are not flexible enough to allow implementation of customized event detection algorithms. 
+
+%In comparison with that in distributed systems, detecting composite events in WSN poses more challenges because of the high network dynamics and resource constraints. First, event relations may need to be taken into consideration when detecting. For example, 
+
+%There are already some works that have proposed event detection algorithms \cite{lai:ted} for WSN. However, in order to make these algorithms work for real world WSN applications, more work needs to be done. One approach is to implement application-specific algorithms. In this approach, it is easier to improve the event detection efficiency by taking advantage of application-specific information. However, we may have to re-invent the wheel if similar algorithms are implemented in different applications. A better approach is to have a generic software layer for event detection and applications will be built on top of this. This can effectively avoid re-inventing the wheel but the software must be flexible enough so that it is capable of supporting a wide range of applications.
+ 
+In light of this, we propose a middleware framework called PSWare. PSWare uses a flexible architecture where different event processing algorithms can be easily integrated. The contribution of the paper can be summarized as follows:
+\begin{itemize}
+\item We described the design of PSWare. PSWare features a flexible architecture. Different application domains can easily implement event processing mechanisms on top of PSWare.
+\item We developed several real WSN-based applications on top of PSWare. The applications are from different domains such as indoor temperature monitoring, intelligent transportation system and structural health monitoring.
+\item We performed experiments on PSWare to demonstrate its effectiveness in helping developing WSN-based applications. 
+\end{itemize}
+
+The rest of the paper is organized as follows: Section \ref{sec:background} gives the background and related works for PSWare. Section \ref{sec:design} describes the middleware design in details. We then describe how to implement applications based on PSWare. Section \ref{sec:pswareImpl} shows how to use PSware to implement applications such as indoor monitoring, intelligent transportation systems and structural health monitoring. Section \ref{sec:its} shows how to use PSWare to develop applications for intelligent transportation systems. Such applications are more time-critical. Section \ref{sec:experiments} shows our experimental results. Section \ref{sec:conclusion} concludes the paper.
