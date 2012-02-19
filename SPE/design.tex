@@ -7,7 +7,7 @@
 
 \section{PSWare Internal Design}
 \label{sec:design}
-In this section, we discuss how PSWare is designed to provide the event-based programming model. The overall architecture of PSWare is shown in Figure \ref{fig:psware-architecture}. To use the middleware, applications developers will first define event types according to the application requirements. The subscription will then be compiled and processed by the EDL compiler and be disseminated into the network. When the events are detected by the sensor nodes, they will be delivered to the application.
+In this section, we discuss how PSWare is designed to implement the event-based programming model. The overall architecture of PSWare is shown in Figure \ref{fig:psware-architecture}. To use the middleware, applications developers will first define event types according to the application requirements. The subscription will then be compiled and processed by the EDL compiler and be disseminated into the network. When the events are detected by the sensor nodes, they will be delivered to the application.
 
 \subsection{EDL Compiler}
 \begin{figure}
@@ -99,6 +99,7 @@ The essential operations for our event detection framework is shown in Figure \r
 			\IF {\(e_n\) is primitive}
 				\STATE result = evaluate\_primitive (\(e_n^i\))
 				\IF {result == True}
+					\STATE eventMatched(\(e_n^i\))
 					\IF {\(e_n\) is subscribed}
 						\STATE deliver(\(e_n^i\))
 					\ELSE
@@ -106,7 +107,11 @@ The essential operations for our event detection framework is shown in Figure \r
 					\ENDIF
 				\ENDIF
 			\ELSE
+				\STATE \(e_{sub} = \emptyset \)
 				\FORALL {subevents \(e_m\) for \(e_n\)}
+					\STATE \(e_{sub} = e_{sub}\bigcup selectSubevent (e_n, e_m)\)
+				\ENDFOR
+				\FORALL {subevents \(e_m\) for \(e_{sub}\)}
 					\STATE evaluate\_composite(\(e_n^i\), \(e_m\), \(\cdots \))
 				\ENDFOR
 			\ENDIF
