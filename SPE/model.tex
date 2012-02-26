@@ -1,4 +1,4 @@
-\section{Programming Model}
+\section{PSWare: Model and Architecture}
 \label{sec:model}
 In this section, we describe the application programming model for PSWare. We keep the issues that described in Section \ref{sec:introduction} when establishing our model.
 
@@ -10,11 +10,17 @@ In this section, we describe the application programming model for PSWare. We ke
 \label{fig:programmingModel}
 \end{figure}
 
-As shown in figure \ref{fig:programmingModel}, our model mainly has two different types of people that make use of two APIs of different levels. The first type is the application users. These users are responsible for defining and subscribing to high level events for different types of applications. They use a high level event definition language to translate the application requirements into events. They do not have to worry about the underlying event detection mechanisms.
+As shown in figure \ref{fig:programmingModel}, our model mainly has two different types of people that make use of two APIs of different levels:
+\begin{itemize}
+\item Application developers will make use of the event definition language to define and subscribe events and use the event receiving module to receive the published events.
+\item Middleware developer will make use of the event processing framework to implement effective and efficient event processing algorithms
+\end{itemize}
 
-On the lower level, we have another type of users called middleware developers. These users are responsible for implementing domain-specific event detection mechanisms. PSWare provides a couple of interfaces in TinyOS to make the implementation easier.
+The first type is the application users. These users are responsible for defining and subscribing to high level events for different types of applications. They use a high level event definition language to translate the application requirements into events. They do not have to worry about the underlying event detection mechanisms.
 
-The benefit for such model is its flexibility. There are usually many different types of applications for a specific application domain. For example, in ITS, we may have collision warning, traffic flow control and overspeed detection yet these applications can probably share a lot of common event detection mechanisms. Therefore, the middleware developer only needs to implement the event detection mechanism for once. Then by defining different events, we can easily meet different application requirements without sacrificing the detection efficiency.
+On the lower level, we have another type of users called middleware developers. These users are responsible for implementing domain-specific event processing mechanisms. PSWare provides a couple of interfaces in TinyOS to make the implementation easier.
+
+The benefit for such model is its flexibility. There are usually many different types of applications for a specific application domain. For example, in ITS, we may have collision warning, traffic flow control and overspeed detection yet these applications can probably share a lot of common event detection mechanisms. Therefore, the middleware developer only needs to implement the event processing mechanism for once. Then by defining different events, we can easily meet different application requirements without sacrificing the efficiency.
 
 \subsection{Event Definition Language}
 \begin{figure}
@@ -89,8 +95,8 @@ SimpleEvent e1 {
 }
 \end{lstlisting}
 
-\subsection{API for Event Detection Framework}
-The event detection framework of PSWare is developed using NesC. PSWare also provides a group of APIs for the middleware developers to write customized event detection algorithms. First, since all events can ultimately be decomposed into primitive events, the middleware developer needs to first define the required primitive events used in the application domain. This is done through a configuration named 'PrimitiveEventC'. It is listed in Listing \ref{lst:primitiveEvent}. The new event ID should be defined as an enumeration in PSWare's header file.
+\subsection{API for Event Processing Framework}
+The event processing framework of PSWare is developed using NesC. PSWare also provides a group of APIs for the middleware developers to write customized event processing algorithms. First, since all events can ultimately be decomposed into primitive events, the middleware developer needs to first define the required primitive events used in the application domain. This is done through a configuration named 'PrimitiveEventC'. It is listed in Listing \ref{lst:primitiveEvent}. The new event ID should be defined as an enumeration in PSWare's header file.
 \begin{lstlisting}[caption=Primitive event component in NesC, label=lst:primitiveEvent]
 generic configuration PrimitiveEventC(evet_id_t eventId) {
   provides {
@@ -109,7 +115,7 @@ When this is set, the application user can already start to subscribe and detect
 \item Upon the detection of an event, the event detection algorithm may perform some customized processing to update some information so that the next time when the event happens again, it may be detected with lower cost. This is when the second command 'eventMatched' comes into play. The middleware developer simply needs to put these logics in this command.
 \end{enumerate}
 
-Apart from event matcher, we also have an event deliverer which will be called when a subscribed event is detected. The middleware developer may implement its only function so that the events may be delivered as required.
+Apart from event matcher, we also have an event deliverer which will be called when a subscribed event is detected. The middleware developer may implement its only function to meet the requirements for event delivery.
 \begin{lstlisting}[caption=The event matcher interface, label=lst:pswareEventMatcher]
 interface EventMatcher {
 	command bool selectSubevent(EventInstanceInfo * composite, EventInstanceInfo * subevent);

@@ -1,13 +1,13 @@
 \begin{figure}
 \centering
 \includegraphics[width=.6\textwidth]{psware-architecture}
-\caption{PSWare system architecture}
+\caption{PSWare system structure}
 \label{fig:psware-architecture}
 \end{figure}
 
-\section{PSWare Internal Design}
+\section{Composite Event Processing in PSWare}
 \label{sec:design}
-In this section, we discuss how PSWare is designed to implement the event-based programming model. The overall architecture of PSWare is shown in Figure \ref{fig:psware-architecture}. To use the middleware, applications developers will first define event types according to the application requirements. The subscription will then be compiled and processed by the EDL compiler and be disseminated into the network. When the events are detected by the sensor nodes, they will be delivered to the application.
+In this section, we discuss how PSWare is designed to support composite event. The overall structure of PSWare is shown in Figure \ref{fig:psware-architecture}. To use the middleware, applications developers will first define event types according to the application requirements. The subscription will then be compiled and processed by the EDL compiler and be disseminated into the network. When the events are detected by the sensor nodes, they will be delivered to the application.
 
 \subsection{EDL Compiler}
 \begin{figure}
