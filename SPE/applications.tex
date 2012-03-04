@@ -1,0 +1,21 @@
+\section{Application Scenarios}
+\label{sec:pswareImpl}
+In previous sections, we have introduced PSWare and how it can be customized to meet different application requirements. In this section, we demonstrate how PSWare can help in developing practical WNS applications through three application case studies: the indoor monitoring, the car park and the intelligent transportation system.
+
+The key features of the three applications are as follows:
+\begin{itemize}
+\item Energy efficiency in an indoor monitoring system is crucial because the network needs to operate for a long period of time and it is not necessary to gather all the raw data.
+\item Reliability is important in a car park system because the management system needs to know the time when each car enters and leaves the car park so as to calculate the fee.
+\item Event detection and delivery mechanism may be tailor-made for an ITS system because transportation network has certain special 
+\end{itemize}
+
+
+\subsection{Applications Overview}
+Our first application case study is an indoor monitoring system. Such application domain has many applications including air-conditioning, fire alarm and office space light adjustment. Such system is a good application for using composite events because of the following characteristics:
+\begin{itemize}
+\item There may be a large amount of raw data since the data may be gathered from a lot of sources.
+\item The users may not be interested in all the raw data. Instead, they may be more interested in change of the data. This is because the events such as fire or temperature change will usually trigger the change of the sensory data. 
+\item Primitive event detection may not be sufficient. For instance, a fire alarm may be characterized by a combination of different types of events such as temperature and light.
+\end{itemize}
+
+Our second application case study is ITS. This application also has a lot of applications including collision avoidance, traffic light control, automatic road enforcement and electronic toll. Composite event detection is very common in these applications because one of the common requirements for these applications is to detect the speed of vehicle.

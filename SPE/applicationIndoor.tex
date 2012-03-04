@@ -1,8 +1,15 @@
-\section{Application Scenario One: Indoor monitoring}
+\section{Application Scenarios}
 \label{sec:pswareImpl}
-We demonstrate how PSWare can help to develop real world WSN applications though a set of application case studies. In this section, we look at the application for indoor monitoring.
+In previous sections, we have introduced PSWare and how it can be customized to meet different application requirements. In this section, we demonstrate how PSWare can help in developing practical WNS applications through three application case studies: the indoor monitoring, the car park and the intelligent transportation system.
 
-\subsection{Requirement Analysis}
+The key features of the three applications are as follows:
+\begin{itemize}
+\item Energy efficiency in an indoor monitoring system is crucial because the network needs to operate for a long period of time and it is not necessary to gather all the raw data.
+\item Reliability is important in a car park system because the management system needs to know the time when each car enters and leaves the car park so as to calculate the fee.
+\item Event detection and delivery mechanism may be tailor-made for an ITS system.
+\end{itemize}
+
+\subsection{Application Overview}
 An indoor monitoring system can have many different purposes including air-conditioning, fire alarm and office space light adjustment. Such system is a good application for using composite events because of the following characteristics:
 \begin{itemize}
 \item There may be a large amount of raw data since the data may be gathered from a lot of sources.
@@ -116,7 +123,6 @@ In addition to \(msg_r\), each \(v'_k\in V'\) will periodically advertise its \(
 \end{algorithm}
 
 The construction of \(table_m\) will take place when the event instance \(e_n^i\) is detected and forwarded to a fusion point \(v'_n\). We will discuss how forwarding could be done in the next subsection.
-
 \subsection{Event Matching and Forwarding}
 When an event \(e_n^i\) is detected at node \(v_k\), node will use \(table_r\) and \(table_e\) to decide how to forward the detected event to the fusion points so that higher level events can be detected. The pseudo code is shown in Procedure \ref{algo:eventforwarding}.
 

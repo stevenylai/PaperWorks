@@ -109,20 +109,20 @@ generic configuration PrimitiveEventC(evet_id_t eventId) {
 
 In PSWare, everything is treated as events and that includes temperature, photo and even timer. Similar to other generic components in TinyOS, if necessary, new events can be added by implementing a new event ID. Once set, we need to create a higher level primitive event so that the application users can make new event definitions based on top of it. This is done by an automatic tool which will be invoked when building and output a class which will be used by the event notifier and an event definition which will be used by EDL.
 
-When this is set, the application user can already start to subscribe and detect events by using PSWare's default event detection algorithm: TED \cite{lai:ted}. If the middleware developer wants to write their own event detection algorithm, they can choose to implement two interface 'EventMatcher' and 'EventDeliver' as shown in Listing \ref{lst:pswareEventMatcher}. The 'EventMatcher' interface includes two major commands which serves three purposes as follows:
+When this is set, the application user can already start to subscribe and detect events by using PSWare's default event detection algorithm: TED \cite{lai:ted}. If the middleware developer wants to write their own event detection algorithm, they can choose to implement two interface 'EventMatcher' and 'EventDeliver' as shown in Listing \ref{lst:pswareEventMatcher}. The 'EventMatcher' interface includes two major event which serves three purposes as follows:
 \begin{enumerate}
-\item During the execution of the middleware, the network may detect multiple events for a single event type. Therefore, upon the detection of the composite events, the event detection algorithm may choose a specific event from one of this sub-types for detection. That is we need the first command 'select sub-event'.
-\item Upon the detection of an event, the event detection algorithm may perform some customized processing to update some information so that the next time when the event happens again, it may be detected with lower cost. This is when the second command 'eventMatched' comes into play. The middleware developer simply needs to put these logics in this command.
+\item During the execution of the middleware, the network may detect multiple events for a single event type. Therefore, upon the detection of the composite events, the event detection algorithm may choose a specific event from one of this sub-types for detection. This is done by signaling the first event 'select sub-event'.
+\item Upon the detection of an event, the event detection algorithm may perform some customized processing to update some information so that the next time when the event happens again, it may be detected with lower cost. This is when the second event 'eventMatched' comes into play. The middleware developer may implement customized event processing mechanisms according to the matched events.
 \end{enumerate}
 
-Apart from event matcher, we also have an event deliverer which will be called when a subscribed event is detected. The middleware developer may implement its only function to meet the requirements for event delivery.
+Apart from event matcher, we also have an event deliverer which will be called when a subscribed event is detected. The middleware developer may implement its only function to meet the requirements for event delivery. This is done when the middleware signals the 'eventDeliver' event.
 \begin{lstlisting}[caption=The event matcher interface, label=lst:pswareEventMatcher]
 interface EventMatcher {
-	command bool selectSubevent(EventInstanceInfo * composite, EventInstanceInfo * subevent);
-	command result_t eventMatched(evet_id_t eventId, evet_id_t instanceID, bool detectionResult);
+	event bool selectSubevent(EventInstanceInfo * composite, EventInstanceInfo * subevent);
+	event result_t eventMatched(evet_id_t eventId, evet_id_t instanceID, bool detectionResult);
 }
 interface EventDeliverer {
-	command result_t eventDeliver(evet_id_t eventId, evet_id_t instanceID, bool detectionResult);
+	event result_t eventDeliver(evet_id_t eventId, evet_id_t instanceID, bool detectionResult);
 }
 \end{lstlisting}
 
