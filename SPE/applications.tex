@@ -18,4 +18,24 @@ Our first application case study is an indoor monitoring system. Such applicatio
 \item Primitive event detection may not be sufficient. For instance, a fire alarm may be characterized by a combination of different types of events such as temperature and light.
 \end{itemize}
 
-Our second application case study is ITS. This application also has a lot of applications including collision avoidance, traffic light control, automatic road enforcement and electronic toll. Composite event detection is very common in these applications because one of the common requirements for these applications is to detect the speed of vehicle.
+Our second application case study is ITS. This application also has a lot of applications including collision avoidance, traffic light control, automatic road enforcement and electronic toll. Composite event detection is very common in these applications because one of the common requirements for these applications is to detect the speed of vehicle. However, different from the indoor temperature and light monitoring, the ITS applications have the following characteristics:
+\begin{itemize}
+\item The magnetic sensor used in ITS application will consume much more energy so the energy consumption from sensing may not be negligible. This will affect the event detection method for ITS.
+\item The sensor nodes are deployed and lined up on each road and will detect each passing vehicle one by one. Such special deployment may also affect the event detection method.
+\item Events may need to be delivered to mobile sinks instead of a fixed point.
+\item Different types of events may require different event delivery methods. Urgent events such as accident may need to be disseminated in a real time fashion while events such as road condition and weather information may be delivered in a delay tolerant fashion.
+\end{itemize}
+
+Our final application is an intelligent car park application. Though this applications may sometimes be considered as one of the applications in ITS, it is different from other ITS applications in the following ways:
+\begin{itemize}
+\item The detected events usually need to be delivered to a central management center instead of to mobile vehicles.
+\item The deployment of the sensor nodes is different. In a car park system, it is usually not necessary to deploy the sensor nodes on the roads. Instead, they are usually deployed in individual parking space to keep track of availability of them.
+\item Different from other ITS applications, the event delay in intelligent car park is not as important. Message delay for a couple of seconds is probably acceptable.
+\end{itemize}
+
+On the other hand, a car park system is also different from our first indoor application in the sense that:
+\begin{itemize}
+\item Each message must be reliably delivered so that the management system can correctly record the entrance and exit time and calculate the parking fee.
+\item The environment for message transmission may be harsh because cars are usually made of metal. Therefore, message lost may be common.
+\end{itemize}
+To meet the reliability requirement, we need to implement special event detection and delivery mechanisms so that the events can be reliably detected and delivered in such an unreliable environment.
