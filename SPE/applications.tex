@@ -39,3 +39,94 @@ On the other hand, a car park system is also different from our first indoor app
 \item The environment for message transmission may be harsh because cars are usually made of metal. Therefore, message lost may be common.
 \end{itemize}
 To meet the reliability requirement, we need to implement special event detection and delivery mechanisms so that the events can be reliably detected and delivered in such an unreliable environment.
+
+\subsection{Discussion}
+The requirements for the indoor monitoring application can be met with TED since the primary goal of TED is to reduce energy consumption by filtering the events which will not lead to the detection of subscribed composite events. To have a practical application scenario, we deployed our sensor nodes around the Internet and Mobile Computing Laboratory of the Hong Kong Polytechnic University. The deployment plan is shown in Figure \ref{fig:indoorDeployment}.
+
+\begin{figure}
+\centering
+\figurecurrentwidth{indoorDeployment}
+\caption{Deployment of the senosr nodes for indoor monitoring}
+\label{fig:indoorDeployment}
+\end{figure}
+
+We use this deployment for two applications: fire detection and temperature control. Since it is infeasible to transmit all the raw data to the sink, some nodes in the network will have be used as local decision maker and detect the composite event. As a result, developing the application will involve the following steps:
+\begin{enumerate}
+\item Deploy the network and select the appropriate sensor nodes as event fusion points using the fusion point selection algorithm in TED.
+\item Subscribe the desired events through PSWare.
+\item Detect the composite events with PSWare.
+\item Automatically let the nodes switch between different event fusion points to achieve high efficiency.
+\end{enumerate}
+
+To monitor the temperature change of the entire floor and adjust the air-conditioner accordingly, we need to define a composite event that comprises of the sub-events for individual room. For example, the air conditioner can be adjusted if several adjacent rooms' temperature rises too fast. The primitive and composite event definitions for this purpose are shown in Listing \ref{prog:indoorEvents}.
+
+\begin{lstlisting}[caption=Event definition for temperature monitoring, label=prog:indoorEvents]
+Event SingleTemp {
+	int id=System.id;
+	int temperature=System.temperature;
+} where {
+	temperature>THRESHOLD
+}
+Event CompositeTemp {
+} on {
+	SingleTemp e1, e2, e3;
+} where {
+	e1.id==1 &&
+	e2.id==2 &&
+	abs(e1.time - e2.time)<TIME_INTERVAL
+}
+\end{lstlisting}
+
+The primitive event simply tests if the temperature passes certain threshold while the composite event is the conjunction of several primitive events. We deployed the some Micaz nodes in different rooms in our building as shown in Figure \ref{fig:indoorDeployment}.
+
+For fire alarm, the composite event definition is based on both light and temperature readings. The event definition is shown in Listing \ref{prog:indoorFire}.
+\begin{lstlisting}[caption=Event definition for fire alarm, label=prog:indoorFire]
+Event Temperature {
+	int id=System.id;
+	int temperature=System.temperature;
+} where {
+	temperature>THRESHOLD_TEMP
+}
+Event Light {
+	int id=System.id;
+	int light=System.light;
+} where {
+	light>THRESHOLD_LIGHT
+}
+Event Fire {
+} on {
+	Temperature temp;
+	Light light;
+} where {
+	e1.id==light.id
+}
+\end{lstlisting}
+
+For the ITS application case study, because its unique characteristics as described in the previous subsection, we need to implement different event detection algorithm so as to improve its efficiency. In ITS applications, the events are forwarded along the road and because of the high energy cost of sensing, . The procedure for nodes' wake-up and forwarding is shown in Procedure \ref{algo:itsForward}. We use the following notations in the procedure:
+\begin{itemize}
+\item \(V=\{v_1, v_2 \cdots \}\): the sensor nodes that come next on the road. For the sensors on the road, \(\|V\|=1\) but for the sensors next to the crossroads, \(\|V\|>1\)
+\item Vehicle events \(e_i\) which are either detected locally or received from another node.
+\end{itemize}
+
+\begin{algorithm}
+\begin{algorithmic}
+	\IF {detected vehicle event \(e_i\)}
+		\FORALL {\(v_n\in V\)}
+			\STATE forward \(e_i\) to \(v_n\)
+		\ENDFOR
+	\ENDIF
+	\IF {received vehicle event \(e_i\) from \(v_m\)}
+		\STATE start data collection
+		\IF {detected vehicle event \(e_j\)}
+			\STATE select \(e_i\) and \(e_j\) for composite event detection
+		\ELSE
+			\STATE wait for event to expire
+		\ENDIF
+		\STATE stop data collection
+	\ENDIF
+\end{algorithmic}
+\caption{Event forwarding for ITS}
+\label{algo:itsForward}
+\end{algorithm}
+
+In the actual application deployment, we use some sentry nodes at the entrances of the deployed area. These nodes have more power and will monitor the entrance for newly entered cars. Except for the sentry node, the nodes will not actively collect data until it receives messages from others. Once the event from the previous node on the road is received, it will be selected for composite event detection.
