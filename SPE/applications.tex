@@ -102,7 +102,7 @@ Event Fire {
 }
 \end{lstlisting}
 
-For the ITS application case study, because its unique characteristics as described in the previous subsection, we need to implement different event detection algorithm so as to improve its efficiency. In ITS applications, the events are forwarded along the road and because of the high energy cost of sensing, . The procedure for nodes' wake-up and forwarding is shown in Procedure \ref{algo:itsForward}. We use the following notations in the procedure:
+For the ITS application case study, because its unique characteristics as described in the previous subsection, we need to implement different event detection algorithm so as to improve its efficiency. Because of the high energy cost of sensing, the sensor nodes will turn their sensors off for most of the time while keeping their radio on so that they can know when to start sensing. Furthermore, sensor nodes are deployed along the roads and events are also forwarded along the roads so that . The procedure for nodes' wake-up and forwarding is shown in Procedure \ref{algo:itsForward}. We use the following notations in the procedure:
 \begin{itemize}
 \item \(V=\{v_1, v_2 \cdots \}\): the sensor nodes that come next on the road. For the sensors on the road, \(\|V\|=1\) but for the sensors next to the crossroads, \(\|V\|>1\)
 \item Vehicle events \(e_i\) which are either detected locally or received from another node.
