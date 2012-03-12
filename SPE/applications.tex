@@ -9,16 +9,15 @@ The key features of the three applications are as follows:
 \item Event detection and delivery mechanism may be tailor-made for an ITS system because transportation network has certain special 
 \end{itemize}
 
-
 \subsection{Applications Overview}
-Our first application case study is an indoor monitoring system. Such application domain has many applications including air-conditioning, fire alarm and office space light adjustment. Such system is a good application for using composite events because of the following characteristics:
+Indoor environment monitoring uses WSN for monitoring because it is easy to deploy the sensor nodes. Such application domain has many applications including air-conditioning, fire alarm and office space light adjustment. Such system is a good application for using composite events because of the following characteristics:
 \begin{itemize}
 \item There may be a large amount of raw data since the data may be gathered from a lot of sources.
 \item The users may not be interested in all the raw data. Instead, they may be more interested in change of the data. This is because the events such as fire or temperature change will usually trigger the change of the sensory data. 
 \item Primitive event detection may not be sufficient. For instance, a fire alarm may be characterized by a combination of different types of events such as temperature and light.
 \end{itemize}
 
-Our second application case study is ITS. This application also has a lot of applications including collision avoidance, traffic light control, automatic road enforcement and electronic toll. Composite event detection is very common in these applications because one of the common requirements for these applications is to detect the speed of vehicle. However, different from the indoor temperature and light monitoring, the ITS applications have the following characteristics:
+In the area of intelligent transportation system (ITS), WSN also finds many applications because it is easy to deploy the sensor nodes without interrupting the traffic. This application also has a lot of applications including collision avoidance, traffic light control, automatic road enforcement and electronic toll. Composite event detection is very common in these applications because one of the common requirements for these applications is to detect the speed of vehicle. However, different from the indoor temperature and light monitoring, the ITS applications have the following characteristics:
 \begin{itemize}
 \item The magnetic sensor used in ITS application will consume much more energy so the energy consumption from sensing may not be negligible. This will affect the event detection method for ITS.
 \item The sensor nodes are deployed and lined up on each road and will detect each passing vehicle one by one. Such special deployment may also affect the event detection method.
@@ -26,7 +25,7 @@ Our second application case study is ITS. This application also has a lot of app
 \item Different types of events may require different event delivery methods. Urgent events such as accident may need to be disseminated in a real time fashion while events such as road condition and weather information may be delivered in a delay tolerant fashion.
 \end{itemize}
 
-Our final application is an intelligent car park application. Though this applications may sometimes be considered as one of the applications in ITS, it is different from other ITS applications in the following ways:
+Intelligent car park systems is an application domain which is related to ITS. However, it is different from other ITS applications in the following ways:
 \begin{itemize}
 \item The detected events usually need to be delivered to a central management center instead of to mobile vehicles.
 \item The deployment of the sensor nodes is different. In a car park system, it is usually not necessary to deploy the sensor nodes on the roads. Instead, they are usually deployed in individual parking space to keep track of availability of them.
@@ -102,7 +101,15 @@ Event Fire {
 }
 \end{lstlisting}
 
-For the ITS application case study, because its unique characteristics as described in the previous subsection, we need to implement different event detection algorithm so as to improve its efficiency. Because of the high energy cost of sensing, the sensor nodes will turn their sensors off for most of the time while keeping their radio on so that they can know when to start sensing. Furthermore, sensor nodes are deployed along the roads and events are also forwarded along the roads so that . The procedure for nodes' wake-up and forwarding is shown in Procedure \ref{algo:itsForward}. We use the following notations in the procedure:
+\begin{figure}
+\centering
+\subfloat[Road side sensor nodes]{\label{fig:itsSensor1}\figurehalfwidth{itsSensor1}}
+\subfloat[Sensor nodes on the lamp]{\label{fig:itsSensor2}\figurehalfwidth{itsSensor2}}
+\caption{Sensor nodes for transportation systems}
+\label{fig:itsSensor}
+\end{figure}
+
+While TED works fine for indoor applications, it is not suitable for ITS. Because its unique characteristics as described in the previous subsection, we need to implement different event detection algorithm so as to improve its efficiency. Because of the high energy cost of sensing, the sensor nodes will turn their sensors off for most of the time while keeping their radio on so that they can know when to start sensing. Furthermore, sensor nodes are deployed along the roads and events are also forwarded along the roads so that . The procedure for nodes' wake-up and forwarding is shown in Procedure \ref{algo:itsForward}. We use the following notations in the procedure:
 \begin{itemize}
 \item \(V=\{v_1, v_2 \cdots \}\): the sensor nodes that come next on the road. For the sensors on the road, \(\|V\|=1\) but for the sensors next to the crossroads, \(\|V\|>1\)
 \item Vehicle events \(e_i\) which are either detected locally or received from another node.
@@ -129,4 +136,64 @@ For the ITS application case study, because its unique characteristics as descri
 \label{algo:itsForward}
 \end{algorithm}
 
-In the actual application deployment, we use some sentry nodes at the entrances of the deployed area. These nodes have more power and will monitor the entrance for newly entered cars. Except for the sentry node, the nodes will not actively collect data until it receives messages from others. Once the event from the previous node on the road is received, it will be selected for composite event detection.
+In the actual application deployment as illustrated in Figure \ref{fig:itsSensor}, we use some sentry nodes at the entrances of the deployed area. These nodes have more power and will monitor the entrance for newly entered cars. Except for the sentry node, the nodes will not actively collect data until it receives messages from others. Once the event from the previous node on the road is received, it will be selected for composite event detection.
+
+As for the event definition in ITS applications, we will illustrate one of the basic events used in such applications: the tracking for vehicles. The event definition is shown in Listing \ref{lst:carEvent}.
+
+\begin{lstlisting}[caption=Event definition for tracking vehicles, label=lst:carEvent]
+Event CarEvent {
+	int time=System.time;
+	int magnetic=System.magnetic;
+	int location=System.location;
+} where {
+	magnetic>THRESHOLD
+}
+Event SpeedEvent { (* \label{lst:carEvent:speed} *)
+	int speed=(e1.location-e2.location)/(e1.time-e2.time);
+} on {
+	CarEvent e1, e2;
+} where {
+	e1.time>e2.time &&
+	speed>THRESHOLD
+}
+\end{lstlisting}
+
+First, an event named 'CarEvent' is defined to detect the presence of the individual vehicles. Then based on this event, we can define a composite event to measure the speed of the car as on Line \ref{lst:carEvent:speed}.
+
+\begin{figure}
+\centering
+\subfloat[The sensor node]{\label{fig:carParkSensor1}\figurehalfwidth{carParkSensor1}}
+\subfloat[The light sensor]{\label{fig:carParkSensor2}\figurehalfwidth{carParkSensor2}}
+\caption{Car park sensor platform}
+\label{fig:carParkSensor}
+\end{figure}
+
+We used the campus car park as our test bed for intelligent car park system applications. We deployed some micaz sensor nodes for the application. For simplicity, we use light sensor to detect the presence of a vehicle. For better communication, the sensor nodes are attached close to the ceiling instead of on the ground. The light sensor on each node is connected through an extended cable as shown in Figure \ref{fig:carParkSensor}. 
+
+\begin{figure}
+\centering
+\figurecurrentwidth{carParkDeployment}
+\caption{Car park sensor deployment}
+\label{fig:carParkDeployment}
+\end{figure}
+
+The deployment of the individual sensor nodes is shown in Figure \ref{fig:carParkDeployment}. In such a system, the management is interested in the number of park spaces and the location of them \cite{tang:carpark}. Therefore, each parking space is monitored by one sensor node.
+The primitive events for such a system will be the availability of individual car park spaces. Based on the primitive event, if we want to get notified when the parking spaces near the exit become available, then we just need to define composite events which locate the spaces with certain IDs. Th event definitions are shown in Listing \ref{prog:carPark}. Here, the composite event takes two primitive events for parking space \(1\) and \(2\) which are close to the exit.
+
+\begin{lstlisting}[caption=Event definition for a car park, label=prog:carPark]
+Event ParkSpaceEvent {
+	int id=System.id;
+	int time=System.time;
+	int light=System.light;
+} where {
+	light>THRESHOLD
+}
+Event CarParkEvent {
+	int id=System.id;
+} on {
+	ParkSpaceEvent e1, e2;
+} where {
+	e1.id==1 ||
+	e2.id==2 ||
+	e1.time-e2.time<10
+}\end{lstlisting}
