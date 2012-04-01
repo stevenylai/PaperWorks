@@ -1,13 +1,13 @@
 \begin{figure}
 \centering
 \includegraphics[width=.6\textwidth]{psware-architecture}
-\caption{PSWare system structure}
+\caption{Event processing in PSWare}
 \label{fig:psware-architecture}
 \end{figure}
 
 \section{Composite Event Processing in PSWare}
 \label{sec:design}
-In this section, we discuss how PSWare is designed to support composite event. The overall structure of PSWare is shown in Figure \ref{fig:psware-architecture}. To use the middleware, applications developers will first define event types according to the application requirements. The subscription will then be compiled and processed by the EDL compiler and be disseminated into the network. When the events are detected by the sensor nodes, they will be delivered to the application.
+In this section, we discuss how PSWare is designed to support composite event. The overall work flow of event processing in PSWare is shown in Figure \ref{fig:psware-architecture}. To use the middleware, applications developers will first define event types according to the application requirements. The subscription will then be compiled and processed by the EDL compiler and be disseminated into the network. When the events are detected by the sensor nodes, they will be delivered to the application.
 
 \subsection{EDL Compiler}
 \begin{figure}
@@ -83,7 +83,6 @@ The runtime environment on each sensor node is similar to the VM-based approach 
 \caption{Event detection framework}
 \label{fig:eventdetectionframework2}
 \end{figure}
-
 The essential operations for our event detection framework is shown in Figure \ref{fig:eventdetectionframework2}. In this framework, the event matcher will first fetch the events from the event buffer and then evaluate them against the corresponding filters. If the event has been detected, then it will be transmitted over the network. Formally, the procedure of the event matcher can be shown in Procedure \ref{algo:eventmatcher} with some notations defined as:
 \begin{itemize}
 \item Event types: \(E=\{e_1, e_2 \cdots \}\)
