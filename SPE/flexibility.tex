@@ -1,9 +1,9 @@
 \section{Flexibility in PSWare}
 \label{sec:flexibility}
-In this section, we discuss how PSWare can achieve the desired flexibility in different aspects of an event-based system, namely, event detection, event delivery and event subscription.
+In this section, we discuss how PSWare can achieve the desired flexibility in different aspects of an event-based system, including, event detection, event delivery and event subscription.
 
 \subsection{Flexibility in Event Detection}
-Event detection is the heart of an event-based system. However, different applications may have very different requirements on event detection. For example, many WSN-applications may want to minimize energy consumption to extend network life span. Fortunately, in PSWare, we can easily customize the event detection algorithm by using the middleware framework.
+Event detection is the heart of an event-based system. In PSWare, we can easily customize the event detection algorithm by using the middleware framework.
 
 We demonstrate the flexibility in event detection through an example in this subsection. The example is TED \cite{lai:ted}, the default event detection algorithm used by PSWare. TED aims at minimizing energy consumption. %The second example is 
 
@@ -16,26 +16,12 @@ We demonstrate the flexibility in event detection through an example in this sub
 
 The essential idea of TED is fusion point selection, where the sensor nodes detect events and select parent nodes according to the detection cost so that the cost for future event detection can be reduced. The interaction between TED, PSWare and the upper level application is shown in Figure \ref{fig:ted-architecture}.
 
-TED uses type-based event model with some of the nodes \(V'\subseteq V\) selected as event fusion points. Each individual sensor node maintains a fusion point table \(table_r\) for all \(v'_n\in V'\)
-\begin{itemize}
-\item Fusion point ID (\(fid_n\)): the node ID of the fusion point
-\item	Hop count (\(hop_n\)): the number of hops to reach the fusion point
-\item	Parent (\(parent_n\)): the next hop to that fusion point
-\end{itemize}
-Each sensor node will also maintain an event table \(table_e\) containing the information for each event type \(e_n\in E\) which includes the following fields:
-\begin{itemize}
-\item Event type ID (\(e_n\)): the ID which is assigned to each event type
-\item Fusion point for the event (\(fusion_n\)): the fusion point at which the event is mostly likely to be detected at the lowest cost.
-\item Fusion cost (\(cost_n\)): the fusion cost for event type \(e_n\)
-\end{itemize}
-In addition to the above tables, each fusion point \(v'\in V'\) will maintain another table, the event matching \(table_m\) for the purpose of matching events. \(table_m\) contains the following fields:
-\begin{itemize}
-\item Event type ID (\(e_n\)): the ID of the event type
-\item Event instance ID (\(i\)): the \(i\)th event instance of event type \(e_n\) (we use \(e_n^i\) to denote such an instance of event)
-\item Source node (\(v_n^i\)): the node which forwarded \(e_n^i\) to the fusion point
-\item Event timestamp (\(t_n^i\)): the timestamp when the event \(e_n^i\) is detected
-\item Detection cost (\(cost_n^i\)): the cost for detecting event \(e_n^i\)
-\end{itemize}
+To implement TED in PSWare, we use three sub-procedures that can support the major functionality of TED:
+\begin{enumerate}
+\item A procedure for each of the nodes to exchange their information about available fusion points (fusion point table in Figure \ref{fig:ted-architecture}). This procedure is executed periodically and is independent of event detection.
+\item A procedure for each of the nodes to exchange their information about the detected events (event table in Figure \ref{fig:ted-architecture}). This procedure is also executed periodically and is independent of event detection.
+\item A procedure that implements event matching interface as discussed in Section \ref{sec:model}, Listing \ref{lst:pswareEventMatcher}. This procedure is invoked during event matching.
+\end{enumerate}
 
 \begin{algorithm}
 \begin{algorithmic}
@@ -59,9 +45,30 @@ In addition to the above tables, each fusion point \(v'\in V'\) will maintain an
 	\STATE \(msg_r \gets table_r\)
 	\STATE \(periodically\_broadcast(msg_r)\)
 \end{algorithmic}
-\caption{Fusion table construction}
+\caption{Fusion point table exchange}
 \label{algo:table_r}
 \end{algorithm}
+
+To illustrate the implementation, we briefly introduce some notations used by TED. In TED, some of the nodes \(V'\subseteq V\) in the network are selected as event fusion points. Each individual sensor node maintains a fusion point table \(table_r\) for all \(v'_n\in V'\)
+\begin{itemize}
+\item Fusion point ID (\(fid_n\)): the node ID of the fusion point
+\item	Hop count (\(hop_n\)): the number of hops to reach the fusion point
+\item	Parent (\(parent_n\)): the next hop to that fusion point
+\end{itemize}
+Each sensor node will also maintain an event table \(table_e\) containing the information for each event type \(e_n\in E\) which includes the following fields:
+\begin{itemize}
+\item Event type ID (\(e_n\)): the ID which is assigned to each event type
+\item Fusion point for the event (\(fusion_n\)): the fusion point at which the event is mostly likely to be detected at the lowest cost.
+\item Fusion cost (\(cost_n\)): the fusion cost for event type \(e_n\)
+\end{itemize}
+In addition to the above tables, each fusion point \(v'\in V'\) will maintain another table, the event matching \(table_m\) for the purpose of matching events. \(table_m\) contains the following fields:
+\begin{itemize}
+\item Event type ID (\(e_n\)): the ID of the event type
+\item Event instance ID (\(i\)): the \(i\)th event instance of event type \(e_n\) (we use \(e_n^i\) to denote such an instance of event)
+\item Source node (\(v_n^i\)): the node which forwarded \(e_n^i\) to the fusion point
+\item Event timestamp (\(t_n^i\)): the timestamp when the event \(e_n^i\) is detected
+\item Detection cost (\(cost_n^i\)): the cost for detecting event \(e_n^i\)
+\end{itemize}
 
 First, each node \(v_n\) periodically broadcasts messages \(msg_r\) which is its \(table_r\). If the node itself is a fusion point, then it will add itself in \(table_r\) and broadcast the message. The procedure is shown in Procedure \ref{algo:table_r}. In addition to \(msg_r\), each \(v'_k\in V'\) will periodically advertise its \(table_m\) by broadcasting \(msg_m\) so that other sensor nodes can construct their \(table_e\) with Procedure \ref{algo:table_e}.
 
@@ -86,17 +93,17 @@ First, each node \(v_n\) periodically broadcasts messages \(msg_r\) which is its
 		\STATE \(periodically\_broadcast(msg_m)\)
 	\ENDIF
 \end{algorithmic}
-\caption{Event construction}
+\caption{Event table exchange}
 \label{algo:table_e}
 \end{algorithm}
 
 The construction of \(table_m\) will take place when the event instance \(e_n^i\) is detected and forwarded to a fusion point \(v'_n\). We will discuss how forwarding could be done in the next subsection.
 
-When an event \(e_n^i\) is detected at node \(v_k\), node will use \(table_r\) and \(table_e\) to decide how to forward the detected event to the fusion points so that higher level events can be detected. In case the fusion point for event type \(e_n\) has not been decided, the node will forward the event to some of its closet fusion points  according to TED. Upon the reception of \(e_n^i\) from \(v_k\), the fusion point will first update its own \(table_m\). Then it will check if there is any composite event \(e_{comp}\) which uses \(e_n\) and another event \(e_j\) as its sub-event (\(e_{comp}=comp(e_n, e_j)\)). If there is, then \(e_j\) will be used upon 'selectSubevent'.
+When an event \(e_n^i\) is matched at node \(v_k\), node will use \(table_r\) and \(table_e\) to decide how to forward the detected event to the fusion points so that higher level events can be matched. In case the fusion point for event type \(e_n\) has not been decided, the node will forward the event to some of its closet fusion points  according to TED. Upon the reception of \(e_n^i\) from \(v_k\), the fusion point will first update its own \(table_m\). Then it will check if there is any composite event \(e_{comp}\) which uses \(e_n\) and another event \(e_j\) as its sub-event (\(e_{comp}=comp(e_n, e_j)\)). If there is, then \(e_j\) will be used upon 'selectSubevent'.
 
 \begin{algorithm}
 \begin{algorithmic}
-\REQUIRE \(e_n^i\) detected by \(v_k\) with cost: \(cost_n^i\)
+\REQUIRE \(e_n^i\) matched by \(v_k\) with cost: \(cost_n^i\)
 	\STATE \(addTo(table_m, (e_n, e_n^i, v_k, now(), cost_n^i))\)
 	\FOR {each \(e_j\) in \(E\)}
 		\IF {\(\exists r\in R\) \AND \(r=e_{comp}=comp(e_n, e_j)\)}
@@ -109,7 +116,7 @@ When an event \(e_n^i\) is detected at node \(v_k\), node will use \(table_r\) a
 		\ENDIF
 	\ENDFOR
 \end{algorithmic}
-\caption{Procedure for event matching}
+\caption{Event matching}
 \label{algo:eventmatching}
 \end{algorithm}
 
