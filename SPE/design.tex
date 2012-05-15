@@ -9,15 +9,15 @@
 \label{sec:design}
 In this section, we discuss how PSWare is designed to support composite event. The overall work flow of event processing in PSWare is shown in Figure \ref{fig:psware-architecture}. To use the middleware, applications developers will first define event types according to the application requirements. The subscription will then be compiled and processed by the EDL compiler and be disseminated into the network. When the events are detected by the sensor nodes, they will be delivered to the application.
 
-\subsection{EDL Compiler}
+\subsection{Event Specification}
 \begin{figure}
 \centering
 \includegraphics[width=.7\textwidth]{edlcompiler}
-\caption{EDL compiler structure}
+\caption{PSWare-EDL compiler structure}
 \label{fig:edlcompiler}
 \end{figure}
 
-Our Event Definition Language (EDL) is an implementation for our event-based programming model. For each EDL script, it contains one or more event definition and one subscribing statement. Formally, the BNF of the subscription is defined in Listing \ref{lst:BNFSubscription}.
+EDL is used for specifying events in PSWare. For each EDL script, it contains one or more event definition and one subscribing statement. Formally, the BNF of the subscription is defined in Listing \ref{lst:BNFSubscription}.
 
 \begin{lstlisting}[caption=BNF (simplified) of subscription, label=lst:BNFSubscription]
 subscription -> event_declarations subscribe_statement

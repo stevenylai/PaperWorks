@@ -1,9 +1,9 @@
-\section{Flexibility in PSWare}
+\section{Customizationn PSWare}
 \label{sec:flexibility}
-In this section, we discuss how PSWare can achieve the desired flexibility in different aspects of an event-based system, including, event detection, event delivery and event subscription.
+An important feature of PSWare is its flexibility. We achieve this by layering. In this way, developers can customize different layers without affecting each other. Moreover, multiple event processing strategies may be dynamically used during the runtime. In this section, we discuss the layers provided by PSWare. These layers consist different aspects of a complete event-based system, including, event detection, event delivery and event subscription.
 
-\subsection{Flexibility in Event Detection}
-Event detection is the heart of an event-based system. In PSWare, we can easily customize the event detection algorithm by using the middleware framework.
+\subsection{The Event Detection Layer}
+Event detection is the heart of an event-based system. In PSWare, we can easily customize the event detection algorithm on the event detection layer.
 
 We demonstrate the flexibility in event detection through an example in this subsection. The example is TED \cite{lai:ted}, the default event detection algorithm used by PSWare. TED aims at minimizing energy consumption. %The second example is 
 
@@ -122,7 +122,7 @@ When an event \(e_n^i\) is matched at node \(v_k\), node will use \(table_r\) an
 
 If \(e_{comp}\) has been successfully detected by the underlying event matcher, then Procedure \ref{algo:eventmatching} will be executed so that \(table_m\) is updated accordingly and TED may reduce the energy cost for future event detection.
 
-\subsection{Flexibility in Event Delivery}
+\subsection{The Event Delivery Layer}
 After the subscribed event is detected, it needs to be delivered to the user. In many applications, this is done via the underlying routing protocols such as CTP provided by TinyOS. This is also the case for the default event delivery in PSWare. However, in some applications, this may not be a case. For example, in an intelligent transportation system, the events may be delivered to mobile vehicles. In this subsection, we show how PSWare can achieve the flexibility in event delivery through several examples in ITS.
 
 We choose ITS as an example because different event types in this application may require different event delivery strategies and that is why the flexibility in event delivery is of particular importance. The event types in ITS may include:
@@ -140,7 +140,7 @@ We choose ITS as an example because different event types in this application ma
 
 The overall architecture for ITS event delivery over PSWare is shown in Figure \ref{fig:its-delivery}. A key difference in this architecture is the introduction of multiple event deliverer. Upon the signaling of 'eventDeliver' in Listing \ref{lst:pswareEventMatcher}, the middleware developer can first query the event type by using the APIs in Listing \ref{lst:pswareAPI}. Then if the event type is accident, it will be immediately delivered to the nearby vehicles. Otherwise, a carry-and-forward mechanism will be used to deliver the event.
 
-\subsection{Flexibility in Event Definition}
+\subsection{The Event Definition Layer}
 After the middleware developers have implemented the necessary mechanisms for event detection and delivery, it is also possible for the application users to specify certain parameters so as to make use of the underlying event processing mechanisms.
 
 We will illustrate this through one type of application scenario. Suppose the middleware developer has implemented a message retransmission mechanism for the event delivery and matching functions to make the application more reliable. Then the application developers can specify a parameter indicating the desired reliability for the events they define. 
