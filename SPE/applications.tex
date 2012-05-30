@@ -1,23 +1,23 @@
 \section{Evaluation}
 \label{sec:pswareImpl}
-In previous sections, we have introduced PSWare and how it can be customized to meet different application requirements. In this section, we demonstrate how PSWare can help in developing practical WNS applications through three application case studies: the indoor monitoring, the car park and the intelligent transportation system.
+In previous sections, we have introduced PSWare and how it can be customized to meet different application requirements. In this section, we demonstrate how PSWare can help in developing practical WNS applications through three application case studies: the indoor monitoring, the car park and the intelligent transportation system (ITS).
 
 The key features of the three applications are as follows:
 \begin{itemize}
 \item Energy efficiency in an indoor monitoring system is crucial because the network needs to operate for a long period of time and it is not necessary to gather all the raw data.
 \item Reliability is important in a car park system because the management system needs to know the time when each car enters and leaves the car park so as to calculate the fee.
-\item Event detection and delivery mechanism may be tailor-made for an ITS system because transportation network has certain special 
+\item The sensors in such systems have special deployment such as being installed along the roads. As a result, event detection and delivery mechanism may be fit into such domain-specific scenarios and to achieve better efficiency.
 \end{itemize}
 
 \subsection{Application Scenarios}
-Indoor environment monitoring uses WSN for monitoring because it is easy to deploy the sensor nodes. Such application domain has many applications including air-conditioning, fire alarm and office space light adjustment. Such system is a good application for using composite events because of the following characteristics:
+Indoor environment monitoring uses WSN because of its ease of deployment. Such application domain has many applications including air-conditioning, fire alarm and office space light adjustment. Detecting composite events in these applications is crucial because of the following reasons:
 \begin{itemize}
 \item There may be a large amount of raw data since the data may be gathered from a lot of sources.
 \item The users may not be interested in all the raw data. Instead, they may be more interested in change of the data. This is because the events such as fire or temperature change will usually trigger the change of the sensory data. 
 \item Primitive event detection may not be sufficient. For instance, a fire alarm may be characterized by a combination of different types of events such as temperature and light.
 \end{itemize}
 
-In the area of intelligent transportation system (ITS), WSN also finds many applications because it is easy to deploy the sensor nodes without interrupting the traffic. This application also has a lot of applications including collision avoidance, traffic light control, automatic road enforcement and electronic toll. Composite event detection is very common in these applications because one of the common requirements for these applications is to detect the speed of vehicle. However, different from the indoor temperature and light monitoring, the ITS applications have the following characteristics:
+In the area of ITS, WSN also finds many applications because it is easy to deploy the sensor nodes without interrupting the traffic. ITS-based applications include collision avoidance, traffic light control, automatic road enforcement and electronic toll. Composite event detection is common in these applications because each individual sensor alone may not be able to provide sufficient information. For instance, the individual magnetic sensor can only detect the presence of vehicles and they need to communicate with each other in order to obtain more useful information such as the speed of the vehicles. However, different from the indoor temperature and light monitoring, the ITS applications have the following characteristics:
 \begin{itemize}
 \item The magnetic sensor used in ITS application will consume much more energy so the energy consumption from sensing may not be negligible. This will affect the event detection method for ITS.
 \item The sensor nodes are deployed and lined up on each road and will detect each passing vehicle one by one. Such special deployment may also affect the event detection method.
@@ -42,7 +42,7 @@ To meet the reliability requirement, we need to implement special event detectio
 \subsection{Incorporating PSWare}
 Before we incorporate PSWare in developing these applications, we first analyze if the middleware developers need to modify the event processing framework for each of the individual application scenario.
 
-The event detection requirements for the indoor monitoring application can be met with TED since the primary goal of TED is to reduce energy consumption by filtering the events which will not lead to the detection of subscribed composite events. To have a practical application scenario, we deployed our sensor nodes around the Internet and Mobile Computing Laboratory of the Hong Kong Polytechnic University. The deployment plan is shown in Figure \ref{fig:indoorDeployment}.
+\textbf{Indoor monitoring} The event detection requirements for the indoor monitoring application can be met with TED since the primary goal of TED is to reduce energy consumption by filtering the events which will not lead to the detection of subscribed composite events. To have a practical application scenario, we deployed our sensor nodes around the Internet and Mobile Computing Laboratory of the Hong Kong Polytechnic University. The deployment plan is shown in Figure \ref{fig:indoorDeployment}.
 
 \begin{figure}
 \centering
@@ -111,7 +111,7 @@ Event Fire {
 \label{fig:itsSensor}
 \end{figure}
 
-While TED works fine for indoor applications, it is not suitable for ITS. Because its unique characteristics as described in the previous subsection, we need to implement different event detection algorithm so as to improve its efficiency. Because of the high energy cost of sensing, the sensor nodes will turn their sensors off for most of the time while keeping their radio on so that they can know when to start sensing. Furthermore, sensor nodes are deployed along the roads and events are also forwarded along the roads so that . The procedure for nodes' wake-up and forwarding is shown in Procedure \ref{algo:itsForward}. We use the following notations in the procedure:
+\textbf{ITS} While TED works fine for indoor applications, it is not suitable for ITS. Because its unique characteristics as described in the previous subsection, we need to implement different event detection algorithm so as to improve its efficiency. Because of the high energy cost of sensing, the sensor nodes will turn their sensors off for most of the time while keeping their radio on so that they can know when to start sensing. Furthermore, sensor nodes are deployed along the roads and events are also forwarded along the roads so that . The procedure for nodes' wake-up and forwarding is shown in Procedure \ref{algo:itsForward}. We use the following notations in the procedure:
 \begin{itemize}
 \item \(V=\{v_1, v_2 \cdots \}\): the sensor nodes that come next on the road. For the sensors on the road, \(\|V\|=1\) but for the sensors next to the crossroads, \(\|V\|>1\)
 \item Vehicle events \(e_i\) which are either detected locally or received from another node.
@@ -170,7 +170,7 @@ First, an event named 'CarEvent' is defined to detect the presence of the indivi
 \label{fig:carParkSensor}
 \end{figure}
 
-We used the campus car park as our test bed for intelligent car park system applications. We deployed some micaz sensor nodes for the application. For simplicity, we use light sensor to detect the presence of a vehicle. For better communication, the sensor nodes are attached close to the ceiling instead of on the ground. The light sensor on each node is connected through an extended cable as shown in Figure \ref{fig:carParkSensor}. 
+\textbf{Intelligent car park} We used the campus car park as our test bed for intelligent car park system applications. We deployed some micaz sensor nodes for the application. For simplicity, we use light sensor to detect the presence of a vehicle. For better communication, the sensor nodes are attached close to the ceiling instead of on the ground. The light sensor on each node is connected through an extended cable as shown in Figure \ref{fig:carParkSensor}. 
 
 \begin{figure}
 \centering
