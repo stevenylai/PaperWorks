@@ -1,4 +1,4 @@
-\section{Evaluation}
+\section{Experiments and Evaluation}
 \label{sec:pswareImpl}
 In previous sections, we have introduced PSWare and how it can be customized to meet different application requirements. In this section, we demonstrate how PSWare can help in developing practical WNS applications through three application case studies: the indoor monitoring, the car park and the intelligent transportation system (ITS).
 
@@ -9,7 +9,7 @@ The key features of the three applications are as follows:
 \item The sensors in such systems have special deployment such as being installed along the roads. As a result, event detection and delivery mechanism may be fit into such domain-specific scenarios and to achieve better efficiency.
 \end{itemize}
 
-\subsection{Application Scenarios}
+\subsection{Example Applications}
 Indoor environment monitoring uses WSN because of its ease of deployment. Such application domain has many applications including air-conditioning, fire alarm and office space light adjustment. Detecting composite events in these applications is crucial because of the following reasons:
 \begin{itemize}
 \item There may be a large amount of raw data since the data may be gathered from a lot of sources.
@@ -39,8 +39,8 @@ On the other hand, a car park system is also different from our first indoor app
 \end{itemize}
 To meet the reliability requirement, we need to implement special event detection and delivery mechanisms so that the events can be reliably detected and delivered in such an unreliable environment.
 
-\subsection{Incorporating PSWare}
-Before we incorporate PSWare in developing these applications, we first analyze if the middleware developers need to modify the event processing framework for each of the individual application scenario.
+\subsection{Support of Applications With PSWare}
+Before we take advantage of PSWare in developing these applications, we first analyze if the middleware developers need to modify the event processing framework for each of the individual application scenario.
 
 \textbf{Indoor monitoring} The event detection requirements for the indoor monitoring application can be met with TED since the primary goal of TED is to reduce energy consumption by filtering the events which will not lead to the detection of subscribed composite events. To have a practical application scenario, we deployed our sensor nodes around the Internet and Mobile Computing Laboratory of the Hong Kong Polytechnic University. The deployment plan is shown in Figure \ref{fig:indoorDeployment}.
 
