@@ -1,28 +1,86 @@
-\section{Customization in PSWare}
+\section{Support for Customization in PSWare}
 \label{sec:flexibility}
-An important feature of PSWare is its flexibility. We achieve this by layering. In this way, developers can customize different layers without affecting each other. Moreover, multiple event processing strategies may be dynamically used during the runtime. In this section, we discuss the layers provided by PSWare. These layers consist different aspects of a complete event-based system, including, event detection, event delivery and event subscription.
+An important feature of PSWare is that it can be customized. To support customization, PSWare uses a flexible layered architecture. In this way, developers can customize different layers without affecting each other. Moreover, multiple event processing strategies may be dynamically used during the runtime. In this section, we how such customization can be done at different layers. These layers consist different aspects of a complete event-based system, including, event detection, event delivery and event subscription.
 
-\subsection{The Event Detection Layer}
-Event detection is the heart of an event-based system. In PSWare, we can easily customize the event detection algorithm on the event detection layer.
+\subsection{Customizable Event Definition}
+It is a common scenario for the applications to define extra event attributes that have domain-specific meanings. For example, in an application which requires reliable communication, we might want to define a probability value which specifies the threshold for the message loss. Then in the middleware framework, this number should be used during the actual communication.
 
-We demonstrate the flexibility in event detection through an example in this subsection. The example is TED \cite{lai:ted}, the default event detection algorithm used by PSWare. TED aims at minimizing energy consumption. %The second example is 
+The simplest way to pass some domain-specific information to the middleware is to modify the System event. As discussed in Section \ref{sec:design}, the System event is used like a device driver that represents the primitive events collected by the system. Internally, this event is specified in a header file and can be modified to suit different applications. The essential steps are as follows:
+\begin{enumerate}
+\item Modify 'SystemEvent.h' and add necessary attributes for the system event
+\item Generate the necessary macro values for accessing the new attribute in the middleware runtime environment
+\item Modify the middleware framework so that the attributes can be used
+\item Use the new attributes in the actual event definition
+\end{enumerate}
+
+We will illustrate these steps through an application scenario. Suppose the middleware developer has implemented a message retransmission mechanism for the event delivery and matching functions to make the application more reliable. Then the application developers can specify a parameter indicating the desired reliability for the events they define. The new 'SystemEvent.h' will look like in Listing \ref{lst:SystemEventProbability}.
+
+\begin{lstlisting}[caption=Customized system event, label=lst:SystemEventProbability]
+typedef struct {
+	uint16_t nodeID;
+	uint16_t time;
+	float probability;
+} SystemEvent;
+\end{lstlisting}
+
+Once the new probability attribute is defined, we need to generate some necessary macro values for accessing the attribute. The tool for generating the macros is 'psware gen'. It will parse the event header files and output some macro values. After that, the middleware can access the attribute with the code fragment shown in Listing \ref{lst:SystemEventProbabilityAccess}. In this piece of code, we first obtain the system event through the EventInstance API. Then we obtain the probability value by accessing the correct attribute. Note that SystemEvent, SystemEvent\_probability are generated macro values for accessing the events and their attributes.
+
+\begin{lstlisting}[caption=Customized system event, label=lst:SystemEventProbabilityAccess]
+EventInstanceInfo * systemPtr = call EventInstance.getEventInstance(SystemEvent);
+float probability = (float)systemPtr->content[SystemEvent_probability];
+\end{lstlisting}
+
+The event probability can then be further defined through event definition. To reuse the event definition in Listing \ref{lst:rooms}, now if the user wants to add a parameter to indicate the reliability, he may insert a statement at Line \ref{lst:reliability:def} which defines the global reliability parameter.
+
+\begin{lstlisting}[caption=Example of event definition with reliability, label=lst:reliability]
+Event SimpleEvent {
+	int temp=System.temp;
+	int id=System.id;
+	int time=System.time;
+	reliability = 1.0; (* \label{lst:reliability:def} *)
+} where {
+	temp > 30
+}
+Event CompEvent {
+} on {
+	SimpleEvent e1 and
+	SimpleEvent e2
+} where {
+	e1.Location="A" and
+	e2.Location="B" and
+	e2.time-e1.time=600
+}
+\end{lstlisting}
+
+Once the parameter is defined. The information will be passed to the middleware and the corresponding code fragment in Listing \ref{lst:SystemEventProbabilityAccess} will work as expected.
+
+\subsection{Customizable Event Detection}
+Event detection is the heart of an event-based system. In PSWare, we can easily customize event detection on the event detection layer. Since PSWare uses a type-based event model to support composite event, event detection can also be customized according to the event types. The customization takes the following steps:
+\begin{enumerate}
+\item Define some domain-specific event types that requires specific event detection methods
+\item Generate the necessary macro values for accessing the new attribute in the middleware runtime environment
+\item Implement the specific event detection methods in the middleware
+\end{enumerate}
+
+We demonstrate the steps through an example, iTED. iTED is a variation of the TED \cite{lai:ted} algorithm, the default event detection algorithm in PSWare. Different from TED, iTED is customized for indoor monitoring application where the events are first fused in each monitored room. Then the results are further fused for global event detection.
 
 \begin{figure}
 \centering
 \includegraphics[width=.8\textwidth]{ted-architecture}
-\caption{TED over PSWare}
+\caption{iTED over PSWare}
 \label{fig:ted-architecture}
 \end{figure}
 
-The essential idea of TED is fusion point selection, where the sensor nodes detect events and select parent nodes according to the detection cost so that the cost for future event detection can be reduced. The interaction between TED, PSWare and the upper level application is shown in Figure \ref{fig:ted-architecture}.
+The essential idea of iTED is fusion point selection, where the sensor nodes detect events and select parent nodes according to the detection cost so that the cost for future event detection can be reduced. The interaction between iTED, PSWare and the upper level application is shown in Figure \ref{fig:ted-architecture}.
 
-To implement TED in PSWare, we use three sub-procedures that can support the major functionality of TED:
+To implement iTED in PSWare, we use three sub-procedures that can support its major functionality:
 \begin{enumerate}
-\item A procedure for each of the nodes to exchange their information about available fusion points (fusion point table in Figure \ref{fig:ted-architecture}). This procedure is executed periodically and is independent of event detection.
+\item A procedure for each of the nodes to exchange their information about available fusion points (fusion point table in Figure \ref{fig:ted-architecture}). This procedure is implemented in the middeware runtime environment and is executed periodically. It is independent of event detection.
 \item A procedure for each of the nodes to exchange their information about the detected events (event table in Figure \ref{fig:ted-architecture}). This procedure is also executed periodically and is independent of event detection.
 \item A procedure that implements event matching interface as discussed in Section \ref{sec:model}, Listing \ref{lst:pswareEventMatcher}. This procedure is invoked during event matching.
 \end{enumerate}
 
+The first step is to add a new attribute, roomID, to our system event. This attribute will be used to perform event fusion on a room basis.
 \begin{algorithm}
 \begin{algorithmic}
 \REQUIRE \(v_n\rightarrow msg_r\)
@@ -49,7 +107,7 @@ To implement TED in PSWare, we use three sub-procedures that can support the maj
 \label{algo:table_r}
 \end{algorithm}
 
-To illustrate the implementation, we briefly introduce some notations used by TED. In TED, some of the nodes \(V'\subseteq V\) in the network are selected as event fusion points. Each individual sensor node maintains a fusion point table \(table_r\) for all \(v'_n\in V'\)
+To illustrate the implementation, we briefly introduce some notations used by iTED. In iTED, some of the nodes \(V'\subseteq V\) in the network are selected as event fusion points. Each individual sensor node maintains a fusion point table \(table_r\) for all \(v'_n\in V'\)
 \begin{itemize}
 \item Fusion point ID (\(fid_n\)): the node ID of the fusion point
 \item	Hop count (\(hop_n\)): the number of hops to reach the fusion point
@@ -99,7 +157,7 @@ First, each node \(v_n\) periodically broadcasts messages \(msg_r\) which is its
 
 The construction of \(table_m\) will take place when the event instance \(e_n^i\) is detected and forwarded to a fusion point \(v'_n\). We will discuss how forwarding could be done in the next subsection.
 
-When an event \(e_n^i\) is matched at node \(v_k\), node will use \(table_r\) and \(table_e\) to decide how to forward the detected event to the fusion points so that higher level events can be matched. In case the fusion point for event type \(e_n\) has not been decided, the node will forward the event to some of its closet fusion points  according to TED. Upon the reception of \(e_n^i\) from \(v_k\), the fusion point will first update its own \(table_m\). Then it will check if there is any composite event \(e_{comp}\) which uses \(e_n\) and another event \(e_j\) as its sub-event (\(e_{comp}=comp(e_n, e_j)\)). If there is, then \(e_j\) will be used upon 'selectSubevent'.
+When an event \(e_n^i\) is matched at node \(v_k\), node will use \(table_r\) and \(table_e\) to decide how to forward the detected event to the fusion points so that higher level events can be matched. In case the fusion point for event type \(e_n\) has not been decided, the node will forward the event to some of its closet fusion points  according to iTED. Upon the reception of \(e_n^i\) from \(v_k\), the fusion point will first update its own \(table_m\). Then it will check if there is any composite event \(e_{comp}\) which uses \(e_n\) and another event \(e_j\) as its sub-event (\(e_{comp}=comp(e_n, e_j)\)). If there is, then \(e_j\) will be used upon 'selectSubevent'.
 
 \begin{algorithm}
 \begin{algorithmic}
@@ -120,7 +178,7 @@ When an event \(e_n^i\) is matched at node \(v_k\), node will use \(table_r\) an
 \label{algo:eventmatching}
 \end{algorithm}
 
-If \(e_{comp}\) has been successfully detected by the underlying event matcher, then Procedure \ref{algo:eventmatching} will be executed so that \(table_m\) is updated accordingly and TED may reduce the energy cost for future event detection.
+If \(e_{comp}\) has been successfully detected by the underlying event matcher, then Procedure \ref{algo:eventmatching} will be executed so that \(table_m\) is updated accordingly and iTED may reduce the energy cost for future event detection.
 
 \subsection{The Event Delivery Layer}
 After the subscribed event is detected, it needs to be delivered to the user. In many applications, this is done via the underlying routing protocols such as CTP provided by TinyOS. This is also the case for the default event delivery in PSWare. However, in some applications, this may not be a case. For example, in an intelligent transportation system, the events may be delivered to mobile vehicles. In this subsection, we show how PSWare can achieve the flexibility in event delivery through several examples in ITS.
@@ -139,32 +197,3 @@ We choose ITS as an example because different event types in this application ma
 \end{figure}
 
 The overall architecture for ITS event delivery over PSWare is shown in Figure \ref{fig:its-delivery}. A key difference in this architecture is the introduction of multiple event deliverer. Upon the signaling of 'eventDeliver' in Listing \ref{lst:pswareEventMatcher}, the middleware developer can first query the event type by using the APIs in Listing \ref{lst:pswareAPI}. Then if the event type is accident, it will be immediately delivered to the nearby vehicles. Otherwise, a carry-and-forward mechanism will be used to deliver the event.
-
-\subsection{The Event Definition Layer}
-After the middleware developers have implemented the necessary mechanisms for event detection and delivery, it is also possible for the application users to specify certain parameters so as to make use of the underlying event processing mechanisms.
-
-We will illustrate this through one type of application scenario. Suppose the middleware developer has implemented a message retransmission mechanism for the event delivery and matching functions to make the application more reliable. Then the application developers can specify a parameter indicating the desired reliability for the events they define. 
-
-To reuse the example in Listing \ref{lst:rooms}, now if the user wants to add a parameter to indicate the reliability, he may insert a statement at Line \ref{lst:reliability:def} which defines the global reliability parameter.
-
-\begin{lstlisting}[caption=Example of event definition with reliability, label=lst:reliability]
-reliability = 1.0; (* \label{lst:reliability:def} *)
-Event SimpleEvent {
-	int temp=System.temp;
-	int id=System.id;
-	int time=System.time;
-} where {
-	temp > 30
-}
-Event CompEvent {
-} on {
-	SimpleEvent e1 and
-	SimpleEvent e2
-} where {
-	e1.Location="A" and
-	e2.Location="B" and
-	e2.time-e1.time=600
-}
-\end{lstlisting}
-
-Once the parameter is defined. The EDL compiler may be modified accordingly to accept the new parameter for reliability. Then the corresponding byte codes can be generated to process according to this parameter. One way to achieve this is to add an additional instruction. That instruction will eventually pass the parameter to the underlying event processing modules.
