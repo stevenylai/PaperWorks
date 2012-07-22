@@ -131,6 +131,7 @@ interface EventType {
 	command EventTypeInfo * getEventType(evet_id_t eventId);
 	command bool isSubscribed(evet_id_t eventId);
 	command bool isComposite(evet_id_t eventId);
+	command EventRelation getRelation(event_id_t e1, event_id_t e2);
 }
 interface EventInstance {
 	command int instanceAmount(evet_id_t eventId);
@@ -151,7 +152,7 @@ typedef struct {
 } EventInstanceInfo;
 \end{lstlisting}
 
-The first interface, 'EventType' has three commands. The first command is for the individual event instances to obtain the type information based on their type ID as shown on line \ref{lst:pswareAPI:typeID}. The second and the last commands are self-explanatory. They are used to determine if a given event type is a composite event or is subscribed by the user.
+The first interface, 'EventType' has four commands. The first command is for the individual event instances to obtain the type information based on their type ID as shown on line \ref{lst:pswareAPI:typeID}. The second and the third commands are used to determine if a given event type is a composite event or is subscribed by the user. The last command is for query the relation of e2 in reference to e1. Its return type is a enumerate which can have value of: parent, immediate parent, child and immediate child. This command will be useful if the user wants to implement customized event processing mechanisms.
 
 Since for each event type, there can be multiple events, we need the second interface 'EventInstance' to process those events. There are three commands for this interface. The first one is used to obtain the number of the events for a specific type currently stored in the event buffer on the sensor node. We will discuss about the event buffer in the next section. Upon knowing the number of events, the middleware developer can iterate through the event list and use the second command to get the events. As for the last command, when an event is detected to be useless, the middleware developer may delete it from the list.
 

@@ -8,7 +8,7 @@ It is a common scenario for the applications to define extra event attributes th
 The simplest way to pass some domain-specific information to the middleware is to modify the System event. As discussed in Section \ref{sec:design}, the System event is used like a device driver that represents the primitive events collected by the system. Internally, this event is specified in a header file and can be modified to suit different applications. The essential steps are as follows:
 \begin{enumerate}
 \item Modify 'SystemEvent.h' and add necessary attributes for the system event
-\item Generate the necessary macro values for accessing the new attribute in the middleware runtime environment
+\item Use 'psware gen' to generate the necessary constant values for accessing the new attribute in the middleware runtime environment
 \item Modify the middleware framework so that the attributes can be used
 \item Use the new attributes in the actual event definition
 \end{enumerate}
@@ -23,7 +23,7 @@ typedef struct {
 } SystemEvent;
 \end{lstlisting}
 
-Once the new probability attribute is defined, we need to generate some necessary macro values for accessing the attribute. The tool for generating the macros is 'psware gen'. It will parse the event header files and output some macro values. After that, the middleware can access the attribute with the code fragment shown in Listing \ref{lst:SystemEventProbabilityAccess}. In this piece of code, we first obtain the system event through the EventInstance API. Then we obtain the probability value by accessing the correct attribute. Note that SystemEvent, SystemEvent\_probability are generated macro values for accessing the events and their attributes.
+Once the new probability attribute is defined, we need to generate some necessary constant values for accessing the attribute. The tool for generating the constants is 'psware gen'. It will parse the event header files and output some macro values. After that, the middleware can access the attribute with the code fragment shown in Listing \ref{lst:SystemEventProbabilityAccess}. In this piece of code, we first obtain the system event through the EventInstance API. Then we obtain the probability value by accessing the correct attribute. Note that SystemEvent, SystemEvent\_probability are generated constant values for accessing the events and their attributes.
 
 \begin{lstlisting}[caption=Customized system event, label=lst:SystemEventProbabilityAccess]
 EventInstanceInfo * systemPtr = call EventInstance.getEventInstance(SystemEvent);
@@ -37,7 +37,7 @@ Event SimpleEvent {
 	int temp=System.temp;
 	int id=System.id;
 	int time=System.time;
-	reliability = 1.0; (* \label{lst:reliability:def} *)
+	System.reliability = 1.0; (* \label{lst:reliability:def} *)
 } where {
 	temp > 30
 }
@@ -58,11 +58,11 @@ Once the parameter is defined. The information will be passed to the middleware 
 Event detection is the heart of an event-based system. In PSWare, we can easily customize event detection on the event detection layer. Since PSWare uses a type-based event model to support composite event, event detection can also be customized according to the event types. The customization takes the following steps:
 \begin{enumerate}
 \item Define some domain-specific event types that requires specific event detection methods
-\item Generate the necessary macro values for accessing the new attribute in the middleware runtime environment
+\item Generate the necessary constant values for accessing the new attribute in the middleware runtime environment
 \item Implement the specific event detection methods in the middleware
 \end{enumerate}
 
-We demonstrate the steps through an example, iTED. iTED is a variation of the TED \cite{lai:ted} algorithm, the default event detection algorithm in PSWare. Different from TED, iTED is customized for indoor monitoring application where the events are first fused in each monitored room. Then the results are further fused for global event detection.
+We demonstrate the steps through a simple example, iTED. iTED is a variation of the TED \cite{lai:ted} algorithm, the default event detection algorithm in PSWare. Different from TED, iTED is customized for indoor monitoring application where the events are first fused in each monitored room. Then the results are further fused for global event detection. For simplicity, we assume each sensor node is equipped with a room ID and there maybe more than one fusion points in each room. However, all fusion points are selected in advance and will remain unchanged. The room ID can either be pre-deployed in the sensor nodes' program or be obtained using localization methods and more sophisticated fusion point selection methods may be implemented by extending some components discussed here.
 
 \begin{figure}
 \centering
@@ -71,16 +71,22 @@ We demonstrate the steps through an example, iTED. iTED is a variation of the TE
 \label{fig:ted-architecture}
 \end{figure}
 
-The essential idea of iTED is fusion point selection, where the sensor nodes detect events and select parent nodes according to the detection cost so that the cost for future event detection can be reduced. The interaction between iTED, PSWare and the upper level application is shown in Figure \ref{fig:ted-architecture}.
-
-To implement iTED in PSWare, we use three sub-procedures that can support its major functionality:
+Figure \ref{fig:ted-architecture} shows an overall diagram on how iTED interacts with PSWare. To implement iTED in PSWare, we need three key components:
 \begin{enumerate}
-\item A procedure for each of the nodes to exchange their information about available fusion points (fusion point table in Figure \ref{fig:ted-architecture}). This procedure is implemented in the middeware runtime environment and is executed periodically. It is independent of event detection.
-\item A procedure for each of the nodes to exchange their information about the detected events (event table in Figure \ref{fig:ted-architecture}). This procedure is also executed periodically and is independent of event detection.
-\item A procedure that implements event matching interface as discussed in Section \ref{sec:model}, Listing \ref{lst:pswareEventMatcher}. This procedure is invoked during event matching.
+\item Fusion point table: each sensor node updates this table in order to find the fusion point.
+\item Event table: each sensor node maintains this table in order to decide if a given detected event should be forwarded to the fusion point.
+\item Event matcher: a component that implements the event matching interface as discussed in Section \ref{sec:model}, Listing \ref{lst:pswareEventMatcher}.
 \end{enumerate}
 
-The first step is to add a new attribute, roomID, to our system event. This attribute will be used to perform event fusion on a room basis.
+The first step is to add a new attribute, roomID, to our system event. This has already been discussed in the previous sub-section in Listing \ref{lst:SystemEventProbability} and we will skip it here. The only difference is the new attribute here will be of 'int' type instead of 'float' type.
+
+Our first component, the fusion point table maintained by each sensor node \(v'_n\in V'\) is denoted as \(table_r\). It contains the following data:
+\begin{itemize}
+\item	Hop count (\(hop_n\)): the number of hops to reach the fusion point
+\item	Parent (\(parent_n\)): the next hop to that fusion point
+\end{itemize}
+
+The procedure for updating fusion point table is shown in Procedure \ref{algo:table_r}. Note that we make use of the roomID to filter the messages.
 \begin{algorithm}
 \begin{algorithmic}
 \REQUIRE \(v_n\rightarrow msg_r\)
@@ -89,7 +95,7 @@ The first step is to add a new attribute, roomID, to our system event. This attr
 			\STATE \(addTo(table_r, t')\)
 		\ENDIF
 		\FOR {each entry \(t\) in \(table_r\)}
-			\IF {\(t\rightarrow fid_n = t'\rightarrow f_n\)}
+			\IF {\(t\rightarrow roomID = t'\rightarrow roomID\)}
 				\IF {\(t'\rightarrow hop_n < t\rightarrow hop_n\)}
 					\STATE \(t\rightarrow hop_n \gets t\rightarrow hop_n+1\)
 					\STATE \(t\rightarrow parent_n \gets v_n\)
@@ -107,19 +113,14 @@ The first step is to add a new attribute, roomID, to our system event. This attr
 \label{algo:table_r}
 \end{algorithm}
 
-To illustrate the implementation, we briefly introduce some notations used by iTED. In iTED, some of the nodes \(V'\subseteq V\) in the network are selected as event fusion points. Each individual sensor node maintains a fusion point table \(table_r\) for all \(v'_n\in V'\)
-\begin{itemize}
-\item Fusion point ID (\(fid_n\)): the node ID of the fusion point
-\item	Hop count (\(hop_n\)): the number of hops to reach the fusion point
-\item	Parent (\(parent_n\)): the next hop to that fusion point
-\end{itemize}
-Each sensor node will also maintain an event table \(table_e\) containing the information for each event type \(e_n\in E\) which includes the following fields:
+The second and the last component, the event table and the event matcher are closely related. Each sensor node will maintain an event table which is denoted as \(table_e\). The event table contains information for each event type \(e_n\in E\) as follows:
 \begin{itemize}
 \item Event type ID (\(e_n\)): the ID which is assigned to each event type
 \item Fusion point for the event (\(fusion_n\)): the fusion point at which the event is mostly likely to be detected at the lowest cost.
 \item Fusion cost (\(cost_n\)): the fusion cost for event type \(e_n\)
 \end{itemize}
-In addition to the above tables, each fusion point \(v'\in V'\) will maintain another table, the event matching \(table_m\) for the purpose of matching events. \(table_m\) contains the following fields:
+
+In addition, each fusion point \(v'\in V'\) will maintain another table, the event matching \(table_m\) for the purpose of matching events. \(table_m\) contains the following fields:
 \begin{itemize}
 \item Event type ID (\(e_n\)): the ID of the event type
 \item Event instance ID (\(i\)): the \(i\)th event instance of event type \(e_n\) (we use \(e_n^i\) to denote such an instance of event)
@@ -178,7 +179,7 @@ When an event \(e_n^i\) is matched at node \(v_k\), node will use \(table_r\) an
 \label{algo:eventmatching}
 \end{algorithm}
 
-If \(e_{comp}\) has been successfully detected by the underlying event matcher, then Procedure \ref{algo:eventmatching} will be executed so that \(table_m\) is updated accordingly and iTED may reduce the energy cost for future event detection.
+If \(e_{comp}\) has been successfully detected by the underlying event matcher, then Procedure \ref{algo:eventmatching} will be executed so that \(table_m\) is updated accordingly and iTED may reduce the energy cost for future event detection. Note that Procedure \ref{algo:eventmatching} will make use of the APIs in Listing \ref{lst:pswareAPI} since it needs to query the event relations.
 
 \subsection{The Event Delivery Layer}
 After the subscribed event is detected, it needs to be delivered to the user. In many applications, this is done via the underlying routing protocols such as CTP provided by TinyOS. This is also the case for the default event delivery in PSWare. However, in some applications, this may not be a case. For example, in an intelligent transportation system, the events may be delivered to mobile vehicles. In this subsection, we show how PSWare can achieve the flexibility in event delivery through several examples in ITS.
