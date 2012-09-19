@@ -1,6 +1,6 @@
 \section{Background}
 \label{sec:background}
-In this section, we briefly overview the background of pub/sub systems and some issues in designing PSWare.
+In this section, we briefly overview the background of pub/sub systems and WSN middleware.
 
 \subsection{Publish / Subscribe Systems}
 The publish/subscribe (pub/sub) communication paradigm has received an increasing attention because of its loosely coupled nature. Conceptually, a distributed pub/sub system model can be illustrated in Figure \ref{fig:pubsub}.
@@ -25,7 +25,7 @@ Compared with Traditional interaction paradigms such as message passing, RPC \ci
 Because of the decoupling features of pub/sub paradigm, developing applications based on pub/sub paradigm will become easier easy. A few pub/sub systems such as Siena \cite{siena}, Elvin \cite{elvin}, Gryphon \cite{gryphon} and Jedi \cite{jedi} have already been implemented in distributed networks.
 
 \subsection{WSN Middleware}
-The emerging field of tiny, networked sensors offers an opportunity for a wide range of applications. The sensor nodes are low cost, low power and easily deployable. When combined, they offer numerous advantages over traditional networks, such as a large-scale flexible architecture, high-resolution sensed data and application adaptive mechanisms. However, due to their tight integration to the physical world, sensor networks pose considerable impediments and make application development nontrivial. Using middleware to bridge the gap between applications and low-level constructs is an attractive approach to resolving many WSN issues and easing the application development. Consequently, a lot of WSN middlewares have been proposed and they provide different kinds of programming abstraction. However, to the best of our knowledge, there hasn't been any significant works done for pub/sub based WSN middleware especially for supporting composite events. In this work, we propose the design of PSWare, a pub/sub middleware for WSN that supports composite event detection. By using PSWare, a wide range of applications can be implemented more easily.
+WSN offers an opportunity for a wide range of applications. The sensor nodes are low cost, low power and easily deployable. When combined, they offer numerous advantages over traditional networks, such as a large-scale flexible architecture, high-resolution sensed data and application adaptive mechanisms. However, due to their tight integration to the physical world, sensor networks pose considerable impediments and make application development nontrivial. Using middleware to bridge the gap between applications and low-level constructs is an attractive approach to resolving many WSN issues and easing the application development. Consequently, a lot of WSN middlewares have been proposed and they provide different kinds of programming abstraction.
 
 Conventionally, middleware is a software layer between operating system and applications. It abstract the underlying details provided by OS and provide a high level API for applications. The purpose of middleware is usually for easier application development because the application developers can make use of the easier and higher level API instead of the ones provided by OS. WSN middleware is similar in the sense the middleware also sits between the operating system and the application. Moreover, WSN middleware allows the application to view the network as a whole and therefore, program it without aware where the data is stored and transmitted. A conceptual model for a WSN middleware is illustrated in Figure \ref{fig:middleware}.
 
@@ -37,9 +37,9 @@ Conventionally, middleware is a software layer between operating system and appl
 \end{figure}
 
 \subsection{Events and Subscriptions}
-In our pub/sub model, each event is a list of attributes which are the actual data obtained from the sensor networks \cite{lowlevelnaming}. Applications can subscribe events with subscriptions which contain event types \cite{facespubsub} and event filters \cite{siena}. Events can have relations among each other. The relations are expressed as event operators. In this paper, we consider binary event relations which can be used to cover most of the event operators or relations in the existing literatures \cite{cea, samos}.
+In our pub/sub model, each event is a list of attributes which are the actual data obtained from the sensor networks \cite{lowlevelnaming}. Applications can subscribe events with subscriptions which contain event types \cite{facespubsub} and event filters \cite{siena}. Events can have relations among each other. The relations are expressed as event operators.
 
-Events together with their relations can be represented as a directed acyclic graph where each node represents an event and the each edge represents a relation. Since we consider only binary relations, each node in the graph can have an indegree of either 0 or 2. Figure \ref{fig:eventhierarchy} shows an example of such a graph. The nodes with 0 indegree represent primitive events. The rest of the nodes represent composite events. The event which has 0 outdegree is the subscribed event.
+Events together with their relations can be represented as a directed acyclic graph where each node represents an event and the each edge represents a relation. If the relations are all binary relations, each node in the graph can have an indegree of either 0 or 2. Figure \ref{fig:eventhierarchy} shows an example of such a graph. The nodes with 0 indegree represent primitive events. The rest of the nodes represent composite events. The event which has 0 outdegree is the subscribed event.
 
 \begin{figure}
 \centering
@@ -49,7 +49,7 @@ Events together with their relations can be represented as a directed acyclic gr
 \label{fig:defndetection}
 \end{figure}
 
-Once the subscriptions are defined, it will be disseminated into the network so that sensor nodes can start to monitor. The sensor nodes collect data in rounds. In each round, the collected data will be matched against the subscription. If an event is found to match the subscribed event type, it will be delivered to the sink to notify the subscriber.
+Once the subscriptions are defined, it will be disseminated into the network so that sensor nodes can start to collect data and detect events. The sensor nodes collect data in rounds. In each round, the collected data will be matched against the subscription. If an event is found to match the subscribed event type, it will be delivered to the sink to notify the subscriber.
 
 \subsection{Event Detection and Detection Cost}
 Events can be detected with different strategies based their types and relations. In this work, we consider the detection cost as message cost. The simplest type of event is the primitive events. The cost for detecting this type of event is simply the message cost for one sensor node to reach every other sensor node for this event. As shown in Figure \ref{fig:event-detection1} as an example, if the four nodes are used for detecting event type \(e_1\), the cost will be 4.
@@ -73,10 +73,10 @@ Sometimes the events may not always happen. In this case, we don't need to alway
 \end{figure}
 
 \subsection{Composite Event-based Applications}
-We consider several applications that motivates the development of PSWare. The first one is about fire detection. When a fire occurs, the rescue team not only needs to know the location of the fire but also its spreading speed and direction. This requires the detection of changes in temperature. In such applications, events will be defined as location of the sensors along with the changes of temperature over time.
+We consider several applications that motivates the development of PSWare. The first one is about indoor monitoring for fire detection. When a fire occurs, usually more than one sensor nodes can detect changes in sensory data such as temperature and light. In addition, when the rescue team comes, they not only need to know the location of the fire but also its spreading speed and direction. This requires detecting changing patterns of the events. In such applications, events will be defined as location of the sensors along with the changes of temperature and light over the time.
 
 The second application is about WSN-based structural health monitoring (SHM). The objective of such system is to detect damages on structures such as buildings and bridges if they occur. Event detection is important in these applications because the SHM sensors will introduce high energy consumption during damage detection. It is therefore more desirable to wake them up only upon the occurrence of certain events \cite{jangshm}. One of such example is to start the sensors when certain vibration pattern has been detected on the building to be monitored. In such applications, events may be defined as vibration patterns over the structure.
 
 Our last application is an intelligent transportation system (ITS). In addition to the traffic jam example briefly mentioned in Section \ref{sec:introduction}, ITS also provides other services such as traffic light control, road enforcement and congestion information. Many of such services need the vehicle information. In these applications, we may define vehicle related events as primitive events. Then based on those events, different applications may define different composite events which are important to the services being provided.
 
-From these applications, we can see event detection is an essential part. Moreover, for each type of application in its own domain, it usually have some basic events such as car events for ITS and temperature event for fire monitoring. Then based on these basic events, different composite events may be defined to further meet the requirements of these applications
+From these applications, we can see event detection is an essential part. Moreover, for each application domain, it usually have some basic events such as car events for ITS and temperature event for fire monitoring. Then based on these basic events, different composite events may be defined to further meet the requirements of these applications.
