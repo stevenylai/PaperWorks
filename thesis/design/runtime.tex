@@ -11,7 +11,7 @@ The runtime environment on each sensor node is similar to the VM-based approach 
 \label{fig:pswarevm}
 \end{figure}
 
-The essential operations for our event detection framework is shown in Figure \ref{fig:eventdetectionframework2}. In this framework, the event matcher will first fetch the events from the event buffer and then evaluate them against the corresponding filters. If the event has been detected, then it will be transmitted over the network. Formally, the procedure of the event matcher can be shown in Algorithm \ref{algo:eventMatcher} with some notations defined as:
+The essential operations for our event detection framework is shown in Figure \ref{fig:eventdetectionframework2}. In this framework, the event matcher will first fetch the events from the event buffer and then evaluate them against the corresponding filters. If the event has been detected, then it will be transmitted over the network. Formally, the procedure of the event matcher can be shown in Procedure \ref{algo:eventMatcher} with some notations defined as:
 \begin{itemize}
 \item Event types: \(E=\{e_1, e_2 \cdots \}\)
 \item For each \(e_n\in E\), its filter is: \(e_n\rightarrow filter\)

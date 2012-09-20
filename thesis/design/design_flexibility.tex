@@ -62,7 +62,7 @@ Event detection is the heart of an event-based system. In PSWare, we can easily 
 \item Implement the specific event detection methods in the middleware
 \end{enumerate}
 
-We demonstrate the steps through a simple example, iTED. iTED is a variation of the TED \cite{lai:ted} algorithm, the default event detection algorithm in PSWare. Different from TED, iTED is customized for indoor monitoring application where the events are first fused in each monitored room. Then the results are further fused for global event detection. For simplicity, we assume each sensor node is equipped with a room ID and there maybe more than one fusion points in each room. However, all fusion points are selected in advance and will remain unchanged. The room ID can either be pre-deployed in the sensor nodes' program or be obtained using localization methods and more sophisticated fusion point selection methods may be implemented by extending some components discussed here.
+We demonstrate the steps through a simple example, iTED. iTED is a simplified version of the TED \cite{lai:ted} algorithm, the default event detection algorithm in PSWare. We will discuss our default event detection algorithm, TED, in the chapter. Different from TED, iTED is customized for indoor monitoring application where the events are first fused in each monitored room. Then the results are further fused for global event detection. For simplicity, we assume each sensor node is equipped with a room ID and there maybe more than one fusion points in each room. However, all fusion points are selected in advance and will remain unchanged. The room ID can either be pre-deployed in the sensor nodes' program or be obtained using localization methods and more sophisticated fusion point selection methods may be implemented by extending some components discussed here.
 
 \begin{figure}
 \centering
@@ -129,7 +129,7 @@ In addition, each fusion point \(v'\in V'\) will maintain another table, the eve
 \item Detection cost (\(cost_n^i\)): the cost for detecting event \(e_n^i\)
 \end{itemize}
 
-First, each node \(v_n\) periodically broadcasts messages \(msg_r\) which is its \(table_r\). If the node itself is a fusion point, then it will add itself in \(table_r\) and broadcast the message. The procedure is shown in Procedure \ref{algo:table_r}. In addition to \(msg_r\), each \(v'_k\in V'\) will periodically advertise its \(table_m\) by broadcasting \(msg_m\) so that other sensor nodes can construct their \(table_e\) with Procedure \ref{algo:ited:table_e}.
+First, each node \(v_n\) periodically broadcasts messages \(msg_r\) which is its \(table_r\). If the node itself is a fusion point, then it will add itself in \(table_r\) and broadcast the message. The procedure is shown in Procedure \ref{algo:ited:table_r}. In addition to \(msg_r\), each \(v'_k\in V'\) will periodically advertise its \(table_m\) by broadcasting \(msg_m\) so that other sensor nodes can construct their \(table_e\) with Procedure \ref{algo:ited:table_e}.
 
 \begin{algorithm}
 \begin{algorithmic}
@@ -179,7 +179,7 @@ When an event \(e_n^i\) is matched at node \(v_k\), node will use \(table_r\) an
 \label{algo:ited:eventmatching}
 \end{algorithm}
 
-If \(e_{comp}\) has been successfully detected by the underlying event matcher, then Procedure \ref{algo:ited:eventmatching} will be executed so that \(table_m\) is updated accordingly and iTED may reduce the energy cost for future event detection. Note that Procedure \ref{algo:eventmatching} will make use of the APIs in Listing \ref{lst:pswareAPI} since it needs to query the event relations.
+If \(e_{comp}\) has been successfully detected by the underlying event matcher, then Procedure \ref{algo:ited:eventmatching} will be executed so that \(table_m\) is updated accordingly and iTED may reduce the energy cost for future event detection. Note that Procedure \ref{algo:ited:eventmatching} will make use of the APIs in Listing \ref{lst:pswareAPI} since it needs to query the event relations.
 
 \subsection{Customizable Event Delivery}
 After the subscribed event is detected, it needs to be delivered to the user. In many applications, this is done via the underlying routing protocols such as CTP provided by TinyOS. This is also the case for the default event delivery in PSWare. However, in some applications, this may not be a case. For example, in an intelligent transportation system, the events may be delivered to mobile vehicles. In this subsection, we show how PSWare can achieve the flexibility in event delivery through several examples in ITS.

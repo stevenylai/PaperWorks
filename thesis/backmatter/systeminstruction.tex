@@ -1,8 +1,8 @@
-\section{Complete List of the Instructions for EDF}
+\chapter{Complete List of the EDF Instructions}
 \label{appendix:isa}
-In this section, we show the complete list of instructions currently used by our Event Detection Framework (EDF). We also briefly describe the function and the usage of each instruction.
+Here we show the complete list of instructions currently used by our Event Detection Framework (EDF). We also briefly describe the function and the usage of each instruction.
 
-\subsection{Basic Instructions}
+\section{Basic Instructions}
 The basic instruction deals with the most fundamental operations. Since the instruction uses a stack-based architecture in order to reduce the code size, most of the instructions that fall into this category deal with the operations related stacks.
 \begin{itemize}
 \item \emph{OPpush}: this instruction is used to push an operand to the top of the stack.
@@ -11,7 +11,7 @@ The basic instruction deals with the most fundamental operations. Since the inst
 \item \emph{OPhalt}: once this instruction is reached, the VM will stop execution.
 \end{itemize}
 
-\subsection{Operators}
+\section{Operators}
 Basic mathematical operators:
 \begin{itemize}
 \item \emph{OPadd}: pops two operands off the top of the stack, add them together and push the result back to the top of the stack.
@@ -50,8 +50,9 @@ Bitwise operators:
 \item \emph{OPlnot}: pops one operand off the top of the stack, calculate its complement and push the result back to the top of the stack.
 \end{itemize}
 
-\subsection{Event-related Instructions}
+\section{Event-related Instructions}
 \begin{itemize}
+\item \emph{OPinstall}: this instruction is invoked after the subscription is successfully installed on a sensor node.
 \item \emph{OPref}: whenever an event \(e\) is being evaluated, this instruction is invoked to obtain an instance of such event.
 \item \emph{OPoffset}: this instruction is involved right after the 'ref' instruction, in order to access individual attributes of the event instance.
 \item \emph{OPset}: if the attributes of an event need to be changed, this instruction will be used.

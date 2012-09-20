@@ -1,0 +1,83 @@
+\section{SHM Implementation Using PSWare}
+Apart from the ITS applications, we also implement an SHM prototype system. As discussed in the previous chapter, our SHM system involves the following steps:
+\begin{enumerate}
+\item Establish clusters in the network
+\item Data sampling and processing to obtain the mode shape
+\item Detect possible damage based on the mode shape
+\end{enumerate}
+
+\begin{figure}
+\centering
+\figurecurrentwidth{shm-flow}
+\caption{SHM Operation Flow}
+\label{fig:shm-flow}
+\end{figure}
+
+When developed using PSWare, the operation flow is shown in Figure \ref{fig:shm-flow}. First, the event subscription will trigger the network to cluster. Then data will be sampled. During data sampling, we store the sampled data in an internal buffer. Domain experts use modal analysis to obtain the mode shape. Modal analysis is implemented as a special instruction by the domain experts. Once the results are obtained, they will be published to the subscribers.
+
+Since the modal analysis part requires a lot of domain knowledge and is not the focus of this work, in this section, we primarily discuss how the clustering algorithm can be integrated in PSWare. For our prototype system, we have one sink node and the subscriptions are disseminated through the sink node. Such setup is similar to many existing SHM system where the data are transmitted to a monitoring station for damage detection.
+
+\subsection{Neighbor Information Exchange}
+The sensor nodes exchange information periodically. Each sensor node maintains the following information:
+\begin{itemize}
+\item Its own clustering status. There are three possible values: UC (unclustered), CH (cluster head) and CM (cluster member)
+\item Its neighbor table with clustering status: \(table_n\)
+\end{itemize}
+
+Each node \(v_n\) periodically broadcasts messages \(msg_n\) which is its \(table_n\). The procedure is shown in Procedure \ref{algo:table_n}.
+
+\begin{algorithm}
+\begin{algorithmic}[1]
+\REQUIRE \(v_n\rightarrow msg_n\)
+	\FOR {each entry \(t'\) in \(msg_n\)}
+		\IF {\NOT exists \(t'\rightarrow fid_n\) in \(table_n\)}
+			\STATE \(addTo(table_n, t')\)
+		\ENDIF
+		\FOR {each entry \(t\) in \(table_n\)}
+			\IF {\(t\rightarrow status != t'\rightarrow status\)}
+				\STATE \(t\rightarrow status != t'\rightarrow status\)
+			\ENDIF
+		\ENDFOR
+	\ENDFOR
+	\STATE \(msg_n \gets table_r\)
+	\STATE \(periodically\_broadcast(msg_n)\)
+\end{algorithmic}
+\caption{\(table_n\) update}
+\label{algo:table_n}
+\end{algorithm}
+
+\subsection{Clustering}
+The actual clustering takes place after the subscription is received by individual sensor node. Internally, this is done by implementing the 'OPinstall' instruction. This is a special instruction which will be invoked when a sensor node receives new subscriptions. Please refer to Appendix for more information on the instructions.
+
+\begin{algorithm}
+\begin{algorithmic}[1]
+\REQUIRE OPinstall
+	\IF {self is sink}
+		\STATE self.status = CH
+	\ELSE
+		\STATE self.status = UC
+	\ENDIF
+	\WHILE {self.status == UC}
+		\STATE \(broadcast(msg_n)\)
+		\STATE \(cost_n = MAX\)
+		\FOR {each entry \(t\) in \(table_n\)}
+			\STATE \(cost_n' = 0\)
+			\FOR {each entry \(t'\) in \(t.table_n\)}
+				\IF {\(t'.status == UC\)}
+					\STATE \(cost_n' = cost_n' + 1\)
+				\ENDIF
+			\ENDFOR
+			\STATE \(cost_n = min(cost_n', cost_n)\)
+		\ENDFOR
+		\STATE run\_uc();
+	\ENDWHILE
+	\IF {self.status == CM}
+		\STATE run\_cm();
+	\ELSE
+		\STATE run\_ch();
+	\ENDIF
+\end{algorithmic}\caption{Clustering in SHM}
+\label{algo:clustering-cost-calc}
+\end{algorithm}
+
+The procedure is shown in Procedure \ref{algo:clustering-cost-calc}. The procedure starts off from the sink node selecting itself to be a cluster head. The rest of the nodes are at first unclustered. Then each node will sort its neighbor's list according to the number of unclustered node that each neighbor has. This is to determine the neighbors which are more 'isolated' - those with most of its neighbors already clustered. The rest of the part has already been described in the previous chapter. Each node runs run\_uc(), run\_cm() and run\_ch() based on their clustering status. These functions implement the distributed time-slot based clustering algorithm discussed in the previous chapter.
