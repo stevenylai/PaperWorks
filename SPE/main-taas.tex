@@ -1,0 +1,106 @@
+% acmsmall-sample.tex, dated 24th May 2012
+% This is a sample file for ACM small trim journals
+%
+% Compilation using 'acmsmall.cls' - version 1.3, Aptara Inc.
+% (c) 2010 Association for Computing Machinery (ACM)
+%
+% Questions/Suggestions/Feedback should be addressed to => "acmtexsupport@aptaracorp.com".
+% Users can also go through the FAQs available on the journal's submission webpage.
+%
+% Steps to compile: latex, bibtex, latex latex
+%
+% For tracking purposes => this is v1.3 - May 2012
+
+\documentclass[prodmode,acmtecs]{acmsmall}
+
+\hbadness=10000
+\pdfminorversion=9
+
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{url}
+%TODO: replace the algorithmic package with TAAS/algorithm2e
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+\renewcommand{\algorithmicensure}{\textbf{Output:}} 
+\floatname{algorithm}{Procedure}
+% Package to generate and customize Algorithm as per ACM style
+%\usepackage[ruled]{TAAS/algorithm2e}
+%\renewcommand{\algorithmcfname}{ALGORITHM}
+
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{verbatim}
+
+\usepackage{booktabs}
+\usepackage{colortbl}
+\usepackage{tabularx}
+\usepackage{color}
+\usepackage{xspace}
+\usepackage{hyperref}
+
+\graphicspath{{./simulation/}{../figures/psware/}{../simulation/psware/}}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\figurecurrentwidth}{\includegraphics[width=\textwidth]}
+\newcommand{\figurehalfwidth}{\includegraphics[width=.5\textwidth]}
+\lstset{float, numbers=left, frame=lines, belowcaptionskip=3mm, xleftmargin=7mm, framexleftmargin=7mm, escapeinside={(*}{*)}, tabsize=3, breaklines=true}
+
+%\newtheorem{theorem}{Theorem}
+
+%\SetAlFnt{\small}
+%\SetAlCapFnt{\small}
+%\SetAlCapNameFnt{\small}
+%\SetAlCapHSkip{0pt}
+%\IncMargin{-\parindent}
+
+% Metadata Information
+\acmVolume{9}
+\acmNumber{4}
+\acmArticle{39}
+\acmYear{2010}
+\acmMonth{3}
+
+% Document starts
+\begin{document}
+
+\input{./title-taas}
+\input{./abstract}
+
+\category{C.2.2}{Computer-Communication Networks}{Network Protocols}
+
+\terms{Design, Middleware}
+
+\keywords{Wireless sensor networks, middleware,
+multi-channel, radio interference, time synchronization}
+
+\acmformat{Lai, S., Cao, J., Liu, X., 2012. PSWare: A Flexible Middleware Framework for Composite Event Processing in Wireless Sensor Networks.}
+
+\begin{bottomstuff}
+This work is supported by Hong Kong RGC under CERG grant PolyU5102/08E and the Hong Kong Polytechnic University under Niche Area Project grant 1-BB6C.
+
+Author's addresses: S. Lai {and} J. Cao {and} X. Liu, Department of Computing,
+The Hong Kong Polytechnic University.
+\end{bottomstuff}
+
+\maketitle
+
+
+\input{./introduction}
+\input{./background}
+\input{./model}
+\input{./design}
+\input{./flexibility}
+\input{./applications}
+%\input{./applicationIndoor}
+%\input{./applicationITS}
+%\input{./applicationCarPark}
+\input{./ceduevaluation}
+\input{./conclusion}
+
+\bibliographystyle{acmsmall}
+\bibliography{../references/wsn-general,../references/wsn-aggregation,../references/wsn-middleware,../references/wsn-pubsub,../references/edl,../references/pubsub,../references/algorithms,../references/event-detection,../references/pervasive,../references/shm}
+\end{document}
+
