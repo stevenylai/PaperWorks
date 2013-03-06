@@ -77,8 +77,8 @@ Internally, the EDL compiler will process the script on an event basis - a relat
 \begin{enumerate}
 \item Automatically detect dependent sub-events for a composite event
 \item Given a set of composite events with overlapping sub-events, automatically select a set of event definitions that can satisfy the dependency for all events
-\end(enumerate}
-Our EDL compiler resolves dependency in a top-down fashion. First, it traverse the event forest from the root of each composite event type. Then, during the tree traversal, those dependent sub-event types will be automatically put into a list. To avoid putting duplicated entries, the conditions of each event type will be compared before putting into the list. The algorithm is shown in Procedure \ref{{algo:dependency}. The input to the algorithm is all the subscribed events \(E_{all}\) from the user and the algorithm will output a set of non-duplicated events \(E_{min}\) that can satisfy all dependencies. The function 'traverse' is used to list all the dependent events.
+\end{enumerate}
+Our EDL compiler resolves dependency in a top-down fashion. First, it traverse the event forest from the root of each composite event type. Then, during the tree traversal, those dependent sub-event types will be automatically put into a list. To avoid putting duplicated entries, the conditions of each event type will be compared before putting into the list. The algorithm is shown in Procedure \ref{algo:dependency}. The input to the algorithm is all the subscribed events \(E_{all}\) from the user and the algorithm will output a set of non-duplicated events \(E_{min}\) that can satisfy all dependencies. The function 'traverse' is used to list all the dependent events.
 
 \begin{algorithm}
 \begin{algorithmic}
