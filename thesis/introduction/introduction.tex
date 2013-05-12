@@ -15,7 +15,7 @@ Because of the common requirements and challenges for composite event subscripti
 \end{enumerate}
 
 \subsection{Issues}
-In this research, we address the essential issues of designing and developing PSWare. On the highest level, an event description language is provided to allow users to describe composite event relationships. On the lowest level, a runtime environment is necessary on each sensor nodes so that they could understand and execute the event processing algorithms translated from the high-level EDL. More specifically, we need to address the following research/engineering issues to make our middleware work.
+In this research, we address the essential issues of designing and developing PSWare. On the highest level, an event description language (EDL) is provided to allow users to describe composite event relationships. On the lowest level, a runtime environment is necessary on each sensor nodes so that they could understand and execute the event processing algorithms translated from the high-level EDL. More specifically, we need to address the following research/engineering issues to make our middleware work.
 
 \begin{itemize}
 \item	\emph{Event definition language}: we need to provide an event description language which is powerful yet easy to use.
@@ -23,5 +23,5 @@ In this research, we address the essential issues of designing and developing PS
 \item	\emph{Runtime environment support}: the middleware running on each sensor node should provide a runtime environment to execute the compiled programs.
 \item	\emph{Subscription propagation}: after the program written in EDL is compiled, the subscription should be intelligently disseminated into the network. If the subscription is too big, it may need to be divided into small ones. Furthermore, only related sensor nodes need to be updated.
 \item	\emph{Event detection}: we need to design efficient protocol for the sensor nodes to cooperate with each other to detect composite events.
-\item	\emph{Event delivery}: after the subscribed the events have been detected, we need energy-efficient routing protocols so that the detected events will be delivered at the minimum cost.
+\item	\emph{Event delivery}: after the subscribed events have been detected, we need energy-efficient routing protocols so that the detected events will be delivered at the minimum cost.
 \end{itemize}
