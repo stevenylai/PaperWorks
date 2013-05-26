@@ -14,7 +14,7 @@ We use our middleware to implement a traffic management prototype system in our 
 \end{figure}
 
 \subsection{Pre-defined Events}
-In order for the users to use our middleware easier, we have provide some pre-defined event templates. With adjustable parameters. Listing \ref{lst:carevent} shows the most basic event - a car event in the system. All the attributes of the event can be directly obtained from the sensor nodes. The user can further add their own defined filters such as selecting only cars from certain road or selecting a car with pre-defined ID.
+In order for the users to use our middleware easier, we have provided some pre-defined event templates. With adjustable parameters. Listing \ref{lst:carevent} shows the most basic event - a car event in the system. All the attributes of the event can be directly obtained from the sensor nodes. The user can further add their own defined filters such as selecting only cars from certain road or selecting a car with pre-defined ID.
 
 \begin{lstlisting}[caption=Car event, label=lst:carevent]
 Event CarEvent {
@@ -64,7 +64,7 @@ We use a graphical user interface (GUI) to visualize the relations between event
 \end{figure}
 
 \subsection{Customized Event Detection for ITS}
-Intelligent transportation system may cover many application areas including collision avoidance, traffic light control and vehicle tracking. All these applications require the detection of vehicles. In this paper, we consider the scenario where the sensor nodes are deployed as road side units (RSU) \cite{klein:its}. To detect vehicles in such a model, the sensors should be waken up as the vehicles are driving along the roads. The procedure for nodes' wake-up and forwarding is shown in Procedure \ref{algo:itsForward}. We use the following notations in the procedure:
+Intelligent transportation system may cover many application areas including collision avoidance, traffic light control and vehicle tracking. All these applications require the detection of vehicles. In this paper, we consider the scenario where sensor nodes are deployed as road side units (RSU) \cite{klein:its}. To detect vehicles in such a model, the sensors should be waken up as the vehicles are driving along the roads. The procedure for nodes' wake-up and forwarding is shown in Procedure \ref{algo:itsForward}. We use the following notations in the procedure:
 \begin{itemize}
 \item \(V=\{v_1, v_2 \cdots \}\): the sensor nodes that come next on the road. For the sensors on the road, \(\|V\|=1\) but for the sensors next to the crossroads, \(\|V\|>1\)
 \item Vehicle events \(e_i\) which are either detected locally or received from another node.
@@ -91,4 +91,4 @@ Intelligent transportation system may cover many application areas including col
 \label{algo:itsForward}
 \end{algorithm}
 
-Except for the sentry node, the nodes will not actively collect data until it receives messages from others. Once the event from the previous node on the road is received, it will be selected for composite event detection.
+Except for the sentry node, nodes will not actively collect data until they receive messages from others. Once the event from the previous node on the road is received, it will be selected for composite event detection.
