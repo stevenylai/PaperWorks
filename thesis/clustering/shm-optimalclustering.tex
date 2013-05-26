@@ -1,5 +1,5 @@
 \section{Clustering Algorithms}
-In this section, we will formulate the optimal clustering problem and then describe the corresponding solutions to the problem.
+In this section, we will formulate the optimal clustering problem and, then, describe the corresponding solutions to the problem.
 
 \subsection{Problem Formulation}
 \label{sec:OptimalClustering}
@@ -19,7 +19,7 @@ Objective:
 
 The first constraint is set because we wish to find the mode shapes defined on all the deployed sensor nodes. The second constraint is to ensure only single-hop clusters are generated. Constraint 3 is required by the ERA algorithm. Constraints 4 and 5 are used to describe that generated clusters are overlapping and connected. 
 
-The above clustering problem is an optimization problem. We will prove that the decision version of the problem is NP complete which is defined as: \emph{given a threshold \(k\) , does there exist a cluster set \(C=\{S_1, S_2, S_3, \cdots\}\), which satisfy all the constraints above and whose total energy cost \(\sum\limits_{S_i \in C} cost(S_i)\) is equal of smaller than \(k\)?}.
+The above clustering problem is an optimization problem. We will prove that the decision version of the problem is NP complete which is defined as: \emph{given a threshold \(k\) , does there exist a cluster set \(C=\{S_1, S_2, S_3, \cdots\}\), which satisfy all the constraints above and whose total energy cost \(\sum\limits_{S_i \in C} cost(S_i)\) is equal or smaller than \(k\)?}.
 
 \begin{theorem}
 The decision version of our clustering problem is NP-complete.

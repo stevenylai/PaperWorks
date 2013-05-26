@@ -33,12 +33,12 @@ Given:
 
 Find:
 \begin{itemize}
-	\item For each event type \(e_n\in E\), when an event instance of this type is happens, find a subset of nodes \(V_n^r\subseteq V\) which are involved in detecting the event.
+	\item For each event type \(e_n\in E\), when an event instance of this type occurs, find a subset of nodes \(V_n^r\subseteq V\) which are involved in detecting the event.
 \end{itemize}
 
 Objective:
 \begin{itemize}
-	\item Minimize the total energy consumption:
+	\item Minimize the message cost:
 	\begin{displaymath}
 	\sum_{i=i}^{n}cost(e_i)
 	\end{displaymath}
@@ -52,7 +52,7 @@ The composite event detection problem is NP-complete.
 \begin{proof}
 We show our proof by reducing the steiner tree problem to our composite event detection problem. Let \(N_s\subset N\) be the event source (nodes that detect the primitive events). Since the cost is defined as message cost, if we minimize the total path length from the event sources to the fusion points (nodes which are responsible for detecting composite events), then we can also minimize the message cost.
 
-We construct a graph \(G'=(N', A')\) from \(G\) with the steps as follows:
+We construct a graph \(G'=(N', A')\) from \(G\) as follows:
 \begin{enumerate}
 \item \(N'=N_s\bigcup N_f\)
 \item For each pair of nodes \(n'_i, n'_j\in N'\), we add an edge \(a'_k\in A'\) incident on both if there is a path from \(n'_i\) to \(n'_j\) in \(G\).

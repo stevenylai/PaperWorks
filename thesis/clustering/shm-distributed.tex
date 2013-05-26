@@ -36,7 +36,7 @@ Each node will not execute the algorithm until the start of its own time slot. T
 
 Informally, it can be easily shown that the distributed algorithm is correct as the solution it produces will satisfy all the constraints:
 \begin{itemize}
-\item Since all nodes will be given a time slot to do run the algorithm, the clusters will eventually cover the whole network.
+\item Since all nodes will be given a time slot to run the algorithm, the clusters will eventually cover the whole network.
 \item The clustering starts at the controller node and all the later CHs will first select a CM from its \(cn\). Therefore, all the clusters will be connected.
 \item CH only selects CM within its one-hop neighbors, and the CHs will not remove its role as CH so all clusters will be one-hop.
 \item For each CH, it will ensure the cluster size is at least \(p\) by selecting additional CM until the cluster size reaches either \(p\) or \(n_{opt}\).
