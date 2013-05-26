@@ -23,7 +23,7 @@ The first type is the application users. These users are responsible for definin
 
 On the lower level, we have another type of users called middleware developers. These users are responsible for implementing domain-specific event processing mechanisms. PSWare provides a couple of interfaces in TinyOS to make the implementation easier.
 
-The benefit for such model is its flexibility. There are usually many different types of applications for a specific application domain. For example, in ITS, we may have collision warning, traffic flow control and overspeed detection yet these applications can probably share a lot of common event processing mechanisms. Therefore, the middleware developer only needs to implement the event processing mechanism for once. Then by defining different events, we can easily meet different application requirements without sacrificing the efficiency.
+The benefit for such a model lies in its flexibility. There are usually many different types of applications for a specific application domain. For example, in ITS, we may have collision warning, traffic flow control and overspeed detection yet these applications can probably share a lot of common event processing mechanisms. Therefore, the middleware developer only needs to implement the event processing mechanism for once. Then, by defining different events, we can easily meet different application requirements without sacrificing the efficiency.
 
 \subsection{PSW-EDL: Event Definition Language in PSWare}
 \begin{figure}
@@ -33,11 +33,11 @@ The benefit for such model is its flexibility. There are usually many different 
 \label{fig:eventprogramming}
 \end{figure}
 
-PSWare provides an type-based event programming model to the application user. Such model has the following characteristics:
+PSWare provides a type-based event programming model to the application user. Such model has the following characteristics:
 \begin{itemize}
 \item Each event type is similar to a class in object-based programming model. Similarly, event hierarchy in Figure \ref{fig:eventhierarchy} is similar to class hierarchy.
-\item Similar to object-based model, attributes are encapsulated in each events.
-\item Event definition are declarative. The high-level application developers only need to specify the event filters and event relations through operators and functions. The underlying mechanisms for implementing these operators are left to our event processing framework.
+\item Similar to object-based model, attributes are encapsulated in each event.
+\item Event definition is declarative. The high-level application developers only need to specify the event filters and event relations through operators and functions. The underlying mechanisms for implementing these operators are left to our event processing framework.
 \end{itemize}
 
 Figure \ref{fig:eventprogramming} conceptually shows our event model. On the top level, the application requirements are expressed in terms of the composite events that need to be detected. The composite events may be further divided into sub-events. Eventually all composite events can be divided into primitive events which can be directly detected by individual sensor nodes.
@@ -118,9 +118,9 @@ generic configuration PrimitiveEventC(evet_id_t eventId) {
 }
 \end{lstlisting}
 
-In PSWare, everything is treated as events and that includes temperature, photo and even timer. Similar to other generic components in TinyOS, if necessary, new events can be added by defining a new event ID. Once set, we need to create a higher level primitive event so that the application users can make new event definitions based on top of it. This is done by an automatic tool which will be invoked when building and output a class which will be used by the event notifier and an event definition which will be used by EDL.
+In PSWare, everything is treated as an event and that includes temperature, photo and even timer. Similar to other generic components in TinyOS, if necessary, new events can be added by defining a new event ID. Once set, we need to create a higher level primitive event so that the application users can make new event definitions based on top of it. This is done by an automatic tool which will be invoked when building and output a class which will be used by the event notifier and an event definition which will be used by EDL.
 
-When this is set, the application user can already start to subscribe and detect events by using PSWare's default event detection algorithm: TED \cite{lai:ted}. If the middleware developer wants to write their own event detection algorithm, they can choose to implement two interface 'EventMatcher' and 'EventDeliver' as shown in Listing \ref{lst:pswareEventMatcher}. The 'EventMatcher' interface includes two major event which serves three purposes as follows:
+When this is set, the application user can already start to subscribe and detect events by using PSWare's default event detection algorithm: TED \cite{lai:ted}. If the middleware developer wants to write their own event detection algorithm, they can choose to implement two interface 'EventMatcher' and 'EventDeliver' as shown in Listing \ref{lst:pswareEventMatcher}. The 'EventMatcher' interface includes two major events which serve three purposes as follows:
 \begin{enumerate}
 \item During the execution of the middleware, the network may detect multiple events for a single event type. Therefore, upon the detection of the composite events, the event detection algorithm may choose a specific event from one of this sub-types for detection. This is done by signaling the first event 'select sub-event'.
 \item Upon the detection of an event, the event detection algorithm may perform some customized processing to update some information so that the next time when the event happens again, it may be detected with lower cost. This is when the second event 'eventMatched' comes into play. The middleware developer may implement customized event processing mechanisms according to the matched events.
@@ -137,7 +137,7 @@ interface EventDeliverer {
 }
 \end{lstlisting}
 
-To facilitate the implementation of event matcher and event deliverer, the middleware developer can make use of the APIs provided by PSWare in Listing \ref{lst:pswareAPI}. These APIs are mostly used to retrieve the event information.
+To facilitate the implementation of event matcher and event deliverer the middleware developer can make use of the APIs provided by PSWare in Listing \ref{lst:pswareAPI}. These APIs are mostly used to retrieve the event information.
 \begin{lstlisting}[caption=PSWare API in NesC, label=lst:pswareAPI]
 interface EventType {
 	command EventTypeInfo * getEventType(evet_id_t eventId);
@@ -164,11 +164,11 @@ typedef struct {
 } EventInstanceInfo;
 \end{lstlisting}
 
-The first interface, 'EventType' has four commands. The first command is for the individual event instances to obtain the type information based on their type ID as shown on line \ref{lst:pswareAPI:typeID}. The second and the third commands are used to determine if a given event type is a composite event or is subscribed by the user. The last command is for query the relation of e2 in reference to e1. Its return type is a enumerate which can have value of: parent, immediate parent, child and immediate child. This command will be useful if the user wants to implement customized event processing mechanisms.
+The first interface, 'EventType' has four commands. The first command is for the individual event instances to obtain the type information based on their type ID as shown on line \ref{lst:pswareAPI:typeID}. The second and the third commands are used to determine if a given event type is a composite event or is subscribed by the user. The last command is for query the relation of e2 in reference to e1. Its return type is an enumerate which can have value of: parent, immediate parent, child and immediate child. This command will be useful if the user wants to implement customized event processing mechanisms.
 
 Since for each event type, there can be multiple events, we need the second interface 'EventInstance' to process those events. There are three commands for this interface. The first one is used to obtain the number of the events for a specific type currently stored in the event buffer on the sensor node. We will discuss about the event buffer in the next section. Upon knowing the number of events, the middleware developer can iterate through the event list and use the second command to get the events. As for the last command, when an event is detected to be useless, the middleware developer may delete it from the list.
 
-The data structures are shown after the interfaces. For event type, we have the ID for the type, its level in the subscribed event tree and its size. For the event instance data structure, we have its type ID, instance ID and its attribute list. If the event contains some attributes of the primitive events, they can be obtained here by using the index defined in the enumeration value for primitive event. For instance, if one of the primitive event has an enumeration value labeled 'EVENT\_LIGHT', then if the event instance also has one of its attribute from the sensor's light reading, the middleware developer can access it by writing 'attributes[EVENT\_LIGHT]'.
+The data structures are shown after the interfaces. For a given event type, we have the ID for the type, its level in the subscribed event tree and its size. For the event instance data structure, we have its type ID, instance ID and its attribute list. If the event contains some attributes of the primitive events, they can be obtained here by using the index defined in the enumeration value for primitive event. For instance, if one of the primitive event has an enumeration value labeled 'EVENT\_LIGHT', then if the event instance also has one of its attribute from the sensor's light reading, the middleware developer can access it by writing 'attributes[EVENT\_LIGHT]'.
 
 In summary, the middleware developer may follow the following steps to implement customized event processing mechanisms:
 \begin{itemize} 

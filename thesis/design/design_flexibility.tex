@@ -1,9 +1,9 @@
 \section{Support for Customization in PSWare}
 \label{sec:flexibility}
-An important feature of PSWare is that it can be customized. To support customization, PSWare uses a flexible layered architecture. In this way, developers can customize different layers without affecting each other. Moreover, multiple event processing strategies may be dynamically used during the runtime. In this section, we how such customization can be done at different layers. These layers consist different aspects of a complete event-based system, including, event detection, event delivery and event subscription.
+An important feature of PSWare is that it can be customized. To support customization, PSWare uses a flexible layered architecture. In this way, developers can customize different layers without affecting each other. Moreover, multiple event processing strategies may be dynamically used during the runtime. In this section, we how such customization can be done at different layers. These layers implement different aspects of a complete event-based system, including, event detection, event delivery and event subscription.
 
 \subsection{Customizable Event Definition}
-It is a common scenario for the applications to define extra event attributes that have domain-specific meanings. For example, in an application which requires reliable communication, we might want to define a probability value which specifies the threshold for the message loss. Then in the middleware framework, this number should be used during the actual communication.
+It is a common scenario for applications to define extra event attributes that have domain-specific meanings. For example, in an application which requires reliable communication, we might want to define a probability value which specifies the threshold for message loss. Then, in the middleware framework, this number should be used during the actual communication.
 
 The simplest way to pass some domain-specific information to the middleware is to modify the System event. As discussed in Section \ref{sec:design}, the System event is used like a device driver that represents the primitive events collected by the system. Internally, this event is specified in a header file and can be modified to suit different applications. The essential steps are as follows:
 \begin{enumerate}
@@ -62,7 +62,7 @@ Event detection is the heart of an event-based system. In PSWare, we can easily 
 \item Implement the specific event detection methods in the middleware
 \end{enumerate}
 
-We demonstrate the steps through a simple example, iTED. iTED is a simplified version of the TED \cite{lai:ted} algorithm, the default event detection algorithm in PSWare. We will discuss our default event detection algorithm, TED, in the chapter. Different from TED, iTED is customized for indoor monitoring application where the events are first fused in each monitored room. Then the results are further fused for global event detection. For simplicity, we assume each sensor node is equipped with a room ID and there maybe more than one fusion points in each room. However, all fusion points are selected in advance and will remain unchanged. The room ID can either be pre-deployed in the sensor nodes' program or be obtained using localization methods and more sophisticated fusion point selection methods may be implemented by extending some components discussed here.
+We demonstrate the steps through a simple example, iTED. iTED is a simplified version of the TED \cite{lai:ted} algorithm, the default event detection algorithm in PSWare. We will discuss our default event detection algorithm, TED, in the next chapter. Different from TED, iTED is customized for indoor monitoring applications where the events are first fused in each monitored room. Then, the results are further fused for global event detection. For simplicity, we assume each sensor node is equipped with a room ID and there maybe more than one fusion points in each room. However, all fusion points are selected in advance and will remain unchanged. The room ID can either be pre-deployed in the sensor nodes' program or be obtained using localization methods and more sophisticated fusion point selection methods may be implemented by extending some components discussed here.
 
 \begin{figure}
 \centering
@@ -158,7 +158,7 @@ First, each node \(v_n\) periodically broadcasts messages \(msg_r\) which is its
 
 The construction of \(table_m\) will take place when the event instance \(e_n^i\) is detected and forwarded to a fusion point \(v'_n\). We will discuss how forwarding could be done in the next subsection.
 
-When an event \(e_n^i\) is matched at node \(v_k\), node will use \(table_r\) and \(table_e\) to decide how to forward the detected event to the fusion points so that higher level events can be matched. In case the fusion point for event type \(e_n\) has not been decided, the node will forward the event to some of its closet fusion points  according to iTED. Upon the reception of \(e_n^i\) from \(v_k\), the fusion point will first update its own \(table_m\). Then it will check if there is any composite event \(e_{comp}\) which uses \(e_n\) and another event \(e_j\) as its sub-event (\(e_{comp}=comp(e_n, e_j)\)). If there is, then \(e_j\) will be used upon 'selectSubevent'.
+When an event \(e_n^i\) is matched at node \(v_k\), node will use \(table_r\) and \(table_e\) to decide how to forward the detected event to the fusion points so that higher level events can be matched. In case the fusion point for event type \(e_n\) has not been decided, the node will forward the event to some of its closest fusion points  according to iTED. Upon the reception of \(e_n^i\) from \(v_k\), the fusion point will first update its own \(table_m\). Then it will check if there is any composite event \(e_{comp}\) which uses \(e_n\) and another event \(e_j\) as its sub-event (\(e_{comp}=comp(e_n, e_j)\)). If there is, then \(e_j\) will be used upon 'selectSubevent'.
 
 \begin{algorithm}
 \begin{algorithmic}
@@ -182,12 +182,12 @@ When an event \(e_n^i\) is matched at node \(v_k\), node will use \(table_r\) an
 If \(e_{comp}\) has been successfully detected by the underlying event matcher, then Procedure \ref{algo:ited:eventmatching} will be executed so that \(table_m\) is updated accordingly and iTED may reduce the energy cost for future event detection. Note that Procedure \ref{algo:ited:eventmatching} will make use of the APIs in Listing \ref{lst:pswareAPI} since it needs to query the event relations.
 
 \subsection{Customizable Event Delivery}
-After the subscribed event is detected, it needs to be delivered to the user. In many applications, this is done via the underlying routing protocols such as CTP provided by TinyOS. This is also the case for the default event delivery in PSWare. However, in some applications, this may not be a case. For example, in an intelligent transportation system, the events may be delivered to mobile vehicles. In this subsection, we show how PSWare can achieve the flexibility in event delivery through several examples in ITS.
+After the subscribed event is detected, it needs to be delivered to the user. In many applications, this is done via the underlying routing protocols such as Collection Tree Protocol (CTP) \cite{ctp} provided by TinyOS. This is also the case for the default event delivery in PSWare. However, in some applications, this may not be a case. For example, in an intelligent transportation system, the events may be delivered to mobile vehicles. In this subsection, we show how PSWare can achieve the flexibility in event delivery through several examples in ITS.
 
 We choose ITS as an example because different event types in this application may require different event delivery strategies and that is why the flexibility in event delivery is of particular importance. The event types in ITS may include:
 \begin{itemize}
 \item Emergency: events that represent urgent incidents. Examples of this type of events include car accidents and urgent road maintenance. These events probably need to be delivered to all nearby vehicles when occurred.
-\item Driver's information: events that provide assistant information to the drivers. Examples include congestion information and whether information These events are usually not considered as urgent and may be delivered in carry-and-forward fashion \cite{cartel}.
+\item Driver's information: events that provide assistant information to the drivers. Examples include congestion information and meteorological information. These events are usually not considered as urgent and may be delivered in carry-and-forward fashion \cite{cartel}.
 \end{itemize}
 
 \begin{figure}
