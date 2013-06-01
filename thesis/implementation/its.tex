@@ -1,7 +1,7 @@
 \floatname{algorithm}{Procedure}
 \chapter{System Implementation}
 \label{chapter:implementation}
-Since the goal of using middleware is to support application development. In this chapter we illustrate, how PSWare can be implemented for different applications.
+Since the goal of using middleware is to support application development. We have implemented PSWare on Crossbow's MicaZ sensor nodes with TinyOS 2.x. In this chapter we illustrate how PSWare can be implemented for different applications.
 
 \section{ITS Implementation Using PSWare}
 We use our middleware to implement a traffic management prototype system in our testbed. The application architecture is shown in Figure \ref{fig:appdemo}. PSWare acts as the interface between WSN and application. On the application side, we have a web server where application-specific event templates are defined there. In the traffic management, we have defined events such as traffic jam and collision. Then the application users can subscribe the service by making use of the event templates. They can further refine their application requirements by providing parameters to the event templates.

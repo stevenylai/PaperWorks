@@ -36,12 +36,12 @@ The input of the algorithm includes:
 The algorithm will examine all the primitive events reported from the network to see if there is any relation associated with them. If so, the algorithm will try each node in \(G\) to construct shortest path tree (SPT) for these related events and select the one with the smallest cost. The root of that SPT will then become the fusion point for the related events. The algorithm runs recursively in the sense that once the fusion points for a composite event is selected, itself will become the node for detecting that composite event.
 
 \subsection{Determine the Re-selection Probability}
-While the previous section outlines the algorithm for centralized TED, we still need to decide how often the nodes should switch to another fusion point in order to cope with the event dynamics. We use exponential distribution as the event probability distribution because of its memoryless property. More specifically, for each composite event, the distance between each of its sub-events to any point in the network follows an exponential distribution as follows:
+While the previous section outlines the algorithm for centralized TED, we still need to decide how often the nodes should switch to another fusion point in order to cope with the event dynamics. We use exponential distribution as the event probability distribution because of its memoryless property. More specifically, for each composite event, the distance \(x\) between each of its sub-events to any point in the network follows an exponential distribution as follows:
 \begin{displaymath}
 f(x)={\lambda}_1e^{-{\lambda}_1x}
 \end{displaymath}
 
-In addition to the distance between events, the direction of events that happen in different rounds will also affect the selection probability. The angle between any pair of related events also satisfy an exponential distribution as follows:
+In addition to the distance between events, the direction of events that happen in different rounds will also affect the selection probability. The angle \(\theta\) between any pair of related events also satisfy an exponential distribution as follows:
 \begin{displaymath}
 f(\theta)={\lambda}_2e^{-{\lambda}_2\theta}
 \end{displaymath}

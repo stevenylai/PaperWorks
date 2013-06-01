@@ -7,7 +7,7 @@ In TED, the set of event fusion points \(N_f\subseteq N\) are preselected. We wi
 \begin{itemize}
 \item Event filter table \(table_f\): this table stores the filters for each event type. \(table_f\rightarrow filter_n\) denotes the filter for event type \(e_n\).
 \item Fusion point routing table (\(table_r\)): this table defines the routing to each fusion point \(n_i\in N_f\). \(table_r\rightarrow n_i\rightarrow parent\) denotes the parent node to reach fusion point \(n_i\).
-\item Event forwarding table (\(table_e\)): this table defines for each event type \(e_n\in E\), the corresponding fusion point for the it. \(table_e\rightarrow e_n\rightarrow fp\) denotes the fusion point for event type \(e_n\).
+\item Event forwarding table (\(table_e\)): this table defines the fusion point for each event type \(e_n\in E\). \(table_e\rightarrow e_n\rightarrow fp\) denotes the fusion point for event type \(e_n\).
 \end{itemize}
 
 The fusion points will also have the same data structure of the normal nodes for the algorithm. In addition, they will have an additional table \(table_m\). This table temporarily stores the events collected from other nodes. For each of the entries it has the following contents: 
