@@ -1,9 +1,9 @@
 \floatname{algorithm}{Algorithm}
-\chapter{Composite Event Detection}
+\chapter{Generic Composite Event Detection}
 \label{chapter:ted}
 \section{The Composite Event Detection Problem}
 \label{sec:system_model}
-Event detection algorithm is the heart of a pub/sub system. In this section, we formally define the composite event detection algorithm.
+In previous sections, we have discussed the overall design for PSWare. Once application programmers define the composite event types and make subscriptions through our middleware, the sensor nodes need to process the data and detect the subscribed composite events. In fact, a generic event detection algorithm is the heart of a pub/sub system. In this section, we formally define our generic composite event detection algorithm used by PSWare.
 
 \subsection{System Model}
 We consider the network as a graph \(G=(N, A)\) where each node represents a sensor node and each edge represents a communication link. For each \(a_n\in A\), it has a weight \(W_n\) associated with it.
@@ -21,7 +21,7 @@ The subscriber also provides a finite set of event relations \(R=\{r_1,r_2, \cdo
 \end{figure}
 \end{comment}
 
-We have a set of primitive event types \(E_{primitive}\subseteq E\) event types such that \(\not{\exists} r_n\in R\) such that \(r_n(e_1, e_2, \cdots)=e_n\) where \(e_n\in E_{primitive}\) and \(e_1, e_2, \cdots \in E\). For each primitive event of type \(e'_n\in E_{primitive}\), it will be detected by a node \(n_i\in N\). We use the message cost as the event detection cost for each event type \(e_n\in E\), denoted as \(cost(e_n)\).
+We have a set of primitive event types \(E_{primitive}\subseteq E\) event types such that there is no \(\exists r_n\in R\) such that \(r_n(e_1, e_2, \cdots)=e_n\) where \(e_n\in E_{primitive}\) and \(e_1, e_2, \cdots \in E\). For each primitive event of type \(e'_n\in E_{primitive}\), it will be detected by a node \(n_i\in N\). For the sake of simplicity in discussion, we only consider the message cost in our cost function and we do not consider message retransmission. Therefore, the event detection cost for each event type \(e_n\in E\) is denoted as \(cost(e_n)\).
 
 \subsection{Problem Formulation}
 Given:

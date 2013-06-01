@@ -1,6 +1,6 @@
 \section{A Centralized Approach}
 \label{sec:centralized}
-Based on our problem formulation, we can intuitively use a centralized approach to solve this problem. In the centralized approach, when the sensor nodes detect the events, they first inform the sink node about the detected event. Then the sink node will select the efficient nodes as event fusion points for each event type and broadcast the information into the network. The nodes will then forward their events to these fusion points after a certain period of time. The reasons why the nodes will only inform the sink about the events they detected rather than send the events to the sink for detection are as follows:
+Based on our problem formulation, we can intuitively use a centralized approach to solve this problem. In the centralized approach, when the sensor nodes detect the events, they first inform the sink node about the detected event. Then the sink node will select the efficient nodes as event fusion points for each event type and broadcast the information into the network. The nodes will then forward their events to these fusion points. The fusion points may be changed or updated with a predetermined probability to cope with event dynamics. The reasons why the nodes will only inform the sink about the events they detected rather than send the events to the sink for detection are as follows:
 \begin{itemize}
 \item Each individual event may have a lot of attributes so it is more desirable to first calculate the energy-efficient event fusion points before the actual event detection.
 \item As described in Section \ref{sec:introduction}, events may have strong locality. Therefore, the fusion points selected may be used for detecting events of the same types in the future.
@@ -68,7 +68,7 @@ The condition to select a new fusion point will be:
 \begin{align}
 &cost_1\geq cost_2\nonumber \\
 &cost_1^2\geq cost_2^2\nonumber \\
-&({\lambda}_1)^2(\frac{5}{4}+cos(\frac{\pi+{\lambda}_2}{2})\geq\nonumber \\ &{\lambda}_1^2(1+2sin\frac{{\lambda}_2}{2})^2+d^2+2{\lambda}_1(1+2sin\frac{{\lambda}_2}{2})d
+&({\lambda}_1)^2(\frac{5}{4}+cos(\frac{\pi+{\lambda}_2}{2}))\geq\nonumber \\ &{\lambda}_1^2(1+2sin\frac{{\lambda}_2}{2})^2+d^2+2{\lambda}_1(1+2sin\frac{{\lambda}_2}{2})d
 \label{eq:fpSwitch}
 \end{align}
 
@@ -80,3 +80,12 @@ P_{switch}&=F(x>x*)F(\theta>\theta *)\\
 \end{align*}
 
 Once the probability is obtained, after each event detection, there will be a probability of \(P_{switch}\) that the event will switch to another fusion point. This is done by making the fusion point broadcast a message in the network so that all nodes can delete the corresponding event type assignment to that fusion point.
+
+So far the calculation for \(P_{switch}\) is based on the assumption that the network scale is not known in advance and the cost for broadcasting new fusion point information is not known in advance. If the network scale is known to be \(|N|\) in advance, then we can change Equation \ref{eq:fpSwitch} a bit to be more accurate as in Equation \ref{eq:fpSwitchAccruate}.
+
+\begin{align}
+cost_1\geq cost_2+|N|\times P_{switch}
+\label{eq:fpSwitchAccruate}
+\end{align}
+
+By calculating \(|N|\times P_{switch}\), we can further fine-tune the switching probability to balance with the broadcast cost.
