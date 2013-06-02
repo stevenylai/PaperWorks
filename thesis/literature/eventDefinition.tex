@@ -83,6 +83,8 @@ addspec file project.c debugged == true
 announce file project.c debugged = true  (* \label{lst:yeast3:announce} *)
 \end{lstlisting}
 
+Compared with previous works, a distinct feature of yeast lies in its capabilities in expressing temporal relations among events. Such feature is important in a pub / sub system supporting composite events.
+
 There are other works in the area of active databases that use event-condition-action (ECA) rules for event definition. In READY \cite{ready}, the event specification is defined as: "event var : event type \(|\) expression". A few event operators are defined in the paper such as '\&\&' (and), '\(||\)' (or), ';' (then), and 'butnot'.  Another form of compound matching is to specify a sequence of events which all match the same "element pattern" (a matching expression used for each element of the sequence) using: "event var[j::k] : event type \(|\) expression". The event var[j..k] indicates that the event variable will be bound to a sequence of events, with j and k being the minimum and maximum number of events in the sequence, respectively.
 
 In SAMOS \cite{samos}, rule definition is used to specify ECA-rules. The basic syntax is shown in Listing \ref{lst:samos}.
@@ -125,10 +127,14 @@ END
 
 With the increasing popularity for functional programming, some works such as \(\lambda\)-calculus \cite{lambdacalculus} use functional approach. Functions in \(\lambda\)-calculus are anonymous and are written in the form "\(\lambda\)x.E". \(\lambda\) indicates this is a function, \(x\) is the parameter and \(E\) is the body of the function.
 
+These works from ADB may not directly address the issue of how to express the temporal and spatial relations among events. They do, however, provide some generic models such as ECA rules, event queries and \(\lambda\)-calculus that may be used to express more complicated relations among events. Such generic model can also be used in a pub / sub system for specifying composite events.
+
 \subsection{Event Evaluation}
 Once the event has been defined, it is also important to evaluate the event based on the event definition. In this section, we look at some of the works related to event evaluation. To make the evaluation simpler, some work may create specific data structures for evaluation. Event processing service (EPS) \cite{eps} provides an algorithm to evaluate composite events. Some of the basic operators are provided by EPS. The events are represented as trees. The leave nodes are primitive events and intermediate nodes are composite events or subexpressions provided by the application. The proposed algorithm allows some common subexpressions to be shared by multiple composite events. A similar idea is proposed by Rebeca \cite{rebeca} that discusses a content-based routing algorithm. The algorithm is based on finding the relationships between filters and the paper discusses several propositions that can be used to find the covering and overlapping of conjunction filters.
 
 Other than creating certain data structure for evaluation, some work try to group the event filters in a hierarchical way. SIENA \cite{siena} is such an example. In SIENA, the authors don't attempt to provide a complete pattern language. Their goal is to study pattern operators that can be exploited to optimize the selection of notifications within the event notification service. In the paper, they define various covering relations between filters, notifications and advertisements.
+
+The work discussed previously are primarily intended for existing distributed systems and they may not consider the WSN-specific issues such as energy saving and deployment. As a result, they may not be suitable for WSN.
 
 A popular approach for event evaluation in the field of active databases is the rule-based approach. As one of the most frequently referenced work, Generalized event monitoring language (GEM) \cite{gem} is used to define rules for monitoring complicated events. It allows abstract events to be specified in terms of combinations of lower-level events. GEM uses a declarative rule-based syntax in which various temporal constraints can be specified for event composition. Each GEM script is constructed from some basic GEM primitives. A few of them is defined in Listing \ref{lst:GEMPrimitives}
 \begin{lstlisting}[caption=Primitives in GEM, label=lst:GEMPrimitives]
@@ -176,10 +182,12 @@ rule gauge_rule2 { x:gauge_changed
 enable gauge_rule2
 \end{lstlisting}
 
+Even though GEM is also for distributed systems, it's rule-based framework may also be applied to WSN since the detection of an event by one sensor node may trigger another sensor node to start event detection. In fact, its rule-based framework inspired the design of our event detection framework which will be discussed in Section \ref{sec:design}.
+
 Finally, some works use application specific event evaluation methods. EVE \cite{eve} is an event-driven middleware for workflow execution. Workflow type specifications are mapped to B/SM. Each step in the workflow corresponds to the execution of a service. ECA rules define when and how services are executed. From the perspective of B/SM, a workflow consists of interacting, reactive components called brokers and broker behavior is defined by ECA-rules describing their reactions to events. The authors define some primitive events such as broker interaction events and time events. These primitive events can be constructed using some operators defined by the authors, such as sequence, exclusive disjunction, conjunction, repetition, negation and concurrency. 
 
 \subsection{Event Operator and Function}
-A final issue we discuss here is event operator and function. This may not be a big issues compared with event definition or event evaluation from the top-down view. However, the possible event operator and event function available in a certain event language will implicitly define the possible application domain for that language. While some of the works in the previous sections have already mentioned some event operators, in this section, we look at some works that did a more in-depth discussion on the topic.
+Having discussed event definition and event evaluation, we now review some works on event operators and functions. We review the works in this category in order to summarize the necessary event operators / functions expected from a pub / sub system. While some of the works in the previous sections have already mentioned some event operators, in this section, we summarize the event operators from these works with a deeper discussion.
 
 When active database (ADB) started to become a hot topic, it was soon realized that composite events are needed to specify events in such a system. SNOOP \cite{snoop} is such a system for ADB. the event operators defined in SNOOP are shown as:
 \begin{itemize}

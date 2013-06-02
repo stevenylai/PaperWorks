@@ -21,14 +21,14 @@ The subscriber also provides a finite set of event relations \(R=\{r_1,r_2, \cdo
 \end{figure}
 \end{comment}
 
-We have a set of primitive event types \(E_{primitive}\subseteq E\) event types such that there is no \(\exists r_n\in R\) such that \(r_n(e_1, e_2, \cdots)=e_n\) where \(e_n\in E_{primitive}\) and \(e_1, e_2, \cdots \in E\). For each primitive event of type \(e'_n\in E_{primitive}\), it will be detected by a node \(n_i\in N\). For the sake of simplicity in discussion, we only consider the message cost in our cost function and we do not consider message retransmission. Therefore, the event detection cost for each event type \(e_n\in E\) is denoted as \(cost(e_n)\).
+We have a set of primitive event types \(E_{primitive}\subseteq E\) event types such that there is no \(\exists r_n\in R\) such that \(r_n(e_1, e_2, \cdots)=e_n\) where \(e_n\in E_{primitive}\) and \(e_1, e_2, \cdots \in E\). For each primitive event of type \(e'_n\in E_{primitive}\), it will be detected by a node \(n_i\in N\). For the sake of simplicity in discussion, we only consider the message cost in our energy cost function and we do not consider message retransmission. The event detection cost for each event type \(e_n\in E\) is denoted as \(cost(e_n)\). Such cost is the number of hops for the event to be delivered from the event source to its destination. Such destination could be an event fusion point (to be discussed soon) for detecting higher level composite events or the sink node where the events will be delivered.
 
 \subsection{Problem Formulation}
 Given:
 \begin{itemize}
 	\item A network \(G=(N, A)\)
 	\item A set of event types \(E\) with relation \(R\)
-	\item A cost function \(cost(e_n)\) for \(e_n\in E\)
+	\item An energy cost function \(cost(e_n)\) for \(e_n\in E\)
 \end{itemize}
 
 Find:
