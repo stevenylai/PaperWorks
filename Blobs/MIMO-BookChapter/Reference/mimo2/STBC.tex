@@ -1,0 +1,122 @@
+\documentclass{book}
+\begin{document}
+
+\section{Space-Time Block Codes}
+A space-time block code (STBC) is a channel coding method used in multiple-antenna wireless communications. The objective of STBC is to improve the reliability of high data rate transmission in wireless communication systems by transmitting multiple, redundant copies of a data stream in the hope that some of them may arrive at the receiver in a better state than others. The data stream is sent on multiple antennas with multiple consecutive time slots. Therefore, STBCs allow information to be transmitted in space and time.
+
+Most of the earlier works on wireless communications had focused on having an antenna array at only one end of the wireless link - usually at the receiver. Some works extended the scope of wireless communication possibilities by showing that substantial capacity gains are enabled when antenna arrays are used at both ends of a link. Examples are D-BLAST \cite{15} and V-BLAST \cite{16}. Later, space-time code \cite{5} (STC) was proposed as an alternative approach which relies on having multiple transmit antennas and only optionally multiple receive antennas. It has been shown that STC achieves significant error rate improvements over single-antenna systems. Its original scheme was based on trellis codes. However, the cost for this scheme is additional processing, which increases exponentially as a function of bandwidth efficiency (bits/s/Hz) and the required diversity order. A simpler approach called block codes was proposed by Siavash Alamouti \cite{11}, and later extended to develop space-time block-codes (STBCs) \cite{17}.
+
+An STBC is usually represented by a matrix. Each row represents a time slot and each column represents one antenna's transmissions over time.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\[
+time\;slots
+\stackrel{transmit\;antennas} {
+\overrightarrow{
+\left\downarrow
+\left[
+ \begin{array}{cccc}
+ s_{11} & s_{12} & \cdots & s_{1nT}\\
+ s_{21} & s_{22} & \cdots & s_{2nT}\\
+ \vdots & \vdots\\
+ s_{r1} & s_{r2} & \cdots & s_{rnT}\\
+ \end{array} \right]
+\right.
+}
+}
+\]
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Here, $s_{ij}$ is the modulated symbol to be transmitted in time slot $i$ from antenna $j$. There are $T$ time slots and $nT$ transmit antennas as well as $nR$ receive antennas.
+
+The code rate of an STBC measures how many symbols per time slot it transmits on average over the course of one block \cite{17}. If a block encodes $k$ symbols, the code-rate is
+\[r=\frac{k}{T}\]
+
+\subsection{Different Kinds of STBCs}
+There are different kinds of STBCs in terms of different number of transmit antennas. In WiMAX, the simplest transmission scheme, namely 'the Alamouti scheme', is used on the downlink to provide space transmit diversity.
+
+\begin{itemize}
+\item {\bf Alamouti's Code}: Alamouti invented the simplest of all the STBCs \cite{11}. It was designed for a two transmit antenna system and has the coding matrix:
+\[C_2=
+\left[\begin{array}{cc}
+s_1 & s_2\\
+-s_2^* & -s_1^*
+\end{array} \right]\]
+where $*$ denotes complex conjugate.
+
+It is readily apparent that this is a full-rate code. It takes two time-slots to transmit two symbols and the bit-error rate (BER) of this STBC is equivalent to $2nR$-branch maximal ratio combining (MRC). This is a result of the perfect orthogonality between the symbols after the receive processing - there are two copies of each symbol transmitted and $nR$ copies received.
+
+\item {\bf Higher order STBCs}: Tarokh et al. discovered a set of higher order STBCs \cite{17, 18}. They also proved that no code for more than two transmit antennas could achieve full-rate. Their codes have since been improved upon (both by the original authors and by many others). Nevertheless, they serve as clear examples of why the rate cannot reach one, and what other problems must be solved to produce 'good' STBCs. They also demonstrated the simple, linear decoding scheme that goes with their codes under the perfect channel state information assumption.
+
+Two STBCs for 3 transmit antennas are:
+\[
+C_{3,1/2}=
+\left[\begin{array}{ccc}
+s_1 & s_2 & s_3\\
+-s_2 & s_1 & s_4\\
+-s_3 & s_4 & s_1\\
+-s_4 & -s_3 & s_2\\
+s^*_1 & s^*_2 & s^*_3\\
+-s^*_2 & s^*_1 & s^*_4\\
+-s^*_3 & s^*_4 & s^*_1\\
+-s^*_4 & -s^*_3 & s^*_2
+\end{array} \right] \;and\; C_{3,3/4}=
+\left[\begin{array}{ccc}
+s_1 & s_2 & \frac{s_3}{\sqrt{2}}\\
+-s^*_2 & s^*_1 & \frac{s_3}{\sqrt{2}}\\
+\frac{s^*_3}{\sqrt{2}} & \frac{s^*_3}{\sqrt{2}} & \frac{(-s_1-s^*_1+s_2-s^*_2)}{2}\\
+\frac{s^*_3}{\sqrt{2}} & -\frac{s^*_3}{\sqrt{2}} & \frac{(s_2+s^*_2+s_1-s^*_1)}{2}
+\end{array} \right]
+\]
+These codes achieve the rates of $1/2$ and $3/4$ respectively. The two matrices give examples of why codes for more than two antennas must sacrifice rate - it is the only way to achieve orthogonality. One particular problem with   is that it has uneven power among the symbols it transmits. This means that the signal does not have a constant envelope and the power that each antenna must transmit has to vary, both of which are undesirable. Modified versions of this code that overcome this problem have since been designed.
+
+Two STBCs for four transmit antennas are:
+\[
+C_{4,1/2}=
+\left[\begin{array}{cccc}
+s_1 & s_2 & s_3 & s_4\\
+-s_2 & s_1 & s_4 & s_3\\
+-s_3 & s_4 & s_1 & -s_2\\
+-s_4 & -s_3 & s_2 & s_1\\
+s^*_1 & s^*_2 & s^*_3 & s^*_4\\
+-s^*_2 & s^*_1 & s^*_4 & s^*_3\\
+-s^*_3 & s^*_4 & s^*_1 & -s^*_2\\
+-s^*_4 & -s^*_3 & s^*_2 & s^*_1
+\end{array} \right] \;and\; C_{4,3/4}=\left[\begin{array}{cccc}
+s_1 & s_2 & \frac{s_3}{\sqrt{2}} & \frac{s_3}{\sqrt{2}}\\
+-s^*_2 & s^*_1 & \frac{s_3}{\sqrt{2}} & -\frac{s_3}{\sqrt{2}}\\
+\frac{s^*_3}{\sqrt{2}} & \frac{s^*_3}{\sqrt{2}} & \frac{(-s_1-s^*_1+s_2-s^*_2)}{2} & \frac{(-s_2-s^*_2+s_1-s^*_1)}{2}\\
+\frac{s^*_3}{\sqrt{2}} & -\frac{s^*_3}{\sqrt{2}} & \frac{(s_2+s^*_2+s_1-s^*_1)}{2} & \frac{(s_1+s^*_1+s_2-s^*_2)}{2}\\
+\end{array} \right]
+\]
+These codes achieve the rates of $1/2$ and $3/4$ respectively, as for their 3-antenna counterparts. $C_{4,3/4}$ exhibits the same uneven power problems as $C_{3,3/4}$. An improved version of $C_{4,3/4}$ is \cite{19}:
+\[
+C_{4,3/4}=\left[\begin{array}{cccc}
+s_1 & s_2 & s_3 & 0\\
+-s^*_2 & s^*_1 & 0 & s_3\\
+-s^*_3 & 0 & s^*_1 & -s_2\\
+0 & -s^*_3 & s^*_2 & s_1
+\end{array} \right]
+\]
+which has equal power from all antennas in all time-slots.
+\end{itemize}
+\subsection{Orthogonal Space-Time Block Codes}
+STBCs, as originally introduced are orthogonal , meaning that the STBC is designed in such a way that the vectors representing any pair of columns taken from the coding matrix are orthogonal. The result of this is simple, linear, optimal decoding at the receiver. Its most serious disadvantage is that all but one of the codes that satisfy this criterion must sacrifice some proportion of their data rate.
+
+There are also 'quasi-orthogonal STBCs' that allow some inter-symbol interference but can achieve a higher data rate, and even a better error-rate performance, in harsh conditions. Quasi-orthogonal STBCs exhibit partial orthogonality and provide only part of the diversity gain. An example given by Hamid Jafarkhani in \cite{20} is:
+\[
+C_{4,1}=\left[\begin{array}{cccc}
+s_1 & s_2 & s_3 & s_4\\
+-s^*_2 & s^*_1 & -s^*_4 & s^*_3\\
+-s^*_3 & -s^*_4 & s^*_1 & s^*_2\\
+s_4 & -s_3 & -s_2 & s_1
+\end{array} \right]
+\]
+The orthogonality criterion only holds for columns (1 and 2), (1 and 3), (2 and 4) and (3 and 4). Crucially, however, the code is full-rate and still only requires linear processing at the receiver, although decoding is slightly more complex than for orthogonal STBCs. Results show that this Q-STBC outperforms (in a bit-error rate sense) the fully-orthogonal 4-antenna STBC over a good range of signal-to-noise ratios (SNRs). At high SNRs, though (above about 22dB in this particular case), the increased diversity offered by orthogonal STBCs yields a better BER. Beyond this point, the relative merits of the schemes have to be considered in terms of useful data throughput. More Q-STBCs have also been developed considerably from the basic example shown above.
+\subsection{Space-Time Codes for WiMAX}
+In IEEE 802.16-2004 OFDM-256, the Alamouti code is applied to a specific subcarrier index $k$. For instance, suppose that in the uncoded system $S_1[k]$ and $S_2[k]$ are sent in the first and second OFDM symbol transmissions.  The Alamouti encoded symbols send $S_1[k]$ and $S_2[k]$ off the first and second antennas in the first transmission and $-S_2^*[k]$ and $S_1^*[k]$ off the first and second antennas in the next transmission.
+
+There are a number of features of IEEE 802.16-2004 OFDM-256 Alamouti transmission that are of interest.  The first is that the preamble for Alamouti transmission is transmitted from both antennas with the even subcarriers used for antenna 1 and the odd subcarriers used for subcarrier 2. This means that each set of data needs to be appropriately smoothed, hich is done in these simulations. The second feature is that the pilots have certain degenerate situations: for the first Alamouti transmitted symbol, the pilots destructively add and for the second Alamouti transmitted symbol, the pilots constructively add. Hence, the pilots are not always useful. The pilot symbols must be processed properly.
+
+Figure 1 shows the detailed flow of an Alamouti implementation \cite{21}. This implementation has two parts. The first calculates the parameters that are necessary for data demodulation such as channel estimates. The second part is the actual data demodulation and tracking.
+%Add image here
+It has been shown that under various conditions, the error rates can be greatly reduced when the Alamouti Code is used.
+\end{document}

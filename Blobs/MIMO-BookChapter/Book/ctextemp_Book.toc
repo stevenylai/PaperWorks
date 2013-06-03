@@ -1,0 +1,16 @@
+\contentsline {chapter}{\numberline {1}MIMO for Wireless MAN}{1}
+\contentsline {section}{\numberline {1.1}Introduction}{2}
+\contentsline {section}{\numberline {1.2}Multiple-Input Multiple-Output Wireless Communication}{5}
+\contentsline {subsection}{\numberline {1.2.1}MIMO System Model}{5}
+\contentsline {subsection}{\numberline {1.2.2}Capacity of MIMO}{7}
+\contentsline {subsection}{\numberline {1.2.3}Capacity of MIMO in WiMAX}{8}
+\contentsline {section}{\numberline {1.3}Space-Time Block Codes}{13}
+\contentsline {subsection}{\numberline {1.3.1}Orthogonal Space-Time Block Codes}{16}
+\contentsline {section}{\numberline {1.4}Transmission Diversity Techniques}{18}
+\contentsline {subsection}{\numberline {1.4.1}Time Diversity}{18}
+\contentsline {subsection}{\numberline {1.4.2}Frequency Diversity}{19}
+\contentsline {subsection}{\numberline {1.4.3} Space Diversity}{19}
+\contentsline {subsubsection}{Combination Techniques for Space Diversity}{20}
+\contentsline {subsubsection}{Receiver Diversity and Transmit Diversity}{22}
+\contentsline {subsubsection}{Polarization diversity and Angle diversity}{23}
+\contentsline {section}{\numberline {1.5}Summary}{23}
