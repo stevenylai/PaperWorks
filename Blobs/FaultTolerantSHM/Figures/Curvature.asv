@@ -1,0 +1,41 @@
+clear all
+close all
+r =10;
+lower_curvature_interp(:,1) = [0.0011;
+                           0.0012;
+                           -0.0058;
+                            -0.0010;
+                            0.00038;
+                            0.00062;
+                           -0.00012;
+                           -0.00049;
+                            0.00083;
+                            0.00091;
+                            0.001;
+                            0.0017];
+                 y1 = interp(lower_curvature_interp,r);          
+lower_curvature_interp(:,2) = [0.0029;
+                           0.0033;
+                           0.0045;
+                            0.0041;
+                           0.0038;
+                           0.0016;
+                           -0.001;
+                           -0.0021;
+                           -0.0012;
+                           -0.0019;
+                           -0.0023;
+                           -0.0017];
+                        y1 = interp(lower_curvature_interp,r)  
+Color ={'r','g'};
+Type =['+','o'];
+for ii=1:2
+    plot([1:12],lower_curvature_interp(:,ii),'color',Color{ii},'LineWidth',2); hold on
+end
+legend('Mode1(2.85Hz)','Mode2(3.55Hz)','Mode3(4.67Hz)','Mode4(5.86Hz)');
+title('Mode Shape Curvatures of Lower Side Sensor Nodes','FontWeight','bold','FontSize',12,...
+    'FontName','Times New Roman');
+set(gca, 'XTick', [x_interp(2:end-1)]);
+grid;
+xlabel('Sensor #','FontWeight','bold','FontSize',12,...
+    'FontName','Times New Roman');
