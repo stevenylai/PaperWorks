@@ -46,15 +46,26 @@ In addition to the distance between events, the direction of events that happen 
 f(\theta)={\lambda}_2e^{-{\lambda}_2\theta}
 \end{displaymath}
 
-Both \(x\) and \(\theta\) are shown in Figure \ref{fig:fp-dist} where the events \(e_1\), \(e_2\) are detected before and \(e'_1\), \(e'_2\) are detected. For simplicity, we use distance to measure the cost for one node to reach another. Let \(d\) be the average distance between any point in the deployment region to the closest sensor node. As shown in Figure \ref{fig:fp-dist}, for a composite event that has two sub-events, originally the event is fused at \(n_1\). Then, for the next detection of \(e'_1\) and \(e'_2\), if the fusion point is still the original one, then the cost will be the added distance of \((e'_1, n_1)\) and \((e'_2, n_1)\):
+Both \(x\) and \(\theta\) are shown in Figure \ref{fig:fp-dist} where the events \(e_1\), \(e_2\) are detected before and \(e'_1\), \(e'_2\) are detected. For simplicity, we use distance to measure the cost for one node to reach another. As shown in Figure \ref{fig:fp-dist}, for a composite event that has two sub-events, originally the event is fused at \(n_1\). Then, for the next detection of \(e'_1\) and \(e'_2\), if the fusion point is still the original one, then the cost will be the added distance of \((e'_1, n_1)\) and \((e'_2, n_1)\). To calculate such cost, we first need to calculate the angle \({\theta}_1\) between \((e'_2, e_2)\) and \((e_2, n_1)\):
+
 \begin{align*}
-cost_1=\sqrt{({\lambda}_1)^2+(\frac{{\lambda}_1}{2})^2+({\lambda}_1)^2cos(\frac{\pi+{\lambda}_2}{2})}
+{\theta}_1=&\pi - \frac{\pi - {\lambda}_2}{2} \\
+=&\frac{\pi + {\lambda}_2}{2}
 \end{align*}
-On the other hand, if a new fusion point is selected, then the cost will be no more than:
+
+Then according to law of cosines, we can derive \(cost_1\):
+\begin{align*}
+cost_1=&2\times \sqrt{({\lambda}_1)^2+(\frac{{\lambda}_1}{2})^2-{\lambda}_1 \times \frac{{\lambda}_1}{2}cos(\frac{\pi+{\lambda}_2}{2})} \\
+=&2\times \sqrt{\frac{5({\lambda}_1)^2}{4} - ({\lambda}_1)^2cos(\frac{\pi+{\lambda}_2}{2})}
+\end{align*}
+
+On the other hand, if a new fusion point is selected, according to law of sines, then the cost will be no more than:
 \begin{align*}
 cost_2=&2(\frac{{\lambda}_1}{2sin\frac{{\lambda}_2}{2}}+{\lambda}_1)sin\frac{{\lambda}_2}{2}+d\\
 =&{\lambda}_1(1+2sin\frac{{\lambda}_2}{2})+d
 \end{align*}
+
+Here, \(d\) is the average distance between any point in the deployment region to the closest fusion point. 
 
 \begin{figure}
 \centering
@@ -68,7 +79,7 @@ The condition to select a new fusion point will be:
 \begin{align}
 &cost_1\geq cost_2\nonumber \\
 &cost_1^2\geq cost_2^2\nonumber \\
-&({\lambda}_1)^2(\frac{5}{4}+cos(\frac{\pi+{\lambda}_2}{2}))\geq\nonumber \\ &{\lambda}_1^2(1+2sin\frac{{\lambda}_2}{2})^2+d^2+2{\lambda}_1(1+2sin\frac{{\lambda}_2}{2})d
+&({\lambda}_1)^2(\frac{5}{4}-cos(\frac{\pi+{\lambda}_2}{2}))\geq\nonumber \\ &{\lambda}_1^2(1+2sin\frac{{\lambda}_2}{2})^2+d^2+2{\lambda}_1(1+2sin\frac{{\lambda}_2}{2})d
 \label{eq:fpSwitch}
 \end{align}
 
