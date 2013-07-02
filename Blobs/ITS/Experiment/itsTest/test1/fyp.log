@@ -1,0 +1,212 @@
+Reading file: Images/imsInfo.txt
+s Line: packet to be sent for: 36, at data: Mon Jan 08 19:31:03 CST 2007, at time: 1168255863625
+packet: Message <ITSCmdMsg> 
+  [sensorID=0x24]
+  [sensorType=0x1]
+  [operationMode=0xd2]
+  [sensors.sensorID=0x0 0x0 0x0 ]
+  [sensors.distance=0x0 0x0 0x0 ]
+
+broadcast packet's length: 29
+  Adding 1/1.gif... 0 1 2 3 4 5 6 7 
+s Line:   Adding 2/2.gif... 0 1 2 3 4 5 6 7 
+packet to be sent for: 34, at data: Mon Jan 08 19:31:04 CST 2007, at time: 1168255864671
+packet: Message <ITSCmdMsg> 
+  [sensorID=0x22]
+  [sensorType=0x3]
+  [operationMode=0xd2]
+  [sensors.sensorID=0x24 0x0 0x0 ]
+  [sensors.distance=0xe8 0x0 0x0 ]
+
+broadcast packet's length: 29
+packet to be sent for: 33, at data: Mon Jan 08 19:31:05 CST 2007, at time: 1168255865671
+packet: Message <ITSCmdMsg> 
+  [sensorID=0x21]
+  [sensorType=0x3]
+  [operationMode=0xd2]
+  [sensors.sensorID=0x22 0x24 0x0 ]
+  [sensors.distance=0xe8 0xd0 0x0 ]
+
+broadcast packet's length: 29
+packet to be sent for: 30, at data: Mon Jan 08 19:31:06 CST 2007, at time: 1168255866718
+packet: Message <ITSCmdMsg> 
+  [sensorID=0x1e]
+  [sensorType=0x3]
+  [operationMode=0xd2]
+  [sensors.sensorID=0x21 0x22 0x24 ]
+  [sensors.distance=0xe8 0xd0 0xb8 ]
+
+broadcast packet's length: 29
+packet to be sent for: 28, at data: Mon Jan 08 19:31:07 CST 2007, at time: 1168255867734
+packet: Message <ITSCmdMsg> 
+  [sensorID=0x1c]
+  [sensorType=0x3]
+  [operationMode=0xd2]
+  [sensors.sensorID=0x1e 0x21 0x22 ]
+  [sensors.distance=0xe8 0xd0 0xb8 ]
+
+broadcast packet's length: 29
+packet to be sent for: 25, at data: Mon Jan 08 19:31:08 CST 2007, at time: 1168255868734
+packet: Message <ITSCmdMsg> 
+  [sensorID=0x19]
+  [sensorType=0x3]
+  [operationMode=0xd2]
+  [sensors.sensorID=0x1c 0x1e 0x21 ]
+  [sensors.distance=0xe8 0xd0 0xb8 ]
+
+broadcast packet's length: 29
+packet to be sent for: 24, at data: Mon Jan 08 19:31:09 CST 2007, at time: 1168255869750
+packet: Message <ITSCmdMsg> 
+  [sensorID=0x18]
+  [sensorType=0x3]
+  [operationMode=0xd2]
+  [sensors.sensorID=0x19 0x1c 0x1e ]
+  [sensors.distance=0xe8 0xd0 0xb8 ]
+
+broadcast packet's length: 29
+packet to be sent for: 23, at data: Mon Jan 08 19:31:10 CST 2007, at time: 1168255870750
+packet: Message <ITSCmdMsg> 
+  [sensorID=0x17]
+  [sensorType=0x3]
+  [operationMode=0xd2]
+  [sensors.sensorID=0x18 0x19 0x1c ]
+  [sensors.distance=0xe8 0xd0 0xb8 ]
+
+broadcast packet's length: 29
+packet to be sent for: 22, at data: Mon Jan 08 19:31:11 CST 2007, at time: 1168255871765
+packet: Message <ITSCmdMsg> 
+  [sensorID=0x16]
+  [sensorType=0x3]
+  [operationMode=0xd2]
+  [sensors.sensorID=0x17 0x18 0x19 ]
+  [sensors.distance=0xe8 0xd0 0xb8 ]
+
+broadcast packet's length: 29
+packet to be sent for: 21, at data: Mon Jan 08 19:31:12 CST 2007, at time: 1168255872765
+packet: Message <ITSCmdMsg> 
+  [sensorID=0x15]
+  [sensorType=0x3]
+  [operationMode=0xd2]
+  [sensors.sensorID=0x16 0x17 0x18 ]
+  [sensors.distance=0xe8 0xd0 0xb8 ]
+
+broadcast packet's length: 29
+packet to be sent for: 60, at data: Mon Jan 08 19:31:13 CST 2007, at time: 1168255873781
+packet: Message <ITSCmdMsg> 
+  [sensorID=0x3c]
+  [sensorType=0x2]
+  [operationMode=0xd2]
+  [sensors.sensorID=0x15 0x16 0x17 ]
+  [sensors.distance=0xe8 0xd0 0xb8 ]
+
+broadcast packet's length: 29
+Initialization completed
+packet to be sent for: 36, at data: Mon Jan 08 19:32:15 CST 2007, at time: 1168255935765
+packet: Message <ITSCmdMsg> 
+  [sensorID=0x24]
+  [sensorType=0x1]
+  [operationMode=0xd2]
+  [sensors.sensorID=0x0 0x0 0x0 ]
+  [sensors.distance=0x0 0x0 0x0 ]
+
+broadcast packet's length: 29
+packet to be sent for: 34, at data: Mon Jan 08 19:32:16 CST 2007, at time: 1168255936781
+packet: Message <ITSCmdMsg> 
+  [sensorID=0x22]
+  [sensorType=0x3]
+  [operationMode=0xd2]
+  [sensors.sensorID=0x24 0x0 0x0 ]
+  [sensors.distance=0xe8 0x0 0x0 ]
+
+broadcast packet's length: 29
+packet to be sent for: 33, at data: Mon Jan 08 19:32:17 CST 2007, at time: 1168255937781
+packet: Message <ITSCmdMsg> 
+  [sensorID=0x21]
+  [sensorType=0x3]
+  [operationMode=0xd2]
+  [sensors.sensorID=0x22 0x24 0x0 ]
+  [sensors.distance=0xe8 0xd0 0x0 ]
+
+broadcast packet's length: 29
+packet to be sent for: 30, at data: Mon Jan 08 19:32:18 CST 2007, at time: 1168255938796
+packet: Message <ITSCmdMsg> 
+  [sensorID=0x1e]
+  [sensorType=0x3]
+  [operationMode=0xd2]
+  [sensors.sensorID=0x21 0x22 0x24 ]
+  [sensors.distance=0xe8 0xd0 0xb8 ]
+
+broadcast packet's length: 29
+packet to be sent for: 28, at data: Mon Jan 08 19:32:19 CST 2007, at time: 1168255939796
+packet: Message <ITSCmdMsg> 
+  [sensorID=0x1c]
+  [sensorType=0x3]
+  [operationMode=0xd2]
+  [sensors.sensorID=0x1e 0x21 0x22 ]
+  [sensors.distance=0xe8 0xd0 0xb8 ]
+
+broadcast packet's length: 29
+packet to be sent for: 25, at data: Mon Jan 08 19:32:20 CST 2007, at time: 1168255940796
+packet: Message <ITSCmdMsg> 
+  [sensorID=0x19]
+  [sensorType=0x3]
+  [operationMode=0xd2]
+  [sensors.sensorID=0x1c 0x1e 0x21 ]
+  [sensors.distance=0xe8 0xd0 0xb8 ]
+
+broadcast packet's length: 29
+packet to be sent for: 24, at data: Mon Jan 08 19:32:21 CST 2007, at time: 1168255941796
+packet: Message <ITSCmdMsg> 
+  [sensorID=0x18]
+  [sensorType=0x3]
+  [operationMode=0xd2]
+  [sensors.sensorID=0x19 0x1c 0x1e ]
+  [sensors.distance=0xe8 0xd0 0xb8 ]
+
+broadcast packet's length: 29
+packet to be sent for: 23, at data: Mon Jan 08 19:32:22 CST 2007, at time: 1168255942796
+packet: Message <ITSCmdMsg> 
+  [sensorID=0x17]
+  [sensorType=0x3]
+  [operationMode=0xd2]
+  [sensors.sensorID=0x18 0x19 0x1c ]
+  [sensors.distance=0xe8 0xd0 0xb8 ]
+
+broadcast packet's length: 29
+packet to be sent for: 22, at data: Mon Jan 08 19:32:23 CST 2007, at time: 1168255943812
+packet: Message <ITSCmdMsg> 
+  [sensorID=0x16]
+  [sensorType=0x3]
+  [operationMode=0xd2]
+  [sensors.sensorID=0x17 0x18 0x19 ]
+  [sensors.distance=0xe8 0xd0 0xb8 ]
+
+broadcast packet's length: 29
+packet to be sent for: 21, at data: Mon Jan 08 19:32:24 CST 2007, at time: 1168255944812
+packet: Message <ITSCmdMsg> 
+  [sensorID=0x15]
+  [sensorType=0x3]
+  [operationMode=0xd2]
+  [sensors.sensorID=0x16 0x17 0x18 ]
+  [sensors.distance=0xe8 0xd0 0xb8 ]
+
+broadcast packet's length: 29
+packet to be sent for: 60, at data: Mon Jan 08 19:32:25 CST 2007, at time: 1168255945812
+packet: Message <ITSCmdMsg> 
+  [sensorID=0x3c]
+  [sensorType=0x2]
+  [operationMode=0xd2]
+  [sensors.sensorID=0x15 0x16 0x17 ]
+  [sensors.distance=0xe8 0xd0 0xb8 ]
+
+broadcast packet's length: 29
+Initialization completed
+packet: Message <SensorControlMsg> 
+  [sensorID=0xffff]
+  [sensorType=0xa]
+  [operationMode=0xf]
+
+Frame Count/Loss: 37689 / 49
+Average FPS: 19.97
+Average UPS: 20
+Time Spent: 1886 secs
