@@ -65,9 +65,9 @@ delay_{TED}-delay_{SPT}=\frac{d}{v}+t
 \end{theorem}
 
 \begin{proof}
-The delay of SPT will be \(delay_{SPT}=\frac{D}{v}\). To calculate the delay of the worst case in TED, we first need to calculate when TED will eventually forward the event to the sink. According to Algorithm \ref{algo:fusionPoint}, an event fusion point will forward the event if the sink is closer than any other fusion points. Suppose after \(k\) fusion points, the event will be forwarded to the sink. Then, we can get the following.
+Let \(K\) be the average distance from an event to the sink. The delay of SPT will be \(delay_{SPT}=\frac{K}{v}\). To calculate the delay of the worst case in TED, we first need to calculate when TED will eventually forward the event to the sink. According to Algorithm \ref{algo:fusionPoint}, an event fusion point will forward the event if the sink is closer than any other fusion points. Suppose after \(k\) fusion points, the event will be forwarded to the sink. Then, we can get the following.
 \begin{align*}
-kd&\geq D\\
+kd&\geq K\\
 k&\geq \frac{2}{R}\frac{2}{\pi}\int_0^{\pi}2cos(\frac{\theta}{2})sin(\theta)[\theta-sin(\theta)]d\theta\\
 k&\geq \frac{128R}{45\pi}\times\frac{2}{R}\\
 k&\geq 1.81

@@ -21,6 +21,8 @@ We use simulation to validate our analytical results. Our simulation is based on
 
 Similar to our analysis, we use SPT as a reference to compare with TED so as to see how much cost we can save if we detect the events using their relations. For simplicity, we assume in SPT approach, the events can always be aggregated at the shared paths. We study the performance of TED under different parameters such as fusion point deployment, event distance, event size and event probability.
 
+To obtain more accurate results, we repeat the simulation for 10,000 times for each of the graph we discuss in the following sections. For each set of data, the standard deviation is less than 0.5.
+
 \subsection{Impact of Event Distance}
 The first parameter we study is the distance between events. More precisely, we study the average event distance where it is defined as the average of all the distance between any two events in the network. Figure \ref{fig:sim-size-distance30} shows the result when average event distance equals to 30. As we can see, SPT costs the most energy. Among the different versions of TED, TED-C costs slightly higher energy while TED-E costs the lowest amount of energy.
 
