@@ -1,0 +1,31 @@
+Using Surge from the FYP dir. To change, configure your CLASSPATH.
+Using AM group ID 125 (0x7d)
+Starting mote listener...
+Creating mainFrame...
+Starting DisplayManager thread...
+Creating ObjectMaintainer...
+Creating LocationAnalyzer...
+Creating SensorAnalyzer...
+Making MainFrame visible...
+Decay thread running...
+Ready.
+Sensor: 6. Reading: 618. Parent: 0. Sequence: 164. Time: Fri Oct 27 08:28:53 CST 2006
+Sensor: 1. Reading: 699. Parent: 0. Sequence: 92. Time: Fri Oct 27 08:28:53 CST 2006
+Sensor: 9. Reading: 605. Parent: 6. Sequence: 104. Time: Fri Oct 27 08:28:54 CST 2006
+Sensor: 6. Reading: 619. Parent: 0. Sequence: 165. Time: Fri Oct 27 08:28:55 CST 2006
+Sensor: 15. Reading: 217. Parent: 6. Sequence: 20. Time: Fri Oct 27 08:28:55 CST 2006
+Sensor: 1. Reading: 698. Parent: 0. Sequence: 93. Time: Fri Oct 27 08:28:55 CST 2006
+Sensor: 5. Reading: 712. Parent: 6. Sequence: 172. Time: Fri Oct 27 08:28:56 CST 2006
+Sensor: 10. Reading: 197. Parent: 1. Sequence: 244. Time: Fri Oct 27 08:28:56 CST 2006
+Sensor: 13. Reading: 657. Parent: 1. Sequence: 188. Time: Fri Oct 27 08:28:57 CST 2006
+java.lang.ArrayIndexOutOfBoundsException: Message.checkBounds: bad offset (40) or length (16), for data_length 5
+	at net.tinyos.message.Message.checkBounds(Message.java:280)
+	at net.tinyos.message.Message.getUIntElement(Message.java:307)
+	at net.tinyos.surge.SurgeMsg.get_seqno(SurgeMsg.java:334)
+	at net.tinyos.surge.PacketAnalyzer.SensorAnalyzer$NodeInfo.update(SensorAnalyzer.java:305)
+	at net.tinyos.surge.PacketAnalyzer.SensorAnalyzer.PacketReceived(SensorAnalyzer.java:75)
+	at net.tinyos.surge.PacketAnalyzer.PacketAnalyzer.messageReceived(PacketAnalyzer.java:69)
+	at net.tinyos.message.Receiver.packetReceived(Receiver.java:218)
+	at net.tinyos.packet.PhoenixSource.dispatch(PhoenixSource.java:160)
+	at net.tinyos.packet.PhoenixSource.packetDipatchLoop(PhoenixSource.java:152)
+	at net.tinyos.packet.PhoenixSource.run(PhoenixSource.java:169)

@@ -1,0 +1,864 @@
+Using Surge from the FYP dir. To change, configure your CLASSPATH.
+Using AM group ID 125 (0x7d)
+Starting mote listener...
+Creating mainFrame...
+serial@COM5:57600: resynchronising
+serial@COM5:57600: bad packet
+serial@COM5:57600: bad packet
+Starting DisplayManager thread...
+Creating ObjectMaintainer...
+Creating LocationAnalyzer...
+Creating SensorAnalyzer...
+Making MainFrame visible...
+Decay thread running...
+Ready.
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2de]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2de]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2de]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2de]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2de]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dc]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dc]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dc]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24e]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x2]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x2]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x2]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x2]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x2]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2de]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x2]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2de]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x2]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2de]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x2]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x2]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x2]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x2]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x2]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x2]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dc]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dc]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dc]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dc]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dc]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dc]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24e]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24e]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24e]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2de]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2de]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2de]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2de]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24c]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2de]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24e]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2de]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2de]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x254]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dc]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2de]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2de]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2de]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24e]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24d]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2de]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2de]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2de]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2de]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2de]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+
+Sensor: 7packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x24f]
+  [parentaddr=0x0]
+
+Sensor: 2packe: Message <SurgeMsg> 
+  [type=0x0]
+  [reading=0x2dd]
+  [parentaddr=0x0]
+

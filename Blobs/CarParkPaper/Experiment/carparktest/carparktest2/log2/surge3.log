@@ -1,0 +1,1306 @@
+Using Surge from the FYP dir. To change, configure your CLASSPATH.
+Using AM group ID 125 (0x7d)
+Starting mote listener...
+Creating mainFrame...
+serial@COM5:57600: resynchronising
+serial@COM5:57600: bad packet
+Starting DisplayManager thread...
+Creating ObjectMaintainer...
+Creating LocationAnalyzer...
+Creating SensorAnalyzer...
+Making MainFrame visible...
+Decay thread running...
+Ready.
+Sensor: 7problem
+Sensor: 12. Reading: 595. Parent: 9. Sequence: 235. Time: Fri Oct 27 08:39:15 CST 2006
+Sensor: 2problem
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 190. Time: Fri Oct 27 08:39:15 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 74. Time: Fri Oct 27 08:39:16 CST 2006
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 147. Time: Fri Oct 27 08:39:16 CST 2006
+Sensor: 3. Reading: 720. Parent: 0. Sequence: 208. Time: Fri Oct 27 08:39:17 CST 2006
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 220. Time: Fri Oct 27 08:39:17 CST 2006
+Sensor: 12. Reading: 595. Parent: 9. Sequence: 236. Time: Fri Oct 27 08:39:17 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 191. Time: Fri Oct 27 08:39:17 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 75. Time: Fri Oct 27 08:39:18 CST 2006
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 148. Time: Fri Oct 27 08:39:18 CST 2006
+Sensor: 3. Reading: 720. Parent: 0. Sequence: 209. Time: Fri Oct 27 08:39:19 CST 2006
+Sensor: 6. Reading: 620. Parent: 0. Sequence: 221. Time: Fri Oct 27 08:39:19 CST 2006
+Sensor: 7problem
+Sensor: 12. Reading: 595. Parent: 9. Sequence: 237. Time: Fri Oct 27 08:39:19 CST 2006
+Sensor: 2problem
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 192. Time: Fri Oct 27 08:39:19 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 76. Time: Fri Oct 27 08:39:20 CST 2006
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 149. Time: Fri Oct 27 08:39:20 CST 2006
+Sensor: 3. Reading: 720. Parent: 0. Sequence: 210. Time: Fri Oct 27 08:39:21 CST 2006
+Sensor: 6. Reading: 625. Parent: 0. Sequence: 222. Time: Fri Oct 27 08:39:21 CST 2006
+Sensor: 12. Reading: 595. Parent: 9. Sequence: 238. Time: Fri Oct 27 08:39:21 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 193. Time: Fri Oct 27 08:39:22 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 77. Time: Fri Oct 27 08:39:22 CST 2006
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 150. Time: Fri Oct 27 08:39:22 CST 2006
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 211. Time: Fri Oct 27 08:39:22 CST 2006
+Sensor: 6. Reading: 625. Parent: 0. Sequence: 223. Time: Fri Oct 27 08:39:23 CST 2006
+Sensor: 12. Reading: 595. Parent: 9. Sequence: 239. Time: Fri Oct 27 08:39:23 CST 2006
+Sensor: 2problem
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 194. Time: Fri Oct 27 08:39:24 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 78. Time: Fri Oct 27 08:39:24 CST 2006
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 151. Time: Fri Oct 27 08:39:24 CST 2006
+Sensor: 2problem
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 212. Time: Fri Oct 27 08:39:24 CST 2006
+Sensor: 6. Reading: 625. Parent: 0. Sequence: 224. Time: Fri Oct 27 08:39:25 CST 2006
+Sensor: 12. Reading: 595. Parent: 9. Sequence: 240. Time: Fri Oct 27 08:39:25 CST 2006
+Sensor: 2problem
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 195. Time: Fri Oct 27 08:39:26 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 79. Time: Fri Oct 27 08:39:26 CST 2006
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 152. Time: Fri Oct 27 08:39:26 CST 2006
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 213. Time: Fri Oct 27 08:39:27 CST 2006
+Sensor: 6. Reading: 625. Parent: 0. Sequence: 225. Time: Fri Oct 27 08:39:27 CST 2006
+Sensor: 7problem
+Sensor: 12. Reading: 595. Parent: 9. Sequence: 241. Time: Fri Oct 27 08:39:27 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 196. Time: Fri Oct 27 08:39:27 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 80. Time: Fri Oct 27 08:39:28 CST 2006
+Sensor: 1. Reading: 690. Parent: 0. Sequence: 153. Time: Fri Oct 27 08:39:28 CST 2006
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 214. Time: Fri Oct 27 08:39:29 CST 2006
+Sensor: 6. Reading: 625. Parent: 0. Sequence: 226. Time: Fri Oct 27 08:39:29 CST 2006
+Sensor: 7problem
+Sensor: 12. Reading: 595. Parent: 9. Sequence: 242. Time: Fri Oct 27 08:39:29 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 197. Time: Fri Oct 27 08:39:30 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 81. Time: Fri Oct 27 08:39:30 CST 2006
+Sensor: 1. Reading: 690. Parent: 0. Sequence: 154. Time: Fri Oct 27 08:39:30 CST 2006
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 215. Time: Fri Oct 27 08:39:30 CST 2006
+Sensor: 6. Reading: 625. Parent: 0. Sequence: 227. Time: Fri Oct 27 08:39:31 CST 2006
+Sensor: 12. Reading: 596. Parent: 9. Sequence: 243. Time: Fri Oct 27 08:39:31 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 198. Time: Fri Oct 27 08:39:31 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 82. Time: Fri Oct 27 08:39:32 CST 2006
+Sensor: 1. Reading: 690. Parent: 0. Sequence: 155. Time: Fri Oct 27 08:39:32 CST 2006
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 216. Time: Fri Oct 27 08:39:32 CST 2006
+Sensor: 6. Reading: 242. Parent: 0. Sequence: 228. Time: Fri Oct 27 08:39:33 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 199. Time: Fri Oct 27 08:39:34 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 83. Time: Fri Oct 27 08:39:34 CST 2006
+Sensor: 1. Reading: 690. Parent: 0. Sequence: 156. Time: Fri Oct 27 08:39:34 CST 2006
+Sensor: 2problem
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 217. Time: Fri Oct 27 08:39:35 CST 2006
+Sensor: 6. Reading: 625. Parent: 0. Sequence: 229. Time: Fri Oct 27 08:39:35 CST 2006
+Sensor: 7problem
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 84. Time: Fri Oct 27 08:39:36 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 200. Time: Fri Oct 27 08:39:36 CST 2006
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 157. Time: Fri Oct 27 08:39:36 CST 2006
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 218. Time: Fri Oct 27 08:39:37 CST 2006
+Sensor: 6. Reading: 625. Parent: 0. Sequence: 230. Time: Fri Oct 27 08:39:37 CST 2006
+Sensor: 5. Reading: 711. Parent: 0. Sequence: 236. Time: Fri Oct 27 08:39:37 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 85. Time: Fri Oct 27 08:39:38 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 201. Time: Fri Oct 27 08:39:38 CST 2006
+Sensor: 1. Reading: 690. Parent: 0. Sequence: 158. Time: Fri Oct 27 08:39:38 CST 2006
+Sensor: 2problem
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 219. Time: Fri Oct 27 08:39:39 CST 2006
+Sensor: 6. Reading: 623. Parent: 0. Sequence: 231. Time: Fri Oct 27 08:39:39 CST 2006
+Sensor: 5. Reading: 711. Parent: 0. Sequence: 237. Time: Fri Oct 27 08:39:39 CST 2006
+Sensor: 2problem
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 86. Time: Fri Oct 27 08:39:40 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 202. Time: Fri Oct 27 08:39:40 CST 2006
+Sensor: 1. Reading: 690. Parent: 0. Sequence: 159. Time: Fri Oct 27 08:39:40 CST 2006
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 3. Reading: 722. Parent: 0. Sequence: 220. Time: Fri Oct 27 08:39:41 CST 2006
+Sensor: 6. Reading: 624. Parent: 0. Sequence: 232. Time: Fri Oct 27 08:39:41 CST 2006
+Sensor: 7problem
+Sensor: 5. Reading: 711. Parent: 0. Sequence: 238. Time: Fri Oct 27 08:39:41 CST 2006
+Sensor: 2problem
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 87. Time: Fri Oct 27 08:39:42 CST 2006
+Sensor: 1. Reading: 690. Parent: 0. Sequence: 160. Time: Fri Oct 27 08:39:42 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 203. Time: Fri Oct 27 08:39:42 CST 2006
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 3. Reading: 722. Parent: 0. Sequence: 221. Time: Fri Oct 27 08:39:42 CST 2006
+Sensor: 6. Reading: 624. Parent: 0. Sequence: 233. Time: Fri Oct 27 08:39:43 CST 2006
+Sensor: 7problem
+Sensor: 5. Reading: 711. Parent: 0. Sequence: 239. Time: Fri Oct 27 08:39:43 CST 2006
+Sensor: 2problem
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 88. Time: Fri Oct 27 08:39:44 CST 2006
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 161. Time: Fri Oct 27 08:39:44 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 204. Time: Fri Oct 27 08:39:44 CST 2006
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 222. Time: Fri Oct 27 08:39:45 CST 2006
+Sensor: 6. Reading: 625. Parent: 0. Sequence: 234. Time: Fri Oct 27 08:39:45 CST 2006
+Sensor: 7problem
+Sensor: 5. Reading: 711. Parent: 0. Sequence: 240. Time: Fri Oct 27 08:39:45 CST 2006
+Sensor: 2problem
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 89. Time: Fri Oct 27 08:39:46 CST 2006
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 162. Time: Fri Oct 27 08:39:46 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 205. Time: Fri Oct 27 08:39:46 CST 2006
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 3. Reading: 722. Parent: 0. Sequence: 223. Time: Fri Oct 27 08:39:47 CST 2006
+Sensor: 6. Reading: 625. Parent: 0. Sequence: 235. Time: Fri Oct 27 08:39:47 CST 2006
+Sensor: 7problem
+Sensor: 5. Reading: 710. Parent: 0. Sequence: 241. Time: Fri Oct 27 08:39:47 CST 2006
+Sensor: 2problem
+Sensor: 15. Reading: 222. Parent: 0. Sequence: 90. Time: Fri Oct 27 08:39:48 CST 2006
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 163. Time: Fri Oct 27 08:39:48 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 206. Time: Fri Oct 27 08:39:48 CST 2006
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 3. Reading: 722. Parent: 0. Sequence: 224. Time: Fri Oct 27 08:39:48 CST 2006
+Sensor: 6. Reading: 625. Parent: 0. Sequence: 236. Time: Fri Oct 27 08:39:49 CST 2006
+Sensor: 7problem
+Sensor: 5. Reading: 710. Parent: 0. Sequence: 242. Time: Fri Oct 27 08:39:49 CST 2006
+Sensor: 2problem
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 91. Time: Fri Oct 27 08:39:50 CST 2006
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 164. Time: Fri Oct 27 08:39:50 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 207. Time: Fri Oct 27 08:39:50 CST 2006
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 3. Reading: 722. Parent: 0. Sequence: 225. Time: Fri Oct 27 08:39:51 CST 2006
+Sensor: 6. Reading: 625. Parent: 0. Sequence: 237. Time: Fri Oct 27 08:39:51 CST 2006
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 92. Time: Fri Oct 27 08:39:52 CST 2006
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 165. Time: Fri Oct 27 08:39:52 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 208. Time: Fri Oct 27 08:39:52 CST 2006
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 6. Reading: 625. Parent: 0. Sequence: 238. Time: Fri Oct 27 08:39:53 CST 2006
+Sensor: 2problem
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 93. Time: Fri Oct 27 08:39:54 CST 2006
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 166. Time: Fri Oct 27 08:39:54 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 209. Time: Fri Oct 27 08:39:54 CST 2006
+Sensor: 7problem
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 227. Time: Fri Oct 27 08:39:55 CST 2006
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 239. Time: Fri Oct 27 08:39:55 CST 2006
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 94. Time: Fri Oct 27 08:39:56 CST 2006
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 167. Time: Fri Oct 27 08:39:56 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 210. Time: Fri Oct 27 08:39:56 CST 2006
+Sensor: 2problem
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 228. Time: Fri Oct 27 08:39:56 CST 2006
+Sensor: 6. Reading: 625. Parent: 0. Sequence: 240. Time: Fri Oct 27 08:39:57 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 95. Time: Fri Oct 27 08:39:58 CST 2006
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 168. Time: Fri Oct 27 08:39:58 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 211. Time: Fri Oct 27 08:39:58 CST 2006
+Sensor: 3. Reading: 720. Parent: 0. Sequence: 229. Time: Fri Oct 27 08:39:58 CST 2006
+Sensor: 6. Reading: 625. Parent: 0. Sequence: 241. Time: Fri Oct 27 08:39:59 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 96. Time: Fri Oct 27 08:40:00 CST 2006
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 169. Time: Fri Oct 27 08:40:00 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 212. Time: Fri Oct 27 08:40:00 CST 2006
+Sensor: 2problem
+Sensor: 3. Reading: 720. Parent: 0. Sequence: 230. Time: Fri Oct 27 08:40:01 CST 2006
+Sensor: 6. Reading: 625. Parent: 0. Sequence: 242. Time: Fri Oct 27 08:40:01 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 97. Time: Fri Oct 27 08:40:02 CST 2006
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 170. Time: Fri Oct 27 08:40:02 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 213. Time: Fri Oct 27 08:40:02 CST 2006
+Sensor: 3. Reading: 720. Parent: 0. Sequence: 231. Time: Fri Oct 27 08:40:02 CST 2006
+Sensor: 6. Reading: 625. Parent: 0. Sequence: 243. Time: Fri Oct 27 08:40:03 CST 2006
+Sensor: 7problem
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 98. Time: Fri Oct 27 08:40:04 CST 2006
+Sensor: 2problem
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 171. Time: Fri Oct 27 08:40:04 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 214. Time: Fri Oct 27 08:40:04 CST 2006
+Sensor: 3. Reading: 720. Parent: 0. Sequence: 232. Time: Fri Oct 27 08:40:04 CST 2006
+Sensor: 2problem
+Sensor: 6. Reading: 624. Parent: 0. Sequence: 244. Time: Fri Oct 27 08:40:05 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 99. Time: Fri Oct 27 08:40:06 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 215. Time: Fri Oct 27 08:40:06 CST 2006
+Sensor: 7problem
+Sensor: 3. Reading: 720. Parent: 0. Sequence: 233. Time: Fri Oct 27 08:40:06 CST 2006
+Sensor: 2problem
+Sensor: 6. Reading: 624. Parent: 0. Sequence: 245. Time: Fri Oct 27 08:40:07 CST 2006
+Sensor: 7problem
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 100. Time: Fri Oct 27 08:40:08 CST 2006
+Sensor: 2problem
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 173. Time: Fri Oct 27 08:40:08 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 216. Time: Fri Oct 27 08:40:08 CST 2006
+Sensor: 7problem
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 234. Time: Fri Oct 27 08:40:09 CST 2006
+Sensor: 2problem
+Sensor: 6. Reading: 624. Parent: 0. Sequence: 246. Time: Fri Oct 27 08:40:09 CST 2006
+Sensor: 7problem
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 101. Time: Fri Oct 27 08:40:10 CST 2006
+Sensor: 2problem
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 174. Time: Fri Oct 27 08:40:10 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 217. Time: Fri Oct 27 08:40:10 CST 2006
+Sensor: 7problem
+Sensor: 3. Reading: 722. Parent: 0. Sequence: 235. Time: Fri Oct 27 08:40:10 CST 2006
+Sensor: 2problem
+Sensor: 6. Reading: 624. Parent: 0. Sequence: 247. Time: Fri Oct 27 08:40:11 CST 2006
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 1. Reading: 698. Parent: 0. Sequence: 175. Time: Fri Oct 27 08:40:12 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 218. Time: Fri Oct 27 08:40:12 CST 2006
+Sensor: 7problem
+Sensor: 3. Reading: 722. Parent: 0. Sequence: 236. Time: Fri Oct 27 08:40:12 CST 2006
+Sensor: 2problem
+Sensor: 6. Reading: 625. Parent: 0. Sequence: 248. Time: Fri Oct 27 08:40:13 CST 2006
+Sensor: 7problem
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 103. Time: Fri Oct 27 08:40:14 CST 2006
+Sensor: 2problem
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 176. Time: Fri Oct 27 08:40:14 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 219. Time: Fri Oct 27 08:40:14 CST 2006
+Sensor: 7problem
+Sensor: 3. Reading: 722. Parent: 0. Sequence: 237. Time: Fri Oct 27 08:40:15 CST 2006
+Sensor: 2problem
+Sensor: 6. Reading: 625. Parent: 0. Sequence: 249. Time: Fri Oct 27 08:40:15 CST 2006
+Sensor: 7problem
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 104. Time: Fri Oct 27 08:40:16 CST 2006
+Sensor: 2problem
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 177. Time: Fri Oct 27 08:40:16 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 220. Time: Fri Oct 27 08:40:16 CST 2006
+Sensor: 7problem
+Sensor: 6. Reading: 620. Parent: 0. Sequence: 250. Time: Fri Oct 27 08:40:17 CST 2006
+Sensor: 7problem
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 105. Time: Fri Oct 27 08:40:18 CST 2006
+Sensor: 2problem
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 178. Time: Fri Oct 27 08:40:18 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 221. Time: Fri Oct 27 08:40:18 CST 2006
+Sensor: 7problem
+Sensor: 3. Reading: 722. Parent: 0. Sequence: 239. Time: Fri Oct 27 08:40:18 CST 2006
+Sensor: 2problem
+Sensor: 6. Reading: 627. Parent: 0. Sequence: 251. Time: Fri Oct 27 08:40:19 CST 2006
+Sensor: 7problem
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 106. Time: Fri Oct 27 08:40:20 CST 2006
+Sensor: 2problem
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 179. Time: Fri Oct 27 08:40:20 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 222. Time: Fri Oct 27 08:40:20 CST 2006
+Sensor: 7problem
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 240. Time: Fri Oct 27 08:40:21 CST 2006
+Sensor: 2problem
+Sensor: 6. Reading: 627. Parent: 0. Sequence: 252. Time: Fri Oct 27 08:40:21 CST 2006
+Sensor: 7problem
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 107. Time: Fri Oct 27 08:40:22 CST 2006
+Sensor: 2problem
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 180. Time: Fri Oct 27 08:40:22 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 223. Time: Fri Oct 27 08:40:22 CST 2006
+Sensor: 7problem
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 241. Time: Fri Oct 27 08:40:22 CST 2006
+Sensor: 2problem
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 253. Time: Fri Oct 27 08:40:23 CST 2006
+Sensor: 7problem
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 108. Time: Fri Oct 27 08:40:24 CST 2006
+Sensor: 2problem
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 181. Time: Fri Oct 27 08:40:24 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 224. Time: Fri Oct 27 08:40:24 CST 2006
+Sensor: 7problem
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 242. Time: Fri Oct 27 08:40:25 CST 2006
+Sensor: 2problem
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 254. Time: Fri Oct 27 08:40:25 CST 2006
+Sensor: 7problem
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 109. Time: Fri Oct 27 08:40:26 CST 2006
+Sensor: 2problem
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 182. Time: Fri Oct 27 08:40:26 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 225. Time: Fri Oct 27 08:40:26 CST 2006
+Sensor: 7problem
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 243. Time: Fri Oct 27 08:40:27 CST 2006
+Sensor: 2problem
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 255. Time: Fri Oct 27 08:40:27 CST 2006
+Sensor: 7problem
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 110. Time: Fri Oct 27 08:40:28 CST 2006
+Sensor: 2problem
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 183. Time: Fri Oct 27 08:40:28 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 226. Time: Fri Oct 27 08:40:28 CST 2006
+Sensor: 7problem
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 244. Time: Fri Oct 27 08:40:28 CST 2006
+Sensor: 2problem
+Sensor: 8. Reading: 593. Parent: 3. Sequence: 92. Time: Fri Oct 27 08:40:29 CST 2006
+Sensor: 7problem
+Sensor: 12. Reading: 592. Parent: 8. Sequence: 16. Time: Fri Oct 27 08:40:29 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 111. Time: Fri Oct 27 08:40:30 CST 2006
+Sensor: 2problem
+Sensor: 1. Reading: 690. Parent: 0. Sequence: 184. Time: Fri Oct 27 08:40:30 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 227. Time: Fri Oct 27 08:40:30 CST 2006
+Sensor: 7problem
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 245. Time: Fri Oct 27 08:40:30 CST 2006
+Sensor: 2problem
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 1. Time: Fri Oct 27 08:40:31 CST 2006
+Sensor: 8. Reading: 593. Parent: 3. Sequence: 93. Time: Fri Oct 27 08:40:31 CST 2006
+Sensor: 7problem
+Sensor: 12. Reading: 595. Parent: 8. Sequence: 17. Time: Fri Oct 27 08:40:31 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 112. Time: Fri Oct 27 08:40:32 CST 2006
+Sensor: 2problem
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 185. Time: Fri Oct 27 08:40:32 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 228. Time: Fri Oct 27 08:40:32 CST 2006
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 2. Time: Fri Oct 27 08:40:33 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 113. Time: Fri Oct 27 08:40:34 CST 2006
+Sensor: 2problem
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 186. Time: Fri Oct 27 08:40:34 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 229. Time: Fri Oct 27 08:40:34 CST 2006
+Sensor: 3. Reading: 720. Parent: 0. Sequence: 247. Time: Fri Oct 27 08:40:35 CST 2006
+Sensor: 2problem
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 3. Time: Fri Oct 27 08:40:35 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 114. Time: Fri Oct 27 08:40:36 CST 2006
+Sensor: 2problem
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 187. Time: Fri Oct 27 08:40:36 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 230. Time: Fri Oct 27 08:40:36 CST 2006
+Sensor: 2problem
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 4. Time: Fri Oct 27 08:40:37 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 115. Time: Fri Oct 27 08:40:38 CST 2006
+Sensor: 2problem
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 231. Time: Fri Oct 27 08:40:38 CST 2006
+Sensor: 1. Reading: 684. Parent: 0. Sequence: 188. Time: Fri Oct 27 08:40:38 CST 2006
+Sensor: 2problem
+Sensor: 6. Reading: 625. Parent: 0. Sequence: 5. Time: Fri Oct 27 08:40:39 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 116. Time: Fri Oct 27 08:40:40 CST 2006
+Sensor: 2problem
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 189. Time: Fri Oct 27 08:40:40 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 232. Time: Fri Oct 27 08:40:40 CST 2006
+Sensor: 2problem
+Sensor: 6. Reading: 625. Parent: 0. Sequence: 6. Time: Fri Oct 27 08:40:41 CST 2006
+Sensor: 12. Reading: 596. Parent: 8. Sequence: 22. Time: Fri Oct 27 08:40:41 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 117. Time: Fri Oct 27 08:40:42 CST 2006
+Sensor: 2problem
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 190. Time: Fri Oct 27 08:40:42 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 233. Time: Fri Oct 27 08:40:42 CST 2006
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 251. Time: Fri Oct 27 08:40:43 CST 2006
+Sensor: 2problem
+Sensor: 6. Reading: 625. Parent: 0. Sequence: 7. Time: Fri Oct 27 08:40:43 CST 2006
+Sensor: 10. Reading: 611. Parent: 8. Sequence: 85. Time: Fri Oct 27 08:40:43 CST 2006
+Sensor: 12. Reading: 596. Parent: 8. Sequence: 23. Time: Fri Oct 27 08:40:43 CST 2006
+Sensor: 5. Reading: 711. Parent: 10. Sequence: 13. Time: Fri Oct 27 08:40:43 CST 2006
+Sensor: 13. Reading: 578. Parent: 8. Sequence: 28. Time: Fri Oct 27 08:40:43 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 118. Time: Fri Oct 27 08:40:44 CST 2006
+Sensor: 2problem
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 191. Time: Fri Oct 27 08:40:44 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 234. Time: Fri Oct 27 08:40:44 CST 2006
+Sensor: 2problem
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 252. Time: Fri Oct 27 08:40:45 CST 2006
+Sensor: 6. Reading: 625. Parent: 0. Sequence: 8. Time: Fri Oct 27 08:40:45 CST 2006
+Sensor: 10. Reading: 611. Parent: 8. Sequence: 86. Time: Fri Oct 27 08:40:45 CST 2006
+Sensor: 12. Reading: 596. Parent: 8. Sequence: 24. Time: Fri Oct 27 08:40:45 CST 2006
+Sensor: 5. Reading: 711. Parent: 10. Sequence: 14. Time: Fri Oct 27 08:40:45 CST 2006
+Sensor: 13. Reading: 578. Parent: 8. Sequence: 29. Time: Fri Oct 27 08:40:45 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 119. Time: Fri Oct 27 08:40:46 CST 2006
+Sensor: 2problem
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 192. Time: Fri Oct 27 08:40:46 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 235. Time: Fri Oct 27 08:40:46 CST 2006
+Sensor: 2problem
+Sensor: 8. Reading: 594. Parent: 3. Sequence: 101. Time: Fri Oct 27 08:40:47 CST 2006
+Sensor: 6. Reading: 625. Parent: 0. Sequence: 9. Time: Fri Oct 27 08:40:47 CST 2006
+Sensor: 10. Reading: 611. Parent: 8. Sequence: 87. Time: Fri Oct 27 08:40:47 CST 2006
+Sensor: 5. Reading: 710. Parent: 10. Sequence: 15. Time: Fri Oct 27 08:40:47 CST 2006
+Sensor: 13. Reading: 579. Parent: 8. Sequence: 30. Time: Fri Oct 27 08:40:47 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 120. Time: Fri Oct 27 08:40:48 CST 2006
+Sensor: 2problem
+Sensor: 1. Reading: 689. Parent: 0. Sequence: 193. Time: Fri Oct 27 08:40:48 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 236. Time: Fri Oct 27 08:40:48 CST 2006
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 254. Time: Fri Oct 27 08:40:48 CST 2006
+Sensor: 2problem
+Sensor: 8. Reading: 594. Parent: 3. Sequence: 102. Time: Fri Oct 27 08:40:49 CST 2006
+Sensor: 6. Reading: 625. Parent: 0. Sequence: 10. Time: Fri Oct 27 08:40:49 CST 2006
+Sensor: 10. Reading: 610. Parent: 8. Sequence: 88. Time: Fri Oct 27 08:40:49 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 121. Time: Fri Oct 27 08:40:50 CST 2006
+Sensor: 2problem
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 237. Time: Fri Oct 27 08:40:50 CST 2006
+Sensor: 3. Reading: 722. Parent: 0. Sequence: 255. Time: Fri Oct 27 08:40:51 CST 2006
+Sensor: 2problem
+Sensor: 6. Reading: 625. Parent: 0. Sequence: 11. Time: Fri Oct 27 08:40:51 CST 2006
+Sensor: 12. Reading: 596. Parent: 8. Sequence: 27. Time: Fri Oct 27 08:40:51 CST 2006
+Sensor: 5. Reading: 710. Parent: 10. Sequence: 17. Time: Fri Oct 27 08:40:51 CST 2006
+Sensor: 13. Reading: 180. Parent: 8. Sequence: 32. Time: Fri Oct 27 08:40:51 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 122. Time: Fri Oct 27 08:40:52 CST 2006
+Sensor: 2problem
+Sensor: 2problem
+Sensor: 10. Reading: 604. Parent: 8. Sequence: 90. Time: Fri Oct 27 08:40:53 CST 2006
+Sensor: 12. Reading: 596. Parent: 8. Sequence: 28. Time: Fri Oct 27 08:40:53 CST 2006
+Sensor: 13. Reading: 579. Parent: 8. Sequence: 33. Time: Fri Oct 27 08:40:53 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 123. Time: Fri Oct 27 08:40:54 CST 2006
+Sensor: 2problem
+Sensor: 1. Reading: 690. Parent: 0. Sequence: 196. Time: Fri Oct 27 08:40:54 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 239. Time: Fri Oct 27 08:40:54 CST 2006
+Sensor: 3. Reading: 722. Parent: 0. Sequence: 1. Time: Fri Oct 27 08:40:54 CST 2006
+Sensor: 2problem
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 13. Time: Fri Oct 27 08:40:55 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 124. Time: Fri Oct 27 08:40:56 CST 2006
+Sensor: 2problem
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 240. Time: Fri Oct 27 08:40:56 CST 2006
+Sensor: 3. Reading: 722. Parent: 0. Sequence: 2. Time: Fri Oct 27 08:40:56 CST 2006
+Sensor: 2problem
+Sensor: 8. Reading: 594. Parent: 3. Sequence: 106. Time: Fri Oct 27 08:40:57 CST 2006
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 14. Time: Fri Oct 27 08:40:57 CST 2006
+Sensor: 10. Reading: 611. Parent: 8. Sequence: 92. Time: Fri Oct 27 08:40:57 CST 2006
+Sensor: 12. Reading: 347. Parent: 8. Sequence: 30. Time: Fri Oct 27 08:40:57 CST 2006
+Sensor: 5. Reading: 710. Parent: 10. Sequence: 20. Time: Fri Oct 27 08:40:57 CST 2006
+Sensor: 13. Reading: 579. Parent: 8. Sequence: 35. Time: Fri Oct 27 08:40:57 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 125. Time: Fri Oct 27 08:40:58 CST 2006
+Sensor: 2problem
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 241. Time: Fri Oct 27 08:40:58 CST 2006
+Sensor: 3. Reading: 722. Parent: 0. Sequence: 3. Time: Fri Oct 27 08:40:58 CST 2006
+Sensor: 8. Reading: 594. Parent: 3. Sequence: 107. Time: Fri Oct 27 08:40:59 CST 2006
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 15. Time: Fri Oct 27 08:40:59 CST 2006
+Sensor: 10. Reading: 611. Parent: 8. Sequence: 93. Time: Fri Oct 27 08:40:59 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 126. Time: Fri Oct 27 08:41:00 CST 2006
+Sensor: 2problem
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 242. Time: Fri Oct 27 08:41:00 CST 2006
+Sensor: 3. Reading: 722. Parent: 0. Sequence: 4. Time: Fri Oct 27 08:41:01 CST 2006
+Sensor: 8. Reading: 594. Parent: 3. Sequence: 108. Time: Fri Oct 27 08:41:01 CST 2006
+Sensor: 6. Reading: 624. Parent: 0. Sequence: 16. Time: Fri Oct 27 08:41:01 CST 2006
+Sensor: 12. Reading: 155. Parent: 8. Sequence: 32. Time: Fri Oct 27 08:41:01 CST 2006
+Sensor: 13. Reading: 579. Parent: 8. Sequence: 37. Time: Fri Oct 27 08:41:01 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 127. Time: Fri Oct 27 08:41:02 CST 2006
+Sensor: 2problem
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 243. Time: Fri Oct 27 08:41:02 CST 2006
+Sensor: 2problem
+Sensor: 6. Reading: 625. Parent: 0. Sequence: 17. Time: Fri Oct 27 08:41:03 CST 2006
+Sensor: 8. Reading: 594. Parent: 3. Sequence: 109. Time: Fri Oct 27 08:41:03 CST 2006
+Sensor: 10. Reading: 611. Parent: 8. Sequence: 95. Time: Fri Oct 27 08:41:03 CST 2006
+Sensor: 12. Reading: 596. Parent: 8. Sequence: 33. Time: Fri Oct 27 08:41:03 CST 2006
+Sensor: 5. Reading: 710. Parent: 10. Sequence: 23. Time: Fri Oct 27 08:41:03 CST 2006
+Sensor: 13. Reading: 579. Parent: 8. Sequence: 38. Time: Fri Oct 27 08:41:03 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 128. Time: Fri Oct 27 08:41:04 CST 2006
+Sensor: 2problem
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 244. Time: Fri Oct 27 08:41:04 CST 2006
+Sensor: 3. Reading: 722. Parent: 0. Sequence: 6. Time: Fri Oct 27 08:41:05 CST 2006
+Sensor: 2problem
+Sensor: 8. Reading: 594. Parent: 3. Sequence: 110. Time: Fri Oct 27 08:41:05 CST 2006
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 18. Time: Fri Oct 27 08:41:05 CST 2006
+Sensor: 10. Reading: 611. Parent: 8. Sequence: 96. Time: Fri Oct 27 08:41:05 CST 2006
+Sensor: 12. Reading: 596. Parent: 8. Sequence: 34. Time: Fri Oct 27 08:41:05 CST 2006
+Sensor: 5. Reading: 710. Parent: 10. Sequence: 24. Time: Fri Oct 27 08:41:05 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 129. Time: Fri Oct 27 08:41:06 CST 2006
+Sensor: 2problem
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 245. Time: Fri Oct 27 08:41:06 CST 2006
+Sensor: 3. Reading: 722. Parent: 0. Sequence: 7. Time: Fri Oct 27 08:41:07 CST 2006
+Sensor: 2problem
+Sensor: 8. Reading: 594. Parent: 3. Sequence: 111. Time: Fri Oct 27 08:41:07 CST 2006
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 19. Time: Fri Oct 27 08:41:07 CST 2006
+Sensor: 10. Reading: 611. Parent: 8. Sequence: 97. Time: Fri Oct 27 08:41:07 CST 2006
+Sensor: 12. Reading: 596. Parent: 8. Sequence: 35. Time: Fri Oct 27 08:41:07 CST 2006
+Sensor: 5. Reading: 710. Parent: 10. Sequence: 25. Time: Fri Oct 27 08:41:07 CST 2006
+Sensor: 13. Reading: 579. Parent: 8. Sequence: 40. Time: Fri Oct 27 08:41:07 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 130. Time: Fri Oct 27 08:41:08 CST 2006
+Sensor: 2problem
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 246. Time: Fri Oct 27 08:41:08 CST 2006
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 8. Time: Fri Oct 27 08:41:08 CST 2006
+Sensor: 2problem
+Sensor: 8. Reading: 594. Parent: 3. Sequence: 112. Time: Fri Oct 27 08:41:09 CST 2006
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 20. Time: Fri Oct 27 08:41:09 CST 2006
+Sensor: 10. Reading: 611. Parent: 8. Sequence: 98. Time: Fri Oct 27 08:41:09 CST 2006
+Sensor: 12. Reading: 596. Parent: 8. Sequence: 36. Time: Fri Oct 27 08:41:09 CST 2006
+Sensor: 5. Reading: 710. Parent: 10. Sequence: 26. Time: Fri Oct 27 08:41:09 CST 2006
+Sensor: 13. Reading: 579. Parent: 8. Sequence: 41. Time: Fri Oct 27 08:41:09 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 131. Time: Fri Oct 27 08:41:10 CST 2006
+Sensor: 2problem
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 247. Time: Fri Oct 27 08:41:10 CST 2006
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 9. Time: Fri Oct 27 08:41:11 CST 2006
+Sensor: 2problem
+Sensor: 8. Reading: 594. Parent: 3. Sequence: 113. Time: Fri Oct 27 08:41:11 CST 2006
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 21. Time: Fri Oct 27 08:41:11 CST 2006
+Sensor: 10. Reading: 611. Parent: 8. Sequence: 99. Time: Fri Oct 27 08:41:11 CST 2006
+Sensor: 12. Reading: 596. Parent: 8. Sequence: 37. Time: Fri Oct 27 08:41:11 CST 2006
+Sensor: 5. Reading: 710. Parent: 10. Sequence: 27. Time: Fri Oct 27 08:41:11 CST 2006
+Sensor: 13. Reading: 579. Parent: 8. Sequence: 42. Time: Fri Oct 27 08:41:11 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 132. Time: Fri Oct 27 08:41:12 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 248. Time: Fri Oct 27 08:41:12 CST 2006
+Sensor: 8. Reading: 594. Parent: 3. Sequence: 114. Time: Fri Oct 27 08:41:13 CST 2006
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 22. Time: Fri Oct 27 08:41:13 CST 2006
+Sensor: 10. Reading: 611. Parent: 8. Sequence: 100. Time: Fri Oct 27 08:41:13 CST 2006
+Sensor: 12. Reading: 596. Parent: 8. Sequence: 38. Time: Fri Oct 27 08:41:14 CST 2006
+Sensor: 5. Reading: 710. Parent: 0. Sequence: 28. Time: Fri Oct 27 08:41:14 CST 2006
+Sensor: 13. Reading: 579. Parent: 8. Sequence: 43. Time: Fri Oct 27 08:41:14 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 133. Time: Fri Oct 27 08:41:14 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 249. Time: Fri Oct 27 08:41:14 CST 2006
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 11. Time: Fri Oct 27 08:41:15 CST 2006
+Sensor: 8. Reading: 594. Parent: 3. Sequence: 115. Time: Fri Oct 27 08:41:15 CST 2006
+Sensor: 6. Reading: 625. Parent: 0. Sequence: 23. Time: Fri Oct 27 08:41:15 CST 2006
+Sensor: 10. Reading: 610. Parent: 8. Sequence: 101. Time: Fri Oct 27 08:41:15 CST 2006
+Sensor: 12. Reading: 588. Parent: 8. Sequence: 39. Time: Fri Oct 27 08:41:15 CST 2006
+Sensor: 5. Reading: 710. Parent: 0. Sequence: 29. Time: Fri Oct 27 08:41:15 CST 2006
+Sensor: 13. Reading: 578. Parent: 5. Sequence: 44. Time: Fri Oct 27 08:41:15 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 134. Time: Fri Oct 27 08:41:16 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 250. Time: Fri Oct 27 08:41:16 CST 2006
+Sensor: 6. Reading: 625. Parent: 0. Sequence: 24. Time: Fri Oct 27 08:41:17 CST 2006
+Sensor: 8. Reading: 594. Parent: 3. Sequence: 116. Time: Fri Oct 27 08:41:17 CST 2006
+Sensor: 10. Reading: 610. Parent: 8. Sequence: 102. Time: Fri Oct 27 08:41:17 CST 2006
+Sensor: 12. Reading: 596. Parent: 5. Sequence: 40. Time: Fri Oct 27 08:41:17 CST 2006
+Sensor: 5. Reading: 710. Parent: 0. Sequence: 30. Time: Fri Oct 27 08:41:17 CST 2006
+Sensor: 13. Reading: 579. Parent: 5. Sequence: 45. Time: Fri Oct 27 08:41:18 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 135. Time: Fri Oct 27 08:41:18 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 251. Time: Fri Oct 27 08:41:18 CST 2006
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 13. Time: Fri Oct 27 08:41:19 CST 2006
+Sensor: 8. Reading: 594. Parent: 3. Sequence: 117. Time: Fri Oct 27 08:41:19 CST 2006
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 25. Time: Fri Oct 27 08:41:19 CST 2006
+Sensor: 10. Reading: 610. Parent: 8. Sequence: 103. Time: Fri Oct 27 08:41:19 CST 2006
+Sensor: 5. Reading: 710. Parent: 0. Sequence: 31. Time: Fri Oct 27 08:41:19 CST 2006
+Sensor: 13. Reading: 579. Parent: 5. Sequence: 46. Time: Fri Oct 27 08:41:20 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 136. Time: Fri Oct 27 08:41:20 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 252. Time: Fri Oct 27 08:41:20 CST 2006
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 14. Time: Fri Oct 27 08:41:20 CST 2006
+Sensor: 8. Reading: 594. Parent: 3. Sequence: 118. Time: Fri Oct 27 08:41:21 CST 2006
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 26. Time: Fri Oct 27 08:41:21 CST 2006
+Sensor: 10. Reading: 594. Parent: 5. Sequence: 104. Time: Fri Oct 27 08:41:21 CST 2006
+Sensor: 12. Reading: 596. Parent: 5. Sequence: 42. Time: Fri Oct 27 08:41:21 CST 2006
+Sensor: 5. Reading: 710. Parent: 0. Sequence: 32. Time: Fri Oct 27 08:41:21 CST 2006
+Sensor: 13. Reading: 579. Parent: 5. Sequence: 47. Time: Fri Oct 27 08:41:21 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 137. Time: Fri Oct 27 08:41:22 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 253. Time: Fri Oct 27 08:41:22 CST 2006
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 15. Time: Fri Oct 27 08:41:23 CST 2006
+Sensor: 8. Reading: 594. Parent: 3. Sequence: 119. Time: Fri Oct 27 08:41:23 CST 2006
+Sensor: 6. Reading: 625. Parent: 0. Sequence: 27. Time: Fri Oct 27 08:41:23 CST 2006
+Sensor: 10. Reading: 604. Parent: 5. Sequence: 105. Time: Fri Oct 27 08:41:23 CST 2006
+Sensor: 12. Reading: 592. Parent: 5. Sequence: 43. Time: Fri Oct 27 08:41:23 CST 2006
+Sensor: 13. Reading: 578. Parent: 5. Sequence: 48. Time: Fri Oct 27 08:41:23 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 138. Time: Fri Oct 27 08:41:24 CST 2006
+Sensor: 3. Reading: 721. Parent: 5. Sequence: 16. Time: Fri Oct 27 08:41:25 CST 2006
+Sensor: 8. Reading: 594. Parent: 13. Sequence: 120. Time: Fri Oct 27 08:41:25 CST 2006
+Sensor: 6. Reading: 626. Parent: 5. Sequence: 28. Time: Fri Oct 27 08:41:25 CST 2006
+Sensor: 10. Reading: 605. Parent: 5. Sequence: 106. Time: Fri Oct 27 08:41:25 CST 2006
+Sensor: 12. Reading: 9. Parent: 5. Sequence: 44. Time: Fri Oct 27 08:41:25 CST 2006
+Sensor: 13. Reading: 577. Parent: 5. Sequence: 49. Time: Fri Oct 27 08:41:25 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 139. Time: Fri Oct 27 08:41:26 CST 2006
+Sensor: 9. Reading: 598. Parent: 0. Sequence: 255. Time: Fri Oct 27 08:41:26 CST 2006
+Sensor: 3. Reading: 721. Parent: 5. Sequence: 17. Time: Fri Oct 27 08:41:27 CST 2006
+Sensor: 8. Reading: 594. Parent: 13. Sequence: 121. Time: Fri Oct 27 08:41:27 CST 2006
+Sensor: 10. Reading: 605. Parent: 5. Sequence: 107. Time: Fri Oct 27 08:41:27 CST 2006
+Sensor: 12. Reading: 594. Parent: 5. Sequence: 45. Time: Fri Oct 27 08:41:27 CST 2006
+Sensor: 5. Reading: 710. Parent: 0. Sequence: 35. Time: Fri Oct 27 08:41:28 CST 2006
+Sensor: 13. Reading: 578. Parent: 5. Sequence: 50. Time: Fri Oct 27 08:41:28 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 140. Time: Fri Oct 27 08:41:28 CST 2006
+Sensor: 3. Reading: 721. Parent: 5. Sequence: 18. Time: Fri Oct 27 08:41:29 CST 2006
+Sensor: 6. Reading: 626. Parent: 5. Sequence: 30. Time: Fri Oct 27 08:41:29 CST 2006
+Sensor: 8. Reading: 594. Parent: 13. Sequence: 122. Time: Fri Oct 27 08:41:29 CST 2006
+Sensor: 12. Reading: 596. Parent: 5. Sequence: 46. Time: Fri Oct 27 08:41:29 CST 2006
+Sensor: 5. Reading: 710. Parent: 0. Sequence: 36. Time: Fri Oct 27 08:41:29 CST 2006
+Sensor: 13. Reading: 579. Parent: 5. Sequence: 51. Time: Fri Oct 27 08:41:29 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 141. Time: Fri Oct 27 08:41:30 CST 2006
+Sensor: 3. Reading: 722. Parent: 5. Sequence: 19. Time: Fri Oct 27 08:41:31 CST 2006
+Sensor: 8. Reading: 594. Parent: 13. Sequence: 123. Time: Fri Oct 27 08:41:31 CST 2006
+Sensor: 6. Reading: 626. Parent: 5. Sequence: 31. Time: Fri Oct 27 08:41:31 CST 2006
+Sensor: 10. Reading: 603. Parent: 5. Sequence: 109. Time: Fri Oct 27 08:41:31 CST 2006
+Sensor: 12. Reading: 596. Parent: 5. Sequence: 47. Time: Fri Oct 27 08:41:31 CST 2006
+Sensor: 5. Reading: 710. Parent: 0. Sequence: 37. Time: Fri Oct 27 08:41:31 CST 2006
+Sensor: 13. Reading: 579. Parent: 12. Sequence: 52. Time: Fri Oct 27 08:41:31 CST 2006
+Sensor: 15. Reading: 216. Parent: 0. Sequence: 142. Time: Fri Oct 27 08:41:32 CST 2006
+Sensor: 3. Reading: 723. Parent: 12. Sequence: 20. Time: Fri Oct 27 08:41:33 CST 2006
+Sensor: 8. Reading: 594. Parent: 10. Sequence: 124. Time: Fri Oct 27 08:41:33 CST 2006
+Sensor: 6. Reading: 626. Parent: 12. Sequence: 32. Time: Fri Oct 27 08:41:33 CST 2006
+Sensor: 10. Reading: 611. Parent: 5. Sequence: 110. Time: Fri Oct 27 08:41:33 CST 2006
+Sensor: 12. Reading: 596. Parent: 10. Sequence: 48. Time: Fri Oct 27 08:41:33 CST 2006
+Sensor: 5. Reading: 710. Parent: 0. Sequence: 38. Time: Fri Oct 27 08:41:33 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 143. Time: Fri Oct 27 08:41:34 CST 2006
+Sensor: 8. Reading: 594. Parent: 10. Sequence: 125. Time: Fri Oct 27 08:41:35 CST 2006
+Sensor: 12. Reading: 596. Parent: 10. Sequence: 49. Time: Fri Oct 27 08:41:35 CST 2006
+Sensor: 5. Reading: 710. Parent: 0. Sequence: 39. Time: Fri Oct 27 08:41:35 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 144. Time: Fri Oct 27 08:41:36 CST 2006
+Sensor: 10. Reading: 611. Parent: 5. Sequence: 112. Time: Fri Oct 27 08:41:37 CST 2006
+Sensor: 8. Reading: 594. Parent: 10. Sequence: 126. Time: Fri Oct 27 08:41:37 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 145. Time: Fri Oct 27 08:41:38 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 147. Time: Fri Oct 27 08:41:42 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 148. Time: Fri Oct 27 08:41:44 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 149. Time: Fri Oct 27 08:41:46 CST 2006
+Sensor: 1. Reading: 690. Parent: 0. Sequence: 222. Time: Fri Oct 27 08:41:46 CST 2006
+Sensor: 9. Reading: 598. Parent: 1. Sequence: 9. Time: Fri Oct 27 08:41:46 CST 2006
+Sensor: 1. Reading: 690. Parent: 0. Sequence: 223. Time: Fri Oct 27 08:41:48 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 150. Time: Fri Oct 27 08:41:48 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 151. Time: Fri Oct 27 08:41:50 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 152. Time: Fri Oct 27 08:41:52 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 153. Time: Fri Oct 27 08:41:54 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 154. Time: Fri Oct 27 08:41:56 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 155. Time: Fri Oct 27 08:41:58 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 156. Time: Fri Oct 27 08:42:00 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 157. Time: Fri Oct 27 08:42:02 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 158. Time: Fri Oct 27 08:42:04 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 159. Time: Fri Oct 27 08:42:06 CST 2006
+Sensor: 7problem
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 160. Time: Fri Oct 27 08:42:08 CST 2006
+Sensor: 7problem
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 161. Time: Fri Oct 27 08:42:10 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 162. Time: Fri Oct 27 08:42:12 CST 2006
+Sensor: 6. Reading: 622. Parent: 0. Sequence: 52. Time: Fri Oct 27 08:42:13 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 163. Time: Fri Oct 27 08:42:14 CST 2006
+Sensor: 7problem
+Sensor: 6. Reading: 619. Parent: 0. Sequence: 53. Time: Fri Oct 27 08:42:15 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 164. Time: Fri Oct 27 08:42:16 CST 2006
+Sensor: 6. Reading: 618. Parent: 0. Sequence: 54. Time: Fri Oct 27 08:42:17 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 165. Time: Fri Oct 27 08:42:18 CST 2006
+Sensor: 6. Reading: 618. Parent: 0. Sequence: 55. Time: Fri Oct 27 08:42:19 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 166. Time: Fri Oct 27 08:42:20 CST 2006
+Sensor: 9. Reading: 590. Parent: 7. Sequence: 26. Time: Fri Oct 27 08:42:20 CST 2006
+Sensor: 7problem
+Sensor: 6. Reading: 618. Parent: 0. Sequence: 56. Time: Fri Oct 27 08:42:21 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 167. Time: Fri Oct 27 08:42:22 CST 2006
+Sensor: 6. Reading: 619. Parent: 0. Sequence: 57. Time: Fri Oct 27 08:42:23 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 168. Time: Fri Oct 27 08:42:24 CST 2006
+Sensor: 7problem
+Sensor: 6. Reading: 619. Parent: 0. Sequence: 58. Time: Fri Oct 27 08:42:25 CST 2006
+Sensor: 5. Reading: 711. Parent: 0. Sequence: 64. Time: Fri Oct 27 08:42:26 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 169. Time: Fri Oct 27 08:42:26 CST 2006
+Sensor: 7problem
+Sensor: 6. Reading: 622. Parent: 0. Sequence: 59. Time: Fri Oct 27 08:42:27 CST 2006
+Sensor: 5. Reading: 711. Parent: 0. Sequence: 65. Time: Fri Oct 27 08:42:28 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 170. Time: Fri Oct 27 08:42:28 CST 2006
+Sensor: 10. Reading: 611. Parent: 5. Sequence: 138. Time: Fri Oct 27 08:42:29 CST 2006
+Sensor: 8. Reading: 593. Parent: 10. Sequence: 152. Time: Fri Oct 27 08:42:29 CST 2006
+Sensor: 7problem
+Sensor: 6. Reading: 623. Parent: 0. Sequence: 60. Time: Fri Oct 27 08:42:29 CST 2006
+Sensor: 5. Reading: 710. Parent: 0. Sequence: 66. Time: Fri Oct 27 08:42:30 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 171. Time: Fri Oct 27 08:42:30 CST 2006
+Sensor: 10. Reading: 611. Parent: 5. Sequence: 139. Time: Fri Oct 27 08:42:31 CST 2006
+Sensor: 8. Reading: 593. Parent: 10. Sequence: 153. Time: Fri Oct 27 08:42:31 CST 2006
+Sensor: 7problem
+Sensor: 6. Reading: 622. Parent: 0. Sequence: 61. Time: Fri Oct 27 08:42:31 CST 2006
+Sensor: 5. Reading: 711. Parent: 0. Sequence: 67. Time: Fri Oct 27 08:42:32 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 172. Time: Fri Oct 27 08:42:32 CST 2006
+Sensor: 1. Reading: 690. Parent: 10. Sequence: 245. Time: Fri Oct 27 08:42:32 CST 2006
+Sensor: 6. Reading: 621. Parent: 0. Sequence: 62. Time: Fri Oct 27 08:42:33 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 173. Time: Fri Oct 27 08:42:34 CST 2006
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 6. Reading: 621. Parent: 0. Sequence: 63. Time: Fri Oct 27 08:42:35 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 174. Time: Fri Oct 27 08:42:36 CST 2006
+Sensor: 7problem
+Sensor: 6. Reading: 620. Parent: 0. Sequence: 64. Time: Fri Oct 27 08:42:37 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 175. Time: Fri Oct 27 08:42:38 CST 2006
+Sensor: 6. Reading: 622. Parent: 0. Sequence: 65. Time: Fri Oct 27 08:42:39 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 176. Time: Fri Oct 27 08:42:40 CST 2006
+Sensor: 6. Reading: 623. Parent: 0. Sequence: 66. Time: Fri Oct 27 08:42:41 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 177. Time: Fri Oct 27 08:42:42 CST 2006
+Sensor: 6. Reading: 627. Parent: 0. Sequence: 67. Time: Fri Oct 27 08:42:43 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 178. Time: Fri Oct 27 08:42:44 CST 2006
+Sensor: 6. Reading: 621. Parent: 0. Sequence: 68. Time: Fri Oct 27 08:42:45 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 179. Time: Fri Oct 27 08:42:46 CST 2006
+Sensor: 6. Reading: 623. Parent: 0. Sequence: 69. Time: Fri Oct 27 08:42:47 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 180. Time: Fri Oct 27 08:42:48 CST 2006
+Sensor: 6. Reading: 624. Parent: 0. Sequence: 70. Time: Fri Oct 27 08:42:49 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 181. Time: Fri Oct 27 08:42:50 CST 2006
+Sensor: 6. Reading: 625. Parent: 0. Sequence: 71. Time: Fri Oct 27 08:42:51 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 182. Time: Fri Oct 27 08:42:52 CST 2006
+Sensor: 5. Reading: 710. Parent: 7. Sequence: 77. Time: Fri Oct 27 08:42:52 CST 2006
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 72. Time: Fri Oct 27 08:42:53 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 183. Time: Fri Oct 27 08:42:54 CST 2006
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 73. Time: Fri Oct 27 08:42:55 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 184. Time: Fri Oct 27 08:42:56 CST 2006
+Sensor: 6. Reading: 627. Parent: 0. Sequence: 74. Time: Fri Oct 27 08:42:57 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 185. Time: Fri Oct 27 08:42:58 CST 2006
+Sensor: 6. Reading: 627. Parent: 0. Sequence: 75. Time: Fri Oct 27 08:42:59 CST 2006
+Sensor: 6. Reading: 627. Parent: 0. Sequence: 76. Time: Fri Oct 27 08:43:01 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 187. Time: Fri Oct 27 08:43:02 CST 2006
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 77. Time: Fri Oct 27 08:43:03 CST 2006
+Sensor: 7problem
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 78. Time: Fri Oct 27 08:43:05 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 189. Time: Fri Oct 27 08:43:06 CST 2006
+Sensor: 6. Reading: 627. Parent: 0. Sequence: 79. Time: Fri Oct 27 08:43:07 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 190. Time: Fri Oct 27 08:43:08 CST 2006
+Sensor: 3. Reading: 723. Parent: 0. Sequence: 68. Time: Fri Oct 27 08:43:08 CST 2006
+Sensor: 6. Reading: 628. Parent: 0. Sequence: 80. Time: Fri Oct 27 08:43:09 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 191. Time: Fri Oct 27 08:43:10 CST 2006
+Sensor: 3. Reading: 722. Parent: 0. Sequence: 69. Time: Fri Oct 27 08:43:11 CST 2006
+Sensor: 6. Reading: 628. Parent: 0. Sequence: 81. Time: Fri Oct 27 08:43:11 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 192. Time: Fri Oct 27 08:43:12 CST 2006
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 52. Time: Fri Oct 27 08:43:12 CST 2006
+Sensor: 10. Reading: 610. Parent: 8. Sequence: 160. Time: Fri Oct 27 08:43:13 CST 2006
+Sensor: 8. Reading: 593. Parent: 9. Sequence: 174. Time: Fri Oct 27 08:43:13 CST 2006
+Sensor: 6. Reading: 628. Parent: 0. Sequence: 82. Time: Fri Oct 27 08:43:13 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 193. Time: Fri Oct 27 08:43:14 CST 2006
+Sensor: 1. Reading: 690. Parent: 10. Sequence: 10. Time: Fri Oct 27 08:43:14 CST 2006
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 53. Time: Fri Oct 27 08:43:14 CST 2006
+Sensor: 10. Reading: 592. Parent: 8. Sequence: 161. Time: Fri Oct 27 08:43:15 CST 2006
+Sensor: 8. Reading: 593. Parent: 9. Sequence: 175. Time: Fri Oct 27 08:43:15 CST 2006
+Sensor: 6. Reading: 627. Parent: 0. Sequence: 83. Time: Fri Oct 27 08:43:15 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 194. Time: Fri Oct 27 08:43:16 CST 2006
+Sensor: 1. Reading: 690. Parent: 10. Sequence: 11. Time: Fri Oct 27 08:43:16 CST 2006
+Sensor: 13. Reading: 580. Parent: 1. Sequence: 104. Time: Fri Oct 27 08:43:16 CST 2006
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 54. Time: Fri Oct 27 08:43:16 CST 2006
+Sensor: 3. Reading: 722. Parent: 0. Sequence: 72. Time: Fri Oct 27 08:43:16 CST 2006
+Sensor: 10. Reading: 610. Parent: 8. Sequence: 162. Time: Fri Oct 27 08:43:17 CST 2006
+Sensor: 8. Reading: 593. Parent: 9. Sequence: 176. Time: Fri Oct 27 08:43:17 CST 2006
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 84. Time: Fri Oct 27 08:43:17 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 195. Time: Fri Oct 27 08:43:18 CST 2006
+Sensor: 7problem
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 55. Time: Fri Oct 27 08:43:18 CST 2006
+Sensor: 10. Reading: 611. Parent: 8. Sequence: 163. Time: Fri Oct 27 08:43:19 CST 2006
+Sensor: 7problem
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 85. Time: Fri Oct 27 08:43:19 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 196. Time: Fri Oct 27 08:43:20 CST 2006
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 56. Time: Fri Oct 27 08:43:20 CST 2006
+Sensor: 3. Reading: 722. Parent: 0. Sequence: 74. Time: Fri Oct 27 08:43:21 CST 2006
+Sensor: 10. Reading: 611. Parent: 8. Sequence: 164. Time: Fri Oct 27 08:43:21 CST 2006
+Sensor: 8. Reading: 592. Parent: 9. Sequence: 178. Time: Fri Oct 27 08:43:21 CST 2006
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 86. Time: Fri Oct 27 08:43:21 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 197. Time: Fri Oct 27 08:43:22 CST 2006
+Sensor: 5. Reading: 711. Parent: 10. Sequence: 92. Time: Fri Oct 27 08:43:22 CST 2006
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 57. Time: Fri Oct 27 08:43:22 CST 2006
+Sensor: 10. Reading: 611. Parent: 8. Sequence: 165. Time: Fri Oct 27 08:43:23 CST 2006
+Sensor: 8. Reading: 592. Parent: 9. Sequence: 179. Time: Fri Oct 27 08:43:23 CST 2006
+Sensor: 7problem
+Sensor: 6. Reading: 627. Parent: 0. Sequence: 87. Time: Fri Oct 27 08:43:23 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 198. Time: Fri Oct 27 08:43:24 CST 2006
+Sensor: 5. Reading: 712. Parent: 10. Sequence: 93. Time: Fri Oct 27 08:43:24 CST 2006
+Sensor: 7problem
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 58. Time: Fri Oct 27 08:43:24 CST 2006
+Sensor: 10. Reading: 611. Parent: 8. Sequence: 166. Time: Fri Oct 27 08:43:25 CST 2006
+Sensor: 8. Reading: 592. Parent: 9. Sequence: 180. Time: Fri Oct 27 08:43:25 CST 2006
+Sensor: 6. Reading: 627. Parent: 0. Sequence: 88. Time: Fri Oct 27 08:43:25 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 199. Time: Fri Oct 27 08:43:26 CST 2006
+Sensor: 5. Reading: 712. Parent: 10. Sequence: 94. Time: Fri Oct 27 08:43:26 CST 2006
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 59. Time: Fri Oct 27 08:43:26 CST 2006
+Sensor: 3. Reading: 720. Parent: 0. Sequence: 77. Time: Fri Oct 27 08:43:26 CST 2006
+Sensor: 10. Reading: 610. Parent: 8. Sequence: 167. Time: Fri Oct 27 08:43:27 CST 2006
+Sensor: 8. Reading: 592. Parent: 9. Sequence: 181. Time: Fri Oct 27 08:43:27 CST 2006
+Sensor: 6. Reading: 627. Parent: 0. Sequence: 89. Time: Fri Oct 27 08:43:27 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 200. Time: Fri Oct 27 08:43:28 CST 2006
+Sensor: 5. Reading: 712. Parent: 10. Sequence: 95. Time: Fri Oct 27 08:43:28 CST 2006
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 60. Time: Fri Oct 27 08:43:28 CST 2006
+Sensor: 10. Reading: 610. Parent: 8. Sequence: 168. Time: Fri Oct 27 08:43:29 CST 2006
+Sensor: 8. Reading: 592. Parent: 9. Sequence: 182. Time: Fri Oct 27 08:43:29 CST 2006
+Sensor: 6. Reading: 627. Parent: 0. Sequence: 90. Time: Fri Oct 27 08:43:29 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 201. Time: Fri Oct 27 08:43:30 CST 2006
+Sensor: 5. Reading: 712. Parent: 10. Sequence: 96. Time: Fri Oct 27 08:43:30 CST 2006
+Sensor: 7problem
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 61. Time: Fri Oct 27 08:43:30 CST 2006
+Sensor: 10. Reading: 611. Parent: 8. Sequence: 169. Time: Fri Oct 27 08:43:31 CST 2006
+Sensor: 8. Reading: 586. Parent: 9. Sequence: 183. Time: Fri Oct 27 08:43:31 CST 2006
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 91. Time: Fri Oct 27 08:43:31 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 202. Time: Fri Oct 27 08:43:32 CST 2006
+Sensor: 5. Reading: 711. Parent: 10. Sequence: 97. Time: Fri Oct 27 08:43:32 CST 2006
+Sensor: 7problem
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 62. Time: Fri Oct 27 08:43:32 CST 2006
+Sensor: 10. Reading: 611. Parent: 8. Sequence: 170. Time: Fri Oct 27 08:43:33 CST 2006
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 92. Time: Fri Oct 27 08:43:33 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 203. Time: Fri Oct 27 08:43:34 CST 2006
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 63. Time: Fri Oct 27 08:43:34 CST 2006
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 93. Time: Fri Oct 27 08:43:35 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 204. Time: Fri Oct 27 08:43:36 CST 2006
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 64. Time: Fri Oct 27 08:43:36 CST 2006
+Sensor: 10. Reading: 610. Parent: 9. Sequence: 172. Time: Fri Oct 27 08:43:37 CST 2006
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 94. Time: Fri Oct 27 08:43:37 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 205. Time: Fri Oct 27 08:43:38 CST 2006
+Sensor: 5. Reading: 710. Parent: 0. Sequence: 100. Time: Fri Oct 27 08:43:38 CST 2006
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 65. Time: Fri Oct 27 08:43:38 CST 2006
+Sensor: 10. Reading: 610. Parent: 9. Sequence: 173. Time: Fri Oct 27 08:43:39 CST 2006
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 95. Time: Fri Oct 27 08:43:39 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 206. Time: Fri Oct 27 08:43:40 CST 2006
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 66. Time: Fri Oct 27 08:43:40 CST 2006
+Sensor: 10. Reading: 610. Parent: 9. Sequence: 174. Time: Fri Oct 27 08:43:41 CST 2006
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 96. Time: Fri Oct 27 08:43:41 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 207. Time: Fri Oct 27 08:43:42 CST 2006
+Sensor: 13. Reading: 581. Parent: 3. Sequence: 117. Time: Fri Oct 27 08:43:42 CST 2006
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 67. Time: Fri Oct 27 08:43:42 CST 2006
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 85. Time: Fri Oct 27 08:43:42 CST 2006
+Sensor: 10. Reading: 608. Parent: 9. Sequence: 175. Time: Fri Oct 27 08:43:43 CST 2006
+Sensor: 7problem
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 97. Time: Fri Oct 27 08:43:43 CST 2006
+Sensor: 12. Reading: 598. Parent: 13. Sequence: 113. Time: Fri Oct 27 08:43:44 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 208. Time: Fri Oct 27 08:43:44 CST 2006
+Sensor: 1. Reading: 690. Parent: 13. Sequence: 25. Time: Fri Oct 27 08:43:44 CST 2006
+Sensor: 13. Reading: 581. Parent: 3. Sequence: 118. Time: Fri Oct 27 08:43:44 CST 2006
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 68. Time: Fri Oct 27 08:43:44 CST 2006
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 86. Time: Fri Oct 27 08:43:45 CST 2006
+Sensor: 10. Reading: 604. Parent: 9. Sequence: 176. Time: Fri Oct 27 08:43:45 CST 2006
+Sensor: 8. Reading: 592. Parent: 3. Sequence: 190. Time: Fri Oct 27 08:43:45 CST 2006
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 98. Time: Fri Oct 27 08:43:45 CST 2006
+Sensor: 12. Reading: 598. Parent: 13. Sequence: 114. Time: Fri Oct 27 08:43:46 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 209. Time: Fri Oct 27 08:43:46 CST 2006
+Sensor: 1. Reading: 690. Parent: 13. Sequence: 26. Time: Fri Oct 27 08:43:46 CST 2006
+Sensor: 13. Reading: 581. Parent: 3. Sequence: 119. Time: Fri Oct 27 08:43:46 CST 2006
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 69. Time: Fri Oct 27 08:43:46 CST 2006
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 87. Time: Fri Oct 27 08:43:47 CST 2006
+Sensor: 10. Reading: 610. Parent: 9. Sequence: 177. Time: Fri Oct 27 08:43:47 CST 2006
+Sensor: 8. Reading: 592. Parent: 3. Sequence: 191. Time: Fri Oct 27 08:43:47 CST 2006
+Sensor: 6. Reading: 627. Parent: 0. Sequence: 99. Time: Fri Oct 27 08:43:47 CST 2006
+Sensor: 12. Reading: 598. Parent: 13. Sequence: 115. Time: Fri Oct 27 08:43:48 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 210. Time: Fri Oct 27 08:43:48 CST 2006
+Sensor: 1. Reading: 690. Parent: 13. Sequence: 27. Time: Fri Oct 27 08:43:48 CST 2006
+Sensor: 7problem
+Sensor: 13. Reading: 581. Parent: 3. Sequence: 120. Time: Fri Oct 27 08:43:48 CST 2006
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 70. Time: Fri Oct 27 08:43:48 CST 2006
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 88. Time: Fri Oct 27 08:43:49 CST 2006
+Sensor: 10. Reading: 610. Parent: 9. Sequence: 178. Time: Fri Oct 27 08:43:49 CST 2006
+Sensor: 8. Reading: 592. Parent: 3. Sequence: 192. Time: Fri Oct 27 08:43:49 CST 2006
+Sensor: 7problem
+Sensor: 6. Reading: 627. Parent: 0. Sequence: 100. Time: Fri Oct 27 08:43:49 CST 2006
+Sensor: 12. Reading: 598. Parent: 13. Sequence: 116. Time: Fri Oct 27 08:43:50 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 211. Time: Fri Oct 27 08:43:50 CST 2006
+Sensor: 1. Reading: 690. Parent: 13. Sequence: 28. Time: Fri Oct 27 08:43:50 CST 2006
+Sensor: 13. Reading: 581. Parent: 3. Sequence: 121. Time: Fri Oct 27 08:43:50 CST 2006
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 71. Time: Fri Oct 27 08:43:50 CST 2006
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 89. Time: Fri Oct 27 08:43:50 CST 2006
+Sensor: 10. Reading: 600. Parent: 9. Sequence: 179. Time: Fri Oct 27 08:43:51 CST 2006
+Sensor: 8. Reading: 592. Parent: 3. Sequence: 193. Time: Fri Oct 27 08:43:51 CST 2006
+Sensor: 7problem
+Sensor: 6. Reading: 627. Parent: 0. Sequence: 101. Time: Fri Oct 27 08:43:51 CST 2006
+Sensor: 12. Reading: 598. Parent: 13. Sequence: 117. Time: Fri Oct 27 08:43:52 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 212. Time: Fri Oct 27 08:43:52 CST 2006
+Sensor: 5. Reading: 711. Parent: 0. Sequence: 107. Time: Fri Oct 27 08:43:52 CST 2006
+Sensor: 13. Reading: 581. Parent: 3. Sequence: 122. Time: Fri Oct 27 08:43:52 CST 2006
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 72. Time: Fri Oct 27 08:43:52 CST 2006
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 90. Time: Fri Oct 27 08:43:52 CST 2006
+Sensor: 10. Reading: 611. Parent: 9. Sequence: 180. Time: Fri Oct 27 08:43:53 CST 2006
+Sensor: 8. Reading: 592. Parent: 3. Sequence: 194. Time: Fri Oct 27 08:43:53 CST 2006
+Sensor: 7problem
+Sensor: 6. Reading: 627. Parent: 0. Sequence: 102. Time: Fri Oct 27 08:43:53 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 213. Time: Fri Oct 27 08:43:54 CST 2006
+Sensor: 5. Reading: 711. Parent: 7. Sequence: 108. Time: Fri Oct 27 08:43:54 CST 2006
+Sensor: 1. Reading: 690. Parent: 13. Sequence: 30. Time: Fri Oct 27 08:43:54 CST 2006
+Sensor: 7problem
+Sensor: 13. Reading: 581. Parent: 3. Sequence: 123. Time: Fri Oct 27 08:43:54 CST 2006
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 73. Time: Fri Oct 27 08:43:54 CST 2006
+Sensor: 10. Reading: 611. Parent: 9. Sequence: 181. Time: Fri Oct 27 08:43:55 CST 2006
+Sensor: 8. Reading: 592. Parent: 3. Sequence: 195. Time: Fri Oct 27 08:43:55 CST 2006
+Sensor: 7problem
+Sensor: 6. Reading: 627. Parent: 0. Sequence: 103. Time: Fri Oct 27 08:43:55 CST 2006
+Sensor: 12. Reading: 598. Parent: 13. Sequence: 119. Time: Fri Oct 27 08:43:56 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 214. Time: Fri Oct 27 08:43:56 CST 2006
+Sensor: 5. Reading: 711. Parent: 7. Sequence: 109. Time: Fri Oct 27 08:43:56 CST 2006
+Sensor: 1. Reading: 690. Parent: 13. Sequence: 31. Time: Fri Oct 27 08:43:56 CST 2006
+Sensor: 7problem
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 74. Time: Fri Oct 27 08:43:56 CST 2006
+Sensor: 10. Reading: 611. Parent: 9. Sequence: 182. Time: Fri Oct 27 08:43:57 CST 2006
+Sensor: 7problem
+Sensor: 6. Reading: 627. Parent: 0. Sequence: 104. Time: Fri Oct 27 08:43:57 CST 2006
+Sensor: 12. Reading: 598. Parent: 13. Sequence: 120. Time: Fri Oct 27 08:43:58 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 215. Time: Fri Oct 27 08:43:58 CST 2006
+Sensor: 1. Reading: 690. Parent: 13. Sequence: 32. Time: Fri Oct 27 08:43:58 CST 2006
+Sensor: 7problem
+Sensor: 13. Reading: 581. Parent: 3. Sequence: 125. Time: Fri Oct 27 08:43:58 CST 2006
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 75. Time: Fri Oct 27 08:43:58 CST 2006
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 93. Time: Fri Oct 27 08:43:59 CST 2006
+Sensor: 10. Reading: 611. Parent: 9. Sequence: 183. Time: Fri Oct 27 08:43:59 CST 2006
+Sensor: 8. Reading: 592. Parent: 3. Sequence: 197. Time: Fri Oct 27 08:43:59 CST 2006
+Sensor: 7problem
+Sensor: 6. Reading: 627. Parent: 0. Sequence: 105. Time: Fri Oct 27 08:43:59 CST 2006
+Sensor: 12. Reading: 598. Parent: 13. Sequence: 121. Time: Fri Oct 27 08:44:00 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 216. Time: Fri Oct 27 08:44:00 CST 2006
+Sensor: 5. Reading: 712. Parent: 7. Sequence: 111. Time: Fri Oct 27 08:44:00 CST 2006
+Sensor: 1. Reading: 690. Parent: 13. Sequence: 33. Time: Fri Oct 27 08:44:00 CST 2006
+Sensor: 7problem
+Sensor: 13. Reading: 581. Parent: 3. Sequence: 126. Time: Fri Oct 27 08:44:00 CST 2006
+Sensor: 9. Reading: 597. Parent: 7. Sequence: 76. Time: Fri Oct 27 08:44:00 CST 2006
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 94. Time: Fri Oct 27 08:44:00 CST 2006
+Sensor: 7problem
+Sensor: 6. Reading: 627. Parent: 0. Sequence: 106. Time: Fri Oct 27 08:44:01 CST 2006
+Sensor: 12. Reading: 598. Parent: 13. Sequence: 122. Time: Fri Oct 27 08:44:02 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 217. Time: Fri Oct 27 08:44:02 CST 2006
+Sensor: 5. Reading: 712. Parent: 7. Sequence: 112. Time: Fri Oct 27 08:44:02 CST 2006
+Sensor: 1. Reading: 690. Parent: 13. Sequence: 34. Time: Fri Oct 27 08:44:02 CST 2006
+Sensor: 7problem
+Sensor: 13. Reading: 581. Parent: 3. Sequence: 127. Time: Fri Oct 27 08:44:02 CST 2006
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 95. Time: Fri Oct 27 08:44:03 CST 2006
+Sensor: 8. Reading: 592. Parent: 3. Sequence: 199. Time: Fri Oct 27 08:44:03 CST 2006
+Sensor: 7problem
+Sensor: 6. Reading: 627. Parent: 0. Sequence: 107. Time: Fri Oct 27 08:44:03 CST 2006
+Sensor: 12. Reading: 598. Parent: 13. Sequence: 123. Time: Fri Oct 27 08:44:04 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 218. Time: Fri Oct 27 08:44:04 CST 2006
+Sensor: 1. Reading: 690. Parent: 13. Sequence: 35. Time: Fri Oct 27 08:44:04 CST 2006
+Sensor: 7problem
+Sensor: 13. Reading: 581. Parent: 3. Sequence: 128. Time: Fri Oct 27 08:44:04 CST 2006
+Sensor: 9. Reading: 597. Parent: 7. Sequence: 78. Time: Fri Oct 27 08:44:04 CST 2006
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 96. Time: Fri Oct 27 08:44:05 CST 2006
+Sensor: 10. Reading: 611. Parent: 9. Sequence: 186. Time: Fri Oct 27 08:44:05 CST 2006
+Sensor: 8. Reading: 592. Parent: 9. Sequence: 200. Time: Fri Oct 27 08:44:05 CST 2006
+Sensor: 7problem
+Sensor: 6. Reading: 627. Parent: 0. Sequence: 108. Time: Fri Oct 27 08:44:05 CST 2006
+Sensor: 12. Reading: 598. Parent: 13. Sequence: 124. Time: Fri Oct 27 08:44:06 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 219. Time: Fri Oct 27 08:44:06 CST 2006
+Sensor: 5. Reading: 712. Parent: 7. Sequence: 114. Time: Fri Oct 27 08:44:06 CST 2006
+Sensor: 1. Reading: 691. Parent: 13. Sequence: 36. Time: Fri Oct 27 08:44:06 CST 2006
+Sensor: 7problem
+Sensor: 13. Reading: 580. Parent: 3. Sequence: 129. Time: Fri Oct 27 08:44:06 CST 2006
+Sensor: 9. Reading: 597. Parent: 7. Sequence: 79. Time: Fri Oct 27 08:44:06 CST 2006
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 97. Time: Fri Oct 27 08:44:07 CST 2006
+Sensor: 10. Reading: 611. Parent: 9. Sequence: 187. Time: Fri Oct 27 08:44:07 CST 2006
+Sensor: 8. Reading: 592. Parent: 9. Sequence: 201. Time: Fri Oct 27 08:44:07 CST 2006
+Sensor: 7problem
+Sensor: 6. Reading: 627. Parent: 0. Sequence: 109. Time: Fri Oct 27 08:44:07 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 220. Time: Fri Oct 27 08:44:08 CST 2006
+Sensor: 5. Reading: 712. Parent: 7. Sequence: 115. Time: Fri Oct 27 08:44:08 CST 2006
+Sensor: 1. Reading: 690. Parent: 13. Sequence: 37. Time: Fri Oct 27 08:44:08 CST 2006
+Sensor: 7problem
+Sensor: 13. Reading: 578. Parent: 3. Sequence: 130. Time: Fri Oct 27 08:44:08 CST 2006
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 80. Time: Fri Oct 27 08:44:08 CST 2006
+Sensor: 3. Reading: 720. Parent: 0. Sequence: 98. Time: Fri Oct 27 08:44:09 CST 2006
+Sensor: 10. Reading: 611. Parent: 8. Sequence: 188. Time: Fri Oct 27 08:44:09 CST 2006
+Sensor: 8. Reading: 592. Parent: 9. Sequence: 202. Time: Fri Oct 27 08:44:09 CST 2006
+Sensor: 7problem
+Sensor: 6. Reading: 627. Parent: 0. Sequence: 110. Time: Fri Oct 27 08:44:09 CST 2006
+Sensor: 12. Reading: 599. Parent: 13. Sequence: 126. Time: Fri Oct 27 08:44:10 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 221. Time: Fri Oct 27 08:44:10 CST 2006
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 81. Time: Fri Oct 27 08:44:10 CST 2006
+Sensor: 3. Reading: 720. Parent: 0. Sequence: 99. Time: Fri Oct 27 08:44:10 CST 2006
+Sensor: 10. Reading: 611. Parent: 8. Sequence: 189. Time: Fri Oct 27 08:44:11 CST 2006
+Sensor: 8. Reading: 592. Parent: 9. Sequence: 203. Time: Fri Oct 27 08:44:11 CST 2006
+Sensor: 6. Reading: 627. Parent: 0. Sequence: 111. Time: Fri Oct 27 08:44:11 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 222. Time: Fri Oct 27 08:44:12 CST 2006
+Sensor: 1. Reading: 690. Parent: 13. Sequence: 39. Time: Fri Oct 27 08:44:12 CST 2006
+Sensor: 7problem
+Sensor: 13. Reading: 581. Parent: 3. Sequence: 132. Time: Fri Oct 27 08:44:12 CST 2006
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 82. Time: Fri Oct 27 08:44:12 CST 2006
+Sensor: 3. Reading: 720. Parent: 0. Sequence: 100. Time: Fri Oct 27 08:44:13 CST 2006
+Sensor: 10. Reading: 611. Parent: 8. Sequence: 190. Time: Fri Oct 27 08:44:13 CST 2006
+Sensor: 6. Reading: 627. Parent: 0. Sequence: 112. Time: Fri Oct 27 08:44:13 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 223. Time: Fri Oct 27 08:44:14 CST 2006
+Sensor: 13. Reading: 581. Parent: 3. Sequence: 133. Time: Fri Oct 27 08:44:14 CST 2006
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 83. Time: Fri Oct 27 08:44:14 CST 2006
+Sensor: 7problem
+Sensor: 6. Reading: 627. Parent: 0. Sequence: 113. Time: Fri Oct 27 08:44:15 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 224. Time: Fri Oct 27 08:44:16 CST 2006
+Sensor: 1. Reading: 690. Parent: 13. Sequence: 41. Time: Fri Oct 27 08:44:16 CST 2006
+Sensor: 13. Reading: 581. Parent: 3. Sequence: 134. Time: Fri Oct 27 08:44:16 CST 2006
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 84. Time: Fri Oct 27 08:44:16 CST 2006
+Sensor: 10. Reading: 611. Parent: 9. Sequence: 192. Time: Fri Oct 27 08:44:17 CST 2006
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 114. Time: Fri Oct 27 08:44:17 CST 2006
+Sensor: 12. Reading: 598. Parent: 13. Sequence: 130. Time: Fri Oct 27 08:44:18 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 225. Time: Fri Oct 27 08:44:18 CST 2006
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 85. Time: Fri Oct 27 08:44:18 CST 2006
+Sensor: 10. Reading: 611. Parent: 9. Sequence: 193. Time: Fri Oct 27 08:44:19 CST 2006
+Sensor: 6. Reading: 627. Parent: 0. Sequence: 115. Time: Fri Oct 27 08:44:19 CST 2006
+Sensor: 12. Reading: 598. Parent: 13. Sequence: 131. Time: Fri Oct 27 08:44:20 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 226. Time: Fri Oct 27 08:44:20 CST 2006
+Sensor: 1. Reading: 690. Parent: 13. Sequence: 43. Time: Fri Oct 27 08:44:20 CST 2006
+Sensor: 13. Reading: 581. Parent: 3. Sequence: 136. Time: Fri Oct 27 08:44:20 CST 2006
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 86. Time: Fri Oct 27 08:44:20 CST 2006
+Sensor: 3. Reading: 720. Parent: 0. Sequence: 104. Time: Fri Oct 27 08:44:21 CST 2006
+Sensor: 10. Reading: 611. Parent: 9. Sequence: 194. Time: Fri Oct 27 08:44:21 CST 2006
+Sensor: 7problem
+Sensor: 6. Reading: 627. Parent: 0. Sequence: 116. Time: Fri Oct 27 08:44:21 CST 2006
+Sensor: 12. Reading: 598. Parent: 13. Sequence: 132. Time: Fri Oct 27 08:44:22 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 227. Time: Fri Oct 27 08:44:22 CST 2006
+Sensor: 1. Reading: 690. Parent: 13. Sequence: 44. Time: Fri Oct 27 08:44:22 CST 2006
+Sensor: 7problem
+Sensor: 13. Reading: 581. Parent: 3. Sequence: 137. Time: Fri Oct 27 08:44:22 CST 2006
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 87. Time: Fri Oct 27 08:44:22 CST 2006
+Sensor: 10. Reading: 611. Parent: 9. Sequence: 195. Time: Fri Oct 27 08:44:23 CST 2006
+Sensor: 6. Reading: 611. Parent: 0. Sequence: 117. Time: Fri Oct 27 08:44:23 CST 2006
+Sensor: 12. Reading: 598. Parent: 13. Sequence: 133. Time: Fri Oct 27 08:44:24 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 228. Time: Fri Oct 27 08:44:24 CST 2006
+Sensor: 1. Reading: 690. Parent: 13. Sequence: 45. Time: Fri Oct 27 08:44:24 CST 2006
+Sensor: 13. Reading: 581. Parent: 3. Sequence: 138. Time: Fri Oct 27 08:44:24 CST 2006
+Sensor: 9. Reading: 597. Parent: 7. Sequence: 88. Time: Fri Oct 27 08:44:24 CST 2006
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 106. Time: Fri Oct 27 08:44:25 CST 2006
+Sensor: 10. Reading: 611. Parent: 1. Sequence: 196. Time: Fri Oct 27 08:44:25 CST 2006
+Sensor: 6. Reading: 624. Parent: 0. Sequence: 118. Time: Fri Oct 27 08:44:25 CST 2006
+Sensor: 12. Reading: 598. Parent: 13. Sequence: 134. Time: Fri Oct 27 08:44:26 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 229. Time: Fri Oct 27 08:44:26 CST 2006
+Sensor: 5. Reading: 711. Parent: 12. Sequence: 124. Time: Fri Oct 27 08:44:26 CST 2006
+Sensor: 1. Reading: 690. Parent: 13. Sequence: 46. Time: Fri Oct 27 08:44:26 CST 2006
+Sensor: 13. Reading: 581. Parent: 3. Sequence: 139. Time: Fri Oct 27 08:44:26 CST 2006
+Sensor: 9. Reading: 597. Parent: 7. Sequence: 89. Time: Fri Oct 27 08:44:26 CST 2006
+Sensor: 3. Reading: 721. Parent: 0. Sequence: 107. Time: Fri Oct 27 08:44:27 CST 2006
+Sensor: 10. Reading: 611. Parent: 1. Sequence: 197. Time: Fri Oct 27 08:44:27 CST 2006
+Sensor: 6. Reading: 624. Parent: 0. Sequence: 119. Time: Fri Oct 27 08:44:27 CST 2006
+Sensor: 12. Reading: 598. Parent: 13. Sequence: 135. Time: Fri Oct 27 08:44:28 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 230. Time: Fri Oct 27 08:44:28 CST 2006
+Sensor: 1. Reading: 690. Parent: 13. Sequence: 47. Time: Fri Oct 27 08:44:28 CST 2006
+Sensor: 13. Reading: 581. Parent: 3. Sequence: 140. Time: Fri Oct 27 08:44:28 CST 2006
+Sensor: 6. Reading: 623. Parent: 0. Sequence: 120. Time: Fri Oct 27 08:44:29 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 231. Time: Fri Oct 27 08:44:30 CST 2006
+Sensor: 6. Reading: 623. Parent: 0. Sequence: 121. Time: Fri Oct 27 08:44:31 CST 2006
+Sensor: 6. Reading: 624. Parent: 0. Sequence: 122. Time: Fri Oct 27 08:44:33 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 233. Time: Fri Oct 27 08:44:34 CST 2006
+Sensor: 6. Reading: 623. Parent: 0. Sequence: 123. Time: Fri Oct 27 08:44:35 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 234. Time: Fri Oct 27 08:44:36 CST 2006
+Sensor: 6. Reading: 624. Parent: 0. Sequence: 124. Time: Fri Oct 27 08:44:37 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 235. Time: Fri Oct 27 08:44:38 CST 2006
+Sensor: 6. Reading: 624. Parent: 0. Sequence: 125. Time: Fri Oct 27 08:44:39 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 236. Time: Fri Oct 27 08:44:40 CST 2006
+Sensor: 7problem
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 96. Time: Fri Oct 27 08:44:40 CST 2006
+Sensor: 6. Reading: 621. Parent: 0. Sequence: 126. Time: Fri Oct 27 08:44:41 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 237. Time: Fri Oct 27 08:44:42 CST 2006
+Sensor: 5. Reading: 711. Parent: 7. Sequence: 132. Time: Fri Oct 27 08:44:42 CST 2006
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 97. Time: Fri Oct 27 08:44:42 CST 2006
+Sensor: 7problem
+Sensor: 6. Reading: 626. Parent: 0. Sequence: 127. Time: Fri Oct 27 08:44:43 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 238. Time: Fri Oct 27 08:44:44 CST 2006
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 98. Time: Fri Oct 27 08:44:44 CST 2006
+Sensor: 6. Reading: 625. Parent: 0. Sequence: 128. Time: Fri Oct 27 08:44:45 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 239. Time: Fri Oct 27 08:44:46 CST 2006
+Sensor: 9. Reading: 597. Parent: 0. Sequence: 99. Time: Fri Oct 27 08:44:46 CST 2006
+Sensor: 6. Reading: 625. Parent: 0. Sequence: 129. Time: Fri Oct 27 08:44:47 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 240. Time: Fri Oct 27 08:44:48 CST 2006
+Sensor: 6. Reading: 614. Parent: 0. Sequence: 130. Time: Fri Oct 27 08:44:49 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 241. Time: Fri Oct 27 08:44:50 CST 2006
+Sensor: 5. Reading: 712. Parent: 7. Sequence: 136. Time: Fri Oct 27 08:44:50 CST 2006
+Sensor: 7problem
+Sensor: 9. Reading: 597. Parent: 7. Sequence: 101. Time: Fri Oct 27 08:44:50 CST 2006
+Sensor: 7problem
+Sensor: 6. Reading: 623. Parent: 0. Sequence: 131. Time: Fri Oct 27 08:44:51 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 242. Time: Fri Oct 27 08:44:52 CST 2006
+Sensor: 7problem
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 243. Time: Fri Oct 27 08:44:54 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 244. Time: Fri Oct 27 08:44:56 CST 2006
+Sensor: 5. Reading: 711. Parent: 7. Sequence: 139. Time: Fri Oct 27 08:44:56 CST 2006
+Sensor: 7problem
+Sensor: 9. Reading: 597. Parent: 7. Sequence: 104. Time: Fri Oct 27 08:44:56 CST 2006
+Sensor: 7problem
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 246. Time: Fri Oct 27 08:45:00 CST 2006
+Sensor: 5. Reading: 710. Parent: 7. Sequence: 141. Time: Fri Oct 27 08:45:00 CST 2006
+Sensor: 7problem
+Sensor: 9. Reading: 597. Parent: 7. Sequence: 106. Time: Fri Oct 27 08:45:00 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 247. Time: Fri Oct 27 08:45:02 CST 2006
+Sensor: 7problem
+Sensor: 9. Reading: 597. Parent: 7. Sequence: 107. Time: Fri Oct 27 08:45:02 CST 2006
+Sensor: 7problem
+Sensor: 5. Reading: 711. Parent: 7. Sequence: 143. Time: Fri Oct 27 08:45:04 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 248. Time: Fri Oct 27 08:45:04 CST 2006
+Sensor: 7problem
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 249. Time: Fri Oct 27 08:45:06 CST 2006
+Sensor: 9. Reading: 597. Parent: 7. Sequence: 109. Time: Fri Oct 27 08:45:06 CST 2006
+Sensor: 7problem
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 250. Time: Fri Oct 27 08:45:08 CST 2006
+Sensor: 9. Reading: 597. Parent: 7. Sequence: 110. Time: Fri Oct 27 08:45:08 CST 2006
+Sensor: 5. Reading: 712. Parent: 7. Sequence: 146. Time: Fri Oct 27 08:45:10 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 251. Time: Fri Oct 27 08:45:10 CST 2006
+Sensor: 7problem
+Sensor: 9. Reading: 597. Parent: 7. Sequence: 111. Time: Fri Oct 27 08:45:10 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 252. Time: Fri Oct 27 08:45:12 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 253. Time: Fri Oct 27 08:45:14 CST 2006
+Sensor: 5. Reading: 711. Parent: 7. Sequence: 148. Time: Fri Oct 27 08:45:14 CST 2006
+Sensor: 7problem
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 254. Time: Fri Oct 27 08:45:16 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 255. Time: Fri Oct 27 08:45:18 CST 2006
+Sensor: 5. Reading: 710. Parent: 7. Sequence: 150. Time: Fri Oct 27 08:45:18 CST 2006
+Sensor: 7problem
+Sensor: 9. Reading: 597. Parent: 7. Sequence: 115. Time: Fri Oct 27 08:45:18 CST 2006
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 0. Time: Fri Oct 27 08:45:20 CST 2006
+Sensor: 5. Reading: 710. Parent: 7. Sequence: 151. Time: Fri Oct 27 08:45:20 CST 2006
+Sensor: 7problem
+Sensor: 9. Reading: 597. Parent: 7. Sequence: 117. Time: Fri Oct 27 08:45:22 CST 2006
+Sensor: 7problem
+Sensor: 15. Reading: 217. Parent: 0. Sequence: 3. Time: Fri Oct 27 08:45:26 CST 2006
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 5. Reading: 712. Parent: 7. Sequence: 165. Time: Fri Oct 27 08:45:48 CST 2006
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 155. Time: Fri Oct 27 08:46:38 CST 2006
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 5. Reading: 712. Parent: 7. Sequence: 191. Time: Fri Oct 27 08:46:40 CST 2006
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 156. Time: Fri Oct 27 08:46:40 CST 2006
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 5. Reading: 711. Parent: 7. Sequence: 192. Time: Fri Oct 27 08:46:42 CST 2006
+Sensor: 7problem
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 158. Time: Fri Oct 27 08:46:44 CST 2006
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 5. Reading: 711. Parent: 7. Sequence: 194. Time: Fri Oct 27 08:46:46 CST 2006
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 159. Time: Fri Oct 27 08:46:46 CST 2006
+Sensor: 7problem
+Sensor: 5. Reading: 711. Parent: 7. Sequence: 195. Time: Fri Oct 27 08:46:48 CST 2006
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 160. Time: Fri Oct 27 08:46:48 CST 2006
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 5. Reading: 712. Parent: 7. Sequence: 196. Time: Fri Oct 27 08:46:50 CST 2006
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 5. Reading: 712. Parent: 7. Sequence: 198. Time: Fri Oct 27 08:46:54 CST 2006
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 163. Time: Fri Oct 27 08:46:54 CST 2006
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 166. Time: Fri Oct 27 08:47:00 CST 2006
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 168. Time: Fri Oct 27 08:47:04 CST 2006
+Sensor: 7problem
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 169. Time: Fri Oct 27 08:47:06 CST 2006
+Sensor: 7problem
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 170. Time: Fri Oct 27 08:47:08 CST 2006
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 5. Reading: 711. Parent: 7. Sequence: 206. Time: Fri Oct 27 08:47:10 CST 2006
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 171. Time: Fri Oct 27 08:47:10 CST 2006
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 5. Reading: 710. Parent: 7. Sequence: 207. Time: Fri Oct 27 08:47:12 CST 2006
+Sensor: 7problem
+Sensor: 5. Reading: 710. Parent: 7. Sequence: 208. Time: Fri Oct 27 08:47:14 CST 2006
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 173. Time: Fri Oct 27 08:47:14 CST 2006
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 174. Time: Fri Oct 27 08:47:16 CST 2006
+Sensor: 7problem
+Sensor: 5. Reading: 710. Parent: 7. Sequence: 210. Time: Fri Oct 27 08:47:18 CST 2006
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 175. Time: Fri Oct 27 08:47:18 CST 2006
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 176. Time: Fri Oct 27 08:47:20 CST 2006
+Sensor: 7problem
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 177. Time: Fri Oct 27 08:47:22 CST 2006
+Sensor: 7problem
+Sensor: 5. Reading: 710. Parent: 7. Sequence: 213. Time: Fri Oct 27 08:47:24 CST 2006
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 179. Time: Fri Oct 27 08:47:26 CST 2006
+Sensor: 7problem
+Sensor: 5. Reading: 713. Parent: 7. Sequence: 216. Time: Fri Oct 27 08:47:30 CST 2006
+Sensor: 7problem
+Sensor: 5. Reading: 711. Parent: 7. Sequence: 217. Time: Fri Oct 27 08:47:32 CST 2006
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 183. Time: Fri Oct 27 08:47:34 CST 2006
+Sensor: 7problem
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 184. Time: Fri Oct 27 08:47:36 CST 2006
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 186. Time: Fri Oct 27 08:47:40 CST 2006
+Sensor: 7problem
+Sensor: 5. Reading: 714. Parent: 7. Sequence: 222. Time: Fri Oct 27 08:47:42 CST 2006
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 187. Time: Fri Oct 27 08:47:42 CST 2006
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 188. Time: Fri Oct 27 08:47:44 CST 2006
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 5. Reading: 714. Parent: 7. Sequence: 224. Time: Fri Oct 27 08:47:46 CST 2006
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 189. Time: Fri Oct 27 08:47:46 CST 2006
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 5. Reading: 712. Parent: 7. Sequence: 225. Time: Fri Oct 27 08:47:48 CST 2006
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 190. Time: Fri Oct 27 08:47:48 CST 2006
+Sensor: 5. Reading: 712. Parent: 7. Sequence: 226. Time: Fri Oct 27 08:47:50 CST 2006
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 5. Reading: 711. Parent: 7. Sequence: 228. Time: Fri Oct 27 08:47:54 CST 2006
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 193. Time: Fri Oct 27 08:47:54 CST 2006
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 5. Reading: 710. Parent: 7. Sequence: 229. Time: Fri Oct 27 08:47:56 CST 2006
+Sensor: 7problem
+Sensor: 5. Reading: 712. Parent: 7. Sequence: 230. Time: Fri Oct 27 08:47:58 CST 2006
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 196. Time: Fri Oct 27 08:48:00 CST 2006
+Sensor: 7problem
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 199. Time: Fri Oct 27 08:48:06 CST 2006
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 200. Time: Fri Oct 27 08:48:08 CST 2006
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 5. Reading: 710. Parent: 7. Sequence: 236. Time: Fri Oct 27 08:48:10 CST 2006
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 201. Time: Fri Oct 27 08:48:10 CST 2006
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 203. Time: Fri Oct 27 08:48:14 CST 2006
+Sensor: 7problem
+Sensor: 5. Reading: 710. Parent: 7. Sequence: 243. Time: Fri Oct 27 08:48:24 CST 2006
+Sensor: 2problem
+Sensor: 2problem
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 210. Time: Fri Oct 27 08:48:28 CST 2006
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 2problem
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 212. Time: Fri Oct 27 08:48:32 CST 2006
+Sensor: 7problem
+Sensor: 5. Reading: 712. Parent: 7. Sequence: 249. Time: Fri Oct 27 08:48:36 CST 2006
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 215. Time: Fri Oct 27 08:48:38 CST 2006
+Sensor: 2problem
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 5. Reading: 712. Parent: 7. Sequence: 251. Time: Fri Oct 27 08:48:40 CST 2006
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 216. Time: Fri Oct 27 08:48:40 CST 2006
+Sensor: 2problem
+Sensor: 7problem
+Sensor: 5. Reading: 708. Parent: 7. Sequence: 252. Time: Fri Oct 27 08:48:42 CST 2006
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 217. Time: Fri Oct 27 08:48:42 CST 2006
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 7problem
+Sensor: 5. Reading: 713. Parent: 7. Sequence: 253. Time: Fri Oct 27 08:48:44 CST 2006
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 218. Time: Fri Oct 27 08:48:44 CST 2006
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 5. Reading: 713. Parent: 7. Sequence: 254. Time: Fri Oct 27 08:48:46 CST 2006
+Sensor: 9. Reading: 598. Parent: 7. Sequence: 219. Time: Fri Oct 27 08:48:46 CST 2006
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 2problem
+Sensor: 5. Reading: 712. Parent: 7. Sequence: 0. Time: Fri Oct 27 08:48:50 CST 2006
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 5. Reading: 711. Parent: 7. Sequence: 1. Time: Fri Oct 27 08:48:52 CST 2006
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 2problem
+Sensor: 5. Reading: 712. Parent: 7. Sequence: 2. Time: Fri Oct 27 08:48:54 CST 2006
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 2problem
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 5. Reading: 710. Parent: 7. Sequence: 4. Time: Fri Oct 27 08:48:58 CST 2006
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 5. Reading: 711. Parent: 7. Sequence: 6. Time: Fri Oct 27 08:49:02 CST 2006
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 2problem
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 5. Reading: 713. Parent: 7. Sequence: 10. Time: Fri Oct 27 08:49:10 CST 2006
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 2problem
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 2problem
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 7problem
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 2problem
+Sensor: 7problem
+Sensor: 2problem
+Sensor: 7problem
+Sensor: 2problem

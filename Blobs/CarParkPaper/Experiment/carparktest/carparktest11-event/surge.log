@@ -1,0 +1,59 @@
+Using Surge from the FYP dir. To change, configure your CLASSPATH.
+Using AM group ID 125 (0x7d)
+Starting mote listener...
+Creating mainFrame...
+serial@COM5:57600: resynchronising
+Starting DisplayManager thread...
+Creating ObjectMaintainer...
+Creating LocationAnalyzer...
+Creating SensorAnalyzer...
+Making MainFrame visible...
+Decay thread running...
+Ready.
+Sensor: 26. Reading: 669. Parent: 0. Sequence: 0. Time: Mon Nov 27 07:11:00 CST 2006
+Sensor: 34. Reading: 652. Parent: 0. Sequence: 0. Time: Mon Nov 27 07:11:10 CST 2006
+Sensor: 36. Reading: 689. Parent: 0. Sequence: 0. Time: Mon Nov 27 07:14:04 CST 2006
+Sensor: 6. Reading: 664. Parent: 0. Sequence: 0. Time: Mon Nov 27 07:18:04 CST 2006
+Sensor: 18. Reading: 737. Parent: 36. Sequence: 0. Time: Mon Nov 27 07:18:58 CST 2006
+Sensor: 35. Reading: 488. Parent: 0. Sequence: 0. Time: Mon Nov 27 07:21:09 CST 2006
+Sensor: 5. Reading: 661. Parent: 0. Sequence: 0. Time: Mon Nov 27 07:23:13 CST 2006
+Sensor: 35. Reading: 547. Parent: 0. Sequence: 1. Time: Mon Nov 27 07:25:39 CST 2006
+Sensor: 20. Reading: 652. Parent: 0. Sequence: 0. Time: Mon Nov 27 07:25:49 CST 2006
+Sensor: 21. Reading: 683. Parent: 0. Sequence: 0. Time: Mon Nov 27 07:28:17 CST 2006
+Sensor: 18. Reading: 579. Parent: 26. Sequence: 1. Time: Mon Nov 27 07:29:30 CST 2006
+Sensor: 18. Reading: 579. Parent: 26. Sequence: 1. Time: Mon Nov 27 07:29:31 CST 2006
+Sensor: 5. Reading: 568. Parent: 0. Sequence: 1. Time: Mon Nov 27 07:31:43 CST 2006
+Sensor: 5. Reading: 568. Parent: 0. Sequence: 1. Time: Mon Nov 27 07:31:47 CST 2006
+Sensor: 5. Reading: 568. Parent: 0. Sequence: 1. Time: Mon Nov 27 07:31:50 CST 2006
+Sensor: 5. Reading: 568. Parent: 6. Sequence: 1. Time: Mon Nov 27 07:31:52 CST 2006
+Sensor: 6. Reading: 561. Parent: 0. Sequence: 1. Time: Mon Nov 27 07:31:55 CST 2006
+Sensor: 4. Reading: 676. Parent: 0. Sequence: 0. Time: Mon Nov 27 07:34:32 CST 2006
+Sensor: 20. Reading: 561. Parent: 0. Sequence: 1. Time: Mon Nov 27 07:34:42 CST 2006
+Sensor: 29. Reading: 586. Parent: 0. Sequence: 0. Time: Mon Nov 27 07:37:09 CST 2006
+Sensor: 5. Reading: 56. Parent: 26. Sequence: 2. Time: Mon Nov 27 07:39:27 CST 2006
+Sensor: 5. Reading: 56. Parent: 6. Sequence: 2. Time: Mon Nov 27 07:39:27 CST 2006
+Sensor: 5. Reading: 56. Parent: 26. Sequence: 2. Time: Mon Nov 27 07:39:27 CST 2006
+Sensor: 5. Reading: 56. Parent: 6. Sequence: 2. Time: Mon Nov 27 07:39:28 CST 2006
+Sensor: 15. Reading: 544. Parent: 4. Sequence: 0. Time: Mon Nov 27 07:39:42 CST 2006
+Sensor: 28. Reading: 729. Parent: 36. Sequence: 0. Time: Mon Nov 27 07:42:25 CST 2006
+Sensor: 3. Reading: 762. Parent: 0. Sequence: 0. Time: Mon Nov 27 07:44:28 CST 2006
+Sensor: 3. Reading: 762. Parent: 0. Sequence: 0. Time: Mon Nov 27 07:44:30 CST 2006
+Sensor: 34. Reading: 595. Parent: 0. Sequence: 1. Time: Mon Nov 27 07:45:27 CST 2006
+Sensor: 23. Reading: 679. Parent: 0. Sequence: 0. Time: Mon Nov 27 07:47:03 CST 2006
+Sensor: 31. Reading: 672. Parent: 0. Sequence: 0. Time: Mon Nov 27 07:49:29 CST 2006
+Sensor: 23. Reading: 589. Parent: 0. Sequence: 1. Time: Mon Nov 27 07:49:46 CST 2006
+Sensor: 29. Reading: 546. Parent: 36. Sequence: 1. Time: Mon Nov 27 07:55:02 CST 2006
+Sensor: 30. Reading: 593. Parent: 0. Sequence: 0. Time: Mon Nov 27 07:55:22 CST 2006
+Sensor: 30. Reading: 639. Parent: 0. Sequence: 1. Time: Mon Nov 27 07:56:22 CST 2006
+Sensor: 36. Reading: 569. Parent: 0. Sequence: 1. Time: Mon Nov 27 08:00:54 CST 2006
+Sensor: 30. Reading: 569. Parent: 0. Sequence: 2. Time: Mon Nov 27 08:08:53 CST 2006
+Sensor: 28. Reading: 559. Parent: 20. Sequence: 1. Time: Mon Nov 27 08:10:18 CST 2006
+Sensor: 3. Reading: 697. Parent: 0. Sequence: 1. Time: Mon Nov 27 08:10:30 CST 2006
+Sensor: 26. Reading: 563. Parent: 0. Sequence: 1. Time: Mon Nov 27 08:16:58 CST 2006
+Sensor: 26. Reading: 563. Parent: 0. Sequence: 1. Time: Mon Nov 27 08:16:59 CST 2006
+Sensor: 31. Reading: 576. Parent: 6. Sequence: 1. Time: Mon Nov 27 08:17:00 CST 2006
+Sensor: 21. Reading: 567. Parent: 0. Sequence: 1. Time: Mon Nov 27 08:20:24 CST 2006
+Sensor: 4. Reading: 569. Parent: 6. Sequence: 1. Time: Mon Nov 27 08:39:25 CST 2006
+Sensor: 35. Reading: 647. Parent: 0. Sequence: 0. Time: Mon Nov 27 08:45:42 CST 2006
+Sensor: 35. Reading: 593. Parent: 0. Sequence: 1. Time: Mon Nov 27 08:47:21 CST 2006
+Sensor: 15. Reading: 561. Parent: 26. Sequence: 0. Time: Mon Nov 27 08:50:15 CST 2006

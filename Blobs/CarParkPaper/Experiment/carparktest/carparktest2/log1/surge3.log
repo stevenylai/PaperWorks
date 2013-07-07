@@ -1,0 +1,26 @@
+Using Surge from the FYP dir. To change, configure your CLASSPATH.
+Using AM group ID 125 (0x7d)
+Starting mote listener...
+Creating mainFrame...
+serial@COM5:57600: resynchronising
+serial@COM5:57600: packet too long
+serial@COM5:57600: resynchronising
+Starting DisplayManager thread...
+Creating ObjectMaintainer...
+Creating LocationAnalyzer...
+Creating SensorAnalyzer...
+Making MainFrame visible...
+Decay thread running...
+Ready.
+Sensor: 5. Reading: 712. Parent: 0. Sequence: 113. Time: Fri Oct 27 08:35:31 CST 2006
+java.lang.ArrayIndexOutOfBoundsException: Message.checkBounds: bad offset (40) or length (16), for data_length 5
+	at net.tinyos.message.Message.checkBounds(Message.java:280)
+	at net.tinyos.message.Message.getUIntElement(Message.java:307)
+	at net.tinyos.surge.SurgeMsg.get_seqno(SurgeMsg.java:334)
+	at net.tinyos.surge.PacketAnalyzer.SensorAnalyzer$NodeInfo.update(SensorAnalyzer.java:305)
+	at net.tinyos.surge.PacketAnalyzer.SensorAnalyzer.PacketReceived(SensorAnalyzer.java:75)
+	at net.tinyos.surge.PacketAnalyzer.PacketAnalyzer.messageReceived(PacketAnalyzer.java:69)
+	at net.tinyos.message.Receiver.packetReceived(Receiver.java:218)
+	at net.tinyos.packet.PhoenixSource.dispatch(PhoenixSource.java:160)
+	at net.tinyos.packet.PhoenixSource.packetDipatchLoop(PhoenixSource.java:152)
+	at net.tinyos.packet.PhoenixSource.run(PhoenixSource.java:169)
