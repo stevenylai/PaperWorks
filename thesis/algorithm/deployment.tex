@@ -12,7 +12,7 @@ Such deployment model is suitable if the user has no prior knowledge on where ev
 \item After the sensor deployment, the users can deploy additional sensor nodes as fusion points in the network.
 \item Before the deployment, the user can calculate how many fusion points are needed in the network and mix them with normal nodes to deploy them randomly.
 \end{itemize}
-We will use square for calculating the optimal deployment strategy in this work. The optimal deployment strategies with regions of other types of shape may be also be obtained in a similar fashion. Suppose we divide the whole region of area \(A\) into squares of size \(s\times s\). Then on average, each sensor node can find a fusion point at a distance of:
+We will use square for calculating the optimal deployment strategy in this work. The optimal deployment strategies with regions of other types of shape may be also be obtained in a similar fashion. Suppose we divide the whole region of area \(A\) into squares of size \(s\times s\). Then on average, each sensor node can find a fusion point at a distance of \cite{vertexDistance}:
 \begin{align}
 r=&\int_0^1D(t)dt\nonumber\\
 =&\int_0^1\frac{2}{3}\sqrt{c^2t^2+(b^2-a^2-c^2)t+a^2}dt\nonumber\\
@@ -42,7 +42,7 @@ When the events are detected at the fusion points, feedback will be sent to the 
 cost_{feedback}=|N|\times k
 \end{displaymath}
 
-The detection cost is the message cost for all sub-events to be forwarded to a fusion point so that the composite event may be detected. As shown in Figure \ref{fig:cedu-detectionCost}, if we have two events \(e_1\) and \(e_2\), the minimum event detection cost will be detecting the events on the line segment that connects the two events. However, we may not find a fusion point on the line segment, so in order to find a fusion point that can minimize energy cost, we should choose a point that lies on the center of the line segment (the detailed proof is omitted for brevity). Similar to Equation \ref{eq:avgdist1} and \ref{eq:avgdist2}, the average detection cost will be:
+The detection cost is the message cost for all sub-events to be forwarded to a fusion point so that the composite event may be detected. As shown in Figure \ref{fig:cedu-detectionCost}, if we have two events \(e_1\) and \(e_2\), the minimum event detection cost will be detecting the events on the line segment that connects the two events. However, we may not find a fusion point on the line segment, so in order to find a fusion point that can minimize energy cost, we should choose a point that lies on the center of the line segment. Similar to Equation \ref{eq:avgdist1} and \ref{eq:avgdist2}, the average detection cost will be:
 \begin{displaymath}
 cost_{detect}=2\times \int_0^{arctan\frac{2r}{{\lambda}_1}}\frac{{\lambda}_1}{2cosx}dx
 \end{displaymath}
