@@ -28,7 +28,7 @@ Our first application case is an intelligent car park \cite{tang:carpark}. We de
 \label{fig:carParkDeployment}
 \end{figure}
 
-The deployment of the sensor nodes is shown in Figure \ref{fig:carParkDeployment}. In such a system, the management is interested in the number of park spaces and the location of them \cite{tang:carpark}. The primitive events for such a system will be the availability of individual car park spaces. Based on the primitive event, if we want to get notified when the parking spaces near the exit become available, then we just need to define composite events which locate the spaces with certain IDs. Th event definitions are shown in Listing \ref{lst:carPark}. Here, the composite event takes two primitive events for parking space \(1\) and \(2\) which are close to the exit. The experimental results are shown in Figure \ref{fig:carParkResults}. In this application, we primarily consider only the message costs because the delay isn't that important in such a system. The message cost is highest during rush hour when there are a lot of cars entering and leaving the car park. The message cost saved by TED is around 10-20\% regardless of the total messages.
+The floor plan and deployment of the sensor nodes is shown in Figure \ref{fig:carParkDeployment}. The arrows represent the driving direction of the cars. Each letter 'p' represents a parking slot. In such a system, the management is interested in the number of park spaces and the location of them \cite{tang:carpark}. The primitive events for such a system will be the availability of individual car park spaces. Based on the primitive event, if we want to get notified when the parking spaces near the exit become available, then we just need to define composite events which locate the spaces with certain IDs. Th event definitions are shown in Listing \ref{lst:carPark}. Here, the composite event takes two primitive events for parking space \(1\) and \(2\) which are close to the exit. The experimental results are shown in Figure \ref{fig:carParkResults}. In this application, we primarily consider only the message costs because the delay isn't that important in such a system. The message cost is highest during rush hour when there are a lot of cars entering and leaving the car park. The message cost saved by TED is around 10-20\% regardless of the total messages. Note that for both figures, since we did the experiments in the morning, there's a spike in the message cost during the rush hour. 
 
 \begin{lstlisting}[caption=Event definition for a car park, label=lst:carPark]
 Event ParkSpaceEvent {
@@ -58,7 +58,15 @@ Event CarParkEvent {
 \end{figure}
 
 \subsection{Application Case Two: Transportation Systems}
-Apart from intelligent car park, another related application is WSN-based intelligent transportation system \cite{lai:its}. We also use the Micaz nodes to deploy such an application using our TED. Before we do the field test, we first perform some simple test on our lab testbed, iTranSNet. Figure \ref{fig:itransnet} shows our testbed setup. In such testbed, we use some model cars to run a platform so that the sensor nodes can detect them.
+Apart from intelligent car park, another related application is WSN-based intelligent transportation system \cite{lai:its}. We also use the Micaz nodes to deploy such an application using our TED. Before we do the field test, we first perform some simple test on our lab testbed, iTranSNet. Figure \ref{fig:itransnet} shows our testbed setup. In such testbed, we mainly use the following components to emulate a transportation system:
+
+\begin{itemize}
+\item Programmable model cars with UART interface to interact with MicaZ.
+\item Roads with light sensors to detect the presence of the model cars.
+\item Other programmable auxiliary facilities such as lamps and traffic lights.
+\end{itemize}
+
+Each road has magnetic strips underneath so that cars can be controlled and follow the road. In addition, IC cards have been installed near the intersections for each road. Each model car is equipped with a card reader so that when it comes close to the intersection, the program can make a decision on whether the car needs to turn or not.
 
 \begin{figure}
 \centering
@@ -135,7 +143,7 @@ The event definitions are the same as those we have used for our indoor test. Th
 \end{figure}
 
 \subsection{Application Case Three: Indoor Monitoring}
-Our final application is related to smart building. We consider the application scenario where the sensor nodes are deployed in a building so that the temperature can be monitored. Such an application can probably be useful for certain types of context aware pervasive applications. For example, the air conditioner can be adjusted if several adjacent rooms' temperature rises too fast. The primitive and composite event definitions are shown in Listing \ref{lst:indoorEvents}.
+Our third application is related to smart building. We consider the application scenario where the sensor nodes are deployed in a building so that the temperature can be monitored. Such an application can probably be useful for certain types of context aware pervasive applications. For example, the air conditioner can be adjusted if several adjacent rooms' temperature rises too fast. The primitive and composite event definitions are shown in Listing \ref{lst:indoorEvents}.
 
 \begin{lstlisting}[caption=Event definition for indoor monitoring, label=lst:indoorEvents]
 Event SingleTemp {
@@ -154,7 +162,7 @@ Event CompositeTemp {
 }
 \end{lstlisting}
 
-The primitive event simply tests if the temperature passes certain threshold and the composite event is the conjunction of several primitive events. We deployed the some Micaz nodes in different rooms in our building as shown in Figure \ref{fig:indoorDeployment}.
+The primitive event simply tests if the temperature passes certain threshold and the composite event is the conjunction of several primitive events. We deployed the some Micaz nodes in different rooms in our building as shown in Figure \ref{fig:indoorDeployment}. In the figure, each circle represents a sensor node.
 
 \begin{figure}
 \centering
@@ -163,10 +171,10 @@ The primitive event simply tests if the temperature passes certain threshold and
 \label{fig:indoorDeployment}
 \end{figure}
 
-The experimental results is shown in Figure \ref{fig:itsResults}. The results show that TED can save the message cost by 10-20\%.
+The experimental results is shown in Figure \ref{fig:itsResults}. The results show that TED can save the message cost by 10-20\%. Also note that in order to emulate certain events such as fire, we put some sensors on the heater during the experiment so there's a spike in each figure.
 
 \subsection{Application Case Four: SHM}
-In our experiments, we consider the application for WSN-based Structural Health Monitoring (SHM) system. The objective of such system is to detect damages on structures such as buildings and bridges if they occur. Event detection is important in these applications because the SHM sensors will introduce high energy consumption during damage detection. It is therefore more desirable to wake them up only upon the occurrence of certain events \cite{jangshm}.
+Our final application is WSN-based Structural Health Monitoring (SHM) system which was described in Chapter \ref{chapter:clustering}. The objective of such system is to detect damages on structures such as buildings and bridges if they occur. Event detection is important in these applications because the SHM sensors will introduce high energy consumption during damage detection. It is therefore more desirable to wake them up only upon the occurrence of certain events \cite{jangshm}.
 
 Figure \ref{fig:testbed} shows our WSN-SHM testbed. In our experiment, we defined a scenario where the sensor nodes will start to collect the data when a certain vibration pattern is detected. The vibration is detected if the one sensor on the top and another one on the bottom of the model read the vibration data that satisfy certain criteria. The event definition is shown in Listing \ref{lst:shm}.
 
