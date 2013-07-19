@@ -16,7 +16,8 @@ Similar to our analysis, we use SPT as a reference to compare with TED so as to 
 
 \begin{figure}
 \centering
-\figurecurrentwidth{distance-size5}
+\subfloat[Cost]{\label{fig:sim-cost-distance-size5}\figurehalfwidth{cost-distance-size5}}
+\subfloat[Delay]{\label{fig:sim-delay-distance-size5}\figurehalfwidth{delay-distance-size5}}
 \caption{Average event size: 5 nodes}
 \label{fig:sim-distance-size5}
 \end{figure}
@@ -34,21 +35,23 @@ For each simulation, we fix two parameters to demonstrate the impact of the othe
 
 \begin{figure}
 \centering
-\figurecurrentwidth{distance-size10}
+\subfloat[Cost]{\label{fig:sim-cost-distance-size10}\figurehalfwidth{cost-distance-size10}}
+\subfloat[Delay]{\label{fig:sim-delay-distance-size10}\figurehalfwidth{delay-distance-size10}}
 \caption{Average event size: 10 nodes}
 \label{fig:sim-distance-size10}
 \end{figure}
 
-The first parameter we study is the distance between events. More precisely, we study the average event distance where it is defined as the average of all the distance between any two events in the network. Figure \ref{fig:sim-distance-size5} shows the result when average event distance equals to 30. As we can see, SPT costs the most energy. Among the different versions of TED, TED-C costs slightly higher energy while TED-E costs the lowest amount of energy.
+The first parameter we study is the distance between events. More precisely, we study the average event distance where it is defined as the average of all the distance between any two events in the network. Figure \ref{fig:sim-distance-size5} shows the result when average event distance equals to 30. As we can see, SPT introduces more message cost. Among the different versions of TED, TED-C has highest message cost while TED-E has the lowest. In terms of the day, TED-C introduces most delay because the events will have to be collected in a centralized fashion first. The rest of the three have similar delay with SPT slightly lower than the others. Delay increases naturally as the distance increases. Such results agree with our analysis.
 
 \begin{figure}
 \centering
-\figurecurrentwidth{distance-size15}
+\subfloat[Cost]{\label{fig:sim-cost-distance-size15}\figurehalfwidth{cost-distance-size15}}
+\subfloat[Delay]{\label{fig:sim-delay-distance-size15}\figurehalfwidth{delay-distance-size15}}
 \caption{Average event size: 15 nodes}
 \label{fig:sim-distance-size15}
 \end{figure}
 
-The next set of simulation results are shown in Figure \ref{fig:sim-distance-size10}. In this figure, we can see as the event distance becomes greater, the average energy cost has also increased accordingly. This is inevitable because the nodes will have relay the events for more number of hops in order to detect the composite events. Note that our X-axis represents event size. We will get into more details about the impact of event size in the next section.
+The next set of simulation results are shown in Figure \ref{fig:sim-distance-size10}. In this figure, we can see as the event distance becomes greater, the average message cost has also increased accordingly. This is inevitable because the nodes will have relay the events for more number of hops in order to detect the composite events. In terms of the delay, the results are similar to those in the previous set. Note that the difference between this set of simulation and the previous set is the event size. We will get into more details about the impact of event size in the next section. 
 
 \begin{figure}
 \centering
@@ -57,7 +60,7 @@ The next set of simulation results are shown in Figure \ref{fig:sim-distance-siz
 \label{fig:sim-size-distance30}
 \end{figure}
 
-The last set of results for event distance is shown in Figure \ref{fig:sim-distance-size15}. In this figure, the event distance is set to be 50. Note that this is already half of the network dimension. Such scenario should cover a lot of WSN applications where the events need to be transmitted for a long distance to be further processed. As we can see from the figure, when the event distance becomes larger, the results have also become more stable. This is because as the distance becomes larger, relay cost has become the dominant cost for the event detection.
+The last set of results for event distance is shown in Figure \ref{fig:sim-distance-size15}. In this figure, the event size is set to be 15 nodes. Such scenario should cover a lot of WSN applications where the events need to be detected by multiple sensor nodes collaboratively. As we can see from the figure, when the event size becomes larger, the results have also become more stable. This is because as the size becomes larger, the cost between different nodes is amortized. In terms of delay, it's still quite similar to the previous results and event size do not have a significant impact on it.
 
 In summary, as we can see from all the figures, TED can save some energy in comparison with SPT. However, among all the simulation parameters as we will see in the following sections, event distance does not seem to be a critical factor where TED can save a lot of energy.
 
