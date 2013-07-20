@@ -18,7 +18,7 @@ Due to resource constraints, implementing threads may not be so straightforward 
 
 On the other side, state-based approaches borrow the idea from finite state machine. RuleCaster \cite{rulecaster} is probably the first to describe such kind of abstraction. It consists of a high level state-based language, RCAL, a compiler that compile RCAL to codes executed by sensor nodes, and a middleware. An example of RCAL is shown in Listing \ref{lst:rulecaster}
 
-\begin{lstlisting}[caption=A sample program written in RuleCaster, label=lst:rulecaster]
+\begin{lstlisting}[caption=A sample program written in RuleCaster, float, label=lst:rulecaster]
 /* Ruleblock 1*/
 SPACE(kitchen),TIME(1s){
 	STATE stoveOnHazard :- stoveOn(), notMonitored().
@@ -41,7 +41,7 @@ There are mainly three types of programming abstraction to be discussed in this 
 
 The service-based approach has also been studied by several works. This is partially because service is a hot research topic in WSN and there is a need for such a macroprogramming approach to support these research works. SNACK (Sensor Network Application Construction Kit) \cite{snack} consists of a configuration language, component and service library and a compiler. SNACK system leverages nesC \cite{nesc} - its base components are written in nesC, and its compiler generates a nesC configuration and several nesC modules. A sample program written in SNACK is shown in Listing \ref{lst:snack}.
 
-\begin{lstlisting}[caption=A sample program written in SNACK, label=lst:snack]
+\begin{lstlisting}[caption=A sample program written in SNACK, float, label=lst:snack]
 service Service {
 	src :: MsgSrc;
 	src [send:MsgRcv] -> filter :: MsgFilter -> [send] Network;
@@ -59,7 +59,7 @@ The basic idea behind SNACK is dividing the programmers into three types. System
 
 The actual definition of service, however, is different among different research works. As an effort to unify such a definition for services in WSN, SONG \cite{song} formally describes the architecture and programming model of a semantic-service-oriented sensor information system platform. The authors think that by using ontology and semantic services, one may encapsulate sophisticated domain knowledge into computational components or services. Listing \ref{lst:song} shows such a service description.
 
-\begin{lstlisting}[caption=Service description in SONG, label=lst:song]
+\begin{lstlisting}[caption=Service description in SONG, float, label=lst:song]
 service(breakService(Region),
 	needs(sensor(breakSensor,Region)),
 	creates(Pulse(X),detected(X,T,Region))
@@ -71,9 +71,7 @@ For example, a SpeedEstimation service may take a sequence of pulses and produce
 \subsection{Neighborhood and Region Based Abstraction}
 The final category under declarative abstraction is neighborhood / region - based approach. Since the power of individual sensor nodes is extremely limited, it is very common for senor nodes to cooperate with their neighbors. Therefore, neighborhood-based approach can be useful for WSN applications. Some of the work provides a thin layer of library on top of TinyOS so that the programmers can make use of the neighborhood-based features in their familiar environment.  Hood \cite{hood} is such an example. Developed by the same group that developed TinyOS, Hood proposes a neighborhood programming abstraction for sensor network. Sensors in the same neighborhood can share data among themselves. Hood provides a specification language that allows code to be generated in NesC programs.
 
-While Hood provides a generic model for neighborhood-based programming, other works address issues within specific application settings. For example, Kairos \cite{kairos} addresses the naming issue. It argues that in a distributed environment, sensor nodes may have conflicting names for resources. It addresses this issue by defining three simple programming abstractions. First, nodes are logically named using integer identifiers. Second, one-hop neighbors of a node can be obtained by calling get\_neighbors(). Third, data at the remote node may be accessed by syntax like 'variable@node'. The code will be translated and linked to Kairos runtime and will be distributed by using code distribution software such as Deluge \cite{deluge}.
-
-\begin{lstlisting}[caption=A sample program written in Kairos, label=lst:kairos]
+\begin{lstlisting}[caption=A sample program written in Kairos, float, label=lst:kairos]
 void buildtree(node root)
 	node parent, self;
 	unsigned short dist_from_root;
@@ -96,6 +94,8 @@ void buildtree(node root)
 				dist_from_root=dist_from_root@iter2+1;
 				parent=iter2;
 \end{lstlisting}
+
+While Hood provides a generic model for neighborhood-based programming, other works address issues within specific application settings. For example, Kairos \cite{kairos} addresses the naming issue. It argues that in a distributed environment, sensor nodes may have conflicting names for resources. It addresses this issue by defining three simple programming abstractions. First, nodes are logically named using integer identifiers. Second, one-hop neighbors of a node can be obtained by calling get\_neighbors(). Third, data at the remote node may be accessed by syntax like 'variable@node'. The code will be translated and linked to Kairos runtime and will be distributed by using code distribution software such as Deluge \cite{deluge}.
 
 A sample program written in Kairos is demonstrated in Listing \ref{lst:kairos}. In this short piece of codes, a shorted path tree is constructed by making use of the neighborhood abstractions provided by Kairos.
  

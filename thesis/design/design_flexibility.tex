@@ -25,7 +25,7 @@ typedef struct {
 
 Once the new probability attribute is defined, we need to generate some necessary constant values for accessing the attribute. The tool for generating the constants is 'psware gen'. It will parse the event header files and output some macro values. After that, the middleware can access the attribute with the code fragment shown in Listing \ref{lst:SystemEventProbabilityAccess}. In this piece of code, we first obtain the system event through the EventInstance API. Then we obtain the probability value by accessing the correct attribute. Note that SystemEvent, SystemEvent\_probability are generated constant values for accessing the events and their attributes.
 
-\begin{lstlisting}[caption=Customized system event, label=lst:SystemEventProbabilityAccess]
+\begin{lstlisting}[caption=Customized system event, float, label=lst:SystemEventProbabilityAccess]
 EventInstanceInfo * systemPtr = call EventInstance.getEventInstance(SystemEvent);
 float probability = (float)systemPtr->content[SystemEvent_probability];
 \end{lstlisting}

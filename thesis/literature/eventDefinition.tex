@@ -228,53 +228,32 @@ then {
 }
 \end{lstlisting}
 
-A few works \cite{cea} summarizes the existng event operators. They compared a lot of existing works on composite event description and proposed some unified event operators. The work first summarized the existing event operators as in Table \ref{tab:eventOperator1} and \ref{tab:eventOperator2}.
+A few works \cite{cea} summarizes the existng event operators. They compared a lot of existing works on composite event description and proposed some unified event operators. The work first summarized the existing event operators as in Table \ref{tab:eventOperator}.
 
+\begin{landscape}
 \begin{table}
 \begin{center}
-\begin{tabular}{ | c | c | c | c | c |}
+\begin{tabular}{ | c | c | c | c | c | c | c | c |}
 \hline
-& \multicolumn{4}{|c|}{Operators} \\ \hline
-& Conjunction & Disjunction & Sequence & Concurrent \\ \hline
-ECCO & \(A + B\) & \(A | B\) & \(A; B\) & \(A || B\) \\ \hline
-Opera & \(A || B\) & \(A | B\) & \(A; B\) & - \\ \hline
-CEA & \(A \& B\) & \(A | B\) & \(A; B\) & - \\ \hline
-Schwiderski & \(A , B\) & \(A | B\) & \(A; B\) & \(A || B\) \\ \hline
-A-mediAS & \(A \& B\) & \(A || B\) & \(A; B\) & - \\ \hline
-Ready & \(A \&\& B\) & \(A || B\) & \(A; B\) & - \\ \hline
-Eve & \(CON(A, B)\) & \(DEX(A, B)\) & \(SEQ(A, B)\) & \(CCR(A, B)\) \\ \hline
-GEM & \(A \& B\) & \(A || B\) & \(A; B\) & - \\ \hline
-Snoop & \(A , B\) & \(A \lor B\) & \(A; B\) & - \\ \hline
-Rebeca & \(A \land B\) & \(A \lor B\) & - & - \\ \hline
-SAMOS & \(A , B\) & \(A | B\) & \(A; B\) & - \\ \hline
+& \multicolumn{7}{|c|}{Operators} \\ \hline
+& Conjunction & Disjunction & Sequence & Concurrent & Negation & Iteration & Selection \\ \hline
+ECCO & \(A + B\) & \(A | B\) & \(A; B\) & \(A || B\) & \(\neg A\) & \(A*\) & \(A^N\) \\ \hline
+Opera & \(A || B\) & \(A | B\) & \(A; B\) & - & \(\neg A\) & \(A*\) & - \\ \hline
+CEA & \(A \& B\) & \(A | B\) & \(A; B\) & - & \(\neg A\) & - & - \\ \hline
+Schwiderski & \(A , B\) & \(A | B\) & \(A; B\) & \(A || B\) & NOT \(A\) & \(A*\) & - \\ \hline
+A-mediAS & \(A \& B\) & \(A || B\) & \(A; B\) & - & \(\neg A\) & - & \(A^{[i]}\) \\ \hline
+Ready & \(A \&\& B\) & \(A || B\) & \(A; B\) & - & not \(A\) & - & - \\ \hline
+Eve & \(CON(A, B)\) & \(DEX(A, B)\) & \(SEQ(A, B)\) & \(CCR(A, B)\) & \(NEG(A, B)\) & \(REP(A, n)\) & - \\ \hline
+GEM & \(A \& B\) & \(A || B\) & \(A; B\) & - & \(!A\) & - & - \\ \hline
+Snoop & \(A , B\) & \(A \lor B\) & \(A; B\) & - & - & \(A*\) & - \\ \hline
+Rebeca & \(A \land B\) & \(A \lor B\) & - & - & \(\neg A\) & \(A*\) & - \\ \hline
+SAMOS & \(A , B\) & \(A | B\) & \(A; B\) & - & NOT \(A\) & TIMES(\(n,A\)) & \(A*/last(A)\) \\ \hline
 \end{tabular}
 \end{center}
 \caption{Summary of existing event operators}
-\label{tab:eventOperator1}
+\label{tab:eventOperator}
 \end{table}
-
-\begin{table}
-\begin{center}
-\begin{tabular}{ | c | c | c | c |}
-\hline
-& \multicolumn{3}{|c|}{Operators} \\ \hline
-& Negation & Iteration & Selection \\ \hline
-ECCO & \(\neg A\) & \(A*\) & \(A^N\) \\ \hline
-Opera & \(\neg A\) & \(A*\) & -  \\ \hline
-CEA & \(\neg A\) & - & - \\ \hline
-Schwiderski & NOT \(A\) & \(A*\) & - \\ \hline
-A-mediAS & \(\neg A\) & - & \(A^{[i]}\) \\ \hline
-Ready & not \(A\) & - & - \\ \hline
-Eve & \(NEG(A, B)\) & \(REP(A, n)\) & - \\ \hline
-GEM & \(!A\) & - & - \\ \hline
-Snoop & - & \(A*\) & - \\ \hline
-Rebeca & \(\neg A\) & \(A*\) & - \\ \hline
-SAMOS & NOT \(A\) & TIMES(\(n,A\)) & \(A*/last(A)\) \\ \hline
-\end{tabular}
-\end{center}
-\caption{Summary of existing event operators (cont.)}
-\label{tab:eventOperator2}
-\end{table}
+\end{landscape}
 
 Based on the summary for the existing operators, a set of unified operators are proposed as follows:
 \begin{itemize}

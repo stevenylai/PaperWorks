@@ -67,9 +67,7 @@ If the application level knowledge is taken into consideration, further energy e
 
 The first type of data aggregation technique we are going to introduce is related to our previous sections since it is related to query-based middleware for WSN. Tiny Aggregation Service (TaG) \cite{tag} is a work which was later extended to TinyDB. The work tries to add aggregation service of WSN to the core service. The aggregation is expressed in SQL and is disseminated from the sink. Each sensor node chooses its sender of the query as the aggregation parent. During aggregation, parents will wait for the children's messages before sending their own.
 
-Based on the similar concept, Temporal coherency-aware in-Network Aggregation (TiNA) \cite{tina} is another work based on Cougar \cite{cougar}. It makes two contributions. First, Group-Aware Network Configuration (GaNC) is a routing protocol that builds the routing tree according to the 'group by' clause of the SQL in order to save energy. It is compared with the 'First-Heard-From (FHF)' method. During parent-selecting, the node will also look at the (static) attributes used in the 'group-by' clause to select a parent with the same group. TiNA introduces a new type of SQL clause for WSN: TOLERANCE x\%. When a new sensor's reading is within the difference of x\%, it will not be transmitted. TiNA can be built on top of any existing SQL-based aggregation techniques. The language extenstion demonstrated in Listing \ref{lst:tina}. The standard SQL part is from Line \ref{lst:tina:SQLStart} to \ref{lst:tina:SQLEnd} and the tolerance introduce by TiNA is at Line \ref{lst:tina:tina}.
-
-\begin{lstlisting}[caption=An example of TiNA, label=lst:tina]
+\begin{lstlisting}[caption=An example of TiNA, float, label=lst:tina]
 SELECT {attributes, aggegates} (*\label{lst:tina:SQLStart}*)
 FROM sensors
 WHERE conditions-A
@@ -78,6 +76,8 @@ HAVING conditions-B (*\label{lst:tina:SQLEnd}*)
 EPOCH DURATION i | EVERY e
 TOLERANCE tct (*\label{lst:tina:tina}*)
 \end{lstlisting}
+
+Based on the similar concept, Temporal coherency-aware in-Network Aggregation (TiNA) \cite{tina} is another work based on Cougar \cite{cougar}. It makes two contributions. First, Group-Aware Network Configuration (GaNC) is a routing protocol that builds the routing tree according to the 'group by' clause of the SQL in order to save energy. It is compared with the 'First-Heard-From (FHF)' method. During parent-selecting, the node will also look at the (static) attributes used in the 'group-by' clause to select a parent with the same group. TiNA introduces a new type of SQL clause for WSN: TOLERANCE x\%. When a new sensor's reading is within the difference of x\%, it will not be transmitted. TiNA can be built on top of any existing SQL-based aggregation techniques. The language extenstion demonstrated in Listing \ref{lst:tina}. The standard SQL part is from Line \ref{lst:tina:SQLStart} to \ref{lst:tina:SQLEnd} and the tolerance introduce by TiNA is at Line \ref{lst:tina:tina}.
 
 Another application specific work is VigilNet \cite{vigilnet}. It was later extended to the EnviroTrack middleware \cite{envirotrack} which was briefly introduced in the previous section. VigilNet had an in-depth discussion on how to implement a real data aggregation system for the tracking applications. There are four layers of aggregation in the proposed system. Level 1 mainly concerns how to sample and aggregate raw data. Level 2 concerns how to aggregate data from different sensors on a single node. Level 3 concerns how to aggregate data within groups. Basically, potential group leaders are selected based on max coverage. Level 4 is just the backend aggregation where all the data has been transmitted to the sink.
 
