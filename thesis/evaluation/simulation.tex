@@ -92,7 +92,8 @@ As we can see, SPT still incurs the highest cost. Among all the TED variations, 
 
 \begin{figure}
 \centering
-\figurecurrentwidth{prob-size5-dist10}
+\subfloat[Cost]{\label{fig:sim-cost-prob-size5-dist10}\figurehalfwidth{cost-prob-size5-dist10}}
+\subfloat[Delay]{\label{fig:sim-delay-prob-size5-dist10}\figurehalfwidth{delay-prob-size5-dist10}}
 \caption{Event size: 5, distance: 10}
 \label{fig:sim-prob-size5-dist10}
 \end{figure}
@@ -105,58 +106,63 @@ In summary, according to all the results shown in this section, we can draw conc
 
 \begin{figure}
 \centering
-\figurecurrentwidth{prob-size5-dist20}
+\subfloat[Cost]{\label{fig:sim-cost-prob-size5-dist20}\figurehalfwidth{cost-prob-size5-dist20}}
+\subfloat[Delay]{\label{fig:sim-delay-prob-size5-dist20}\figurehalfwidth{delay-prob-size5-dist20}}
 \caption{Event size: 5, distance: 20}
 \label{fig:sim-prob-size5-dist20}
 \end{figure}
 
-Since we have studied two parameters in our previous sections, we will study the last factor in accordance to the previous factors we have studied and see how it can affect the performance of TED. Figure \ref{fig:sim-prob-size5-dist10} shows our first set of results. Our first set of results look promising since all variations of TED saves significant amount of energy than SPT.
+Since we have studied two parameters in our previous sections, we will study the last factor in accordance to the previous factors we have studied and see how it can affect the performance of TED. Figure \ref{fig:sim-prob-size5-dist10} shows our first set of results. Our first set of results look promising since all variations of TED saves significant amount of message cost than SPT and for some cases, the delay for TED is even lower than that of SPT.
+
+Our second set of results are shown in Figure \ref{fig:sim-prob-size5-dist20}. Since we have already concluded in our previous section that event size is not a major factor that will affect the performance of TED, in this set of results, we fix the event size while increasing the event distance for each set. Then within each set, we use the event probability as the X-axis to have a more direct view of the relation between event probability and energy cost.
 
 \begin{figure}
 \centering
-\figurecurrentwidth{prob-size5-dist30}
+\subfloat[Cost]{\label{fig:sim-cost-prob-size5-dist30}\figurehalfwidth{cost-prob-size5-dist30}}
+\subfloat[Delay]{\label{fig:sim-delay-prob-size5-dist30}\figurehalfwidth{delay-prob-size5-dist30}}
 \caption{Event size: 5, distance: 30}
 \label{fig:sim-prob-size5-dist30}
 \end{figure}
 
-Our second set of results are shown in Figure \ref{fig:sim-prob-size5-dist20}. Since we have already concluded in our previous section that event size is not a major factor that will affect the performance of TED, in this set of results, we fix the event size while increasing the event distance for each set. Then within each set, we use the event probability as the X-axis to have a more direct view of the relation between event probability and energy cost.
+As shown in the figure, SPT still has the highest message cost. For TED, the message cost is particular low while the event probability is less than 50\%. This is because with TED, we can effectively filter the primitive events if they are not going to lead to higher level of composite events. Such filtering also has an impact on the delay. Unlike SPT where all the events must be forwarded to the sink to decide if a particular composite does not happen, TED can filter out such composite events in the network. 
 
-As shown in the figure, SPT still has the highest energy cost. For TED, the energy cost is particular low while the event probability is less than 50\%. This is because with TED, we can effectively filter the primitive events if they are not going to lead to higher level of composite events.
-
-\begin{figure}
-\centering
-\figurecurrentwidth{prob-dist20-size5}
-\caption{Event distance: 20, size: 5}
-\label{fig:sim-prob-dist20-size5}
-\end{figure}
-
-Our third set of results are shown in Figure \ref{fig:sim-prob-size5-dist30}. This set of results are consistent with the previous two sets. For SPT, the energy cost does not change much with the event probability. For all versions of TED, the event detection cost is below 40 when the event probability is 20\%. This is because with such a low probability, many of the primitive events have been filtered before they get a chance to be fused for higher level composite event detection.
-
-Among the three variations of TED, we can see TED-C has slightly higher cost than the other two. This is because of the overhead introduced in the centralized approach where the event fusion points need to be selected by the sink node. For the distributed variations, TED-R and TED-E have similar performance. TED-E has slightly lower energy cost because of its even distribution. Each sensor nodes may find a fusion point in a bounded distance.
+Our third set of results are shown in Figure \ref{fig:sim-prob-size5-dist30}. This set of results are consistent with the previous two sets. For SPT, the message cost does not change much with the event probability since all the data will be collected by the sink regardless of the event probability. For all versions of TED, the event detection cost is below 40 when the event probability is 20\%. This is because with such a low probability, many of the primitive events have been filtered before they get a chance to be fused for higher level composite event detection.
 
 \begin{figure}
 \centering
-\figurecurrentwidth{prob-dist20-size10}
+\subfloat[Cost]{\label{fig:sim-cost-prob-dist20-size10}\figurehalfwidth{cost-prob-dist20-size10}}
+\subfloat[Delay]{\label{fig:sim-delay-prob-dist20-size10}\figurehalfwidth{delay-prob-dist20-size10}}
 \caption{Event distance: 20, size: 10}
 \label{fig:sim-prob-dist20-size10}
 \end{figure}
 
+Among the three variations of TED, we can see TED-C has slightly higher message cost than the other two. This is because of the overhead introduced in the centralized approach where the event fusion points need to be selected by the sink node. For the distributed variations, TED-R and TED-E have similar performance. TED-E has slightly lower message cost because of its even distribution. Each sensor nodes may find a fusion point in a bounded distance. In terms of the delay, while centralized TED still has the highest delay, distributed TED will introduce less delay when the events have lower probability and can be filtered in the network.
+
 In our previous results. We studied the impact event probability by fixing event size while increasing the event distance. The fixed event size was set to be 5 which is small enough to be considered as atomic event size. As we have also studied the impact of event size in our previous sections, for the sake of completeness, we also perform another three set of simulations to study the event probability while fixing the event distance.
 
-Since our network size is 127 by 127, we choose the fixed average event distance to be 20. This is around \(\frac{1}{6}\) of the network dimension which is probably representative enough for many WSN-based application. Our fourth set of results are presented in \ref{fig:sim-prob-dist20-size5}. In the figure, we can also see TED can save significant amount of energy in comparison with SPT.
+Since our network size is 127 by 127, we choose the fixed average event distance to be 20. This is around \(\frac{1}{6}\) of the network dimension which is probably representative enough for many WSN-based application. Our fourth set of results are presented in \ref{fig:sim-prob-dist20-size10}. In the figure, we can also see TED can save significant amount of message cost in comparison with SPT while introducing only marginal delay.
 
 \begin{figure}
 \centering
-\figurecurrentwidth{prob-dist20-size15}
+\subfloat[Cost]{\label{fig:sim-cost-prob-dist20-size15}\figurehalfwidth{cost-prob-dist20-size15}}
+\subfloat[Delay]{\label{fig:sim-delay-prob-dist20-size15}\figurehalfwidth{delay-prob-dist20-size15}}
 \caption{Event distance: 20, size: 15}
 \label{fig:sim-prob-dist20-size15}
 \end{figure}
 
-Our fifth set of results is shown in Figure \ref{fig:sim-prob-dist20-size10}. On the X-axis, the event probability spans from 20\% to 60\%. Note that for composite events, this is a conditional probability when all the sub-events happen. For instance, if a composite event \(e_3\) comes from two sub-events \(e_1\) and \(e_2\). Then we have the following:
+Our fifth set of results is shown in Figure \ref{fig:sim-prob-dist20-size15}. On the X-axis, the event probability spans from 20\% to 60\%. Note that for composite events, this is a conditional probability when all the sub-events happen. For instance, if a composite event \(e_3\) comes from two sub-events \(e_1\) and \(e_2\). Then we have the following:
 \begin{align*}
 P(e_3) = P(e_1) \times P(e_2) \times P(e_3|e_1, e_2)
 \end{align*}
 
-Our final set of results is shown in Figure \ref{fig:sim-prob-dist20-size15}. Similar to our previous sets of results, TED can save around 50\% - 60\% of energy cost compared with SPT.
+Our final set of results is shown in Figure \ref{fig:sim-prob-dist20-size20}. Similar to our previous sets of results, TED can save around 50\% - 60\% of energy cost compared with SPT while the delay has not much change.
 
-In summary, we can find our simulation results agree with our analytical results. The energy cost of TED is linearly proportional to the event probability while the energy cost of SPT has little difference in regard to probability changes. This characteristic will make TED especially effective for applications where the primitive events happen very frequently while the composite events happen rarely.
+In summary, we can find our simulation results agree with our analytical results. The message cost of TED is linearly proportional to the event probability while the message cost of SPT has little difference in regard to probability changes. This characteristic will make TED especially effective for applications where the primitive events happen very frequently while the composite events happen rarely. We can also see that TED can help to reduce the delay when the event probability is low.
+
+\begin{figure}
+\centering
+\subfloat[Cost]{\label{fig:sim-cost-prob-dist20-size20}\figurehalfwidth{cost-prob-dist20-size20}}
+\subfloat[Delay]{\label{fig:sim-delay-prob-dist20-size20}\figurehalfwidth{delay-prob-dist20-size20}}
+\caption{Event distance: 20, size: 20}
+\label{fig:sim-prob-dist20-size20}
+\end{figure}
