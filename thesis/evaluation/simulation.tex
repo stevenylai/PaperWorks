@@ -55,37 +55,40 @@ The next set of simulation results are shown in Figure \ref{fig:sim-distance-siz
 
 \begin{figure}
 \centering
-\figurecurrentwidth{size-distance30}
+\subfloat[Cost]{\label{fig:sim-cost-size-distance30}\figurehalfwidth{cost-size-distance30}}
+\subfloat[Delay]{\label{fig:sim-delay-size-distance30}\figurehalfwidth{delay-size-distance30}}
 \caption{Average event distance: 30}
 \label{fig:sim-size-distance30}
 \end{figure}
 
 The last set of results for event distance is shown in Figure \ref{fig:sim-distance-size15}. In this figure, the event size is set to be 15 nodes. Such scenario should cover a lot of WSN applications where the events need to be detected by multiple sensor nodes collaboratively. As we can see from the figure, when the event size becomes larger, the results have also become more stable. This is because as the size becomes larger, the cost between different nodes is amortized. In terms of delay, it's still quite similar to the previous results and event size do not have a significant impact on it.
 
-In summary, as we can see from all the figures, TED can save some energy in comparison with SPT. However, among all the simulation parameters as we will see in the following sections, event distance does not seem to be a critical factor where TED can save a lot of energy.
+In summary, as we can see from all the figures, TED can reduce message cost in comparison with SPT. However, among all the simulation parameters as we will see in the following sections, event distance does not seem to be a critical factor where TED can save much cost. In terms of the delay, longer event distance will introduce longer delay to all the algorithms because the nodes simply need to use more hops to reach the sink. In addition, centralized TED introduces longer delay than others because it needs to gather all the events and disseminate the event fusion information to the network.
 
 \subsection{Impact of Event Size}
 \begin{figure}
 \centering
-\figurecurrentwidth{size-distance40}
+\subfloat[Cost]{\label{fig:sim-cost-size-distance40}\figurehalfwidth{cost-size-distance40}}
+\subfloat[Delay]{\label{fig:sim-delay-size-distance40}\figurehalfwidth{delay-size-distance40}}
 \caption{Average event distance: 40}
 \label{fig:sim-size-distance40}
 \end{figure}
 
-The next factor we are going to study is event size. Event size is defined as the number of nodes involved in detecting a particular event. For composite events, it represents all nodes in detecting their sub-events. This factor is interesting to our simulation because different event size may have different effect on the number of nodes that are needed to detect more than one events. It can, therefore, affect the choice of event fusion points since sometimes it may be better to choose the nodes that can detect multiple events as the fusion points.
+The next factor we are going to study is event size. Event size is defined as the number of nodes involved in detecting a particular event. For composite events, it represents all nodes in detecting their sub-events. During composite event detection, sub-events may need to be forwarded to the fusion points for further detection. The detection cost, therefore, also includes the cost for forwarding the events. This factor is interesting to our simulation because different event size may have different effect on the number of nodes that are needed to detect more than one events. It can, therefore, affect the choice of event fusion points since sometimes it may be better to choose the nodes that can detect multiple events as the fusion points.
 
-The first set of results are displayed in Figure \ref{fig:sim-size-distance30}. Here we define the average event size to be the average number of nodes that will be involved to detect a specific primitive event. Furthermore, the nodes must be connected by themselves. If, for example, an event spans nodes that are not connected by themselves, then we can split such events into multiple sub-events where all the nodes involved in detecting each sub-event are connected by themselves.
+The first set of results are displayed in Figure \ref{fig:sim-size-distance30}. Similarly, TED has lower message cost than SPT while SPT has smaller delay in comparison with distributed TED.
 
 \begin{figure}
 \centering
-\figurecurrentwidth{size-distance50}
+\subfloat[Cost]{\label{fig:sim-cost-size-distance50}\figurehalfwidth{cost-size-distance50}}
+\subfloat[Delay]{\label{fig:sim-delay-size-distance50}\figurehalfwidth{delay-size-distance50}}
 \caption{Average event distance: 50}
 \label{fig:sim-size-distance50}
 \end{figure}
 
-The next set of results are shown in Figure \ref{fig:sim-size-distance40}. Since based on our previous results, event distance is not a major factor for TED to save energy, we use it as the X-axis in our simulation for reference. Since the event size has increased from 5 to 10 nodes, we also need to decide which nodes out of all the event detection nodes will be used as the decision maker for the event. In order to have a reasonably easy function to calculate the cost without losing generality, we choose the node at the geographical center of the primitive event to be the detector node.
+The next set of results are shown in Figure \ref{fig:sim-size-distance40}. Since based on our previous results, event distance is not a major factor for TED to message cost, we set it to a constant value of 40 in this simulation. We use such large value so that events will have less overlapping. Otherwise, if all events have an overlapping, the fusion point will eventually be selected in the overlapping area and this reduces TED to SPT. Since the event size has increased from 5 to 10 nodes, we also need to decide which nodes out of all the event detection nodes will be used as the decision maker for that event. In order to have a reasonably easy function to calculate the cost without losing generality, we choose the node at the geographical center of the event to be the detector node.
 
-As we can see, SPT still incurs the highest cost. Among all the TED variations, the centralized version has relatively higher cost while the distributed TED with even fusion point deployment has the lowest cost. This is because the centralized version will introduce control overhead and the even fusion point deployment strategy guarantees that each event can find a fusion point within certain number of hops.
+As we can see, SPT still incurs the highest cost. Among all the TED variations, the centralized version has relatively higher cost while the distributed TED with even fusion point deployment has the lowest cost. This is because the centralized version will introduce control overhead and the even fusion point deployment strategy guarantees that each event can find a fusion point within certain number of hops. The results for delay is also similar to the previous results so the event distance will not have a significant impact on event delay either.
 
 \begin{figure}
 \centering
@@ -94,9 +97,9 @@ As we can see, SPT still incurs the highest cost. Among all the TED variations, 
 \label{fig:sim-prob-size5-dist10}
 \end{figure}
 
-Our last set of results are shown in Figure \ref{fig:sim-size-distance50}. In this set of results, we set the average event size to be 15 nodes. Note that this is already a quite large event size since on average, it spans 15 nodes. It may be suitable for many applications where the aggregate functions such as average or sum need to be evaluated. The results are similar to the previous ones in the sense that SPT has the highest energy cost while TED-E has the lowest. However, this set of results are more stable and consistent than the previous set. This is because as the event size becomes larger, it is easier to cover more number of nodes and therefore having more overlapped ones. TED may make use of such overlapped nodes to select fusion points. Therefore, TED will have a wider choice as the event size becomes larger and the results will become more stable.
+Our last set of results are shown in Figure \ref{fig:sim-size-distance50}. In this set of results, we set the average event size to be 15 nodes. Note that this is already a quite large event in comparison with most primitive events where only one node is used for detection. It may be suitable for many applications where the aggregate functions such as average or sum need to be evaluated. The results are similar to the previous ones in the sense that SPT has the highest message cost while TED-E has the lowest. However, this set of results are more stable and consistent than the previous set. This is because as the event size becomes larger, it is easier to cover more number of nodes and therefore having more overlapped ones. TED may make use of such overlapped nodes to select fusion points. Therefore, TED will have a wider choice as the event size becomes larger and the results will become more stable. The delay, on the other hand, is still quite consistent with the previous results.
 
-In summary, according to all the results shown in this section, we can draw conclusion that event size is not a major factor that will decide the amount of energy that TED could save. While TED does perform better than SPT in respect of event size and event distance, we still need to study more factor to see if it can perform even better.
+In summary, according to all the results shown in this section, we can draw conclusion that event size is not a major factor that will decide the amount of message cost that TED could save. While TED does perform better than SPT in respect of event size and event distance, we still need to study more factor to see if it can perform even better.
 
 \subsection{Impact of Event Probability}
 
