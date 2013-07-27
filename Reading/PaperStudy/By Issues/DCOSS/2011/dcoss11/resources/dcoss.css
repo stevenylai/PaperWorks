@@ -1,0 +1,273 @@
+BODY
+{
+    MARGIN: 5px 5px 5px 5px;
+    COLOR: black;
+    FONT-FAMILY: Georgia, Verdana, Arial;
+    FONT-SIZE: 9pt;
+    BACKGROUND-COLOR: white
+}
+A { text-decoration:none; font-weight:bold; }
+A:link { text-decoration: none; color:blue; }
+A:visited { text-decoration: none; color:blue; }
+A:hover { text-decoration: none; color:red; }
+
+th
+{
+    FONT-FAMILY: Georgia, Verdana, Arial;
+    FONT-SIZE: 9pt;
+}
+
+td
+{
+    FONT-FAMILY: Georgia, Verdana, Arial;
+    FONT-SIZE: 9pt;
+}
+
+.inactive{
+font-weight:bold;
+color:gray;
+}
+
+/*******************************/
+/********NEW STUFF ***********/
+/*Thanks to http://webdesign.about.com/od/css/a/aa102102c.htm*/
+/*
+body {
+margin : 0;
+padding : 0;
+border-color : #cc0000;
+background-color : #ffffff;
+color : #000000;
+}
+p, ul, ol, li {
+font : 10pt Arial,geneva,helvetica;
+}
+h1 {
+font : bold 14pt Arial, Helvetica, geneva;
+}
+h2 {
+font : bold 12pt Arial, Helvetica, geneva;
+}
+*/
+
+/*the container for everything.*/
+#container{
+/*width:800px;
+border: 1px solid red;
+background:red;*/
+}
+
+#header{
+position : absolute;
+left : 0;
+width : 100%;
+/*margin-left : 10px;
+margin-right : 10px;*/
+color : #000000;
+/*padding : 3px;*/
+}
+
+.logo{
+float:center;
+}
+
+.topmenu{
+       background: #DEDEDE;
+	padding: 0;
+	margin: 0;
+	
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+}
+
+.topmenu ul {
+	padding: 0;
+	margin: 0;
+       background: #DEDEDE;
+	list-style: none;
+}
+
+.topmenu ul li{
+         display: block;
+
+	float: left;
+	width: 12em;
+}
+
+
+#leftnavigation {
+background: #DEDEDE;
+position : absolute;
+left : 0;
+width : 148px;
+margin-left : 10px;
+margin-top : 70px;
+color : #000000;
+padding : 3px;
+text-align:center;
+}
+
+#leftnavigation ul{
+list-style:none;
+margin-bottom: 2em;
+border-bottom: 1px dotted #000077;
+}
+
+#leftnavigation ul li{
+margin: 2 1 2 -41;
+border-top: 1px dotted #000077;
+}
+
+
+#leftnavigation ul li a{
+display:block;
+width:148px;
+padding: 1px;
+margin-top:0px;
+margin-bottom:0px;
+}
+
+#leftnavigation ul li a:hover{
+color:#DEDEDE;
+background:blue;
+}
+
+.menutitle{
+text-transform:uppercase;
+background: #cccccc;
+font-weight:bold;
+padding: 2px;
+}
+
+.sponsorlogos{
+margin-top: 2em
+}
+
+.sponsorlogos a img{
+margin-bottom: 8px;
+}
+
+/*
+#rightnavigation {
+position : absolute;
+left : 80%;
+top : 20px;
+width : 140px;
+padding-left : 10px;
+z-index : 3;
+color : #000000;
+padding : 3px;
+}
+*/
+#content {
+min-width: 80%;
+position:absolute;
+top : 75px;
+left: 160px;
+margin : 0px 5px 0 5px;
+padding : 3px;
+color : #000000;
+border: 1px solid blue;
+}
+#content h1, #content h2 {
+color : #cc0000;
+}
+
+.pagetitle{
+font-weight:bold;
+}
+
+.strike{
+text-decoration: line-through;
+}
+
+.formData{
+border: 1px dotted #111111;
+background: #cccccc;
+padding: 5px 0px 0px 10px;
+}
+
+.pagetitle{
+font-weight:bold;
+text-align:center;
+}
+
+
+/* * for program */
+.program{
+}
+
+.program .day{
+margin-bottom: 10px;
+background: #f8f8f8;
+}
+
+.program .day .title{
+margin-top:10px;
+border-top: 1px solid black;
+font-weight: bold;
+padding-top: 5px;
+padding-bottom: 5px;
+padding-left: 5px;
+font-size: 1.5em;
+background: #d8d8d8;
+}
+
+.program .day .session{
+padding-left: 3px;
+padding-top: 10px;
+padding-bottom: 10px;
+}
+
+.program .day .session .time{
+display:block;
+font-weight: bold;
+float: left;
+width: 12em;
+padding-right: 10px;
+}
+
+.program .day .session .title{
+font-weight: normal;
+border: none;
+padding: none;
+margin: none;
+background: none;
+  font-size: 1.1em;
+font-weight: bold;
+}
+
+
+.program .day .session .content{
+padding-right: 3px;
+}
+ 
+.program .day .session .content ul{
+padding-top: 0px;
+padding-bottom: 0px;
+}
+
+.program .day .session .content ul li{
+list-style-type: square;
+padding: 3px 0px 3px 0px;
+}
+
+.program .day .session .content ul li .papertitle{
+font-style: italic;
+}
+
+.program .day .session .keynote{
+padding: 10px 10px 0px 10px;
+}
+
+.program .day .session .keynote .keynotetitle{
+font-style:italic;
+font-weight: bold;
+color: #444444;
+}
+
+/*Style for the list of workshops*/
+.workshops dt {
+margin-top: 5px; 
+font-weight:bold;
+}

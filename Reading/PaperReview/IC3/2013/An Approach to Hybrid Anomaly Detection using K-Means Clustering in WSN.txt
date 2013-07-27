@@ -1,0 +1,15 @@
+The originality of the paper is questionable. While security in WSN may be an issue, data mining is a well-studied topics.
+
+Anomaly detection in WSN by mining the traffic data in WSN
+
+Related works in WSN security and data mining are mentioned
+
+Anomaly detection in WSN
+
+All the traffic data in WSN must be available to run the data mining algorithm. This may be impractical in real scenario especially for resource constraint environment like WSN
+
+Not discussed
+
+The proposed approach has been discussed and evaluation has been performed
+
+The main weakness of the proposed approach is that all the traffic data must be available to run the algorithm. While this may be a reasonable assumption in wired networks, it is probably impractical in the context of WSN where the nodes are very resource-constrained.

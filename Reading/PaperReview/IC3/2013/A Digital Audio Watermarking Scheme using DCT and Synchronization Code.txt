@@ -1,0 +1,18 @@
+The paper has certain degree of originality. The authors proposed their own watermark embedding and extraction method for digital audio.
+
+The main contribution of the paper is the proposed watermark embedding and extracting method. Experiments have been performed on the proposed methods.
+
+Literature survey is generally OK. A number of watermark embedding methods are listed. In particular, some DCT-based approaches are discussed in more details.
+
+Watermark embedding / extraction for digital audio.
+
+The problem is a well-defined and has been studied by others. No additional assumptions are used by the authors.
+
+Not discussed in the paper but scalability probably isn't a major concern for watermark embedding / extration either.
+
+The proposed watermark embedding and extracting method is described in details and experiments have been performed.
+
+The paper should not be considered as a scientific work because it lacks analytical results and comparison. In particular:
+1. There are many existing works discussed by the authors but there is no comparison.
+2. While there are experimental results, it would be better if the author could analytically quantify the improvements of their algorithm.
+3. Some equations (in Results section) do not show clearly.

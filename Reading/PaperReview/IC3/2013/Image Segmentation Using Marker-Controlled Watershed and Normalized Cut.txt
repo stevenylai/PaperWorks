@@ -1,0 +1,18 @@
+The originality of the paper is limited. The proposed image segmentation method is based on graph cut but as mentioned in the paper, this has been studied others.
+
+Use normalized cut technique to segment static image.
+
+The background of the paper has been discussed and some related works have been mentioned
+
+Static image segmentation
+
+Not applicable
+
+Not discussed and probably not a major issue in image segmentation
+
+None
+
+This paper should not be considered as a scientific work:
+1. The problem is not clearly defined - the paper mentioned two reasons why image segmentation is challenging but these reasons are not adequately addressed.
+2. The originality and contribution of the paper is unclear (see my comments on originality)
+3. There is very little evaluation

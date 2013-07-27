@@ -1,0 +1,15 @@
+This is primarily a survey paper which summarizes and categorizes existing data compression techniques in WSN
+
+Summarized and categorized data compression techniques used in WSN
+
+Related works are surveyed.
+
+A survey on data compression techniques in WSN
+
+Not applicable
+
+Not applicable
+
+Most of the surveyed works are indeed published in recent years.
+
+The paper mainly list the existing works for each category. It has not been able to provide the reader with any insights about the area. And the conclusion drawn from the paper is also common sense.

@@ -1,0 +1,13 @@
+The paper has limited originality. Neural network has been used in many areas and handwritten recognition is also a well-studied topic.
+
+A system for automatic handwritten recognition
+
+Some related work for character recognition is mentioned
+
+A system for automatic handwritten recognition
+
+Not applicable
+
+Not discussed and probably not important in automatic handwritten recognition system
+
+This is not a scientific work. It's just a technical document describing a system. The paper is about using neural network for automatic handwritten recognition but there is no mention on neural network in the paper. The evaluation is also very limited.

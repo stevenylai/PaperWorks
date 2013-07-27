@@ -1,0 +1,18 @@
+The paper may have certain degree of originality for effective text extraction from image
+
+To localize and extract text from video images
+
+Related works are mentioned
+
+To localize and extract text from video images while maximizing accuracy
+
+Not applicable
+
+Not mentioned
+
+The work have been compared with others and the results seem better
+
+Some parts of the proposed approach is not clear enough. In particular for the text localization part which is the most important part of the paper:
+1. How is erosion done? If this is based on existing works, then a reference is needed.
+2. What are the 'prescribed features'?
+3. What are the 'specific measurement'?

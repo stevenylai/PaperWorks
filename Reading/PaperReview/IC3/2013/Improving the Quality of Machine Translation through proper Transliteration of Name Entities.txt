@@ -1,0 +1,15 @@
+The paper may have certain degree of originality because according to the literature review in the paper, translation between English and Punjabi is probably not studied by many others.
+
+A probability-based method for transliterate Punjabi into English and vice versa.
+
+Literature survey is reasonable - the paper did mention several related works which translate between Punjabi and English
+
+Maximize the accuracy for transliterate Punjabi to English and vice versa
+
+Not applicable
+
+Not discussed but probably not a primary concern in the context of machine translation
+
+The algorithm is discussed and evaluation is performed
+
+The work lacks comparison, in Related Works, the paper mentioned a transliteration system with accuracy of 95.23% while this paper only achieves accuracy around 89.76%. It's therefore unclear what the real contribution of the paper is.

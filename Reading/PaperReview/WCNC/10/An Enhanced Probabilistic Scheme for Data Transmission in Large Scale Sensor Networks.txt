@@ -1,0 +1,8 @@
+Strength:
+This paper presents a probabilistic scheme for direct data transmission. It improves the authors' previous work by taking into account the packet loss caused by various factors. The authors did both theoretical analysis and simulation to study the performance of their new scheme.
+
+Weakness:
+The author mentioned that this paper's work improves their previous work by taking into account the packet loss caused by various factors. The author should have given a bit more explanation about how these factors can affect the design of the new scheme. In addition, the author should compare their own work with existing ones such as the gossip-based methods mentioned in the introduction part.
+
+Changes:
+First, the author should address the key difference of this work compared to their previous work and briefly explain their essential ideas about how to solve the problem because of the new issues. Second, the author should compare their work with the exiting ones in the simulation part.

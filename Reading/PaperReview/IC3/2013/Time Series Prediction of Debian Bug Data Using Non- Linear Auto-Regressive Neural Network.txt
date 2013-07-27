@@ -1,0 +1,15 @@
+The originality is not well-justified. The paper simply uses an existing ANN approach which is widely used for detecting bugs in Debian.
+
+Use ANN to detect bugs in Debian
+
+Related works in ANN are mentioned
+
+Use ANN to detect bugs in Debian while maximize accuracy
+
+Not applicable
+
+Not discussed
+
+None
+
+The motivation of the paper isn't clear. What's the use of predicting bug data in an OS? Does it help to find the bugs? In addition, for the experiments, most of the data (over 9 years) are used for training while only a fraction (less than 1 year) is used for testing. What's the reason for such setup?

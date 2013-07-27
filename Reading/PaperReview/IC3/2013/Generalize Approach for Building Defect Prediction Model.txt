@@ -1,0 +1,13 @@
+The originality of the paper is very limited. The paper proposed a model for software defect prediction. However, within the model, each step is mainly referred to some existing works.
+
+The paper proposes a model for software defect prediction but authors' own contribution is very limited for the individual steps inside the model
+
+Related works for various components in the proposed model have been discussed
+
+None mentioned
+
+Not mentioned
+
+None
+
+This is not a scientific paper. I can't seem to find any solid work. The major contribution is a diagram for the proposed model which is not very clear.

@@ -1,0 +1,18 @@
+The originality of the paper is limited because AODV is a MANET protocol proposed long time ago and overhearing has been studied extensively in MANET routing.
+
+By introducing backup routes to AODV in order to improve its routing efficiency
+
+Literature survey is OK because MANET's routing protocols are discussed and categorized
+
+Improve the AODV routing efficiency by minimizing its routing overhead
+
+The assumption is the same as AODV and no additional assumptions are introduced by the paper
+
+Not explicitly discussed but by minimizing routing overhead in MANET, scalability can probably be improved.
+
+Modified AODV and performed simulation
+
+The paper lacks a good motivation.
+1. As its name suggests, AODV is used primarily for on-demand routing. By maintaining backup links through overhearing, the paper has changed AODV to be more proactive. The paper should give more practical application examples on why this is necessary.
+2. While overhearing may not introduce additional communication costs, the various tables used in setting up the backup routes will introduce additional storage cost and the paper should take this into consideration when performing evaluation.
+3. Since the modified AODV is a protocol between proactive and reactive, it might be more interesting to include other proactive routing protocols in the evaluation

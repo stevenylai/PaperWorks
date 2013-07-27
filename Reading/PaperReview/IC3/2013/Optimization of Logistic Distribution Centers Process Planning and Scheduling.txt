@@ -1,0 +1,19 @@
+The paper has certain degree of originality and addresses a problem in the area of operation research
+
+1. To describe the problem of logistic and warehousing companies
+2. To describe a set of benchmarks and to give the reference layout of the warehouse
+3. To present a baseline results obtained by a genetic programming algorithm
+
+Related works in OR and GA are reviewed
+
+Minimize the operation time for logistic distribution centers
+
+Some layout definitions of logistic warehouses. According to the paper, these are consulted from logistic companies.
+
+Compared with mathematical programming, genetic algorithm are supposed to be more scalable in tackling larger optimization problems
+
+1. Problem is well-defined
+2. Paper is well organized
+3. Results are given
+
+It might be more interesting if the paper can give more analytical results on the number of generations needed to obtain a solution.

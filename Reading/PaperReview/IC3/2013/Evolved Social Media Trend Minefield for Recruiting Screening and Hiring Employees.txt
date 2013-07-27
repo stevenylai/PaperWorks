@@ -1,0 +1,15 @@
+The originality of the paper is very limited. What the paper describes is primarily just a database system.
+
+A database system for selecting employee through social networking sites
+
+A few related systems are mentioned.
+
+A database system for selecting employee through social networking sites
+
+Not applicable
+
+Not discussed
+
+None
+
+This is not a scientific work. It is a description of an existing system. The techniques (parameters for measuring suitability) incorporated in the system seem quite random and are not well-justified. There is no benchmark for evaluation so it's very difficult to tell how well the system performs from the results.

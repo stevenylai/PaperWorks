@@ -1,0 +1,16 @@
+This paper has certain degree of originality. In the introduction, the authors say that they want to improve the convergence speed of MSA by using modified PSO. Then, during the discusssion of their modified PSO, the authors' primary focus is to propose several weight schemes. However, there's very little discussion why such schemes exist in the first place. In particular, those numbers in the proposed weight schemes seem to be magical numbers. The actual algorithm shown in Fig. 1 also seems to be trivial.
+
+Proposed and evaluated eight weight schemes and a modified PSO to improve the convergence speed of MSA using PSO.
+
+Literature survey is generally OK. The authors divided the existing MSA approaches into six categories. For PSO, the authors described its basic idea and listed some related equations.
+
+The problem is to improve the convergence speed of MSA. The method used by the authors is compare and evaluate different weight schemes for MPSO.
+
+MSA is already a well defined problem which has been studied by many and the authors don't have any extra assumptions in the problem.
+
+The proposed approach is supposed to improve the scalability of existing PSO-based MSA by improving the convergence speed.
+
+All the proposed eight weight schemes are evaluated and compared.
+
+1. The author should include more discussion on how the weight schemes are derived.
+2. The goal of the work is to improve the convergence speed of MSA but it's unclear from the algorithm description why their approach and weight schemes can help with that respect.

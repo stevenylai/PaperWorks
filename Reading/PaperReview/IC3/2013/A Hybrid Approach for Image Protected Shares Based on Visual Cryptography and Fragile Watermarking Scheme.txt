@@ -1,0 +1,17 @@
+The originality of the paper is not clear because the essential idea behind the proposed approach is to use fragile watermarking which is an existing technique used to data integrity.
+
+Use fragile watermarking in Visual Cryptography for detecting tampered shares.
+
+Literature survey is not sufficient because the paper discussed very few related works in VC. And yet the paper's main objective is to detect tampered shares in VC
+
+The problem is to detect tampered shares in VC via fragile watermarking. However, fragile watermarking is a general method for checking data integrity, so it's not clear why the problem is different in the context of VC.
+
+Not applicable
+
+Not discussed and probably not very important in the application of VC
+
+Applied fragile watermarking for detecting tampered share in VC. The algorithm is discussed and evaluation is performed.
+
+1. Literature review is weak (see my comments for literature survey).
+2. The problem is unclear (see my comments for problem)
+3. The evaluation is weak - there's no comparison or analytical results.

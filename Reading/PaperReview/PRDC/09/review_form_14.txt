@@ -1,0 +1,139 @@
+--------------------------------------------------------------
+--- For your convenience, this form can be processed by EasyChair
+--- automatically. You can fill out this form offline and then
+--- upload it to EasyChair. Several review forms can be uploaded
+--- simultaneously. You can modify your reviews as many times as
+--- you want.
+--- When filling out the review form please mind
+--- the following rules:
+--- (1) Lines starting with --- are comments. EasyChair will
+---     ignore them. Do not start lines in your review with ---
+---     as they will be ignored. You can add comments to the
+---     review form or remove them
+--- (2) Lines starting with *** are used by EasyChair. Do not
+---     remove or modify these lines.
+--------------------------------------------------------------
+*** REVIEW FORM ID: 223349::77939
+*** SUBMISSION NUMBER: 14
+*** TITLE: An Early-stopping Protocol for Computing Aggregate Functions in Sensor Networks
+*** AUTHORS: Antonio Fernandez Anta, Miguel A. Mosteiro and Christopher Thraves
+*** PC MEMBER: Jiannong Cao
+--------------------------------------------------------------
+*** REVIEW:
+---  Please provide a detailed review, including justification for
+---  your scores. This review will be sent to the authors unless
+---  the PC chairs decide not to do so. This field is required.
+
+This paper presents a new data aggregation protocol called early-stopping protocol for WSN. The protocol is claimed to be time-optimal in presence of failures. The basic idea of the protocol is to combine hierarchical data aggregate and non-hierarchical data aggregate. The nodes are divided into slug nodes and delegate nodes. Delegated nodes will compute the result based on the input from slug nodes. The authors also analyzed the performance of their protocol. However, the paper has the following problems:
+1.	The notations used are not clear. There are a lot of notations with many dots in them but the authors didn¡¯t give detailed explanations
+2.	In order to make the work more convincing, the authors should implement or at least simulate their protocol. However, in the paper, the authors only gave theoretic analysis
+3.	The organization of the protocol can be improved. Instead of mixing the pseudo codes with the analysis, the authors should first give a high-level overview of the protocol.
+4.	There is no comparison with the existing works. Even though the authors mentioned a lot of existing works. None of them are compared.
+5.	There are some typos in the paper such as ¡®The spanning tree is used to collect and gradually aggregate the input-values at each level of the tree, relying (relaying) ¡­¡¯ on the third page.
+In summary, the idea of the protocol is interesting. However, because of the problems mentioned above, it¡¯s difficult to appreciate the contribution of the paper.
+
+--------------------------------------------------------------
+*** REMARKS FOR THE PROGRAMME COMMITTEE:
+---  If you wish to add any remarks for PC members, please write
+---  them below. These remarks will only be used during the PC
+---  meeting. They will not be sent to the authors. This field is
+---  optional.
+
+--------------------------------------------------------------
+--- If the review was written by (or with the help from) a
+--- reviewer different from the PC member in charge, add
+--- information about the reviewer in the form below. Do not
+--- modify the lines starting with ***
+*** REVIEWER'S FIRST NAME: (write in the next line)
+
+*** REVIEWER'S LAST NAME: (write in the next line)
+
+*** REVIEWER'S EMAIL ADDRESS: (write in the next line)
+
+--------------------------------------------------------------
+--- In the evaluations below, uncomment the line with your
+--- evaluation or confidence. You can also remove the
+--- irrelevant lines
+*** OVERALL EVALUATION:
+2
+---  5 (outstanding, way above standard)
+---  4 (good, above standard)
+---  3 (average, standard)
+---  2 (poor, substandard)
+---  1 (extremely poor,grossly substandard)
+---  0 (not applicable)
+
+*** REVIEWER'S CONFIDENCE:
+2
+---  4 (expert)
+---  3 (high)
+---  2 (medium)
+---  1 (low)
+---  0 (null)
+
+*** CLARITY OF ABSTRACT: from 1 (lowest) to 5 (highest)
+3
+---  5 (excellent)
+---  4 (good)
+---  3 (fair)
+---  2 (poor)
+---  1 (very poor)
+
+*** PROBLEM CLEARLY DEFINED: from 1 (lowest) to 5 (highest)
+3
+---  5 (excellent)
+---  4 (good)
+---  3 (fair)
+---  2 (poor)
+---  1 (very poor)
+
+*** METHODS, ALGORITHMS, AND PROOFS CLEARLY DESCRIBED: from 1 (lowest) to 5 (highest)
+2
+---  5 (excellent)
+---  4 (good)
+---  3 (fair)
+---  2 (poor)
+---  1 (very poor)
+
+*** EXPERIMENTS AND RESULTS CLEARLY DESCRIBED: from 1 (lowest) to 5 (highest)
+1
+---  5 (excellent)
+---  4 (good)
+---  3 (fair)
+---  2 (poor)
+---  1 (very poor)
+
+*** CLARITY OF  TABLES AND FIGURES: from 1 (lowest) to 5 (highest)
+2
+---  5 (excellent)
+---  4 (good)
+---  3 (fair)
+---  2 (poor)
+---  1 (very poor)
+
+*** OVERALL PRESENTATION (MAYBE DIFFERENT FORM AVERAGE): from 1 (lowest) to 5 (highest)
+2
+---  5 (excellent)
+---  4 (good)
+---  3 (fair)
+---  2 (poor)
+---  1 (very poor)
+
+*** NOVELTY OF SOLUTION: from 1 (lowest) to 5 (highest)
+2
+---  5 (excellent)
+---  4 (good)
+---  3 (fair)
+---  2 (poor)
+---  1 (very poor)
+
+*** ACCOUNT OF PRIOR WORK( REFERENCES): from 1 (lowest) to 5 (highest)
+3
+---  5 (excellent)
+---  4 (good)
+---  3 (fair)
+---  2 (poor)
+---  1 (very poor)
+
+*** END
+--------------------------------------------------------------

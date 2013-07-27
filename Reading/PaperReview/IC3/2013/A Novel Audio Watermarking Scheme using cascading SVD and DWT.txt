@@ -1,0 +1,15 @@
+The paper uses several techniques such as DWT, SVD and synchronization code for watermarking in audio. Hoever, these are existing techniques and it's the originality of the authors' own algorithm isn't clearly highlighted.
+
+To apply existing techniques such as DWT, SVD and synchronization code in audio watermarking.
+
+The paper gave sufficient introduction for the techniques used such as DWT, SVD and synchronization code.
+
+Audio Watermarking
+
+Not applicable
+
+Not discussed and probably not important
+
+The proposed watermarking algorithm is described and experiments have been performed
+
+The paper lacks comparison with existing works and its own contribution in the algorithm is not properly highlighted.

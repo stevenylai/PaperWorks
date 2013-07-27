@@ -1,0 +1,11 @@
+The originality of the paper is very limited - wormhole attack detection is a well-studied topic in WSN
+
+A method for detecting wormhole after localization
+
+Related works in wormhole detection have been mentioned in the paper
+
+The WSN have been localized. This is actually a pretty strong assumption because with location information, the system can ensure the packet is within certain range.
+
+Not discussed
+
+This is not a scientific work. There is only one simple paragraph describing the proposed method. There is no evaluation and no comparison.

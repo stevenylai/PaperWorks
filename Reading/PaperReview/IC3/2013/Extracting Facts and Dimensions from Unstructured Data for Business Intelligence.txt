@@ -1,0 +1,15 @@
+The originality of the paper is questionable. The proposed system is largely based on XML which are existing technology used by many.
+
+A system for extracting useful information from unstructured data
+
+Very few works are reviewed
+
+To develop a system for processing unstructured data
+
+Not applicable
+
+Not discussed
+
+None
+
+This is not a scientific work. It is just a description of an existing system. The topic is to extract information from unstructured data but in the description of the system, there is very little mention on how such extraction is performed. In addition, there's no evaluation or comparison
