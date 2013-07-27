@@ -1,0 +1,71 @@
+class SingleLightEvent extends event {
+	attribute Location realLoc;
+	attribute int light;
+	public Location get_realLoc () {
+		return System.location;
+	}
+	public int get_light() {
+		return System.light;
+	}
+}
+
+class SingleLightLocationFilter extends SingleLightEvent {
+	public Location l;
+	public LightAverage (Location l) {
+		this.l=l;
+	}
+	public boolean filter () { // Static filter
+		if (realLoc==l)
+			return true;
+		else
+			return false;
+	}
+}
+
+class LightAverage extends event {
+	attribute int averageLight;
+	private int total;
+	private int count;
+	public Location l;
+	public LightAverage (Location l) {
+		this.l=l;
+	}
+	public int get_averageLight() {
+		total=count=0;
+		walkthrough{
+			SingleLightLocationFilter e=new Event(l);
+			total = e.light;
+			count++;
+		}
+		averageLight=total/count;
+	}
+	public boolean filter () {
+		return true;
+	}
+}
+
+class SingleLightValueFilter extends SingleLightEvent {
+	public boolean filter () { // Dynamic filter
+		if (light>threshold)
+			return true;
+		else
+			return false;
+	}
+}
+class SingleSequence extends event {
+	private int streak;
+	public SingleSequence(int streak) { this.streak=streak; }
+	public boolean filter() {
+		int count=0;
+		SingleLightValueFilter pre=new SingleLightValueFilter();
+		walkthrough {
+			SingleLightValueFilter e = new SingleLightValueFilter();
+			if (e.realLoc-pre.realLoc==1) {
+				count++;
+				if (count>=streak)
+					return true;
+				pre=e;
+			}
+		}
+	}
+}

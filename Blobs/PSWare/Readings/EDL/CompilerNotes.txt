@@ -1,0 +1,84 @@
+Derivation
+Verfy the grammar
+Grammar vs Regular Expression (FA cannot count)
+Writing Grammar: eliminating ambiguity, left recursion, left factoring;
+FIRST(), FOLLOW(): consider the examples
+Handle pruning, shift-reduce parsing
+Items: see examples in 4.6.2
+canonical LR(0) collection: a collection of items and provides basis for constructing DFA
+LR(0) automaton: constructed from Canonical LR(0) collection. Each state represents a set of items in canonical LR(0) collection
+
+augmented grammar: add a new start symbol
+CLOSURE(): kernel items/nonkernel items depending on the position of dot
+GOTO(): is the transition of LR(0) automaton
+
+LR-Parsing algorithm: parsing table, and algorithm for constructing a parsing table
+Viable Prefix
+
+SDD: context-free grammar+attributes(with symbols) and rules(with productions).
+In semantic rules, operator || denotes string concatenation.
+Synthesized attribute: defined by production at N. S-attributed SDD.
+Inherited attribute: defined by production at parent of N. They are useful 
+Annotated parse tree: bottom-up for synthesized attributes, top-down for inherited attributes
+Dependency graph: for determining an evaluation order. If there is any cycle, then cannot evaluate this SDD.
+2 classes of SDD can be garanteed to have a translation - S-attributed, L-attribute.
+Controlled side effects.
+By using SDD, we can construct syntax trees.
+SDT: SDTs with actions at the right ends are called postfix SDT. SDT comes from SDD.
+Some rules/algorithms are needed for converting L-attributed SDD to SDT.
+Some algorithms are available for implementing an SDT with an LL/LR parser.
+
+DAG (converted from Syntax tree): how to construct a DAG - value-number method
+Three-address instructions (representation of syntax tree). What is an address. common three-address instructions.
+Representation of three-address: quadruples, triples, indirect triples.
+SSA (another type of representation of syntax tree)
+
+Type checking: grammar for declaration. SDT for computing types and widths. How to handle sequences of declarations and fields in records and classes.
+Some techniques for Translation of Expressions / array addressing.
+Every language has a type system and a strongly typed language garantees that the programs it compiles will run without type errors.
+Two kinds of type checking: type synthesis (buildes up the type from the type expressions). Type inference (determine the type from the way it is used.
+Type conversions: widening, narrowing.
+Overloading functions and operators - how to resolve overloaded symbols (by looking at the arguments or something else).
+Parametric polymorphism type inference: first infer the type from the usage, then need to unify all of the usage of the function to see if they are constant.
+
+Control flow translation is tied to translation of boolean expressions.
+Boolean expressions are used to 1. alter the flow of control; 2. compute logical values; (determined by its syntactic context)
+Short-Circuit / Jumping Code: translate to jump & translation of control-flow. Avoid redundant goto by using a special label called 'fall'.
+When jump, the target address of goto may not be determined immediately. Backpatching: lists of jumps are passed as sythesized attributes. Each jump is put on a list of jumps.
+Translate switch statements: a compact way is to create a table of pairs, each pair consisting of a value and a label for the corresponding statement's code.
+
+
+Aligned structures, padding the unused space, pack data (to remove padding). Control stack manages procedure calls. Each activation has an activation record on the control stack. Calling sequence.
+Use access links to deal with nested procedure procedures.
+Garbage Collectors - User program (mutator) change the collection of objects in the heap. Requirement: type safe languages. Approaches: reference-count, trace-based.
+To improve the performance of trace-based garbage collection: incremental collection, partial collection - generational garbage collection, train algorithm.
+
+
+Typical ISA: RICS, CICS, stack-based (JVM).
+Graph representation of IR. 1. Divide the code into basic blocks (nodes in the graph); 2. Determine the next-use information for each statement in a basic block; 3. Flow graph;
+Use DAG to locally represent and optimize each basic block. Techniques: find common subexpressions, use of algebraic identities. Special case handling for array references, pointer and proecdure calls.
+Register descriptor keeps track of the register variables. Address descriptor keeps track of the location of current variables. getReg(I) selects registers for each memory location associated with three-address instruction I.
+Peephole optimization - optimize the naive codes.
+Usage counts as saving cost.
+Instruction selection - tree rewriting (similar to SDD, but some issues such as grammar size need to be taken care of). Tools exist to help build a code generator.
+Algorithm for using fewer registers to evaluate expressions.
+Dynamic programming algorithm - contiguous evaluation: evaluate the subtrees that need to be computed into memory.
+
+
+Basic optimization techniques: global common subexpressions, copy propagation, dead-code elimination, code motion, induction variables.
+Each program point is associated with a data-flow value (set of possible program states). Possible values is the domain. data-flow values for statement s as IN[s], OUT[s].
+Relationship between values before and after the assignment statement is transfer function.
+Reaching Definitions: d reaches p if there is a path from d to p and d is not killed along that path.
+Transfer functions for reaching definitions. Meet operator for reaching definitions for blocks, summary of the contributions from different paths.
+Live-variable analysis: defB, useB.
+Available expressions: an expression is available at p if every path from the entry node to p evaluates x+y.
+data-flow analysis framework: a direction of the data flow D, a semilattice includes values V and a meet operator, transfer function F.
+partial order for a semilattice, greatest lower bounds (glb). lattice diagrams can be very big so it may be expressed as product lattice and the height can be determined.
+2 properties of transfer functions. 
+Properties of frameworks: monotone, distributivity condition.
+Meaning and approximation of the data-flow solution
+Constant Propagation problem can also be solved based on the data-flow analysis framework.
+Lazy-code-motion algorithm for partial-redundancy elimination.
+Analysis of loops: dominators, dominator tree. For depth-first search of a graph, we have advancing edges, retreating edges cross edges. Use backedge to determine if a flow graph is reducible. Algorithm for finding natural loops. How to speed up the analysis algorithms.
+Region-based Analysis: view the program as a hierarchy of regions. Transfer functions used: composition, meet, closure.
+Region-based analysis is useful for symbolic analysis which tracks the values of variables in programs symbolically as expressions.

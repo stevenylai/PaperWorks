@@ -1,0 +1,30 @@
+4. Runtime libraries for arithmetics
+6. Source Tree structure:
+The ¡®gcc¡¯ directory is configured with an Autoconf-generated script ¡®configure¡¯. The¡®configure¡¯(in the gcc dir) script is generated from ¡®configure.ac¡¯ and ¡®aclocal.m4¡¯.
+Anatomy of a Language Front End: a front end has the following parts... (6.3.8)
+Front End 'language' Directory: config-lang.in, Make-lang.in,
+6. Testsuite: for maintaining the quality of the compiler
+7. Option specification files: ended with '.opt'. Contains the list of options.
+8. Passes and files of the compiler: front end is invoked only once, via "lang_hooks.parse_file". C front end uses GENERIC trees. 'c-common.def' is used to specify the tree codes. gimplifier will be invoked to translate the tree nodes to GIMPLE. Usually it is easier to generate GENERIC tree and use gimplifier to convert to GIMPLE.
+9. Trees used by C/C++. how to create a new DECL(declaration) node type (9.5.2.2). 
+10. GCC uses three intermediate languages: GENERIC, GIMPLE, RTL.
+
+
+Java front end:
+Lexical Analyzer:
+
+lex.c seems to have been manually written
+Parser:
+
+jvspec.c: specific flags and argument handling of the front-end. Mainly contains information about command line arguments.
+Parsers: parse.y, parse.scan.y
+keyword.h is generated from keyword.gperf
+gt-xxx.h: type information for each of the files (automatically generated).
+
+Build hooks: specify what will be built (??Maybe not being used at all)
+stage hooks: (don't know what they are)
+Tree definitions: java-tree.h, java-tree.def
+lex: lexc, keyword.h, chartables.h
+Take a look at how parse.o is generated. It uses parse.c, Java tree headers...
+jcf* files are used to read '*.class' files.
+
