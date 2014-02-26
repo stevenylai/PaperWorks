@@ -1,0 +1,3219 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%Title: (gateway.pdf)
+%%Version: 1 6
+%%Creator: Adobe Acrobat 7.0
+%%CreationDate: 14:01:49 05/29/12
+%%DocumentData: Clean7Bit
+%%LanguageLevel: 2
+%ADO_ContainsXMP: MainFirst
+%%BoundingBox: 0 0 356 218
+%%HiResBoundingBox: 0.0 0.0 355.5 218.25
+%%Pages: 0
+%%DocumentProcessColors: Cyan Magenta Yellow Black
+%%DocumentSuppliedResources:
+%%+ procset (Adobe Acrobat - PDF operators) 1.2 0
+%%+ procset (Adobe Acrobat - general image support) 1.2 0
+%%+ procset (Adobe Acrobat - monochrome image support) 1.2 0
+%%+ procset (Adobe Acrobat - color image support) 1.2 0
+%%+ procset (Adobe Acrobat - indexed color image support) 1.2 0
+%%EndComments
+%%BeginProlog
+%%EndProlog
+%%BeginSetup
+%ADOPrintSettings: L2 W0 VM op crd os scsa T h ef bg ucr sf ef r b fa pr seps ttf hb EF t2 irt Printer/PostScript Color Management 0
+%%BeginResource: procset l2check 6.0 1
+%%Copyright: Copyright 1993,2001 Adobe Systems Incorporated. All Rights Reserved.
+systemdict /languagelevel known
+{ systemdict /languagelevel get 1 eq }
+{ true }
+ifelse
+{
+initgraphics /Helvetica findfont 18 scalefont setfont
+72 600 moveto (Error: This application does not support) dup show
+72 580 moveto (printing to a PostScript Language Level 1 printer.) dup show
+exch = =
+/Times-Roman findfont 16 scalefont setfont
+72 500 moveto (As a workaround, try selecting Print As Image from) show
+72 480 moveto (the Advanced Print dialog.) show
+showpage
+quit
+}
+if
+%%EndResource
+/currentpacking where{pop currentpacking true setpacking}if
+%%BeginResource: procset pdfvars 6.0 1
+%%Copyright: Copyright 1987-2002 Adobe Systems Incorporated. All Rights Reserved.
+%%Title: definition of dictionary of variables used by PDF & PDFText procsets
+userdict /PDF 162 dict put
+userdict /PDFVars 89 dict dup begin put
+/docSetupDone false def
+/InitAll 0 def
+/TermAll 0 def
+/DocInitAll 0 def
+/DocTermAll 0 def
+/_pdfEncodings 2 array def
+/_pdf_str1 1 string def
+/_pdf_i 0 def
+/_pdf_na 0 def
+/_pdf_showproc 0 def
+/_italMtx [1 0 .212557 1 0 0] def
+/_italMtx_WMode1 [1 -.212557 0 1 0 0] def
+/_italMtxType0 [1 0 .1062785 1 0 0] def
+/_italMtx_WMode1Type0 [1 -.1062785 0 1 0 0] def
+/_basefont 0 def
+/_basefonto 0 def
+/_pdf_oldCIDInit null def
+/_pdf_FontDirectory 30 dict def
+/_categories 10 dict def
+/_sa? true def
+/_ColorSep5044? false def
+/nulldict 0 dict def
+/_processColors 0 def
+/overprintstack null def
+/_defaulttransfer currenttransfer def
+/_defaultflatness currentflat def
+/_defaulthalftone null def
+/_defaultcolortransfer null def
+/_defaultblackgeneration null def
+/_defaultundercolorremoval null def
+/_defaultcolortransfer null def
+PDF begin
+[/c/cs/cm/d/d0/f/h/i/j/J/l/m/M/n/q/Q/re/ri/S/sc/sh/Tf/w/W
+/applyInterpFunc/applystitchFunc/domainClip/encodeInput
+/initgs/int/limit/rangeClip
+/defineRes/undefineRes/findRes/setSA/pl
+/? /! /| /: /+ /GetGlyphDirectory
+/pdf_flushFilters /pdf_readstring /pdf_dictOp /pdf_image /pdf_maskedImage
+/pdf_shfill /pdf_sethalftone
+] {null def} bind forall
+end
+end
+%%EndResource
+PDFVars begin PDF begin
+%%BeginResource: procset pdfutil 6.0 1
+%%Copyright: Copyright 1993-2001 Adobe Systems Incorporated. All Rights Reserved.
+%%Title: Basic utilities used by other PDF procsets
+/bd {bind def} bind def
+/ld {load def} bd
+/bld {
+dup length dict begin
+{ null def } forall
+bind
+end
+def
+} bd
+/dd { PDFVars 3 1 roll put } bd
+/xdd { exch dd } bd
+/Level2?
+systemdict /languagelevel known
+{ systemdict /languagelevel get 2 ge } { false } ifelse
+def
+/Level1? Level2? not def
+/Level3?
+systemdict /languagelevel known
+{systemdict /languagelevel get 3 eq } { false } ifelse
+def
+/getifknown {
+2 copy known { get true } { pop pop false } ifelse
+} bd
+/here {
+currentdict exch getifknown
+} bd
+/isdefined? { where { pop true } { false } ifelse } bd
+%%EndResource
+%%BeginResource: procset pdf 6.0 1
+%%Copyright: Copyright 1998-2003 Adobe Systems Incorporated. All Rights Reserved.
+%%Title: General operators for PDF, common to all Language Levels.
+/cm { matrix astore concat } bd
+/d /setdash ld
+/f /fill ld
+/h /closepath ld
+/i {dup 0 eq {pop _defaultflatness} if setflat} bd
+/j /setlinejoin ld
+/J /setlinecap ld
+/M /setmiterlimit ld
+/n /newpath ld
+/S /stroke ld
+/w /setlinewidth ld
+/W /clip ld
+/sg /setgray ld
+/initgs {
+0 setgray
+[] 0 d
+0 j
+0 J
+10 M
+1 w
+false setSA
+/_defaulttransfer load settransfer
+0 i
+/RelativeColorimetric ri
+newpath
+} bd
+/int {
+dup 2 index sub 3 index 5 index sub div 6 -2 roll sub mul
+exch pop add exch pop
+} bd
+/limit {
+dup 2 index le { exch } if pop
+dup 2 index ge { exch } if pop
+} bd
+/domainClip {
+Domain aload pop 3 2 roll
+limit
+} [/Domain] bld
+/applyInterpFunc {
+0 1 DimOut 1 sub
+{
+dup C0 exch get exch
+dup C1 exch get exch
+3 1 roll
+1 index sub
+3 index
+N exp mul add
+exch
+currentdict /Range_lo known
+{
+dup Range_lo exch get exch
+Range_hi exch get
+3 2 roll limit
+}
+{
+pop
+}
+ifelse
+exch
+} for
+pop
+} [/DimOut /C0 /C1 /N /Range_lo /Range_hi] bld
+/encodeInput {
+NumParts 1 sub
+0 1 2 index
+{
+dup Bounds exch get
+2 index gt
+{ exit }
+{ dup
+3 index eq
+{ exit }
+{ pop } ifelse
+} ifelse
+} for
+3 2 roll pop
+dup Bounds exch get exch
+dup 1 add Bounds exch get exch
+2 mul
+dup Encode exch get exch
+1 add Encode exch get
+int
+} [/NumParts /Bounds /Encode] bld
+/rangeClip {
+exch dup Range_lo exch get
+exch Range_hi exch get
+3 2 roll
+limit
+} [/Range_lo /Range_hi] bld
+/applyStitchFunc {
+Functions exch get exec
+currentdict /Range_lo known {
+0 1 DimOut 1 sub {
+DimOut 1 add -1 roll
+rangeClip
+} for
+} if
+} [/Functions /Range_lo /DimOut] bld
+/pdf_flushfilters
+{
+aload length
+{ dup status
+1 index currentfile ne and
+{ dup flushfile closefile }
+{ pop }
+ifelse
+} repeat
+} bd
+/pdf_readstring
+{
+1 index dup length 1 sub get
+exch readstring pop
+exch pdf_flushfilters
+} bind def
+/pdf_dictOp
+{
+3 2 roll
+10 dict copy
+begin
+_Filters dup length 1 sub get def
+currentdict exch exec
+_Filters pdf_flushfilters
+end
+} [/_Filters] bld
+/pdf_imagemask {{imagemask} /DataSource pdf_dictOp} bd
+/pdf_shfill {{sh} /DataSource pdf_dictOp} bd
+/pdf_sethalftone {{sethalftone} /Thresholds pdf_dictOp} bd
+/masks [ 2#10000000
+2#11000000
+2#11100000
+2#11110000
+2#11111000
+2#11111100
+2#11111110
+2#11111111 ] def
+/addNBits
+{
+/numBits exch def
+/byte exch def
+OutBitOffset numBits add 8 gt
+{
+byte OutBitOffset 8 sub bitshift
+OutBuffer OutByteIndex get or
+OutBuffer OutByteIndex 3 -1 roll put
+/OutByteIndex OutByteIndex 1 add def
+/bitsDoneSoFar OutBitOffset def
+/OutBitOffset numBits 8 OutBitOffset sub sub def
+OutBitOffset 0 gt
+{
+byte bitsDoneSoFar bitshift
+masks numBits bitsDoneSoFar sub get and
+OutBuffer OutByteIndex 3 -1 roll put
+} if
+}
+{
+byte masks numBits 1 sub get and
+OutBitOffset neg bitshift
+OutBuffer OutByteIndex get or
+OutBuffer OutByteIndex 3 -1 roll put
+/OutBitOffset OutBitOffset numBits add def
+OutBitOffset 8 eq
+{
+/OutBitOffset 0 def
+/OutByteIndex OutByteIndex 1 add def
+} if
+} ifelse
+} bind def
+/DevNNFilter
+{
+/InBuffer Width NumComps mul BitsPerComponent mul 7 add 8 idiv string def
+AllSource InBuffer readstring pop pop
+/outlen Width NewNumComps mul BitsPerComponent mul 7 add 8 idiv def
+/OutBuffer outlen string def
+0 1 outlen 1 sub { OutBuffer exch 0 put } for
+/InByteIndex 0 def
+/InBitOffset 0 def
+/OutByteIndex 0 def
+/OutBitOffset 0 def
+/KeepArray NumComps array def
+0 1 NumComps 1 sub { KeepArray exch true put } for
+DevNNones { KeepArray exch false put } forall
+Width {
+KeepArray
+{
+{
+/bitsLeft BitsPerComponent def
+{
+bitsLeft 0 le { exit } if
+/bitsToDo 8 InBitOffset sub dup bitsLeft gt { pop bitsLeft } if def
+InBuffer InByteIndex get
+InBitOffset bitshift
+bitsToDo addNBits
+/bitsLeft bitsLeft bitsToDo sub def
+InBitOffset bitsToDo add
+dup 8 mod /InBitOffset exch def
+8 idiv InByteIndex add /InByteIndex exch def
+} loop
+}
+{
+InBitOffset BitsPerComponent add
+dup 8 mod /InBitOffset exch def
+8 idiv InByteIndex add /InByteIndex exch def
+}
+ifelse
+}
+forall
+} repeat
+OutBuffer
+} bd
+/pdf_image
+{
+20 dict copy
+begin
+/UnusedNones where { /UnusedNones get}{false} ifelse
+{
+/NumComps Decode length 2 div cvi def
+/OrigDecode Decode def
+/NumNones DevNNones length def
+/NewNumComps NumComps NumNones sub def
+/Decode NewNumComps 2 mul cvi array def
+/devNNindx 0 def
+/decIndx 0 def
+/cmpIndx 0 def
+NumComps {
+cmpIndx DevNNones devNNindx get eq
+{
+/devNNindx devNNindx 1 add dup NumNones eq {pop 0} if def
+}
+{
+Decode decIndx OrigDecode cmpIndx 2 mul get put
+Decode decIndx 1 add OrigDecode cmpIndx 2 mul 1 add get put
+/decIndx decIndx 2 add def
+} ifelse
+/cmpIndx cmpIndx 1 add def
+} repeat
+_Filters dup length 1 sub get /AllSource exch def
+/DataSource { DevNNFilter } def
+}
+{ _Filters dup length 1 sub get /DataSource exch def }
+ifelse
+currentdict image
+_Filters pdf_flushfilters
+end
+} bd
+/pdf_maskedImage
+{
+10 dict copy begin
+/miDict currentdict def
+/DataDict DataDict 10 dict copy def
+DataDict begin
+/DataSource
+_Filters dup length 1 sub get
+def
+miDict image
+_Filters pdf_flushfilters
+end
+miDict /InterleaveType get 3 eq
+{ MaskDict /DataSource get dup type /filetype eq { closefile } { pop } ifelse }
+if
+end
+} [/miDict /DataDict /_Filters] bld
+/RadialShade {
+40 dict begin
+/background exch def
+/ext1 exch def
+/ext0 exch def
+/BBox exch def
+/r2 exch def
+/c2y exch def
+/c2x exch def
+/r1 exch def
+/c1y exch def
+/c1x exch def
+/rampdict exch def
+gsave
+BBox length 0 gt {
+newpath
+BBox 0 get BBox 1 get moveto
+BBox 2 get BBox 0 get sub 0 rlineto
+0 BBox 3 get BBox 1 get sub rlineto
+BBox 2 get BBox 0 get sub neg 0 rlineto
+closepath
+clip
+newpath
+} if
+c1x c2x eq
+{
+c1y c2y lt {/theta 90 def}{/theta 270 def} ifelse
+}
+{
+/slope c2y c1y sub c2x c1x sub div def
+/theta slope 1 atan def
+c2x c1x lt c2y c1y ge and { /theta theta 180 sub def} if
+c2x c1x lt c2y c1y lt and { /theta theta 180 add def} if
+}
+ifelse
+gsave
+clippath
+c1x c1y translate
+theta rotate
+-90 rotate
+{ pathbbox } stopped
+{ 0 0 0 0 } if
+/yMax exch def
+/xMax exch def
+/yMin exch def
+/xMin exch def
+grestore
+xMax xMin eq yMax yMin eq or
+{
+grestore
+end
+}
+{
+/max { 2 copy gt { pop } {exch pop} ifelse } bind def
+/min { 2 copy lt { pop } {exch pop} ifelse } bind def
+rampdict begin
+40 dict begin
+background length 0 gt { background sssetbackground gsave clippath fill grestore } if
+gsave
+c1x c1y translate
+theta rotate
+-90 rotate
+/c2y c1x c2x sub dup mul c1y c2y sub dup mul add sqrt def
+/c1y 0 def
+/c1x 0 def
+/c2x 0 def
+ext0 {
+0 getrampcolor
+c2y r2 add r1 sub 0.0001 lt
+{
+c1x c1y r1 360 0 arcn
+pathbbox
+/aymax exch def
+/axmax exch def
+/aymin exch def
+/axmin exch def
+/bxMin xMin axmin min def
+/byMin yMin aymin min def
+/bxMax xMax axmax max def
+/byMax yMax aymax max def
+bxMin byMin moveto
+bxMax byMin lineto
+bxMax byMax lineto
+bxMin byMax lineto
+bxMin byMin lineto
+eofill
+}
+{
+c2y r1 add r2 le
+{
+c1x c1y r1 0 360 arc
+fill
+}
+{
+c2x c2y r2 0 360 arc fill
+r1 r2 eq
+{
+/p1x r1 neg def
+/p1y c1y def
+/p2x r1 def
+/p2y c1y def
+p1x p1y moveto p2x p2y lineto p2x yMin lineto p1x yMin lineto
+fill
+}
+{
+/AA r2 r1 sub c2y div def
+AA -1 eq
+{ /theta 89.99 def}
+{ /theta AA 1 AA dup mul sub sqrt div 1 atan def}
+ifelse
+/SS1 90 theta add dup sin exch cos div def
+/p1x r1 SS1 SS1 mul SS1 SS1 mul 1 add div sqrt mul neg def
+/p1y p1x SS1 div neg def
+/SS2 90 theta sub dup sin exch cos div def
+/p2x r1 SS2 SS2 mul SS2 SS2 mul 1 add div sqrt mul def
+/p2y p2x SS2 div neg def
+r1 r2 gt
+{
+/L1maxX p1x yMin p1y sub SS1 div add def
+/L2maxX p2x yMin p2y sub SS2 div add def
+}
+{
+/L1maxX 0 def
+/L2maxX 0 def
+}ifelse
+p1x p1y moveto p2x p2y lineto L2maxX L2maxX p2x sub SS2 mul p2y add lineto
+L1maxX L1maxX p1x sub SS1 mul p1y add lineto
+fill
+}
+ifelse
+}
+ifelse
+} ifelse
+} if
+c1x c2x sub dup mul
+c1y c2y sub dup mul
+add 0.5 exp
+0 dtransform
+dup mul exch dup mul add 0.5 exp 72 div
+0 72 matrix defaultmatrix dtransform dup mul exch dup mul add sqrt
+72 0 matrix defaultmatrix dtransform dup mul exch dup mul add sqrt
+1 index 1 index lt { exch } if pop
+/hires exch def
+hires mul
+/numpix exch def
+/numsteps NumSamples def
+/rampIndxInc 1 def
+/subsampling false def
+numpix 0 ne
+{
+NumSamples numpix div 0.5 gt
+{
+/numsteps numpix 2 div round cvi dup 1 le { pop 2 } if def
+/rampIndxInc NumSamples 1 sub numsteps div def
+/subsampling true def
+} if
+} if
+/xInc c2x c1x sub numsteps div def
+/yInc c2y c1y sub numsteps div def
+/rInc r2 r1 sub numsteps div def
+/cx c1x def
+/cy c1y def
+/radius r1 def
+newpath
+xInc 0 eq yInc 0 eq rInc 0 eq and and
+{
+0 getrampcolor
+cx cy radius 0 360 arc
+stroke
+NumSamples 1 sub getrampcolor
+cx cy radius 72 hires div add 0 360 arc
+0 setlinewidth
+stroke
+}
+{
+0
+numsteps
+{
+dup
+subsampling { round } if
+getrampcolor
+cx cy radius 0 360 arc
+/cx cx xInc add def
+/cy cy yInc add def
+/radius radius rInc add def
+cx cy radius 360 0 arcn
+eofill
+rampIndxInc add
+}
+repeat
+pop
+} ifelse
+ext1 {
+c2y r2 add r1 lt
+{
+c2x c2y r2 0 360 arc
+fill
+}
+{
+c2y r1 add r2 sub 0.0001 le
+{
+c2x c2y r2 360 0 arcn
+pathbbox
+/aymax exch def
+/axmax exch def
+/aymin exch def
+/axmin exch def
+/bxMin xMin axmin min def
+/byMin yMin aymin min def
+/bxMax xMax axmax max def
+/byMax yMax aymax max def
+bxMin byMin moveto
+bxMax byMin lineto
+bxMax byMax lineto
+bxMin byMax lineto
+bxMin byMin lineto
+eofill
+}
+{
+c2x c2y r2 0 360 arc fill
+r1 r2 eq
+{
+/p1x r2 neg def
+/p1y c2y def
+/p2x r2 def
+/p2y c2y def
+p1x p1y moveto p2x p2y lineto p2x yMax lineto p1x yMax lineto
+fill
+}
+{
+/AA r2 r1 sub c2y div def
+AA -1 eq
+{ /theta 89.99 def}
+{ /theta AA 1 AA dup mul sub sqrt div 1 atan def}
+ifelse
+/SS1 90 theta add dup sin exch cos div def
+/p1x r2 SS1 SS1 mul SS1 SS1 mul 1 add div sqrt mul neg def
+/p1y c2y p1x SS1 div sub def
+/SS2 90 theta sub dup sin exch cos div def
+/p2x r2 SS2 SS2 mul SS2 SS2 mul 1 add div sqrt mul def
+/p2y c2y p2x SS2 div sub def
+r1 r2 lt
+{
+/L1maxX p1x yMax p1y sub SS1 div add def
+/L2maxX p2x yMax p2y sub SS2 div add def
+}
+{
+/L1maxX 0 def
+/L2maxX 0 def
+}ifelse
+p1x p1y moveto p2x p2y lineto L2maxX L2maxX p2x sub SS2 mul p2y add lineto
+L1maxX L1maxX p1x sub SS1 mul p1y add lineto
+fill
+}
+ifelse
+}
+ifelse
+} ifelse
+} if
+grestore
+grestore
+end
+end
+end
+} ifelse
+} bd
+/GenStrips {
+40 dict begin
+/background exch def
+/ext1 exch def
+/ext0 exch def
+/BBox exch def
+/y2 exch def
+/x2 exch def
+/y1 exch def
+/x1 exch def
+/rampdict exch def
+gsave
+BBox length 0 gt {
+newpath
+BBox 0 get BBox 1 get moveto
+BBox 2 get BBox 0 get sub 0 rlineto
+0 BBox 3 get BBox 1 get sub rlineto
+BBox 2 get BBox 0 get sub neg 0 rlineto
+closepath
+clip
+newpath
+} if
+x1 x2 eq
+{
+y1 y2 lt {/theta 90 def}{/theta 270 def} ifelse
+}
+{
+/slope y2 y1 sub x2 x1 sub div def
+/theta slope 1 atan def
+x2 x1 lt y2 y1 ge and { /theta theta 180 sub def} if
+x2 x1 lt y2 y1 lt and { /theta theta 180 add def} if
+}
+ifelse
+gsave
+clippath
+x1 y1 translate
+theta rotate
+{ pathbbox } stopped
+{ 0 0 0 0 } if
+/yMax exch def
+/xMax exch def
+/yMin exch def
+/xMin exch def
+grestore
+xMax xMin eq yMax yMin eq or
+{
+grestore
+end
+}
+{
+rampdict begin
+20 dict begin
+background length 0 gt { background sssetbackground gsave clippath fill grestore } if
+gsave
+x1 y1 translate
+theta rotate
+/xStart 0 def
+/xEnd x2 x1 sub dup mul y2 y1 sub dup mul add 0.5 exp def
+/ySpan yMax yMin sub def
+/numsteps NumSamples def
+/rampIndxInc 1 def
+/subsampling false def
+xStart 0 transform
+xEnd 0 transform
+3 -1 roll
+sub dup mul
+3 1 roll
+sub dup mul
+add 0.5 exp 72 div
+0 72 matrix defaultmatrix dtransform dup mul exch dup mul add sqrt
+72 0 matrix defaultmatrix dtransform dup mul exch dup mul add sqrt
+1 index 1 index lt { exch } if pop
+mul
+/numpix exch def
+numpix 0 ne
+{
+NumSamples numpix div 0.5 gt
+{
+/numsteps numpix 2 div round cvi dup 1 le { pop 2 } if def
+/rampIndxInc NumSamples 1 sub numsteps div def
+/subsampling true def
+} if
+} if
+ext0 {
+0 getrampcolor
+xMin xStart lt
+{ xMin yMin xMin neg ySpan rectfill } if
+} if
+/xInc xEnd xStart sub numsteps div def
+/x xStart def
+0
+numsteps
+{
+dup
+subsampling { round } if
+getrampcolor
+x yMin xInc ySpan rectfill
+/x x xInc add def
+rampIndxInc add
+}
+repeat
+pop
+ext1 {
+xMax xEnd gt
+{ xEnd yMin xMax xEnd sub ySpan rectfill } if
+} if
+grestore
+grestore
+end
+end
+end
+} ifelse
+} bd
+/currentdistillerparams where { pop currentdistillerparams /CoreDistVersion get 5000 lt}{true}ifelse
+{
+/PDFMark5 {cleartomark} bd
+}
+{
+/PDFMark5 {pdfmark} bd
+}ifelse
+/ReadByPDFMark5
+{
+2 dict begin
+/makerString exch def string /tmpString exch def
+{
+currentfile tmpString readline pop
+makerString anchorsearch
+{
+pop pop cleartomark exit
+}
+{
+3 copy /PUT PDFMark5 pop 2 copy (\n) /PUT PDFMark5
+} ifelse
+}loop
+end
+}bd
+%%EndResource
+%%BeginResource: procset pdflev2 6.0 1
+%%Copyright: Copyright 1987-2001,2003 Adobe Systems Incorporated. All Rights Reserved.
+%%Title: PDF operators, with code specific for Level 2
+/docinitialize {
+PDF begin
+/_defaulthalftone currenthalftone dd
+/_defaultblackgeneration currentblackgeneration dd
+/_defaultundercolorremoval currentundercolorremoval dd
+/_defaultcolortransfer [currentcolortransfer] dd
+/_defaulttransfer currenttransfer dd
+end
+PDFVars /docSetupDone true put
+} bd
+/initialize {
+PDFVars /docSetupDone get {
+_defaulthalftone sethalftone
+/_defaultblackgeneration load setblackgeneration
+/_defaultundercolorremoval load setundercolorremoval
+_defaultcolortransfer aload pop setcolortransfer
+} if
+false setoverprint
+} bd
+/terminate { } bd
+/c /curveto ld
+/cs /setcolorspace ld
+/l /lineto ld
+/m /moveto ld
+/q /gsave ld
+/Q /grestore ld
+/sc /setcolor ld
+/setSA/setstrokeadjust ld
+/re {
+4 2 roll m
+1 index 0 rlineto
+0 exch rlineto
+neg 0 rlineto
+h
+} bd
+/concattransferfuncs {
+[ 3 1 roll /exec load exch /exec load ] cvx
+} bd
+/concatandsettransfer {
+/_defaulttransfer load concattransferfuncs settransfer
+} bd
+/concatandsetcolortransfer {
+_defaultcolortransfer aload pop
+8 -1 roll 5 -1 roll concattransferfuncs 7 1 roll
+6 -1 roll 4 -1 roll concattransferfuncs 5 1 roll
+4 -1 roll 3 -1 roll concattransferfuncs 3 1 roll
+concattransferfuncs
+setcolortransfer
+} bd
+/defineRes/defineresource ld
+/undefineRes/undefineresource ld
+/findRes/findresource ld
+currentglobal
+true systemdict /setglobal get exec
+[/Function /ExtGState /Form /Shading /FunctionDictionary /MadePattern /PatternPrototype /DataSource /Image]
+{ /Generic /Category findresource dup length dict copy /Category defineresource pop }
+forall
+systemdict /setglobal get exec
+/ri
+{
+/findcolorrendering isdefined?
+{
+mark exch
+findcolorrendering
+counttomark 2 eq
+{ type /booleantype eq
+{ dup type /nametype eq
+{ dup /ColorRendering resourcestatus
+{ pop pop
+dup /DefaultColorRendering ne
+{
+/ColorRendering findresource
+setcolorrendering
+} if
+} if
+} if
+} if
+} if
+cleartomark
+}
+{ pop
+} ifelse
+} bd
+/knownColorants? {
+pop false
+} bd
+/getrampcolor {
+cvi
+/indx exch def
+0 1 NumComp 1 sub {
+dup
+Samples exch get
+dup type /stringtype eq { indx get } if
+exch
+Scaling exch get aload pop
+3 1 roll
+mul add
+} for
+setcolor
+} bd
+/sssetbackground { aload pop setcolor } bd
+%%EndResource
+%%BeginResource: procset pdftext 6.0 1
+%%Copyright: Copyright 1987-2001,2003 Adobe Systems Incorporated. All Rights Reserved.
+%%Title: Text operators for PDF
+PDF /PDFText 78 dict dup begin put
+/docinitialize
+{
+/resourcestatus where {
+pop
+/CIDParams /ProcSet resourcestatus {
+pop pop
+false /CIDParams /ProcSet findresource /SetBuildCompatible get exec
+} if
+} if
+PDF begin
+PDFText /_pdfDefineIdentity-H known
+{ PDFText /_pdfDefineIdentity-H get exec}
+if
+end
+} bd
+/initialize {
+PDFText begin
+} bd
+/terminate { end } bd
+Level2?
+{
+/_safeput
+{
+3 -1 roll load 3 1 roll put
+}
+bd
+}
+{
+/_safeput
+{
+2 index load dup dup length exch maxlength ge
+{ dup length 5 add dict copy
+3 index xdd
+}
+{ pop }
+ifelse
+3 -1 roll load 3 1 roll put
+}
+bd
+}
+ifelse
+/pdf_has_composefont? systemdict /composefont known def
+/CopyFont {
+{
+1 index /FID ne 2 index /UniqueID ne and
+{ def } { pop pop } ifelse
+} forall
+} bd
+/Type0CopyFont
+{
+exch
+dup length dict
+begin
+CopyFont
+[
+exch
+FDepVector
+{
+dup /FontType get 0 eq
+{
+1 index Type0CopyFont
+/_pdfType0 exch definefont
+}
+{
+/_pdfBaseFont exch
+2 index exec
+}
+ifelse
+exch
+}
+forall
+pop
+]
+/FDepVector exch def
+currentdict
+end
+} bd
+Level2? {currentglobal true setglobal} if
+/cHexEncoding
+[/c00/c01/c02/c03/c04/c05/c06/c07/c08/c09/c0A/c0B/c0C/c0D/c0E/c0F/c10/c11/c12
+/c13/c14/c15/c16/c17/c18/c19/c1A/c1B/c1C/c1D/c1E/c1F/c20/c21/c22/c23/c24/c25
+/c26/c27/c28/c29/c2A/c2B/c2C/c2D/c2E/c2F/c30/c31/c32/c33/c34/c35/c36/c37/c38
+/c39/c3A/c3B/c3C/c3D/c3E/c3F/c40/c41/c42/c43/c44/c45/c46/c47/c48/c49/c4A/c4B
+/c4C/c4D/c4E/c4F/c50/c51/c52/c53/c54/c55/c56/c57/c58/c59/c5A/c5B/c5C/c5D/c5E
+/c5F/c60/c61/c62/c63/c64/c65/c66/c67/c68/c69/c6A/c6B/c6C/c6D/c6E/c6F/c70/c71
+/c72/c73/c74/c75/c76/c77/c78/c79/c7A/c7B/c7C/c7D/c7E/c7F/c80/c81/c82/c83/c84
+/c85/c86/c87/c88/c89/c8A/c8B/c8C/c8D/c8E/c8F/c90/c91/c92/c93/c94/c95/c96/c97
+/c98/c99/c9A/c9B/c9C/c9D/c9E/c9F/cA0/cA1/cA2/cA3/cA4/cA5/cA6/cA7/cA8/cA9/cAA
+/cAB/cAC/cAD/cAE/cAF/cB0/cB1/cB2/cB3/cB4/cB5/cB6/cB7/cB8/cB9/cBA/cBB/cBC/cBD
+/cBE/cBF/cC0/cC1/cC2/cC3/cC4/cC5/cC6/cC7/cC8/cC9/cCA/cCB/cCC/cCD/cCE/cCF/cD0
+/cD1/cD2/cD3/cD4/cD5/cD6/cD7/cD8/cD9/cDA/cDB/cDC/cDD/cDE/cDF/cE0/cE1/cE2/cE3
+/cE4/cE5/cE6/cE7/cE8/cE9/cEA/cEB/cEC/cED/cEE/cEF/cF0/cF1/cF2/cF3/cF4/cF5/cF6
+/cF7/cF8/cF9/cFA/cFB/cFC/cFD/cFE/cFF] def
+Level2? {setglobal} if
+/modEnc {
+/_enc xdd
+/_icode 0 dd
+counttomark 1 sub -1 0
+{
+index
+dup type /nametype eq
+{
+_enc _icode 3 -1 roll put
+_icode 1 add
+}
+if
+/_icode xdd
+} for
+cleartomark
+_enc
+} bd
+/trEnc {
+/_enc xdd
+255 -1 0 {
+exch dup -1 eq
+{ pop /.notdef }
+{ Encoding exch get }
+ifelse
+_enc 3 1 roll put
+} for
+pop
+_enc
+} bd
+/TE {
+/_i xdd
+StandardEncoding 256 array copy modEnc
+_pdfEncodings exch _i exch put
+} bd
+Level2?
+{
+/pdfPatchCStrings
+{
+currentdict /CharStrings known currentdict /FontType known and
+{
+FontType 1 eq CharStrings type /dicttype eq and
+{
+CharStrings /mu known CharStrings /mu1 known not and CharStrings wcheck and
+{
+CharStrings /mu get
+type /stringtype eq
+{
+currentglobal
+CharStrings /mu1
+CharStrings /mu get
+dup gcheck setglobal
+dup length string copy
+put
+setglobal
+} if
+} if
+} if
+} if
+} bd
+}
+{ /pdfPatchCStrings {} bd }
+ifelse
+/TZ
+{
+/_usePDFEncoding xdd
+findfont
+dup length 6 add dict
+begin
+{
+1 index /FID ne { def } { pop pop } ifelse
+} forall
+pdfPatchCStrings
+/pdf_origFontName FontName def
+/FontName exch def
+currentdict /PaintType known
+{ PaintType 2 eq {/PaintType 0 def} if }
+if
+_usePDFEncoding 0 ge
+{
+/Encoding _pdfEncodings _usePDFEncoding get def
+pop
+}
+{
+_usePDFEncoding -1 eq
+{
+counttomark 0 eq
+{ pop }
+{
+Encoding 256 array copy
+modEnc /Encoding exch def
+}
+ifelse
+}
+{
+256 array
+trEnc /Encoding exch def
+}
+ifelse
+}
+ifelse
+pdf_EuroProcSet pdf_origFontName known
+{
+pdf_origFontName pdf_AddEuroGlyphProc
+} if
+Level2?
+{
+currentdict /pdf_origFontName undef
+} if
+FontName currentdict
+end
+definefont pop
+}
+bd
+Level2?
+{
+/TZG
+{
+currentglobal true setglobal
+2 index _pdfFontStatus
+{
+2 index findfont
+false setglobal
+3 index findfont
+true setglobal
+ne
+{
+2 index findfont dup rcheck
+{
+dup length dict begin
+{
+1 index /FID ne { def } { pop pop } ifelse
+} forall
+pdfPatchCStrings
+currentdict end
+}
+if
+3 index exch definefont pop
+}
+if
+} if
+setglobal
+TZ
+} bd
+}
+{
+/TZG {TZ} bd
+} ifelse
+Level2?
+{
+currentglobal false setglobal
+userdict /pdftext_data 5 dict put
+pdftext_data
+begin
+/saveStacks
+{
+pdftext_data
+begin
+/vmmode currentglobal def
+false setglobal
+count array astore /os exch def
+end
+countdictstack array dictstack pdftext_data exch /ds exch put
+cleardictstack pdftext_data /dscount countdictstack put
+pdftext_data /vmmode get setglobal
+} bind def
+/restoreStacks
+{
+pdftext_data /vmmode currentglobal put false setglobal
+clear cleardictstack
+pdftext_data /ds get dup
+pdftext_data /dscount get 1 2 index length 1 sub
+{ get begin dup } for
+pop pop
+pdftext_data /os get aload pop
+pdftext_data /vmmode get setglobal
+} bind def
+/testForClonePrinterBug
+{
+currentglobal true setglobal
+/undefinedCategory /Generic /Category findresource
+dup length dict copy /Category defineresource pop
+setglobal
+pdftext_data /saveStacks get exec
+pdftext_data /vmmode currentglobal put false setglobal
+/undefined /undefinedCategory { resourcestatus } stopped
+pdftext_data exch /bugFound exch put
+pdftext_data /vmmode get setglobal
+pdftext_data /restoreStacks get exec
+pdftext_data /bugFound get
+} bind def
+end
+setglobal
+/pdf_resourcestatus
+pdftext_data /testForClonePrinterBug get exec
+{
+{
+pdftext_data /saveStacks get exec
+pdftext_data /os get dup dup length 1 sub
+dup 1 sub dup 0 lt { pop 0 } if
+exch 1 exch { get exch dup } for
+pop pop
+{ resourcestatus }
+stopped
+{
+clear cleardictstack pdftext_data /restoreStacks get exec
+{ pop pop } stopped pop false
+}
+{
+count array astore pdftext_data exch /results exch put
+pdftext_data /restoreStacks get exec pop pop
+pdftext_data /results get aload pop
+}
+ifelse
+}
+}
+{ { resourcestatus } }
+ifelse
+bd
+}
+if
+Level2?
+{
+/_pdfUndefineResource
+{
+currentglobal 3 1 roll
+_pdf_FontDirectory 2 index 2 copy known
+{undef}
+{pop pop}
+ifelse
+1 index (pdf) exch _pdfConcatNames 1 index
+1 index 1 _pdfConcatNames 1 index
+5 index 1 _pdfConcatNames 1 index
+4
+{
+2 copy pdf_resourcestatus
+{
+pop 2 lt
+{2 copy findresource gcheck setglobal undefineresource}
+{pop pop}
+ifelse
+}
+{ pop pop}
+ifelse
+} repeat
+setglobal
+} bd
+}
+{
+/_pdfUndefineResource { pop pop} bd
+}
+ifelse
+Level2?
+{
+/_pdfFontStatus
+{
+currentglobal exch
+/Font pdf_resourcestatus
+{pop pop true}
+{false}
+ifelse
+exch setglobal
+} bd
+}
+{
+/_pdfFontStatusString 50 string def
+_pdfFontStatusString 0 (fonts/) putinterval
+/_pdfFontStatus
+{
+FontDirectory 1 index known
+{ pop true }
+{
+_pdfFontStatusString 6 42 getinterval
+cvs length 6 add
+_pdfFontStatusString exch 0 exch getinterval
+{ status } stopped
+{pop false}
+{
+{ pop pop pop pop true}
+{ false }
+ifelse
+}
+ifelse
+}
+ifelse
+} bd
+}
+ifelse
+Level2?
+{
+/_pdfCIDFontStatus
+{
+/CIDFont /Category pdf_resourcestatus
+{
+pop pop
+/CIDFont pdf_resourcestatus
+{pop pop true}
+{false}
+ifelse
+}
+{ pop false }
+ifelse
+} bd
+}
+if
+/_pdfString100 100 string def
+/_pdfComposeFontName
+{
+dup length 1 eq
+{
+0 get
+1 index
+type /nametype eq
+{
+_pdfString100 cvs
+length dup dup _pdfString100 exch (-) putinterval
+_pdfString100 exch 1 add dup _pdfString100 length exch sub getinterval
+2 index exch cvs length
+add 1 add _pdfString100 exch 0 exch getinterval
+exch pop
+true
+}
+{
+pop pop
+false
+}
+ifelse
+}
+{
+false
+}
+ifelse
+dup {exch cvn exch} if
+} bd
+/_pdfConcatNames
+{
+exch
+_pdfString100 cvs
+length dup dup _pdfString100 exch (-) putinterval
+_pdfString100 exch 1 add dup _pdfString100 length exch sub getinterval
+3 -1 roll exch cvs length
+add 1 add _pdfString100 exch 0 exch getinterval
+cvn
+} bind def
+/_pdfTextTempString 50 string def
+/_pdfRegOrderingArray [(Adobe-Japan1) (Adobe-CNS1) (Adobe-Korea1) (Adobe-GB1)] def
+/_pdf_CheckCIDSystemInfo
+{
+1 index _pdfTextTempString cvs
+(Identity) anchorsearch
+{
+pop pop pop pop true
+}
+{
+false
+_pdfRegOrderingArray
+{
+2 index exch
+anchorsearch
+{ pop pop pop true exit}
+{ pop }
+ifelse
+}
+forall
+exch pop
+exch /CIDFont findresource
+/CIDSystemInfo get
+3 -1 roll /CMap findresource
+/CIDSystemInfo get
+exch
+3 -1 roll
+{
+2 copy
+/Supplement get
+exch
+dup type /dicttype eq
+{/Supplement get}
+{pop 0 }
+ifelse
+ge
+}
+{ true }
+ifelse
+{
+dup /Registry get
+2 index /Registry get eq
+{
+/Ordering get
+exch /Ordering get
+dup type /arraytype eq
+{
+1 index type /arraytype eq
+{
+true
+1 index length 1 sub -1 0
+{
+dup 2 index exch get exch 3 index exch get ne
+{ pop false exit}
+if
+} for
+exch pop exch pop
+}
+{ pop pop false }
+ifelse
+}
+{
+eq
+}
+ifelse
+}
+{ pop pop false }
+ifelse
+}
+{ pop pop false }
+ifelse
+}
+ifelse
+} bind def
+pdf_has_composefont?
+{
+/_pdfComposeFont
+{
+2 copy _pdfComposeFontName not
+{
+2 index
+}
+if
+(pdf) exch _pdfConcatNames
+dup _pdfFontStatus
+{ dup findfont 5 2 roll pop pop pop true}
+{
+4 1 roll
+1 index /CMap pdf_resourcestatus
+{
+pop pop
+true
+}
+{false}
+ifelse
+1 index true exch
+{
+_pdfCIDFontStatus not
+{pop false exit}
+if
+}
+forall
+and
+{
+1 index 1 index 0 get _pdf_CheckCIDSystemInfo
+{
+3 -1 roll pop
+2 index 3 1 roll
+composefont true
+}
+{
+pop pop exch pop false
+}
+ifelse
+}
+{
+_pdfComposeFontName
+{
+dup _pdfFontStatus
+{
+exch pop
+1 index exch
+findfont definefont true
+}
+{
+pop exch pop
+false
+}
+ifelse
+}
+{
+exch pop
+false
+}
+ifelse
+}
+ifelse
+{ true }
+{
+dup _pdfFontStatus
+{ dup findfont true }
+{ pop false }
+ifelse
+}
+ifelse
+}
+ifelse
+} bd
+}
+{
+/_pdfComposeFont
+{
+_pdfComposeFontName not
+{
+dup
+}
+if
+dup
+_pdfFontStatus
+{exch pop dup findfont true}
+{
+1 index
+dup type /nametype eq
+{pop}
+{cvn}
+ifelse
+eq
+{pop false}
+{
+dup _pdfFontStatus
+{dup findfont true}
+{pop false}
+ifelse
+}
+ifelse
+}
+ifelse
+} bd
+}
+ifelse
+/_pdfStyleDicts 4 dict dup begin
+/Adobe-Japan1 4 dict dup begin
+Level2?
+{
+/Serif
+/HeiseiMin-W3-83pv-RKSJ-H _pdfFontStatus
+{/HeiseiMin-W3}
+{
+/HeiseiMin-W3 _pdfCIDFontStatus
+{/HeiseiMin-W3}
+{/Ryumin-Light}
+ifelse
+}
+ifelse
+def
+/SansSerif
+/HeiseiKakuGo-W5-83pv-RKSJ-H _pdfFontStatus
+{/HeiseiKakuGo-W5}
+{
+/HeiseiKakuGo-W5 _pdfCIDFontStatus
+{/HeiseiKakuGo-W5}
+{/GothicBBB-Medium}
+ifelse
+}
+ifelse
+def
+/HeiseiMaruGo-W4-83pv-RKSJ-H _pdfFontStatus
+{/HeiseiMaruGo-W4}
+{
+/HeiseiMaruGo-W4 _pdfCIDFontStatus
+{/HeiseiMaruGo-W4}
+{
+/Jun101-Light-RKSJ-H _pdfFontStatus
+{ /Jun101-Light }
+{ SansSerif }
+ifelse
+}
+ifelse
+}
+ifelse
+/RoundSansSerif exch def
+/Default Serif def
+}
+{
+/Serif /Ryumin-Light def
+/SansSerif /GothicBBB-Medium def
+{
+(fonts/Jun101-Light-83pv-RKSJ-H) status
+}stopped
+{pop}{
+{ pop pop pop pop /Jun101-Light }
+{ SansSerif }
+ifelse
+/RoundSansSerif exch def
+}ifelse
+/Default Serif def
+}
+ifelse
+end
+def
+/Adobe-Korea1 4 dict dup begin
+/Serif /HYSMyeongJo-Medium def
+/SansSerif /HYGoThic-Medium def
+/RoundSansSerif SansSerif def
+/Default Serif def
+end
+def
+/Adobe-GB1 4 dict dup begin
+/Serif /STSong-Light def
+/SansSerif /STHeiti-Regular def
+/RoundSansSerif SansSerif def
+/Default Serif def
+end
+def
+/Adobe-CNS1 4 dict dup begin
+/Serif /MKai-Medium def
+/SansSerif /MHei-Medium def
+/RoundSansSerif SansSerif def
+/Default Serif def
+end
+def
+end
+def
+/TZzero
+{
+/_wmode xdd
+/_styleArr xdd
+/_regOrdering xdd
+3 copy
+_pdfComposeFont
+{
+5 2 roll pop pop pop
+}
+{
+[
+0 1 _styleArr length 1 sub
+{
+_styleArr exch get
+_pdfStyleDicts _regOrdering 2 copy known
+{
+get
+exch 2 copy known not
+{ pop /Default }
+if
+get
+}
+{
+pop pop pop /Unknown
+}
+ifelse
+}
+for
+]
+exch pop
+2 index 3 1 roll
+_pdfComposeFont
+{3 -1 roll pop}
+{
+findfont dup /FontName get exch
+}
+ifelse
+}
+ifelse
+dup /WMode 2 copy known
+{ get _wmode ne }
+{ pop pop _wmode 1 eq}
+ifelse
+{
+exch _wmode _pdfConcatNames
+dup _pdfFontStatus
+{ exch pop dup findfont false}
+{ exch true }
+ifelse
+}
+{
+dup /FontType get 0 ne
+}
+ifelse
+{
+dup /FontType get 3 eq _wmode 1 eq and
+{
+_pdfVerticalRomanT3Font dup length 10 add dict copy
+begin
+/_basefont exch
+dup length 3 add dict
+begin
+{1 index /FID ne {def}{pop pop} ifelse }
+forall
+/Encoding Encoding dup length array copy
+dup 16#27 /quotesingle put
+dup 16#60 /grave put
+_regOrdering /Adobe-Japan1 eq
+{dup 16#5c /yen put dup 16#a5 /yen put dup 16#b4 /yen put}
+if
+def
+FontName
+currentdict
+end
+definefont
+def
+/Encoding _basefont /Encoding get def
+/_fauxfont true def
+}
+{
+dup length 3 add dict
+begin
+{1 index /FID ne {def}{pop pop} ifelse }
+forall
+FontType 0 ne
+{
+/Encoding Encoding dup length array copy
+dup 16#27 /quotesingle put
+dup 16#60 /grave put
+_regOrdering /Adobe-Japan1 eq
+{dup 16#5c /yen put}
+if
+def
+/_fauxfont true def
+} if
+} ifelse
+/WMode _wmode def
+dup dup /FontName exch def
+currentdict
+end
+definefont pop
+}
+{
+pop
+}
+ifelse
+/_pdf_FontDirectory 3 1 roll _safeput
+}
+bd
+Level2?
+{
+/Tf {
+_pdf_FontDirectory 2 index 2 copy known
+{get exch 3 -1 roll pop}
+{pop pop}
+ifelse
+selectfont
+} bd
+}
+{
+/Tf {
+_pdf_FontDirectory 2 index 2 copy known
+{get exch 3 -1 roll pop}
+{pop pop}
+ifelse
+exch findfont exch
+dup type /arraytype eq
+{makefont}
+{scalefont}
+ifelse
+setfont
+} bd
+}
+ifelse
+/cshow where
+{
+pop /pdf_cshow /cshow load dd
+/pdf_remove2 {pop pop} dd
+}
+{
+/pdf_cshow {exch forall} dd
+/pdf_remove2 {} dd
+} ifelse
+/pdf_xshow
+{
+/_pdf_na xdd
+/_pdf_i 0 dd
+currentpoint
+/_pdf_y xdd
+/_pdf_x xdd
+{
+pdf_remove2
+_pdf_str1 exch 0 exch put
+_pdf_str1 /_pdf_showproc load exec
+{_pdf_na _pdf_i get} stopped
+{ pop pop }
+{
+_pdf_x _pdf_y moveto
+0
+rmoveto
+}
+ifelse
+_pdf_i 1 add /_pdf_i xdd
+currentpoint
+/_pdf_y xdd
+/_pdf_x xdd
+}
+exch
+pdf_cshow
+} bd
+/pdf_yshow
+{
+/_pdf_na xdd
+/_pdf_i 0 dd
+currentpoint
+/_pdf_y xdd
+/_pdf_x xdd
+{
+pdf_remove2
+_pdf_str1 exch 0 exch put
+_pdf_str1 /_pdf_showproc load exec
+{_pdf_na _pdf_i get} stopped
+{ pop pop }
+{
+_pdf_x _pdf_y moveto
+0 exch
+rmoveto
+}
+ifelse
+_pdf_i 1 add /_pdf_i xdd
+currentpoint
+/_pdf_y xdd
+/_pdf_x xdd
+}
+exch
+pdf_cshow
+} bd
+/pdf_xyshow
+{
+/_pdf_na xdd
+/_pdf_i 0 dd
+currentpoint
+/_pdf_y xdd
+/_pdf_x xdd
+{
+pdf_remove2
+_pdf_str1 exch 0 exch put
+_pdf_str1 /_pdf_showproc load exec
+{_pdf_na _pdf_i get} stopped
+{ pop pop }
+{
+1 pop
+{_pdf_na _pdf_i 1 add get} stopped
+{ pop pop pop}
+{
+_pdf_x _pdf_y moveto
+rmoveto
+}
+ifelse
+}
+ifelse
+_pdf_i 2 add /_pdf_i xdd
+currentpoint
+/_pdf_y xdd
+/_pdf_x xdd
+}
+exch
+pdf_cshow
+} bd
+/pdfl1xs {/_pdf_showproc /show load dd pdf_xshow} bd
+/pdfl1ys {/_pdf_showproc /show load dd pdf_yshow} bd
+/pdfl1xys {/_pdf_showproc /show load dd pdf_xyshow} bd
+Level2? _ColorSep5044? not and
+{
+/pdfxs {{xshow} stopped {pdfl1xs} if} bd
+/pdfys {{yshow} stopped {pdfl1ys} if} bd
+/pdfxys {{xyshow} stopped {pdfl1xys} if} bd
+}
+{
+/pdfxs /pdfl1xs load dd
+/pdfys /pdfl1ys load dd
+/pdfxys /pdfl1xys load dd
+} ifelse
+/pdf_charpath {false charpath} bd
+/pdf_xcharpath {/_pdf_showproc /pdf_charpath load dd pdf_xshow} bd
+/pdf_ycharpath {/_pdf_showproc /pdf_charpath load dd pdf_yshow} bd
+/pdf_xycharpath {/_pdf_showproc /pdf_charpath load dd pdf_xyshow} bd
+/pdf_strokepath
+{
+{
+pdf_remove2
+_pdf_str1 exch 0 exch put
+_pdf_str1 false charpath
+currentpoint S moveto
+} bind
+exch pdf_cshow
+} bd
+/pdf_xstrokepath {/_pdf_showproc {pdf_charpath S} dd pdf_xshow} bd
+/pdf_ystrokepath {/_pdf_showproc {pdf_charpath S} dd pdf_yshow} bd
+/pdf_xystrokepath {/_pdf_showproc {pdf_charpath S} dd pdf_xyshow} bd
+Level2? {currentglobal true setglobal} if
+/d0/setcharwidth ld
+/nND {{/.notdef} repeat} bd
+/T3Defs {
+/BuildChar
+{
+1 index /Encoding get exch get
+1 index /BuildGlyph get exec
+}
+def
+/BuildGlyph {
+exch begin
+GlyphProcs exch get exec
+end
+} def
+/_pdfT3Font true def
+} bd
+/_pdfBoldRomanWidthProc
+{
+stringwidth 1 index 0 ne { exch .03 add exch }if setcharwidth
+0 0
+} bd
+/_pdfType0WidthProc
+{
+dup stringwidth 0 0 moveto
+2 index true charpath pathbbox
+0 -1
+7 index 2 div .88
+setcachedevice2
+pop
+0 0
+} bd
+/_pdfType0WMode1WidthProc
+{
+dup stringwidth
+pop 2 div neg -0.88
+2 copy
+moveto
+0 -1
+5 -1 roll true charpath pathbbox
+setcachedevice
+} bd
+/_pdfBoldBaseFont
+11 dict begin
+/FontType 3 def
+/FontMatrix[1 0 0 1 0 0]def
+/FontBBox[0 0 1 1]def
+/Encoding cHexEncoding def
+/_setwidthProc /_pdfBoldRomanWidthProc load def
+/_bcstr1 1 string def
+/BuildChar
+{
+exch begin
+_basefont setfont
+_bcstr1 dup 0 4 -1 roll put
+dup
+_setwidthProc
+3 copy
+moveto
+show
+_basefonto setfont
+moveto
+show
+end
+}bd
+currentdict
+end
+def
+pdf_has_composefont?
+{
+/_pdfBoldBaseCIDFont
+11 dict begin
+/CIDFontType 1 def
+/CIDFontName /_pdfBoldBaseCIDFont def
+/FontMatrix[1 0 0 1 0 0]def
+/FontBBox[0 0 1 1]def
+/_setwidthProc /_pdfType0WidthProc load def
+/_bcstr2 2 string def
+/BuildGlyph
+{
+exch begin
+_basefont setfont
+_bcstr2 1 2 index 256 mod put
+_bcstr2 0 3 -1 roll 256 idiv put
+_bcstr2 dup _setwidthProc
+3 copy
+moveto
+show
+_basefonto setfont
+moveto
+show
+end
+}bd
+currentdict
+end
+def
+/_pdfDefineIdentity-H
+{
+/Identity-H /CMap PDFText /pdf_resourcestatus get exec
+{
+pop pop
+}
+{
+/CIDInit/ProcSet findresource begin 12 dict begin
+begincmap
+/CIDSystemInfo
+3 dict begin
+/Registry (Adobe) def
+/Ordering (Identity) def
+/Supplement 0 def
+currentdict
+end
+def
+/CMapName /Identity-H def
+/CMapVersion 1 def
+/CMapType 1 def
+1 begincodespacerange
+<0000> <ffff>
+endcodespacerange
+1 begincidrange
+<0000> <ffff> 0
+endcidrange
+endcmap
+CMapName currentdict/CMap defineresource pop
+end
+end
+} ifelse
+} def
+} if
+/_pdfVerticalRomanT3Font
+10 dict begin
+/FontType 3 def
+/FontMatrix[1 0 0 1 0 0]def
+/FontBBox[0 0 1 1]def
+/_bcstr1 1 string def
+/BuildChar
+{
+exch begin
+_basefont setfont
+_bcstr1 dup 0 4 -1 roll put
+dup
+_pdfType0WidthProc
+moveto
+show
+end
+}bd
+currentdict
+end
+def
+Level2? {setglobal} if
+/MakeBoldFont
+{
+dup /ct_SyntheticBold known
+{
+dup length 3 add dict begin
+CopyFont
+/ct_StrokeWidth .03 0 FontMatrix idtransform pop def
+/ct_SyntheticBold true def
+currentdict
+end
+definefont
+}
+{
+dup dup length 3 add dict
+begin
+CopyFont
+/PaintType 2 def
+/StrokeWidth .03 0 FontMatrix idtransform pop def
+/dummybold currentdict
+end
+definefont
+dup /FontType get dup 9 ge exch 11 le and
+{
+_pdfBoldBaseCIDFont
+dup length 3 add dict copy begin
+dup /CIDSystemInfo get /CIDSystemInfo exch def
+/_Type0Identity /Identity-H 3 -1 roll [ exch ] composefont
+/_basefont exch def
+/_Type0Identity /Identity-H 3 -1 roll [ exch ] composefont
+/_basefonto exch def
+currentdict
+end
+/CIDFont defineresource
+}
+{
+_pdfBoldBaseFont
+dup length 3 add dict copy begin
+/_basefont exch def
+/_basefonto exch def
+currentdict
+end
+definefont
+}
+ifelse
+}
+ifelse
+} bd
+/MakeBold {
+1 index
+_pdf_FontDirectory 2 index 2 copy known
+{get}
+{exch pop}
+ifelse
+findfont
+dup
+/FontType get 0 eq
+{
+dup /WMode known {dup /WMode get 1 eq }{false} ifelse
+version length 4 ge
+and
+{version 0 4 getinterval cvi 2015 ge }
+{true}
+ifelse
+{/_pdfType0WidthProc}
+{/_pdfType0WMode1WidthProc}
+ifelse
+_pdfBoldBaseFont /_setwidthProc 3 -1 roll load put
+{MakeBoldFont} Type0CopyFont definefont
+}
+{
+dup /_fauxfont known not 1 index /SubstMaster known not and
+{
+_pdfBoldBaseFont /_setwidthProc /_pdfBoldRomanWidthProc load put
+MakeBoldFont
+}
+{
+2 index 2 index eq
+{ exch pop }
+{
+dup length dict begin
+CopyFont
+currentdict
+end
+definefont
+}
+ifelse
+}
+ifelse
+}
+ifelse
+pop pop
+dup /dummybold ne
+{/_pdf_FontDirectory exch dup _safeput }
+{ pop }
+ifelse
+}bd
+/MakeItalic {
+_pdf_FontDirectory exch 2 copy known
+{get}
+{exch pop}
+ifelse
+dup findfont
+dup /FontInfo 2 copy known
+{
+get
+/ItalicAngle 2 copy known
+{get 0 eq }
+{ pop pop true}
+ifelse
+}
+{ pop pop true}
+ifelse
+{
+exch pop
+dup /FontType get 0 eq Level2? not and
+{ dup /FMapType get 6 eq }
+{ false }
+ifelse
+{
+dup /WMode 2 copy known
+{
+get 1 eq
+{ _italMtx_WMode1Type0 }
+{ _italMtxType0 }
+ifelse
+}
+{ pop pop _italMtxType0 }
+ifelse
+}
+{
+dup /WMode 2 copy known
+{
+get 1 eq
+{ _italMtx_WMode1 }
+{ _italMtx }
+ifelse
+}
+{ pop pop _italMtx }
+ifelse
+}
+ifelse
+makefont
+dup /FontType get 42 eq Level2? not or
+{
+dup length dict begin
+CopyFont
+currentdict
+end
+}
+if
+1 index exch
+definefont pop
+/_pdf_FontDirectory exch dup _safeput
+}
+{
+pop
+2 copy ne
+{
+/_pdf_FontDirectory 3 1 roll _safeput
+}
+{ pop pop }
+ifelse
+}
+ifelse
+}bd
+/MakeBoldItalic {
+/dummybold exch
+MakeBold
+/dummybold
+MakeItalic
+}bd
+Level2?
+{
+/pdf_CopyDict
+{1 index length add dict copy}
+def
+}
+{
+/pdf_CopyDict
+{
+1 index length add dict
+1 index wcheck
+{ copy }
+{ begin
+{def} forall
+currentdict
+end
+}
+ifelse
+}
+def
+}
+ifelse
+/pdf_AddEuroGlyphProc
+{
+currentdict /CharStrings known
+{
+CharStrings /Euro known not
+{
+dup
+/CharStrings
+CharStrings 1 pdf_CopyDict
+begin
+/Euro pdf_EuroProcSet 4 -1 roll get def
+currentdict
+end
+def
+/pdf_PSBuildGlyph /pdf_PSBuildGlyph load def
+/pdf_PathOps /pdf_PathOps load def
+/Symbol eq Encoding 160 get /.notdef eq and
+{
+/Encoding Encoding dup length array copy
+dup 160 /Euro put def
+}
+if
+}
+{ pop
+}
+ifelse
+}
+{ pop
+}
+ifelse
+}
+def
+Level2? {currentglobal true setglobal} if
+/pdf_PathOps 4 dict dup begin
+/m {moveto} def
+/l {lineto} def
+/c {curveto} def
+/cp {closepath} def
+end
+def
+/pdf_PSBuildGlyph
+{
+gsave
+8 -1 roll pop
+7 1 roll
+currentdict /PaintType 2 copy known {get 2 eq}{pop pop false} ifelse
+dup 9 1 roll
+{
+currentdict /StrokeWidth 2 copy known
+{
+get 2 div
+5 1 roll
+4 -1 roll 4 index sub
+4 1 roll
+3 -1 roll 4 index sub
+3 1 roll
+exch 4 index add exch
+4 index add
+5 -1 roll pop
+}
+{
+pop pop
+}
+ifelse
+}
+if
+setcachedevice
+pdf_PathOps begin
+exec
+end
+{
+currentdict /StrokeWidth 2 copy known
+{ get }
+{ pop pop 0 }
+ifelse
+setlinewidth stroke
+}
+{
+fill
+}
+ifelse
+grestore
+} def
+/pdf_EuroProcSet 13 dict def
+pdf_EuroProcSet
+begin
+/Courier-Bold
+{
+600 0 6 -12 585 612
+{
+385 274 m
+180 274 l
+179 283 179 293 179 303 c
+179 310 179 316 180 323 c
+398 323 l
+423 404 l
+197 404 l
+219 477 273 520 357 520 c
+409 520 466 490 487 454 c
+487 389 l
+579 389 l
+579 612 l
+487 612 l
+487 560 l
+449 595 394 612 349 612 c
+222 612 130 529 98 404 c
+31 404 l
+6 323 l
+86 323 l
+86 304 l
+86 294 86 284 87 274 c
+31 274 l
+6 193 l
+99 193 l
+129 77 211 -12 359 -12 c
+398 -12 509 8 585 77 c
+529 145 l
+497 123 436 80 356 80 c
+285 80 227 122 198 193 c
+360 193 l
+cp
+600 0 m
+}
+pdf_PSBuildGlyph
+} def
+/Courier-BoldOblique /Courier-Bold load def
+/Courier
+{
+600 0 17 -12 578 584
+{
+17 204 m
+97 204 l
+126 81 214 -12 361 -12 c
+440 -12 517 17 578 62 c
+554 109 l
+501 70 434 43 366 43 c
+266 43 184 101 154 204 c
+380 204 l
+400 259 l
+144 259 l
+144 270 143 281 143 292 c
+143 299 143 307 144 314 c
+418 314 l
+438 369 l
+153 369 l
+177 464 249 529 345 529 c
+415 529 484 503 522 463 c
+522 391 l
+576 391 l
+576 584 l
+522 584 l
+522 531 l
+473 566 420 584 348 584 c
+216 584 122 490 95 369 c
+37 369 l
+17 314 l
+87 314 l
+87 297 l
+87 284 88 272 89 259 c
+37 259 l
+cp
+600 0 m
+}
+pdf_PSBuildGlyph
+} def
+/Courier-Oblique /Courier load def
+/Helvetica
+{
+556 0 24 -19 541 703
+{
+541 628 m
+510 669 442 703 354 703 c
+201 703 117 607 101 444 c
+50 444 l
+25 372 l
+97 372 l
+97 301 l
+49 301 l
+24 229 l
+103 229 l
+124 67 209 -19 350 -19 c
+435 -19 501 25 509 32 c
+509 131 l
+492 105 417 60 343 60 c
+267 60 204 127 197 229 c
+406 229 l
+430 301 l
+191 301 l
+191 372 l
+455 372 l
+479 444 l
+194 444 l
+201 531 245 624 348 624 c
+433 624 484 583 509 534 c
+cp
+556 0 m
+}
+pdf_PSBuildGlyph
+} def
+/Helvetica-Oblique /Helvetica load def
+/Helvetica-Bold
+{
+556 0 12 -19 563 710
+{
+563 621 m
+537 659 463 710 363 710 c
+216 710 125 620 101 462 c
+51 462 l
+12 367 l
+92 367 l
+92 346 l
+92 337 93 328 93 319 c
+52 319 l
+12 224 l
+102 224 l
+131 58 228 -19 363 -19 c
+417 -19 471 -12 517 18 c
+517 146 l
+481 115 426 93 363 93 c
+283 93 254 166 246 224 c
+398 224 l
+438 319 l
+236 319 l
+236 367 l
+457 367 l
+497 462 l
+244 462 l
+259 552 298 598 363 598 c
+425 598 464 570 486 547 c
+507 526 513 517 517 509 c
+cp
+556 0 m
+}
+pdf_PSBuildGlyph
+} def
+/Helvetica-BoldOblique /Helvetica-Bold load def
+/Symbol
+{
+750 0 20 -12 714 685
+{
+714 581 m
+650 645 560 685 465 685 c
+304 685 165 580 128 432 c
+50 432 l
+20 369 l
+116 369 l
+115 356 115 347 115 337 c
+115 328 115 319 116 306 c
+50 306 l
+20 243 l
+128 243 l
+165 97 300 -12 465 -12 c
+560 -12 635 25 685 65 c
+685 155 l
+633 91 551 51 465 51 c
+340 51 238 131 199 243 c
+555 243 l
+585 306 l
+184 306 l
+183 317 182 326 182 336 c
+182 346 183 356 184 369 c
+614 369 l 644 432 l
+199 432 l
+233 540 340 622 465 622 c
+555 622 636 580 685 520 c
+cp
+750 0 m
+}
+pdf_PSBuildGlyph
+} def
+/Times-Bold
+{
+500 0 16 -14 478 700
+{
+367 308 m
+224 308 l
+224 368 l
+375 368 l
+380 414 l
+225 414 l
+230 589 257 653 315 653 c
+402 653 431 521 444 457 c
+473 457 l
+473 698 l
+444 697 l
+441 679 437 662 418 662 c
+393 662 365 700 310 700 c
+211 700 97 597 73 414 c
+21 414 l
+16 368 l
+69 368 l
+69 359 68 350 68 341 c
+68 330 68 319 69 308 c
+21 308 l
+16 262 l
+73 262 l
+91 119 161 -14 301 -14 c
+380 -14 443 50 478 116 c
+448 136 l
+415 84 382 40 323 40 c
+262 40 231 77 225 262 c
+362 262 l
+cp
+500 0 m
+}
+pdf_PSBuildGlyph
+} def
+/Times-BoldItalic
+{
+500 0 9 -20 542 686
+{
+542 686 m
+518 686 l
+513 673 507 660 495 660 c
+475 660 457 683 384 683 c
+285 683 170 584 122 430 c
+58 430 l
+34 369 l
+105 369 l
+101 354 92 328 90 312 c
+34 312 l
+9 251 l
+86 251 l
+85 238 84 223 84 207 c
+84 112 117 -14 272 -14 c
+326 -14 349 9 381 9 c
+393 9 393 -10 394 -20 c
+420 -20 l
+461 148 l
+429 148 l
+416 109 362 15 292 15 c
+227 15 197 55 197 128 c
+197 162 204 203 216 251 c
+378 251 l
+402 312 l
+227 312 l
+229 325 236 356 241 369 c
+425 369 l
+450 430 l
+255 430 l
+257 435 264 458 274 488 c
+298 561 337 654 394 654 c
+437 654 484 621 484 530 c
+484 516 l
+516 516 l
+cp
+500 0 m
+}
+pdf_PSBuildGlyph
+} def
+/Times-Italic
+{
+500 0 23 -10 595 692
+{
+399 317 m
+196 317 l
+199 340 203 363 209 386 c
+429 386 l
+444 424 l
+219 424 l
+246 514 307 648 418 648 c
+448 648 471 638 492 616 c
+529 576 524 529 527 479 c
+549 475 l
+595 687 l
+570 687 l
+562 674 558 664 542 664 c
+518 664 474 692 423 692 c
+275 692 162 551 116 424 c
+67 424 l
+53 386 l
+104 386 l
+98 363 93 340 90 317 c
+37 317 l
+23 279 l
+86 279 l
+85 266 85 253 85 240 c
+85 118 137 -10 277 -10 c
+370 -10 436 58 488 128 c
+466 149 l
+424 101 375 48 307 48 c
+212 48 190 160 190 234 c
+190 249 191 264 192 279 c
+384 279 l
+cp
+500 0 m
+}
+pdf_PSBuildGlyph
+} def
+/Times-Roman
+{
+500 0 10 -12 484 692
+{
+347 298 m
+171 298 l
+170 310 170 322 170 335 c
+170 362 l
+362 362 l
+374 403 l
+172 403 l
+184 580 244 642 308 642 c
+380 642 434 574 457 457 c
+481 462 l
+474 691 l
+449 691 l
+433 670 429 657 410 657 c
+394 657 360 692 299 692 c
+204 692 94 604 73 403 c
+22 403 l
+10 362 l
+70 362 l
+69 352 69 341 69 330 c
+69 319 69 308 70 298 c
+22 298 l
+10 257 l
+73 257 l
+97 57 216 -12 295 -12 c
+364 -12 427 25 484 123 c
+458 142 l
+425 101 384 37 316 37 c
+256 37 189 84 173 257 c
+335 257 l
+cp
+500 0 m
+}
+pdf_PSBuildGlyph
+} def
+end
+Level2? {setglobal} if
+currentdict readonly pop end
+%%EndResource
+PDFText begin
+[39/quotesingle 96/grave 128/Adieresis/Aring/Ccedilla/Eacute/Ntilde/Odieresis
+/Udieresis/aacute/agrave/acircumflex/adieresis/atilde/aring/ccedilla/eacute
+/egrave/ecircumflex/edieresis/iacute/igrave/icircumflex/idieresis/ntilde
+/oacute/ograve/ocircumflex/odieresis/otilde/uacute/ugrave/ucircumflex
+/udieresis/dagger/degree/cent/sterling/section/bullet/paragraph/germandbls
+/registered/copyright/trademark/acute/dieresis/.notdef/AE/Oslash
+/.notdef/plusminus/.notdef/.notdef/yen/mu/.notdef/.notdef
+/.notdef/.notdef/.notdef/ordfeminine/ordmasculine/.notdef/ae/oslash
+/questiondown/exclamdown/logicalnot/.notdef/florin/.notdef/.notdef
+/guillemotleft/guillemotright/ellipsis/space/Agrave/Atilde/Otilde/OE/oe
+/endash/emdash/quotedblleft/quotedblright/quoteleft/quoteright/divide
+/.notdef/ydieresis/Ydieresis/fraction/currency/guilsinglleft/guilsinglright
+/fi/fl/daggerdbl/periodcentered/quotesinglbase/quotedblbase/perthousand
+/Acircumflex/Ecircumflex/Aacute/Edieresis/Egrave/Iacute/Icircumflex
+/Idieresis/Igrave/Oacute/Ocircumflex/.notdef/Ograve/Uacute/Ucircumflex
+/Ugrave/dotlessi/circumflex/tilde/macron/breve/dotaccent/ring/cedilla
+/hungarumlaut/ogonek/caron
+0 TE
+[1/dotlessi/caron 39/quotesingle 96/grave 
+127/bullet/Euro/bullet/quotesinglbase/florin/quotedblbase/ellipsis
+/dagger/daggerdbl/circumflex/perthousand/Scaron/guilsinglleft/OE
+/bullet/Zcaron/bullet/bullet/quoteleft/quoteright/quotedblleft
+/quotedblright/bullet/endash/emdash/tilde/trademark/scaron
+/guilsinglright/oe/bullet/zcaron/Ydieresis/space/exclamdown/cent/sterling
+/currency/yen/brokenbar/section/dieresis/copyright/ordfeminine
+/guillemotleft/logicalnot/hyphen/registered/macron/degree/plusminus
+/twosuperior/threesuperior/acute/mu/paragraph/periodcentered/cedilla
+/onesuperior/ordmasculine/guillemotright/onequarter/onehalf/threequarters
+/questiondown/Agrave/Aacute/Acircumflex/Atilde/Adieresis/Aring/AE/Ccedilla
+/Egrave/Eacute/Ecircumflex/Edieresis/Igrave/Iacute/Icircumflex/Idieresis
+/Eth/Ntilde/Ograve/Oacute/Ocircumflex/Otilde/Odieresis/multiply/Oslash
+/Ugrave/Uacute/Ucircumflex/Udieresis/Yacute/Thorn/germandbls/agrave
+/aacute/acircumflex/atilde/adieresis/aring/ae/ccedilla/egrave/eacute
+/ecircumflex/edieresis/igrave/iacute/icircumflex/idieresis/eth/ntilde
+/ograve/oacute/ocircumflex/otilde/odieresis/divide/oslash/ugrave/uacute
+/ucircumflex/udieresis/yacute/thorn/ydieresis
+1 TE
+end
+%%BeginResource: procset pdfasc.prc 6.0 1
+%%Copyright: Copyright 1992-2003 Adobe Systems Incorporated. All Rights Reserved.
+/ASR {
+13 dict begin
+/mirV? exch def
+/mirH? exch def
+/center? exch def
+/autorotate? exch def
+/angle exch def
+/shrink exch def
+/Pury exch def
+/Purx exch def
+/Plly exch def
+/Pllx exch def
+/Dury exch def
+/Durx exch def
+/Dlly exch def
+/Dllx exch def
+Dury 0 eq Durx 0 eq and Dlly 0 eq Dllx 0 eq and and
+{ shrink 0 gt { GClipBBox } { GPageBBox } ifelse }
+{ ITransDBBox }
+ifelse
+/PHt Pury Plly sub def
+/PW Purx Pllx sub def
+/DHt Dury Dlly sub def
+/DW Durx Dllx sub def
+angle 90 eq angle 270 eq or
+{
+PHt /PHt PW def /PW exch def
+} if
+autorotate? PHt PW ne and DHt DW ne and
+{
+DHt DW ge
+PHt PW ge
+ne
+{ /angle angle 90 add def
+PHt /PHt PW def /PW exch def
+}
+if
+} if
+angle 0 ne
+{
+/angle angle 360 mod def
+angle rotate
+angle 90 eq
+{ 0 DW neg translate }
+if
+angle 180 eq
+{ DW neg DHt neg translate }
+if
+angle 270 eq
+{ DHt neg 0 translate }
+if
+} if
+center?
+{
+ITransBBox
+Durx Dllx add 2 div Dury Dlly add 2 div
+Purx Pllx add -2 div Pury Plly add -2 div
+3 -1 roll add exch
+3 -1 roll add exch
+translate
+}
+{
+ITransBBox
+angle 0 eq
+{Dllx Pllx sub Dury Pury sub}
+if
+angle 90 eq
+{Durx Purx sub Dury Pury sub}
+if
+angle 180 eq
+{Durx Purx sub Dlly Plly sub}
+if
+angle 270 eq
+{Dllx Pllx sub Dlly Plly sub}
+if
+translate
+}
+ifelse
+mirH? mirV? or
+{
+ITransBBox
+mirH?
+{
+-1 1 scale
+Durx Dllx add neg 0 translate
+} if
+mirV?
+{
+1 -1 scale
+0 Dury Dlly add neg translate
+} if
+} if
+shrink 0 ne
+{
+ITransBBox
+Dury Dlly sub Pury Plly sub div
+Durx Dllx sub Purx Pllx sub div
+2 copy gt { exch } if pop
+shrink 1 eq
+{
+Durx Dllx add 2 div Dury Dlly add 2 div translate
+dup scale
+Purx Pllx add -2 div Pury Plly add -2 div translate
+}
+{
+shrink 2 eq 1 index 1.0 lt and
+{
+Durx Dllx add 2 div Dury Dlly add 2 div translate
+dup scale
+Purx Pllx add -2 div Pury Plly add -2 div translate
+}
+{ pop }
+ifelse
+}
+ifelse
+} if
+end
+} [/autorotate? /shrink? /mirH? /mirV? /angle /Pury /Purx /Plly /Pllx /Durx /Dury /Dllx /Dlly /PW /PHt /DW /DHt
+/Devurx /Devury /Devllx /Devlly /pdfHt /pdfW]
+bld
+/GClipBBox
+{
+gsave newpath clippath pathbbox newpath grestore
+/Dury exch def
+/Durx exch def
+/Dlly exch def
+/Dllx exch def
+ITransDBBox
+} [/Durx /Dury /Dllx /Dlly]
+bld
+/GPageBBox
+{
+{
+currentpagedevice /PageSize get aload pop
+/Devury exch def /Devurx exch def
+/Devllx 0 def /Devlly 0 def
+ITransBBox
+}
+stopped
+{ GClipBBox }
+if
+} [/Devurx /Devury /Devllx /Devlly ]
+bld
+/ITransDBBox
+{
+Durx Dury transform matrix defaultmatrix itransform
+/Devury exch def
+/Devurx exch def
+Dllx Dlly transform matrix defaultmatrix itransform
+/Devlly exch def
+/Devllx exch def
+Devury Devlly lt {/Devlly Devury /Devury Devlly def def} if
+Devurx Devllx lt {/Devllx Devurx /Devurx Devllx def def} if
+} [/Durx /Dury /Dllx /Dlly /Devurx /Devury /Devllx /Devlly ]
+bld
+/ITransBBox
+{
+/um matrix currentmatrix matrix defaultmatrix matrix invertmatrix matrix concatmatrix def
+Devllx Devlly um itransform
+Devurx Devury um itransform
+/Dury exch def
+/Durx exch def
+/Dlly exch def
+/Dllx exch def
+Dury Dlly lt {/Dlly Dury /Dury Dlly def def} if
+Durx Dllx lt {/Dllx Durx /Durx Dllx def def} if
+} [ /um /Durx /Dury /Dllx /Dlly /Devurx /Devury /Devllx /Devlly ]
+bld
+%%EndResource
+currentdict readonly pop
+end end
+/currentpacking where {pop setpacking}if
+PDFVars/DocInitAll{[PDF PDFText]{/docinitialize get exec}forall }put
+PDFVars/InitAll{[PDF PDFText]{/initialize get exec}forall initgs}put
+PDFVars/TermAll{[PDFText PDF]{/terminate get exec}forall}put
+PDFVars begin PDF begin
+PDFVars/DocInitAll get exec PDFVars/InitAll get exec
+
+[/NamespacePush PDFMark5
+[/_objdef {Metadata_In_EPS} /type /stream /OBJ PDFMark5
+[{Metadata_In_EPS} 3388 (% &end XMP packet& %) ReadByPDFMark5
+<?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d"?>
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="3.1-702">
+   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <rdf:Description rdf:about=""
+            xmlns:xap="http://ns.adobe.com/xap/1.0/">
+         <xap:CreateDate>2012-05-29T14:01:49+08:00</xap:CreateDate>
+         <xap:ModifyDate>2012-05-29T14:01:49+08:00</xap:ModifyDate>
+         <xap:MetadataDate>2012-05-29T14:01:49+08:00</xap:MetadataDate>
+      </rdf:Description>
+      <rdf:Description rdf:about=""
+            xmlns:xapMM="http://ns.adobe.com/xap/1.0/mm/"
+            xmlns:stRef="http://ns.adobe.com/xap/1.0/sType/ResourceRef#">
+         <xapMM:DocumentID>uuid:FA35FA8653A9E111BE7586D53BE239AF</xapMM:DocumentID>
+         <xapMM:InstanceID>uuid:FA35FA8653A9E111BE7586D53BE239AF</xapMM:InstanceID>
+         <xapMM:DerivedFrom rdf:parseType="Resource">
+            <stRef:instanceID>uuid:5c1e9f97-0b47-49d0-987e-5af1e248a75f</stRef:instanceID>
+            <stRef:documentID>uuid:b20796fd-523b-456a-b8cd-7e88de3f20da</stRef:documentID>
+         </xapMM:DerivedFrom>
+      </rdf:Description>
+      <rdf:Description rdf:about=""
+            xmlns:dc="http://purl.org/dc/elements/1.1/">
+         <dc:format>application/eps</dc:format>
+      </rdf:Description>
+   </rdf:RDF>
+</x:xmpmeta>
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                           
+<?xpacket end="w"?>
+
+% &end XMP packet& %
+
+[{Metadata_In_EPS} 2 dict begin /Type /Metadata def /Subtype /XML def currentdict end /PUT PDFMark5
+[/Document 1 dict begin /Metadata {Metadata_In_EPS} def currentdict end /BDC PDFMark5
+[/NamespacePop PDFMark5
+
+PDFVars/TermAll get exec end end
+
+%%EndSetup
+ PDF /docinitialize get exec
+PDFVars begin PDF begin PDFVars/InitAll get exec
+0.0 0.0 355.5 218.25 rectclip
+q
+0.0 0.0 m
+355.5 0.0 l
+355.5 218.25 l
+0.0 218.25 l
+h
+W
+n
+q
+355.5 0.0 0.0 218.25 0.0 0.0 cm
+q
+n
+0.0 0.0 1.0 1.0 re
+[/DeviceRGB] cs 
+<<
+/ImageType 1
+/Width 474
+/Height 291
+/ImageMatrix [474.0 0.0 0.0 -291.0 0.0 291.0] 
+/BitsPerComponent 8
+/Decode [0.0 1.0 0.0 1.0 0.0 1.0 ] 
+/_Filters [currentfile /ASCII85Decode filter dup /DCTDecode filter dup 
+] >>
+pdf_image s4IA>!"M;*Ddm8XA:OX[!!3,S!/(=\#RC\A#RgtE$kNdS$P4!^%1Nd](_RJq'+u,r
+&el#o'G;)o)]g%A)\aPF-RU8e1,UpH1-7QZ4$,Mc4$,M)%13FN$4ICQ$k<jZ%Ls'b
+%hB0]'GM)j&ePZh'GD/q'bh;q'bqGu'bqH%)B'M4)BKq@*ZcON,9nQ`-S-f"s1eUH
+#QZ.Ng&h@"!!3`5!tbS6_uW1)!!*6(!<E3%!<<*"z!rr?'"9eu7#RLhG!<<-(!<E3%
+!<E0#z!!*'$!sAc3#7(VC$P3:="9AT+"9J`3"pbA7$o7na!YGM;+VHL55uD&(,&r/h
+"r*2nYsKZ\'iMkW1Gj-(d6e-bP#Ll/nRHVt(8A*e-:F%sA4=A1F>ar`<T7T\Z\66F
+FlW'_-^:E\[$ASZjRf:V`RX)C<b?N0QDV+1f&lZb7os>ILR4pJa4KMK&HDk6!<NB,
+!sAc3#6tG73ro<_&Ha12&d1Kt@<!J)"YtXk'VVcu,Jd:*n1u>!iGsO56W4_0F#<D5
+"r<r=K*N_\_U:i9<217?79)6fA`E9eKYu8]j7>a)UkQ1@`73l?V7":mjn2YdG(u<[
+[`6n\p*Vdh=(c`4Q`%=5fB;o.g&MN`!<<05!tbMt!8l0P#pb\":6J0p:m-&sP*?XU
+VF`'bkI$G^`:0Q[iA"hLUP-Xd_?qb?7$I=9,qPW##pc?p2+s1uM;uhq.5'l%8L\25
+8L5f0P"@)o,a(bt8L/nPP"?jo--Ae%V'\s)U8923R3a9W-;K^2:e<EaPbaH`Bd0AV
+l93ULPe<fR8L6!Z'ZhVsdZfqd8P>pP;<hFs$`7":pWNR:2R_o1Jt&ndTU-Jt=Xt"I
+lXg>MF`^@HDOZ4Ncc's2?gAbG;C8&b.VIs(\F]5jH>cL&l?7Jup$Qb]4QmaS.&,PS
+M=m(3B6AsVF;f$$)UY<f:FiU0BCqdVO4*6-=O?AipXpIKrQ=t.?a>]bGkn72P*II_
+8U!a!,a*86\k+01'G<t_P.F5KUnr>^P"@)ods7i_8kCZ]Td;-5TEuj+P"JVWUln>J
+?>1dOPd3k+Js;Ei,,HQJ8L[4VP"JVD,a+GK,*GJG75@B=8?#1D8GOC)P*D+u8kC;M
+.="$$REc6\S3R1><_d;Y^5[k?9ubdDO\jjU4T\5ue#mA4Gj2XYCE,RAk-smt.,":^
+!jD)gE:I^p8P`(g99oMW`s8K%BXdGKpS\#k`ri5-MCh"ihsX-;og#?(OFR&B`"THl
+a5Zmo!5=[6IuH2_%hO-DJ%-c%[?V,<Y(dlIE+9idER6<`rrA!/PK#CBoDRu"WI8@$
+lAd4S(:5)!5)B,7<P:%fqViI*Ngm4^C&\1IK"5O/-T^LY>@Z!I,tk#k*jM(eRr^(-
+8TE7@jGr>J#>F?+>qM\AB'VP4m9EOYmLMhaSEFb1l=Xend2`/dBWeLq.E8Gh6N\/b
+CIBW:P"F>IR3]m'Ef`j<PbaLrP#BCL9dM)=fe-4#8IM>]Ulnf4P"J-Z8lA7/8P:F&
+,a>*f8>N)&P#@H8;Fr-sP`eT`V+O=B8P8E6;NaXX+IOL>\k-q*8lA6W,a>l<RSl^L
+8MYb:.:SH3'U6)G,a2nnP`bK-<9i&KY+(VdAf`FFe)itHG`St6=t\%4pfMGca/kSi
+hp3NC\T?9*pHN=PSk2h/0kfBZalF]=g8MUO9%OibT5Sh.TkX[c\+$tX!GLB%kI9\D
+`-`LGMjCM`(Ig8_)339-NHPk_pL25%:?f:_;V*YX.Z\?aU!lRZ?%"S-<m&I]#OcD,
+-TrIP1iQd_iOYTa<*B(.QBCf8,Oc&HZ#V:)G$)W4gsYK0mK&C,\rNJ<p8iH[8[[4,
+>MFjcT50.F@hA.`=TPsmkUlsZBu*\7+J5,E9P+OGUJ3XR@qoVP`YSRS9DZ,SOS0*@
+Mh@O(%F\-$\u!fZn'&oHWbC3oN0]"r%Z@s`>lp\jA[[b:[%490!Bm6P4t11d'*/Xs
+:07AHkuBFHdb]@VFo3"6;<ZY44e[imLR87BFnc^8B+l88>hP#n]ARd1F#lNW[Z^Qp
+l"mT25BK2Y*2Z%9#0a34ElLNR^2%mM=&$Ap1m%uXZ+_erS'eQ<;!FACDYd.B0)1D5
+j8Q?+lT02h:%`p>B?=Q\p!S7iF%8d'N=[#k&&h74L$l`ko\%nh6ZRUs.<:SL&sSWl
+8Hb2S\5&GQ8lAJ`9dqNSAEf1BPKHIZ9&V?Ika=J(="4"n:6LhC8L0Ia.3t?j"YPsK
+O](:!]p#;I7$OL18L5od-h0lnPa%u3"Y*E7P0kR/.8Ph[Lmc`20loUCFR_pr[j<LM
+bn(2<iAAD$B.7^qgmApM9Xc;t16hK(9Z^!XV("]'P+#;c7Z%\#jV9&+8$,!n$ch]I
+5Dl]25ZloGZ>=B"25f*i_oL\eMoTsDp=f#BnK7"+f(7S3ILBA]12NQoYtXSH"R=I\
+)]S/9=T*::XCW5+LKMu/\i3=V%7bVIlM-C0lK+$g(@D!T=ZmS"2ZVTJ=rh^lf&pd)
+j_o9(XH'('C:1,RIBOgQJn&M=*2k.p#R3=1/XeFM"GpkNVHFcFb,2dcES4g=lZ>;!
+f5n>0JCESe0sPW8l0Muu*Or_"J1*QkHG)A?2U9YXpa3kQ/N0mNcd`,-=p<FPZ&Mb3
+3\(d=>2o:#,S9,;"a']*`_Gk!rO*6(eT1Zi<A"g$CJX*(&,*Ikpb%U>bc:BMhb!JV
+rrAF6+\WEFY`\/R^Li)Vghh<9!+1ncen\if5;eL9E/*!FkHXrY>HZ!&"c^l5=j[0K
+,l[kP7DQE#H*W#)l`5O,Uq3IsI+t^9o3DCBh+/o$3gR9r(JFF&+MS6U'0_n]HlNn4
+<Q)?2m'LU?`g8Xo2[S23GnkDc[T.E5a'.l421g9F&,YoB@((/&9@q=*<<:XSJ'q-6
+UjC<"FUfeW'"*K?#O)c,d0`N#FkeVH^?"I\iJoi/n4LP\gjcsW0V#5:q8&!BO8M5U
+)],R(QZ/q+/M?$k.o=CjCPu7Z'^@+k]om)%;Ukq+80t'FR3X4BA<BK\3b4COkp7dT
+,qb`DA<b57;3[n'/s9,$;GuI&9U)?LkH[[kUlq'<P%9fQ`.im(^stK*K6&"p5tOd$
+3o<`:kre4UMM=?!a0(AfgL5)MO)kTcX`4!Cn6G-T,h2UN5ob8\B3P%f)U_/donh&9
+#]@\CEf_Qtmp5g&Ref7Aq[9QJ9/lS"Fm$nDo"*on_ljhK8M0\\r;n9cNo0P]>GaCi
+T'8"*6^i,deLhpAQeCiYhQ&Hu"YS!<Erkpt4.i]3+r/T"Nh/[Mr5.GAEB^F/a,e&M
+=-3/c='jJTIl]aMH;m><j>-d5r#Usu@q"B"4T>E6R/LQ6!jDH-ls/1aNf[*W;uJpa
+a^om]F7;GX`Q+>>^B\lZA:J@KpQWF2jZ%T:C%t9_k-08X0p9NlDW/M9T^E43LYD"L
+njI[NC7ChulL1=ZSM1o&n:U])%f4#33SNBWrrBH82?\BK1#5B&p)de#nHCLkWl`"T
+^U;[;?d1WMB_XD-T"1;>_L;UaPm8<p]E0&u3J[AQ=MiIrVfN@R?fI=ll7nVsP2:[l
+bWk&^gcr=OX_$=*9\V8@1<n6mE;oN%cL'B2)^`GuBrAAH(@0u#+7D^"cj-Y1T4Uae
+5o,k5K!Xg*i]5VE?oYR@8!-Ya4\UU:]8UJ";:mYE>nkb!O7oj])u685mT-2J)>Ot0
+q!TE,L?AR#M%cO_1$G*r<e7[gRL]u:2l62KAsQ=8ZI-)7%ZZN2<+]NqYWUTl#Wi^\
+Y*3^h;0sj6EG5mqB:V8=ZXX0P+G9K`hgnRSddFuPa5gq2"Do00;C?>cNJ[BO\<Rba
+iZr^VYm5pgFt!?kA2:#e*8oY+\<Gu>+2rAe4c_I&fQ2I2!9rk?.tQsRCMgf"gR@?m
+],mL3lirZQB#f><ZhPuhP%";-G&Wu0`eSV@Y%PiFVHrGDh&8$9@JCC1f_rOuXs&g:
+Rf3(3HD9,1[=TRHYQO"djA(C@e3%&[(?[n:\:3$d3nC\%95!&;qF`?:g$,cdG(b+B
+m,t\PkNr?djI%gkh8_[TA+^gco^%=;mFj1/M=C`TlX<qkA*Had:;ah(lkHdQS:;#J
+ZLP#+?Y,2K>42_$:k#J<]\]90g>?+1KtJXQNjEq-a`d'_R;f?];lj$EGmK3H[W@u5
+1rd,*qM0YpHO,9V$.;.O0Z7'cgDim;h(ljk\mIQZIQB%T0O,k(UoQKC/T<fn6:d3s
+U'AU);^g)aAP@>58YP$d;GM*3A'L*-8mn28Z:n2]aWY@i+qd=:#tdd7,aHglfd+2*
+V'M3q.<8@28M*h<qBVFRP*DP:,a+KfP%'T@.4.0SPa&N1!E6TX@^ftk.lT,6jH?*9
+4b_nXJf81<pO]^-1+[Ba/SS`\Ndfop1;NQ)V!>#26S,LEn^:5HXW#TZ%?D;fZQ[m-
+pG=jD\%h!W7UosFHH`a7G(mWHkaBn7D.Y4M/L,>L]Tk&7!KLAo!FR5spA:&0+Bp"O
+)YS3@LO45*Q61V)duVIRq^&br*0q23[$15V24$264daLg3VFD!jTB0%%_C9DZ-GF$
+Dha+X@;Mcd1SocLed5h17rhB7i@AfNn(dK^$%UA[B^kdF^&F"627eqYO$3LCfV$\S
+Of?j(jqa+g)[SD[_HM3NUB"tVBhTBO>MA$Gd.U%kbe+;rdE5oD"J77NPmtcMNngF\
+-*=J/+!dh0U@$5""/0M<#K]>VSFW%@k]BCD7"S*`:ck]X[GRH0#PUiKb?KmcCWH$i
+]qbHi&>`X#hcXr<+r`\'F[LBa_6A,![DVl,[1LOc(H11Uj4rtu<NiIQN/Yq"i?U8I
+*bRo?,CpbH<eo4@=[hb(0_6I&#h5[n8>]'nKS&jP1SHSuf5=U*Z;1*o#i%c(A_f,&
+dC#R=Ben_OVdA[&,AI$$JV(qNa0r5?-=siUp-bb-e\<%Zg@c+1/hB0dK0"f^aW:`+
+`-lCRnX_`P:XC#'D1>7&WR\;_M]tD<K;P[sW-"P8emhN>,A+(IL^3LG@LPPc_T,ad
+V4_]9DPB6.]S>j&2X@JTO5uZapRqq]erPulE&q+mI.=UIM:HOa\(XJHq!"O;\gC5<
+()Ih@]MG0-j8Q#dI:0/*f.)%CrBJp&>2::V<V2J9!^GqVrr<3G'Z\1BMpgQjgpS#L
+8#]@"R/0M()\<(k=#7Fn5%FTm3a(8[ag%Xt*ha/fknkH:AR<<[__K\%`.km;T"sb#
+96Ea6iq8c2)j0F"Y>U8q4jaCHqnr310#(859ZOi,04d%XBdZ_>$L2r0:X6Alb/#HJ
+F'HOWU]Pl`#[IB0;etdbfi/m`4eu1`"@6[Fq50,tk.5$[HlU;]^a/50.#mri&M`h?
+ZQ5@Cp?Fhud";^QTi9G-#4ABnT2ToLE0DQnAu-`h/rB.?V%Nec:9QYAn(fc#GrnF6
+^Ep#3EH*GOI3,9:C?G#.Sn2GD21hQ;pMDK<jAUT?/<Ll'?&^/lej+%=HqL`(nFe`u
+gS<NmKq?U_*$!'#&0U`;=)]dl*8<!jl6F8)MYgOh!Pj)Se"g.3?rc%aDqn@3PP'+T
+f[$bq*@'^S\5!tj'Wr$3$`'1SSg^dQP"Cg'[7Mf=,cN&P8P2Q"kp^PlP"?dm,a>5g
+f!%_1l;:J:OF;T_\M%(YBgT\9/;/jHoc/H8U`T.'^PZ&+PBMcqLUtdUr)=a7>1.T`
+Q)PmQgtffX*]6a(7hs"qlmKRp.0F<`cANdDB&d?]egq6c`3!\A=$>/0'^`X\9k%::
+:8a'a.WXmsUF#>V0A\'S&7"g+4E`KY=*#7JI`u9%9U>4K]sp$feK^nJ1.9!&4585+
+5HM9C7?q/7gV\\(mg]*XZ+?i2qfVd>cV9BEL5f1?fN:g,[X8BVeqT?";'_\G/A+<"
+3iU$.DX(!HT-Y?F9iPp3[d31Fjao[&e0lH[jSo3hS=:t^W&:-_3KEU&!Q!+;>mJ#9
+r5qO@lJ`j8E-4j"f2S[;9QfntD),nJdFs9.Wu[578VE>ap$@jDErP$jV@Slh!;>nM
+We5([g0hDK+*f"8PG=Wmi/K>qBP87lE/h]n7qa1YVZT[jNHU'XrDP,G/Ilp=6YgKC
+6kW%Ah"[RPHa4X3E;JG-o*>/U%%Vj-FmY.n@Ro4VI9g\[0#2'a)bKEZWg=$#4o,!&
+\g_]HL7lGO;+Q%,>l*aC9;#?r*);)h5TRr8=)>K4pR<+^pX\JYa:3),5oQ@5=j.Cg
+'rKZIc/K/&%\<FG?Fp#,nX(;"bGoHqiu[X[kGiDqORMhgZXWaMg@mpO'\XVp?+*dH
+>2h^lJR?JEfW9>ELH3*UpF9bMGaTnf!&&.J#.nhnG8u.@Abs!Xm<7d]/b%ORT?*eH
+G!W_\ojl6L&QF*jnR#R;F!$I+3"G,qJ5J?@S2)/F:T*HF,\SI-oC8)el]sa&QM1]S
+gsc!1hr(cN7TmkCXQ\AJBV0sC,iuo_@YB!%"4:P"$q`8qO$Iik0R)3CQHX2ac"O^=
+h+L9A]7,CI/!sc;\s%J4O1fX?Y^?MSQR%Cla:4YYJ?_gB^;#r^Qu-tr1qH4sR4$pI
+hQ_X_ke2\PA^7GA7d3*+IL@gp?#KNi*^;O^!0f%9"(".#p/_"^6"R1fPqFjF!(eHj
+(/QuHXV5,>f?scX)H_0NniE%bSaOI>1cKY%bJ`WT$R1E<[^3-WPZ],";Oq!=65-rA
+3us6UFVWM.7jRGadcf7PF/G^$7k'Z0hTB)![-R3;4Er6VK7*&0UhXOq6&ZXg2fiLe
+cCa"frr<afPbUDuF^"EOj#_&/nEhP*ld']l!4eLdU&3TFIA`/;T>=Bt<XT5_Di!B]
+,NB]C]Xa%U!<"MsI$0RPQ<P)":!bM$bI*9mf="2f/qJ'a4i3eg<#lu2QiitK>qej2
+#Kf?r=&,704G6j=8Ks<g;G!]G8lA6EUm=4=E<$(I7@krt@k6?k24qWj'Y_r?'GS&m
+Llt;+G1I,JF9N%-=othlHLI8`3'g9"=;1%05%d;#\@>#\+G9D+:KKaj&S+<'6INd$
+5IpQcl9"`)'M/oBEgE0i,c#mcT=P[./0C;pjff8*_N8ImNY57jlVCoVc*>+o!)\A@
+6kjcA3\*'g/*7QTcCp:nVNI-405U(n(J+&CX`DjXd<""9D1>Bnf%4-]8=eae"G'D"
+4$&XM>fs+ka2foU(0/(qlgA7`8(N+>@cRcCA(X;q/(N\@e*j0F(e0%,#QCQ3Fc1&q
+q(04P]X/;ALu\'#U-'K'V]+r<U3;fDk)s+/#sLT?<18!?*_bfIRe"XUc-adTFEZ%l
+N5SA.o_?*91AZus>>@28%C!@05!'ZkBB2!!'/>lb/SnY`?HF=Hj<6>F02o$C-u5<X
+i`ttV#s5Q_X1P<@A_C1uJf+(;"-(_,aARs?><6uVl5pKYaH6aLY.XNVP%Rqh8._4W
+%5M_B?+Hg<1)0[6g^E?fi'DF2r4J,c7Yq1MG;R,SLdWXH+REdr["7,oU0@Qs&3LQl
+F,N<))RsJC`;IIgU=Tq'fFQ$V8)L%+<ll]6X*S^?[s#JS2l0r+fcP_<U)G\-J^#Hs
+OQ!4/EAB)OH]P)H%e/Yc8:mEMq![u%'\R18KC:1$"1_A-4e#Wp\Zua\T4E20+_l,u
+Oc=4)XaAj^*$67"/$A-(:E+Ji1k'*lTfgUSB_6+2Q'`IjY;LC1%?2FFXRJgO:r`GT
+APV<(!7-3M[^rqAWu@j"'ojQN*Ns%6@kORca0;u^i+@3`87WSANL6OEN`:49jKiC+
+\1iA"KkI=:I5F.1X5CD%E!EV;W3D6(R,7:O*s[.YQUI]sIBFbQ2S_Q%:+&HKViUM;
+2]jkY#hngV^r/h4]%eC]H2)OCLGp?F*-QoQ%>^!/elS>*SU3"VqQn[W:J#uM#;rYl
+!(XE+%FPKM1'#8HplZm.h6>pJ\;Z<gDkr4#+HSSpl/?JdmQ823;a31.r[Sp:mCqOs
+6V2?Rf"MCo4)PF4V_[%TB.t+1>2\`#'GsBO!IF#_Z'OZ#JR_&QglJOYqY1p:*#94_
+2;d9#O/q`-SBid99@5NYp$phjk-)^@C&G$VqJ0A4;LNq0E<SogE0+RaPDd,BqE+#I
+E+#i/]k_Dr6K\,sgZd=k\7l'7>CAEqY/Xms5\AAHHi2E.O%:jYT2?&([7(m@]O#$!
+gdq"dEXo4'LZN#+_pKSo\_"QR[Hb9b,8/^c051OJ\I:\p]!="FIn'2%:R>W>"6o[K
+a-Zr\HZ$8JNMWg6>j:$6F3:s\G$eaI;[^cP>X0E!7jVg,P0cHTY_/j:hW`=/kM%P%
+&ApOh_SALBdua6;Wp?[_#;N'JkZt6?q%+)Wp?[/hHeM5iDPL(b9'b?XNK"AVi,!MO
+;7<sem!1/da&bRYmg1`)(9L$L2A'55CYh^.OYCp;>SW-MmNK;u/8Mb8!2%&kn#Esg
+<L'p^S^PmgNo*D&.%A4>luO4k3N[J]?lmEm/>C4%@_0]6A^:J`3M_l"=)?>.&`%Hq
+DW4h?/U+]6UVra7/uJp"<t:Sk//.OnTZ;k-c;AE#D%]XE/BlR`Pbohr8P2Q/.>ss#
+'"Mrg#/Cf:E>&V$<q+qacm9D\]reR$rh4.g"@<E-Ku`TePZHPkno`YWPd'FaVUk\g
+_Z6;75tu"C?2biBhsEhLDl,EfkWJ?kLs"V;D.%]n&Lc5[g8l5]D?pt'Y<rWr!&;C8
+U$gW=k$\s=*Y:r#eVF*J8\[j=7Z8_63"YXCJkB3r7c,C%7)Bc807j*N_ba6/][MPU
+_Fe8AJR`9;gMS%jX(61T\q>1g'Dq1pM%n!Qhpa9mMPtY4ZX<dDN<#@69#KsPLU/7i
++/:lHYJG((ZlE-,rKVuNc(H)tkIMF)<,V^9:`TY<,lP\48_N,J*NEU37g[6m#'EMS
+$B^1&<U!nP,ecKhG#,'ck)tY,+Ft/:,Gp>@JJ+g"bquYi7s"DPR=sDALfWTFVemR!
+!CA'?mCA:W[/fU0N_#4sMKlNl^7fm]2j<`6^MI_="W6o%RogNJD;GZ0&afi[0KbJo
+hUsqNiRAW9H&osFVGu<pNH*Ru"e*H8Z`4IMMcaPf#l'ukWiWVh0tU!q%DWtqn7*Mr
+CTD*Fj9d>kJkm;0[)07mWeh1/hQj5bTn(jGOZu)3po2fmgM6oG\:`f!5OYVb\R?[V
+[c>WRkTb0g)>TQY23g1p2g\,Z%YL%%G^HB16(46Kes"C;9'Y/g6V)4G89"S/a==a'
+G3:VPBI@WlWNj6KNsK4>Pg&D@LH?cmbdN[GehO?-!2BpGV,QVfMRXc@o.mT("k[_]
+l'<FX33CsVV:!L!_D9S/d<KG2%jT<$kN[soh'Up'*A;ab["'=8OjA0gju+lsGWiij
+la?SaeaTeh1E1[rW7SN`[oYjNT45350(duP35&*qBuY.+llOXR<W$9HE#\,oC3=\*
+C$#He:&AA<U"-A5i`07/Z]jXaKo@.85OVE<=J77%2U5fuERY>53"=VlPkKTtmTsUn
++-"mTB8au]f54;hWm`m\Ya72fe,fj&\IYf(C[4J;Z3t$Ii/`gG!>6"FoN4D=&j!Ui
+;T"0)"5UIY>!4(l1D-a9J3&ZcR\P]4fn/cak3WX"BUB4)TNQL?^n&)r!"XsgISpXC
+cdp"/O^WSIVC!'"?VILRF0?XULPH&[g3S4hZTbfWp0\-qgp6;aP$@XBGX!k@PR3B$
+R/nlK(R;.eMj7m9NpWX!ng`ZV)u1Y_4s7_';TE>dK$'%[^a%cm3p+>(#]S9aQSe*%
+R^<OB(63'iBeq/SGgEZ7]GA!n&Nu1bk+0KaL=eDHTo_+iBB<Ce[5PkgB\H[`Cr_Vf
+;a*+D[$M56:X!gQEtk?j+_mrp0=r>f[t?QF`f;6cC*!*#=^u?!Ur)/e>1aa=#-35f
+Y0.i$S*H3E`o8B;2*1Ft[a!AZ*gUZ2!aK$PJi.3j/%lX`f9L^;@uD<o7ZA?Wh#kK8
+*=C'd+fCVc\+ot''nojdX_;dsF*BRrm>qhG#kM5l=.QVJd!mmnq.PB4l&^/Rm=_;i
+:\UU9:h?Q?-0\NYrQ0J`"NN2+l)@P#I-T^e0o=t`]a3aZ`AcOAM('`RGepfUSi,V)
+ju)qpG^ujPOm4X0>t9L3G424`pCNYU<XW*g=cGI53dHDf%?8*[e(LPr.9+3Dp[\oJ
+Wb,?+HX1Oji-ktU=F36hBHOjihMI]ZDIZ0:+RBfup4+8KY^ZC72gW"U+=5E0W8&=U
+..(aC8qg!$&]4q^7gENlC'[?@I.i5#:#7=FAL/MRFqO7t<gX(j]eYtZV.s%b1kdN:
+`AZU1Pd"<(9R`G>Gn@?Qh685;<QN+%?;2-Ac"?,VF3FV-/P:cb-Ka:r@oKYYY9\G+
+Nt\G#Kq6^!obfkTZ1kDgrEcV(C!EEtAc66*R(YDJHc>!r]"fG-2+N>&,X-&7%mEC[
+PO_/aCgU\"*(52'I@eJKK3pA3l0N)\"==Zc1HM:i9;bTNc6(o1@G/bD#POUL*@A?_
+NYL4);=.d78UsEn4`@\bN7H>1<*r4KQT=1L-V;lZPT[ng9n^Lp[oE<l80CGUf>I^G
+A*-%t/H?())G/kLXK=SimE2V7*W<sg+#'X9*ASWJ7csfRM"4(ia0BD#<)4TnT>S2*
+T]lnUWon];9fT=r+@DWs!"Xj7]cF6[92*BFW6u-G2Rg+@YN;l3l9BQ/f#M701F:TS
+ASnXV[Nlk@i0m"K=C'+V:T2q>FRnQ,#d=UV">"PXOou/"n<16NR+lS_Xkh/kq'+_E
+\iY6+4"I;J$,Vl!34_Y)das_8E=p*,3,cJ#pE)D"=61HQL)99[Y1);6Jit,5V)PDc
+eEV[dF]\DSba,be"?_'/P3NpuXGU?5mb//s1(j(`5`lKUi7dJ#:U\lajPdXai8q\=
+]()b3TQmP]#c**MgDGDj($Ak.20rfuk3MS)[S1"W.`Yb)Q9.G-QP^ab>$Wk6\E1ZE
+ERK49bVjd.'Tt?U>Yg5=ndAV>e"@6Pm0QQo!r*ZlosOJjH<A>Gmb.Y\rr?.uam7S[
+r<BsM(a3qL@c_-OA=^G&,?]Y?ZtkREZ#o=';2bUh.HV.RA*qp(;!.mRlO^:H^"`+q
+6/KsOZ+uUa'.&hq#N/NFV`qs;?J/).4rIY.SmEhnCi6Rs2BSV4Bde)ch3WA%pK8k5
+!u(2J7K"t0e6(**<HP^Sc`.->"quY6/Cpj38K&D<GA=/kY+4gZ(sT:sDT`<,^?6-6
+ZYa2Iju'RH!%t!Ujs5XuXF+3PI;[*&pGdM9[`9$<0H0)7]i;`YRgXC?g$Zlmq+3sW
+))]]Lm]'SbF_3pD*>ZZIgFd>oV3UIa9`(=cL9>dNk"@\*lH`,3b^0VT^kj*5_n&eP
+OsM>Se_>/amgX\]5+0b/ishXH'PCN')Hi/,d)WL&NT;)j+R5nRU;qUS"0S:_pe!9`
+['UVR_b3NI7]lZk-#?TfV5PV[lCH[^K27GQ^Odu@T=Aan7[fYFA&kr"eW+Kf*\:e1
+Xs.*Tf)=g_4OmG7&,3:gbQ'U)!Y9-Gl/7'rXPV[2WlFK:DW!m?[s%=8V"MkaZ^So>
+4Bd.g5_p]WWl`B^B$I&.\.SJ8Y;S/efN\gVIc9:7a\q?@)Ej]n#OtGe6Q<-!lTH/7
+G'_^sYfYHeiEqh\1:<j-g[Rpb"7nk(2n_`2GsP2lX]XK^n-Ueh*L;0?43D#=P+-C3
+-pMKg6j6`=IgQF#96E-uSRLU$m%XF4?-B`UB2-HmJcI&iHr6B\Y3tdC8L:>%RgAj^
+nZLVW]^gEMUS8jUH>@u5drRE-mXSq;$!J:th(;,4Kp>_-\rU\g<e91(n&c6sdkZI*
+.aQ$0OAgY[*sB8g:Sfhq?*21fZ-9W#%QqPeKmV6YE0cAklQg>=<5gEX:[#:(,pG8p
+3<0L#]d=f:0r;JF&Q;Q;5,LtUjA\1"R2%Hb@n<gE,Kq@#RbXd2#IL2t-U,1e=\oTT
+7"A)_%P+XG"lH+$I-"o3VrTpJZ0lQADU;/tU>OLB[6$`G_,,;L\Tb<fCT`24U]m]]
+I8d&n1#8C'+ncr<]sT@*bd#307"OL.HG2g4DmcZV_ZTtq`\_?:/`ELr4omVp.VgUV
+K_Q/o]dLM0Z3K=o:nq;_`s+Dt`S(;P=0LgN<t^XZPD+-Z*Er1l^j\[OX(57Fr>`Xc
+OqA(<BE@*ap_'Xc>&GFX1[foer[UmjMX%WAFfd5-n(eP"PUV:R>56<gD5tZ"(OKC*
+hVT&LXL7(?mW@an8-`$S\9o'ErlY.B?7[.sZ.l<23]BU\:cd/[ql:G-A^;%eTPYZ:
+_F&J9+E_[-82-1XPG%9DI>9?j5+)>u5J7Z"4!:c>eYm3cDJ:ir"VoTM[^pg:l*^h3
+k!9X>&'-92q$ajS3nK_AFoqW\2EPYGXajQ4MgHIPPO0;s#A_X*.ok8$Yj%ms;>7B5
+kHmNeh]RO(;7=_EUOAj=Qs*q3Ns/tbG8Feu`]09M^_8eQR"6PhlC"c')qh/E#L!'S
+A)ZL->cP)&GPZ1f/Npm3,S>i4Y<fS)ZIXVN\.dbO[k2C`a()2fCa&f3faTW*4(jCS
+I1rd6et6L_Uf(uAE7SWM9.0%&DC8GZ,dqp$#kJ3Meu=g0Z!b+#f'6Id%\Cd\p.gLY
+f!a;%@h,;UnQ0V=\Q9?j-1#\<*s/_e@:_NMFIc;;,&B-Fm5*aZb1pW8ZB\bZ&pnSU
+#d.*;O;R/.!E48lE,BZLN@%S5h+MRRJXlel!0q1DbSL)U4.\Ns>S#bHdV@LOcNZn%
+.80f9lX,([fF/8Vh@uL=[#%3ZZp4l8.0='5^]VH7Wp20Oq$eI-O\&7!)ds]d:FA\$
+^5oU^gB2l@>!^ROVKJtQHA9XemW[&%Z:E-?r2e)Ih[P[p4%G(aQDl^b1:IPKHjlpM
+^J<,o:8L:cH>V0SYsi6L"H?ppOB]*?a&p`/+bu3]n3jjF!-,!Vbf%hgom@?I9nilS
+A?*R4(qR0V>'Xi?Tr?e'Ji=-iMiRXbW4p<&$^q*HHo)-o#1kkpU8NV'"I>G)kY1e&
+4T`VZ0$Ic"bRXsR0!c?0X/QVR-h'CDR3RY&G4:p0cGu[%D.*o1[JU-&XE1VNKp+7Z
+T#Gl&=XbDE8NJWB$1^,0D]8cSM6X2eNY1+YQO&5<NC1gsdJ?UeD><q60`"Ia".Vn(
+68pOr59eDL^[:9NZj*rd7WJ5*d=RX]LfYBbB`3a3-Q$@0BPe'L,d`:C9Q7phYJ<\Z
+P$GJ)Ns.(NC>3RWcpVS3.f"`VD*^df]3J!c1W6=8eO@g:l"Q6+GU>F=Ee9hkd$1Wl
+RaK91\t*^"d#sq_hC3@a5Ekuq=7(BbhbEuP*<-"l7[2]H[^Nd:`pJZoi_7Ja<de@G
+.h]M[>5Jg"mr\0^M>Ko:p(+h?3rZRXV<`Xl=T8B.kSimr^M;g#]d5a(\mE..=GNqe
+rq_K:q##(.W@?3;[DM(>^'#pR\[PR1Z%q*oO:UGMAo1['$uD-M=Y1,eCeUS$-RYs,
+?]=7k6#4CU@n/``Z.W@9HQtm@f0J[l`tG@^j6SjsTa!eQD3\Z"o@]qO0&kn=H2GU<
+lG@DJG3$^JL&h-N0!=A@r<Xdgn`GQU\7fW#^&[GZA[^oH$B@9pE%Q4XB_7f'R%J@>
+E4YJDe8^IAUB,r7g&oQU%b!cbY<U(JcYNJaHJTXjUP=l;/C411F^Ja#G13=>T_ukr
+M^sI27CJnXP0*dY+70(C[ER%6[/#OUW#.AKO-MYUaF["8^FN@^0V<HTF#FRfNXoY;
+-7kBV@/CKS5oZ_DC\\NZZ1kZ.E+mlH5h6X_GcT7;OgH2-b(p1n:R]0R&?;uUG)_"W
+,k.^L%CF<SBKI_m.JW?AWn2*7S]P'+@@.d2^E10VB_K[>T0g$;Otj0oZcs8mSTK)6
+XYGg[b/^/:;Z?`:Z.g5$o",'1[rC+:,gX)!Rqj6#I$L5elDl9L2@f/qE6uWU1E#Or
+NHLa#<jf:=#IJ4ea9Dq0%redt0n[##5r^Ygh6ujZno3r<fTmGbHY'&_-tVQ'AruA[
+?"%F?QPk=S$^i2O;rELDE&S?lG8bsW9:NGe%(]\6[(Lh-78!E7?$1O`hL>^)kDujq
+r<&GjC*\2A]gEs-2lPgGcGhi1&++_YM?L3?3L#UC%P^-n)3EgN#JhD-dn-,,I+,O<
+S2BmE"2[pM"S)7E[T6tn)!$Amd16c(?"rQ*Bl;ornk-L)Fg_XV%X[$I%FkhORI"+#
+1kl7CblRDSNo!&e2SlZL3JFWc5m6H4i3m"@X/lP1?HM5QCO#W><*+`(f`Fa$OAZ7)
+T$8(Zllbb-*F`YL7_Z>Cd!=*OeB-tA`Fl6"">E<<K?qeDD;@@P78E`C^B>F:dA1,R
+*'s,H7"pR%g'RNXUKtPr`0XBm5k^6OO'AiY>T]!g5UEWFIKEU/NZrcS2M(0R[B^))
+<LbYBb%iU*4k>?<CO9lE-nP#F\m,`>5k+A135s2SBnld5KK,?qR)JiUO'Ll?CO02'
+f*5@7V5+dr/""S&Dme=)ZtRuS="2?.]S#?9W,H;!^sr*OMYpN9js(uOHa1E.Ws^hu
+X,Jm>Zd4oCrr>*+F^c9Plejf$<\kUZZCb=+6QAblOT\2%<=TsYm:Mq9/Iq-pbQN-5
+ZMN,o;5Mpp[I/D:e,?;.h,QY0^k.#rIm4W.Wi;BJYei!L\/cb:+!LWt_AX=r+HQ[k
+qi];Xac\FV*Ug$FHC4EU:XFKMK89=>gb*O1aE;bDYjh?^bSAOB(S\EpZ[YB",agZ`
+FVum(.?X-l81Z-oWHF4.o@YV$[)r\rXiYN1-Rm3g\:g#R!SC0:8Osk`:i(UBF6lY!
+3%)"(BH8rmW0,nC3%jV5:'6VW75T3iNXNK5rIi1a"?H"p?&HDj#C%Qg#=f(MSGrR7
+_.eAEd1#[A"":-r#Pq3N7-P(HH*akEX%#1?)hQJ7TKl(CB/HVk:%j\WCu^*^ClCAg
+8P_!LFXf!ZQAr(e*YMM6:(G]o<F6KJ0SBfLBT`T2G*-@V;Y0K-qpH3DR@fAC]q_lO
+:j*.[a&D>YQ'&'/Ke8)@Lb8'6-0k;HOg;,0LSFlQN]9sI:Cs1;G`i,C1+]liKE)6*
++QCKd9=D0$L"etGj:u/$4][Hn;eqsqj^#pDWmFE"_H5^F<AlrK>1,m=lBpVW,@!O[
+28aTtaA/h:YK=lA)k]eibKhdpPp/2"2^,CDipESh+jhZ//Lq_6[g=Eq+4^fl>^7_8
+NJ_i;7%tQm)+S`125A[W1.&[<R<D;@A+mlN)Zhuu>;N!)klhhl@km<M3!';BAa\fn
+X_%3,rT0#S[^Z<15]?)d/p[BY[5r8LR/S?jKF60IfsU$cZ2Odeir9#H$,q<LEK*1!
+P_CcM!a^SE4&2b,i:1/l&*DlXk2ZF)ReB`k/]FQO4e:=TbIX%nm#Rm&U#J52,bYS1
+cQab3AZ"a]o"[MYn+0[?@U8\eb[_"_7g$MKYhXR9A3kubm#p=@h3jU;M[N&tRT^!p
+;AWRp)b7`(roA"%gd_]=!q-8R@r64JP1(TEn,Rq@m`Wc&MdQ$)aQ^/..1V\Qj<_CI
+#A/lMnh&Y;4lgSda&SgmMCb].9M]18FLs#HWu;YOe#K.bg=YBtd2pLX\8,<+b3LrW
+,TRUOjISH8X0H#S@^Ze&Hk6NRHVdeKO/,.3)BI.H+\PV"dr.m"+R*E^V5Ij_E?-%a
+.&kMd2/;/nr&9$R_3CA:92)CnA%@FtJp8Nm-H=!Da!K6d(f#a<@oX;#)Q@D0/tl9<
+VBmZcn4?9uM'SRTP,*m:C7QbE$k7&'5(c^264$$C2(q80#ge\?.0nP\i0W-Oi/X$G
+VRP74TBtt,*YM$M4U1[,-uX\m:m-q:%,qp?Ae]J`;G%J+1`[:b:hhCN&jmN&U@BE>
++Z@i5k2bQh8HE=3?s;aW(K=KBe01?*'/5Rj;"WL@Ia#:;F^Jd_G"^2c_$*c\%[Uml
+$:CWA7]WF$1Vl;McNI6D1ce"RIq./!]jN+)I'm6FXe#l:@j20]'U;E6$n\QFpJc$=
+XE+7T\EQ\m94+s"bXAFjSPD8#J]6fuKG=#bo5k'eeFUOioL=DM/t'S%6*[Afk$QO=
+IVP0m:YC_>dAR`Q/rq5GPFZ5=i:-sr4EQ\G<eBdTKn'D!m\`q66r_.u\oh:#eI!1W
+bNjD9dKoU_JH#U57Z1pENR"`-21WS]Bk\VOdOKR:dcqj;LJ=^j$M5FR-p]F.e*HK0
+*h?Yg=.qS[.AAL53s8#]YT=O`4/WNZ83Y4(JoQcWJik=c.1b+tn5&7'@M*#k%&Bn4
+g+.?,!/&?k*BsmDC_>StEM69p'Z=!W6Z$=)m[1A+.;DaL9K'Ar3!6uZG>AMoBF2OI
+dSf$LP!Ma<K_ctt,c-ZWcOTm*q5FL[Y_;6dMNj8q[7O$3Jo?N<dSe2\3aAJWP:)$W
+,qZu*qkTC@KTi7pP*Ud5.3nse@gD.f'>e4AQ77]SBLrVA;aQ]qKTrhi$.=KkZmQ/H
+GY(IFp^/Zo3[REE,:IIK,*qMenY/WsZ<@Ma+#^?,iSkX86Va[0/\2RXSgrl>Z-D8:
+-!<%n7d:E8OT,:ePT&:(;p$L\p`i0%(!_GMUXaA?1[bG7<?5!<S\n5+fZs,mY/[*.
+i-s[KT2^K=ZAgLQ;Tf9<bliF2,TrA&:C0?aP*?ZD:C/I`8NKEl@M?UMdSefAFJ1@>
+8m*G/P"Jmj:C./gZBAbu!!JO^P">fKA`/_^i=m^dP92'5\k0L]5tZgPdRKJ,:n8jG
+Zm?%$:l:XW?POt_P*S[3'6Zr?6;X3uPbaI<#q9O[1eB`#@iD0MdY*k)'&'.D*XO9S
+GUA,(9aN7^8-L94,r((1P%[E\8<juM6A_Fn)C22>lrc?-d&jq7U<C_u.4O<R]gQ)9
+1kh;:#:k/(0UdEb^853A!bL*`;:mHkD.I?,9!]$2E1OC-ctJe#K,qUf;sE*kr_CJb
+GNbO"a]f-/lK,+ZUZ:^m@s/a[$V^c)Z<h6YP"K)mP%9/9;G#;.$R\LkPbb!8,a),m
+M0DL`KgJV,,Z:p>7&L;>8L0Hk?a<o^R%f;`6:iGf30oC&8kgRj;im<%.<L^Z,c)3^
+KT_"QZ;@,*5t_oB$.;C<,mi#k78"ns-qR&u8^]mt-V5Ju.Tn%],c-Ys\o\Xl8O>ut
+8X#s-QM@9_dj1bXVCBt>U_aIs=d`"GCKNDrq(2ar4O7)>j1k+hn>L(qlFQ?)>@UpY
+%3;-E2Y>4J\emB8aWODbLIcX%_RVsJWu=Nbo0CL>[]?jhh5'?Y'ts9YU/TPYDRobd
+5A=NnNM52)T\#3qq#iD)m%9$5H8SQoWi;u*<7'4#5\TMAKr8N:P&ujZi?X"H.:34Q
+\k1j,/>#n84=$c8,b63FUrh$k.7kiT8HgOgZq1u_T8I1Xda\LRO\$ftUln:q/=[uK
+8mN^*8P2Y#3b4JdBLsJ6\n(;n8lrtWTd5l.FNMs/P"H?Y8kC:k;Nl1=FHTPD-VT\f
+P"?pqOt"j*V'M3q.7o_faXMk\KhhK$"r654^f"+WAQ%o;<<WmZF>qRpX82f;'(Ai>
+p%gg6Rbdkbr/4qI;p22SSdl"o#X;O,!+X^fEmsVQl918pF[s%EqhdNJp1t9SOoc8L
+'!Y%BUlpt6')3andSc6'P"JVD,a+CT8T9iWP"B\WPR9u-P*O]GP"A91P2Ruh;S+7.
+,a(KT#pbZ_;,01uP"K"4aX!%99Thst]&=ot8P2Q"P#kX/P"BgpOpNCc^OhUt,`7hL
+8L1,XP"@*5^Y"]@/,6(fP"7$?'Tu$/l<Q/:,c,ZU,`kq;R&#ln6[&mJ8L0JWI;St;
+=!,_3paSL,5NQO-;";Co-.)nae"i-um%fe9,Ub$3,a+r#;XT]='eU.FOt':",a)&g
+#pbjK.3t'B8fXXi8?#0+P"L6(f`~>
+
+n
+Q
+Q
+Q
+[/EMC PDFMark5
+PDFVars/TermAll get exec end end
+%%PageTrailer
+%%Trailer
+%%EOF
