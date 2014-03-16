@@ -29,13 +29,29 @@ To use our system, users first define service compositions with an XML. In the X
 
 A simple example of a service for watching TV is shown in Listing \ref{lst:watchTV}. In this example, the 'WatchTV' service is composed of two high level sub-services: 'TVOn' and 'LightDim'. Each of the service can in turn, be provided by the corresponding TV switch and light switch services with the proper arguments. By using our XML schema, we can easily deploy and test different types of application scenarios in our testbed simply by re-defining the services and the corresponding nodes which provide such services.
 
-The XML containing the user's defined services will then be parsed and packetized for dissemination into the pervasive computing environment. As shown in Fig. \ref{fig:lasecalg-implementation-architecture}, on the pervasive device side, after the devices receive the service specification they will start executing the service composition algorithm and notify the user when the composition process is complete. We use MicaZ / MIB600 as our hardware platform for the sensor nodes. Fig. \ref{fig:lasecalg-implementation-hardware} shows our test bed platform.
+The XML containing the user's defined services will then be parsed and packetized for dissemination into the pervasive computing environment. The devices in our pervasive computing environment are programmed in TinyOS and we use two types of packets for disseminating the service information. The first type of packet is service group and it has the following fields:
+\begin{itemize}
+\item Service code: a unique, pre-defined number which corresponds to one broad category of service. For example, in our system, switching off is defined as service code 0x0. In the TinyOS program running on the devices, these service codes are 'wired' to a platform-specific implementation for that action. For instance, the switching off action may be implemented by writing specific values to certain IO ports. In our test bed, however, we implemented those actions by sending a TinyOS message to the sink node, so that we can collect the data and observe how the system behaves under different service requests.
+\item Service group: a unique number generated after parsing the XML for identifying one type of service which is specific to the XML. For the example in Listing \ref{lst:watchTV}, we have a 'LightDim' service which belongs to a service category called light switch. However, it also has an application-specific parameter for intensity. As a result, this service has a unique service group number for this XML file.
+\item Node list: this contains a list of node IDs in the XML which are capable of providing such services.
+\end{itemize}
+
+The system may send multiple packets for service definition. Upon receiving this packet, if a node find its own ID is in the list, it will set it to the service group so that it will be ready for participating in the service composition later on. After that, it will remove itself from the list before forwarding the packet to other nodes.
+
+The second type of packet is service parameter and it has the following fields:
+\begin{itemize}
+\item Service group: the number which corresponds to the number defined bye the service group packet.
+\item Service parameters: a list of parameters which is used to implement that specific type of service. Using the example in Listing \ref{lst:watchTV}, the service parameter for 'LightDim' will involve the parameters for setting intensity. 
+\end{itemize}
+
+We introduce service parameter because sometimes, the user-defined services only vary slightly in the parameters. For example, 'LightDim' may have a intensity value of 5 while the user may define another service called 'LightFull' for an intensity value of 10. Therefore, instead of creating different service codes, we may simply use different service parameters to allow our system to be more flexible. Service parameters are separated from service group to allow the users to fine tune the services parameters. For instance, the users may find the light intensity of 5 not dim enough and may want to further decrease it to 4. We can simply parse the new XML file and disseminate a new packet for servic type without having to start everything from scratch.
+
+As shown in Fig. \ref{fig:lasecalg-implementation-architecture}, on the pervasive device side, after the devices receive the service specification they will start executing the service composition algorithm and notify the user when the composition process is complete. We use MicaZ / MIB600 as our hardware platform for the sensor nodes. Fig. \ref{fig:lasecalg-implementation-hardware} shows our test bed platform.
 
 \begin{figure}
 \centering
-\subfloat[Sensor nodes]{
-	\subfloat{\label{fig:deploy-micaz}\includegraphics[width=.2\textwidth]{micaz.jpg}}
-	\subfloat{\label{fig:deploy-mib510}\includegraphics[width=.2\textwidth]{mib510.jpg}}}
+\subfloat[MicaZ]{\label{fig:deploy-micaz}\includegraphics[width=.2\textwidth]{micaz.jpg}}
+\subfloat[Mib510]{\label{fig:deploy-mib510}\includegraphics[width=.2\textwidth]{mib510.jpg}}
 \qquad
 \subfloat[Test bed setup]{\label{fig:deploy-testbed}\includegraphics[width=.4\textwidth]{testbed.jpg}}
 \caption{Test bed platform with sensor node: \subref{fig:deploy-micaz} and gateway: \subref{fig:deploy-mib510}}
