@@ -1,0 +1,21 @@
+\subsection{MatrixMap: A Programming Model for Machine Learning and Graph Algorithms}
+
+Current programming models such as MapReduce is for divide conquer algorithms; However, they have three disadvantages:
+applications like machine learning and graph algorithms do not follow divide and conquer; frameworks are inefficient to run iterative algorithms and dynamic programming algorithms; frameworks cannot take advantage of both memory and secondary storage.
+We observe that these algorithms are based on matrix computation.We proposed a programming model, MatrixMap, as interface and implement a data structure, BigMatrix accroding to programming model, which makes algorithms easy to write. Our model support variety of matrix operations, such as Map, reduce and matrix multiplication. MatrixMap can elegantly support data beyond memory, Because we have efficient data cache across memory and sencondary storage. Our model not only supports such ETL on data like MapReduce, but also supports dense computation.We implement several algorithms in this framework, including BFS, graph radii estimation, graph connectivity, betweenness centrality, PageRank and single-source shortest paths. Our algorithms expressed using this framework are very simple and concise, and perform almost as well as highly optimized code. Our results shows that : faster than current frameworks.
+
+Given that machine learning and graph algorithms can be attributed into below three paradigms: Divide and Conquer paradigm, Iterative paradigm, Dynamic Programming paradigm. We also assume that data cannot be cached all in the memory
+
+Our Objective is to develop a programming model for big data supporting:
+\begin{itemize}
+  \item Divide and Conquer paradigm
+  \item Dynamic Programming paradigm
+  \item Iterative paradigm
+\end{itemize}
+
+	
+
+
+
+
+

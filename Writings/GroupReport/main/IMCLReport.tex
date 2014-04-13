@@ -1,0 +1,93 @@
+\documentclass[11pt,a4paper,titlepage]{article}
+
+% Remove the .aux and .toc files if you switch languages
+\usepackage[english]{babel}
+%\usepackage[danish]{babel} % Danish hyphenation, headings, etc.
+
+%\usepackage[utf8]{inputenc} % For Danish characters on Linux/Mac?
+%\usepackage[latin1]{inputenc} % For Danish characters on Windos?
+
+\usepackage{graphicx} % for the \includegraphics command
+\usepackage{rotating}
+\usepackage{booktabs} % for pretty tables
+
+\usepackage{caption} % For better-looking figure captions
+\renewcommand\captionfont{\slshape}
+
+\usepackage{fancyhdr} % For custom page header/footer
+\usepackage{longtable}
+\usepackage{listings}
+\usepackage{geometry}
+\renewcommand{\arraystretch}{1.5}
+\usepackage{tabulary}
+\usepackage[newcommands]{ragged2e}
+\geometry{left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm}
+
+% Options for listings package
+\lstset{
+ language=Java,
+ basicstyle=\sffamily, % it's either this or \ttfamily
+ tabsize=4, % if your source code has tabs in it
+ columns=fullflexible, % variable-width font
+ showstringspaces=false, %Leaves spaces in strings blank
+% emphstyle=,
+}
+
+% This demonstrates how to define custom commands.
+\newcommand{\ex}[1]{\exists #1.\;}
+\newcommand{\fa}[1]{\forall #1.\;}
+
+\title{\huge{The Internet and Mobile Computing Laboratory Report}}
+\author{IMCL}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+% European-style paragraph spacing. Note: must appear _after_ TOC
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1.8ex plus 0.5ex minus 0.2ex}
+
+\clearpage
+
+% This is where you set headers and footers. See the fancyhdr documentation for
+% more details, especially for headers that are different on even- and
+% odd-numbered pages (add the ``twoside'' optional argument to \documentclass.)
+\pagestyle{fancy} % add header/footer from here on
+\lhead{\slshape \leftmark} % Section name/number in left header
+\chead{} % Blank center header
+\rhead{} % Blank right header
+
+\input{Themes}
+\input{TopicsOverall}
+\input{TopicsSmartSensing}
+\input{TopicsWN}
+\input{TopicsMobileCloud}
+\input{TopicsBigData}
+\input{TopicsDistMEMS}
+\input{ReportOverall}
+\input{ReportSmartSensing}
+\input{ReportWN}
+\input{ReportMobileCloud}
+\input{ReportBigData}
+\input{ReportDistMEMS}
+%\input{EffortAchievementWNWSN}
+%%\input{EffortAchievementVanet}
+%%\input{EffortAchievementMobileCloud}
+%\input{EffortAchievementBigData}
+%\input{EffortAchievementDistMEMS}
+
+\bibliographystyle{IEEEtran}
+
+\end{document}
+
+% Find LaTeX help here:
+% - The Very Short Guide to LaTeX
+%   http://mirror.ctan.org/info/latex-veryshortguide/veryshortguide.pdf
+% - The Not So Short Introduction to LaTeX2e (has good list of math symbols)
+%   http://www.ctan.org/tex-archive/info/lshort/english/lshort.pdf
+% - Winston Chang's LaTeX cheat sheet
+%   http://www.stdout.org/~winston/latex/
+% - The TeXlipse plugin (you need a LaTeX installation also)
+%   http://texlipse.sourceforge.net/

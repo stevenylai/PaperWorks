@@ -1,0 +1,14 @@
+\subsection{Programming Distributed Intelligent MEMS}
+
+Distributed intelligent micro-electro-mechanical systems (DiMEMS) are distributed systems involving a large number of miniaturized MEMS units. Owing to the technological advancement, we are now able to fuse various sensing, actuation, motion and communication capabilities within small MEMS units. Moreover, advanced intelligence can be embedded into units to allow them accomplishing complex tasks collaboratively. This emerging system can enable a lot of new applications, such as Claytronics, Smart Surface, etc. At the same time, it also raises a great challenge in programming those systems. This is because DiMEMS combines various features together and renders the existing programming techniques insufficient. Typical DiMEMS features include large-scale, dynamic topology, complex interaction with physical environment, small physical size, limited capability and resources, and tendency of faults, etc.
+
+In this research, we aim to develop a new programming language with proper abstractions, so that programmers can write efficient and succinct codes. In addition, the programming language should provide natural support for fault-tolerance. Hence, programmers can easily write codes to handle the potential faults with MEMS units.
+
+To meet the above-mentioned requirements, we propose a new programming language based on temporal logic. The following summarizes our design philosophy under the language.
+
+\begin{itemize}
+  \item \emph{Ensemble-based programming}. It means that people program the system by describing the global system behavior (i.e., consider the system as an ensemble), rather than individual nodes's behavior. In other words, programmers only concern
+about the evolution of global system state. Thus, they are relieved from worrying about various underlying details, including data distribution, message exchange, synchronization, etc.
+  \item Combined programming paradigm involving both \emph{declarative} and \emph{imperative} styles. By utilizing temporal logic, one benefit is to allow  programmers to write codes in a declarative way (i.e., logic programming). Another benefit is that we can utilize temporal operators to implicitly manipulate the control flow in a program (imperative programming). By providing these two styles, programmers have the flexibility to choose either of them when necessary.
+  \item \emph{Runtime system monitoring} based on temporal logic specification. MEMS modules are prone to have faulty behavior. Thus, runtime system monitoring is crucial to track the system state and detect faults in real-time. Afterwards, fault handing procedure should be invoked. Temporal logic is a powerful vehicle which has strong expressive power allowing us to describe diverse properties to be monitored.
+\end{itemize}

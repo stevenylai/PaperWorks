@@ -1,0 +1,22 @@
+\subsection{Traffic Signal Schedule Estimation Using Smartphone}
+
+Problem:
+
+Generally, the problem is to estimate the traffic signal schedule information using smartphones.
+
+Formally, we define the problem as: Given: a set of traffic lights and their locations, a set of vehicle traces including, accelerations and locations; Assume: traffic signal schedule model ( parameterized by Tc and Tg ) on-board smartphone is relatively static to the vehicle; Objective: estimate traffic signal schedule model parameters, Tc and Tg for accuracy within 1s.
+
+Motivation:
+
+Traffic light is a key element in everyday traffic management. Drivers can make better decision including velocity alteration and road chosen if he/she can acquire the upcoming traffic light in-formation, so that a considerable quantity of fuels can be saved.
+
+It is very challenging to accurately recognize the traffic light, due to the complexity of the real world traffic scene. In particular, for traffic light, not only the shapes and position alters, but also the basic construction differs, including the with/without remaining time notification, traffic light for one way, two way or three ways.
+Existing work focused on solutions using cameras. These methods have the several constrains. Firstly, they require each vehicle equipped with specific devices to capture videos and do analysis. Secondly, vision-based method is very hard to be robust to the environment changing. For in-stance, vision based algorithms will be influence a lot in rainy or snowy days.
+
+Solution:
+
+We proposed a two-stage traffic signal schedule estimation approach. At the first stage, on-board smartphone detects vehicle event of acceleration or deceleration based on the accelerometer sensing data and report the event to a server. The server, at the second stage, collects a set of such events to estimate the traffic signal changing sequence. The moment with rapidly in-creasing number of accelerating vehicle is marked as the time red signal changed to green one and vice versa for green to red signal changing.
+
+Result:
+
+We have conducted experiment to evaluate the performance of iTraSig. The overall architecture of iTraSig involves two main components which are implemented on different platform, respectively, smartphone and central server. Mainly focused on testing the function of event detection, we did experiments in different types of real vehicle, providing comparisons between the ground truth and our detected results. On the server side, we did two simulations showing estimated resulted in various scales. A simulation of single intersection is conducted to show the feasibility and effectiveness of the algorithm. Moreover, a multi-intersection simulation is done to show the performance of iTraSig in terms of estimation time in diversity of traffic flows.

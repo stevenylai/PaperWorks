@@ -1,0 +1,20 @@
+
+\subsection{Computation Partitioning}
+
+On this topic, we are going to implement a platform for developing next generation mobile applications by leveraging cloud computing technologies, i.e., by partitioning the computations of applications between mobile devices and the cloud, so we can create applications that far exceed traditional mobile device capabilities. For the applications running on the platform, we aim to achieve adaptive and elastic execution between the mobile devices and the cloud. This is motivated by the fact that many mobile devices like the iPhone have been equipped with various kinds of sensors and multimedia capabilities. We foresee that a lot of new mobile applications such as multimedia applications, object recognition, location-based social networks and augmented reality, will become highly demanded. By offloading the computation to the cloud, these advanced mobile applications which could not be accommodated before due to the lack of significant computing capability and energy power of mobile devices, will be enabled and enjoyed by mobile users.
+
+This project will have essential benefits and long term impact to the mobile ecosystem. First, the platform is designed in particular for the application providers. It provides programming interfaces and runtime support for application providers to develop and deploy diverse varieties of advanced mobile applications. Particularly, in the programming phase, the developers write the application logic by using the APIs provided by us; while in the runtime phase, our platform is responsible for the partitioning of application functionalities between mobile and cloud side. The partitioning is done according to the available computing and network resources in the environment, and the performance requirements. By using our platform, the developers only need to focus on the application logic, while do not care about the partitioning of the functionalities.
+
+Second, the platform will bring business opportunities for cloud providers as well as application developers. The application developers can make profits by quickly developing and selling various intelligent mobile applications on the platform, while the cloud resource providers can make profit by provisioning computation resources to accommodate the partitioned mobile applications.
+
+The platform provides programming and deployment services for application providers, and run time support for the partitioned execution of application between mobile and cloud. In programming phase, the developer writes the application using certain programming abstraction and interfaces. In our platform, we are going to provide dataflow graph abstraction for developers to write the application logic. In this model, the application is composed a set of modules which may have data dependence among each other. The program code from application providers will be mapped into two cop-ies by our platform compiler. One copy is to be executed on the cloud virtual machines. The other one is to be executed on the mobile device.
+
+In deployment phase, the developers can conveniently deploy the applications using our graphical user interface. The platform has a special storage component, called Application Models Warehouses, to store both two copies of the application code. When the users install the applications, the copy of mobile code will be downloaded onto the end users' devices.
+
+The objective of this work includes:
+
+1). To develop a platform for providing computation partitioning as a service in cloud environ-ments. By developing the platform, we will eventually deliver tools and software at both cloud and mobile side to provide programming and runtime support for application developers;
+
+2). To develop a set of applications based on the platform with demonstration, and validate the performance with large test cases;
+
+3). To research and validate the business models from perspectives of various stakeholders involved in the platform, i.e., mobile users, application developers and cloud providers.

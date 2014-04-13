@@ -1,0 +1,23 @@
+\subsection{Temporal Constraints for Self-configurable Distributed MEMS}
+
+A distributed intelligent micro-electro-mechanical system (DiMEMS) consists of millions of units with the size of sub-millimeters. A special kind of DiMEMS is self-configurable DiMEMS that the member units can adaptively change their positions to form an objective shape to perform different tasks, such as cross obstructers. Minimizing the number of message exchange among the units and the time duration to finish the task are usually the objectives of this kind of system.
+
+Existing works lack support to specify the temporal constraints including deadline constraint and temporal order of different parts of the object. This feature is important and useful for two kinds of reasons. One is that the time-sensitive work which is under-taken by DiMEMS is meaningless if temporal constraints are not considered. The other reason is that no temporal constraint may affect the user experience. The decomposing of the temporal constraints into execution is also needed for DiMEMS.
+
+In this research, we aim to develop a new programming language that can support the specification of various temporal constraints, and then design approaches to decompose the temporal constraints into execution for self-configurable distributed MEMS.
+
+To meet the aforementioned requirements,  we mainly have the following research objectives:
+
+\begin{itemize}
+  \item Design a program language extension of DiMEMS to specify the temporal constraints including the deadline constraint and temporal order.
+  \item Design approaches to decompose the high-level temporal constraints into low-level actions to be performed by MEMS units to finish the tasks.
+  \item Design optimal algorithms for self-configurable DiMEMS to perform several typical tasks using our temporal constraints.
+\end{itemize}
+
+%
+%\begin{itemize}
+%  \item \emph{Specification of temporal constraints}.
+%      The temporal constraints include the deadline constraint and temporal order of different operations performed by the MEMS units. Further consideration for the temporal constraint specification in DiMEMS depends that whether it exists synchronized clock. If the synchronized clock is missing, the temporal order only can be inferred by message passing. We will develop a new language to specify temporal constraints in above different conditions.
+%  \item \emph{Decomposing the temporal constraints into underlying execution} After the specification of the temporal constraints, we will compile and decompose the high-level objective into low-level actions to be performed by MEMS units to finish the tasks.
+%  \item \emph{Design optoial Runtime system monitoring} based on temporal logic specification. MEMS modules are prone to have faulty behavior. Thus, runtime system monitoring is crucial to track the system state and detect faults in real-time. Afterwards, fault handing procedure should be invoked. Temporal logic is a powerful vehicle which has strong expressive power allowing us to describe diverse properties to be monitored.
+%\end{itemize}
