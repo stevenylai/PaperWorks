@@ -1,13 +1,13 @@
 
 \subsection{Intelligent Transportation System Demo}
 
-We have a platform to demonstrate our existing research results in intelligent transportation system, which include the following topics:
+We have a platform to demonstrate our existing research results in intelligent transportation systems (ITS), which include the following research topics:
 
 \begin{enumerate}
-  \item WSN-assisted Collision avoidance
+  \item WSN-assisted collision avoidance
   \item Demand-oriented intelligent traffic light control
   \item WSN-assisted tracking system
-  \item WSN-assisted tracking system
+  \item Middlware for ITS
 \end{enumerate}
 
 The platform must be reliable and stable during the show. The previous implementation was based on the now obsolete and unmaintained TinyOS 1.x so these programs are gradually being ported to TinyOS 2.x for the sake of long-term benefit. We have already ported the following TinyOS 1.x applications:
@@ -16,4 +16,19 @@ The platform must be reliable and stable during the show. The previous implement
   \item The TinyOS application running on each car
   \item The TinyOS application running on the traffic lights
   \item The Java application running on the gateway PC
+\end{enumerate}
+
+From the system architecture perspective, the platform can be divided into several layers from lowest to highest, including:
+
+\begin{enumerate}
+  \item Hardware and control: this layer includes the actual hardware boards which drive the demo cars, control the traffic lights and send feedbacks through UART
+  \item Reliable wireless communication layer: this layer includes all the wireless sensor nodes. All sensor nodes communicate with the hardware boards via UART.
+  \item Application layer: this layer includes all the Java applications running on the PC which handles traffic light control.
+\end{enumerate}
+
+The reliable communication layer is the heart of our platform because this is the part which ensures the correctness of our demo. To achieve a high degree of reliability, we have two mechanisms:
+
+\begin{enumerate}
+  \item Wireless link layer acknowledgement: each time when a packet is from one sensor node to another, the packet acknowledgement module is enabled with a maximum of 128 re-tranmission to ensure the messages will be reliably delivered.
+  \item PC-to-node transport layer acknowledgement: in the transport layer, every time when an application sends a control command to the sensor network, the acknowledged packet will be sent back to the application. Then, on the application side, such information is used to determine if a command is lost or not. We have an application layer command check which runs as a background thread and periodically checks the commands sent. When the thread finds a command is sent but the acknowledged packet does not come back within the timeout, it will re-send the command.
 \end{enumerate}

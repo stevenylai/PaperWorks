@@ -1,1 +1,104 @@
-\subsection{To be filled by Steven Lai}
+\subsection{Intelligent Transport Systems Demo}
+
+\begin{center}
+	\begin{longtable}{ | p{2cm} | p{10cm} | }
+		\hline
+                \multicolumn{2}{|c|}{\textbf{01/03/2014}} \\ \hline
+                \textbf{Progress} & Joanna needed help in modifying the experiments section for her service composition paper and the following works were done:
+                \begin{enumerate}
+                  \item Performed more experiments to show the impact of a variable k (indicating how many hops should be used for searching) to the overall performance
+                  \item Wrote a paragraph on the XML format
+                  \item Described the prototype system structures in greater details
+                \end{enumerate}  \\ \hline
+                \textbf{Plan} & Continue to test the tracking application \\ \hline
+
+                \multicolumn{2}{|c|}{\textbf{08/03/2014}} \\ \hline
+                \textbf{Progress} & Tested the Java tracking application on the gateway PC. Issues found and resolved:
+                \begin{enumerate}
+                  \item Some of the message structures have been changed and the Java program will be modified as well
+                  \item Some of the graphics paths were hard-coded in the previous version so I had to copy the old graphics files to the new program
+                \end{enumerate}  \\ \hline
+                \textbf{Plan} & Start programming TinyOS 2.x program for traffic lights \\ \hline
+
+                \multicolumn{2}{|c|}{\textbf{15/03/2014}} \\ \hline
+                \textbf{Progress} & Finished programming the TinyOS 2.x program on the traffic lights:
+                \begin{enumerate}
+                  \item Re-wrote the entire program in TinyOS 2.x
+                  \item Test and verified the correctness parameters including direction ID, color ID and time
+                  \item Found that there were too many messages generated from traffic lights to base station
+                  \item Add a message filter in TinyOS program and send messages only when the light status is changed
+                  \item Add a timer in TinyOS program so that some status message will be sent to the base station periodically. This can be used to determine if the traffic light is on or not.
+                \end{enumerate}  \\ \hline
+                \textbf{Plan} & Develop the Java program on the computer:
+                \begin{enumerate}
+                  \item Add the basic traffic light control logic to the Java program so that cars will stop at red lights and will drive at green lights
+                  \item Allow the basic logic to co-exist with collision avoidance logic so that when the traffic light isn't turned on, collision avoidance logic will be used and traffic light logic will be used when the lights are on.
+                \end{enumerate}  \\ \hline
+
+                \multicolumn{2}{|c|}{\textbf{22/03/2014}} \\ \hline
+                \textbf{Progress} & Develop and test traffic light Java program:
+                \begin{enumerate}
+                  \item Add the logic for stopping and starting cars at traffic lights
+                  \item Modified the program to allow more fine-grained control so that program will check the liveness of individual traffic light. This can be useful in the future when not all the traffic lights are installed with sensor motes.
+                  \item Tested the car with traffic lights. At first the cars won't stop and it was later found to be a bug and fixed.
+                \end{enumerate}  \\ \hline
+                \textbf{Plan} & Fine tune the traffic light Java program:
+                \begin{enumerate}
+                  \item The existing cars start up too slowly and the traffic light may have already changed by the time they move.
+                  \item The time duration for traffic light may need to be adjusted to achieve better visual effect overall.
+                  \item Need to continue testing the correctness of the program when the logic is switched between collision avoidance and traffic light control
+                \end{enumerate}  \\ \hline
+
+                \multicolumn{2}{|c|}{\textbf{29/03/2014}} \\ \hline
+                \textbf{Progress} & Testing and improving the traffic light program:
+                \begin{enumerate}
+                  \item Tested with new car and found it to be OK for stopping / starting at the traffic light
+                  \item Found and fixed a bug where the traffic light information change is not correctly reflected in the Java program
+                  \item Optimized the code so that upon receiving one traffic light message, all the 4 traffic light information will be updated at the same time
+                \end{enumerate}  \\ \hline
+                \textbf{Plan} & Problems with the feedback from traffic lights:
+                \begin{enumerate}
+                  \item It was found that sometimes the cars may ignore the traffic lights when driving
+                  \item Tried to replicate the cases and debug the traffic light / car messages. Found that when such cases happen, the traffic light seems to be sending an incorrect message.
+                  \item After further testing, it was found that without executing any control on the traffic lights, the feedback from the traffic light is OK but as soon as the control kicks in, the feedback is messed up.
+                  \item Need to confirm this with others and fix the problem of the feedback
+                \end{enumerate}  \\ \hline
+
+                \multicolumn{2}{|c|}{\textbf{06/04/2014}} \\ \hline
+                \textbf{Progress} & Traffic light:
+                \begin{enumerate}
+                  \item Demonstrated the feedback problem to others
+                  \item Discussed with others about the possible causes of the problem
+                \end{enumerate}
+                Collision avoidance:
+                \begin{enumerate}
+                  \item Tested with a new version of car where all the control must be carried out from the mote instead of from the car's controller
+                  \item The new version sometimes fail to make a turn and may collide to the wall
+                  \item To investigate this issue, the programs were modified to relay the lower level acks to upper level Java program so that the message delay can be measured. Most of the delay seems to be around 10 - 20 milliseconds while occasionally it may be 30 milliseconds.
+                \end{enumerate} \\ \hline
+                \textbf{Plan} & Traffic light:
+                \begin{enumerate}
+                  \item Keep investigating the feedback issues
+                \end{enumerate}
+                Collision avoidance:
+                \begin{enumerate}
+                \item Add the IC card information for other parts of the demo to the Java program
+                \item Work and fix the issue about control where sometimes the car may collide into the wall
+                \end{enumerate} \\ \hline
+
+                \multicolumn{2}{|c|}{\textbf{20/04/2014}} \\ \hline
+                \textbf{Progress} & Implementation of end-to-end retransmission mechanism:
+                \begin{enumerate}
+                  \item Because of the traffic light demo, the starting speed of the cars is elevated. The increased starting speed requires more fine-grained control so it was decided that the application should be responsible for all the control including making turns in all the cross roads
+                  \item The collision problem was suspected that sometimes the control messages from the applications do not arrive the hardware in time.
+                  \item To overcome such delay, now the applications will decide which way to turn next as soon as it enters a new road
+                  \item It was found that sometimes the application commands may get lost. Therefore, an end-to-end from PC gateway to individual nodes are implemented
+                  \item Reports have been updated to include the current new system design
+                \end{enumerate} \\ \hline
+                \textbf{Plan} & Testing the new retransmission mechanism:
+                \begin{enumerate}
+                  \item Run the car for longer periods of time and verify the program behavior
+                  \item Test collision avoidance based on the new retransmission mechanism
+                \end{enumerate} \\ \hline
+	\end{longtable}
+\end{center}
